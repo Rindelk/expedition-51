@@ -181,8 +181,7 @@
         }
         .brand-title {
             font-size: 17px; font-weight: 800; letter-spacing: -0.02em;
-            background: linear-gradient(90deg, #ffffff, #93c5fd);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            color: var(--header-text);
         }
 
         .header-actions { display: flex; align-items: center; gap: 14px; }
@@ -462,20 +461,58 @@
 
         /* RESPONSIVE NATIVE APP MODE FOR MOBILE/TABLET (<= 850px) */
         @media (max-width: 850px) {
+            body {
+                height: 100vh;
+                height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+                margin: 0;
+            }
             .app-header {
                 padding: 0 12px;
-                height: 52px;
+                height: 48px;
+                min-height: 48px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: var(--header-bg);
+                border-bottom: 1px solid var(--header-border);
+                z-index: 1100;
             }
-            .brand-title { font-size: 14px; }
-            .badge-pill { display: none; }
-            .nav-tabs { display: none !important; }
-            #btn-header-notes { display: none !important; }
+            .brand {
+                min-width: 0;
+                flex: 1;
+                overflow: hidden;
+            }
+            .brand-title {
+                font-size: 13px !important;
+                font-weight: 800 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                max-width: 220px !important;
+                display: block !important;
+            }
+            .badge-pill { display: none !important; }
+            .header-actions { display: none !important; }
+            .mobile-header-actions {
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                flex-shrink: 0 !important;
+            }
             #mobile-notes-btn { display: inline-flex !important; align-items: center; justify-content: center; }
 
             .app-body {
-                flex-direction: column;
-                height: calc(100vh - 52px - 58px);
-                position: relative;
+                flex: 1 1 auto !important;
+                height: auto !important;
+                min-height: 0 !important;
+                width: 100% !important;
+                position: relative !important;
+                overflow: hidden !important;
+                flex-direction: column !important;
             }
             #resizer-gutter { display: none !important; }
 
@@ -483,18 +520,23 @@
             .app-map-pane {
                 width: 100% !important;
                 height: 100% !important;
-                flex: 1 1 100% !important;
+                flex: 1 1 auto !important;
+                min-height: 0 !important;
                 min-width: 0 !important;
                 border-right: none !important;
                 border-bottom: none !important;
                 display: flex !important;
+                flex-direction: column !important;
             }
             .app-data-pane {
                 width: 100% !important;
                 height: 100% !important;
-                flex: 1 1 100% !important;
+                flex: 1 1 auto !important;
+                min-height: 0 !important;
                 min-width: 0 !important;
-                padding: 12px 14px 75px !important;
+                padding: 12px 14px 24px !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
                 display: none !important;
             }
 
@@ -594,18 +636,21 @@
             /* Sticky Quick-Day Jumper in Itinerary */
             .mobile-day-jumper {
                 display: flex !important;
-                position: sticky;
-                top: -12px;
-                z-index: 50;
-                background: rgba(11, 17, 32, 0.95);
-                backdrop-filter: blur(10px);
-                margin: -12px -14px 14px;
-                padding: 8px 12px;
-                border-bottom: 1px solid var(--border-color);
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                gap: 6px;
-                scrollbar-width: none;
+                position: sticky !important;
+                top: 0 !important;
+                z-index: 100 !important;
+                background: var(--jumper-bg) !important;
+                border-bottom: 1px solid var(--jumper-border) !important;
+                padding: 8px 12px !important;
+                gap: 6px !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                scrollbar-width: none !important;
+                margin: -12px -14px 12px -14px !important;
+                width: calc(100% + 28px) !important;
+                box-sizing: border-box !important;
+                box-shadow: var(--jumper-shadow) !important;
+                touch-action: pan-x !important;
             }
             .mobile-day-jumper::-webkit-scrollbar {
                 display: none;
@@ -632,32 +677,38 @@
             /* Mobile Bottom Navigation Bar */
             .mobile-bottom-nav {
                 display: flex !important;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 58px;
-                background: rgba(15, 23, 42, 0.98);
-                border-top: 1px solid var(--border-color);
-                backdrop-filter: blur(12px);
-                z-index: 9999;
-                padding-bottom: env(safe-area-inset-bottom);
-                justify-content: space-around;
-                align-items: center;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 56px !important;
+                height: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+                padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+                background: var(--nav-bg) !important;
+                backdrop-filter: blur(16px) !important;
+                -webkit-backdrop-filter: blur(16px) !important;
+                border-top: 1px solid var(--nav-border) !important;
+                z-index: 2000 !important;
+                justify-content: space-around !important;
+                align-items: flex-start !important;
+                padding-top: 6px !important;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
             }
             .mobile-nav-btn {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background: transparent;
-                border: none;
-                color: #64748b;
-                height: 100%;
-                cursor: pointer;
-                transition: color 0.15s ease;
-                padding: 4px 0;
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--text-muted) !important;
+                height: auto !important;
+                cursor: pointer !important;
+                transition: color 0.15s ease !important;
+                padding: 2px 0 !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: transparent !important;
             }
             .mobile-nav-btn.active {
                 color: var(--accent-blue);
@@ -820,9 +871,6 @@
                 max-height: 85vh !important;
                 border-bottom-left-radius: 0 !important;
                 border-bottom-right-radius: 0 !important;
-            }
-            .mobile-bottom-nav {
-                grid-template-columns: repeat(5, 1fr) !important;
             }
         }
     
@@ -1335,7 +1383,48 @@
             margin-bottom: 20px;
             box-shadow: var(--card-shadow);
         }
-</style>
+
+        /* Gantt Chart Dynamic Theme Overrides */
+        #sec-gantt .gantt-wrapper {
+            background: var(--gantt-bg) !important;
+            border-color: var(--gantt-border) !important;
+            box-shadow: var(--gantt-shadow) !important;
+        }
+        #sec-gantt h2 {
+            color: var(--text-main) !important;
+        }
+        #sec-gantt .gantt-col-stage {
+            background: var(--gantt-stage-bg) !important;
+        }
+        #sec-gantt .gantt-col-stage span:first-child {
+            color: var(--text-main) !important;
+        }
+        #sec-gantt .gantt-day-chip {
+            background: var(--gantt-subtle-bg) !important;
+            border: 1px solid var(--gantt-border) !important;
+            color: var(--text-muted) !important;
+        }
+        #sec-gantt .gantt-day-chip.active {
+            background: #2563eb !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+        #sec-gantt div[style*="background: #1e293b"],
+        #sec-gantt div[style*="background:#1e293b"] {
+            background: var(--gantt-subtle-bg) !important;
+            border-color: var(--gantt-border) !important;
+        }
+        #sec-gantt div[style*="background: #0f172a"],
+        #sec-gantt div[style*="background:#0f172a"] {
+            background: var(--gantt-subtle-bg) !important;
+            border-color: var(--gantt-border) !important;
+        }
+        #sec-gantt div[style*="border-bottom: 1px solid #334155"],
+        #sec-gantt div[style*="border-bottom: 1px solid #475569"] {
+            border-bottom-color: var(--gantt-border) !important;
+        }
+    
+    </style>
 </head>
 <body>
 <!-- PERSISTENT TOP APP BAR -->
@@ -1364,9 +1453,7 @@
     <span>Notes</span>
     <span id="header-notes-badge" style="display: none; background: #2563eb; color: #ffffff; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 10px;">0</span>
 </button>
-<button type="button" class="btn-trip-notes mobile-theme-btn" id="mobile-notes-btn" onclick="openTripNotesModal()" title="Trip Notes &amp; Feedback" aria-label="Trip Notes" style="display: none; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 0.82rem; padding: 6px 10px; border-radius: 6px; cursor: pointer; position: relative;">
-    💬<span id="mob-header-notes-badge" style="display: none; position: absolute; top: -3px; right: -3px; background: #2563eb; color: #fff; font-size: 8px; padding: 1px 3px; border-radius: 6px;">0</span>
-</button>
+
 <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme (☀️ Canadian Daylight / 🌙 Campfire)">
     <span class="theme-icon">☀️</span> <span class="theme-label">Daylight</span>
 </button>
@@ -2698,9 +2785,9 @@
 </div> <!-- #sec-itinerary -->
 
 <div class="gantt-section" id="sec-gantt" style="margin-top: 32px; margin-bottom: 24px;">
-    <div class="gantt-wrapper" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); position: relative;">
+    <div class="gantt-wrapper" style="background: var(--gantt-bg); border: 1px solid var(--gantt-border); border-radius: 12px; padding: 24px; box-shadow: var(--gantt-shadow); position: relative;">
         <!-- Header -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; border-bottom: 1px solid #334155; padding-bottom: 16px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--gantt-border); padding-bottom: 16px;">
             <div>
                 <h2 style="margin: 0; font-size: 1.45rem; color: #f8fafc; display: flex; align-items: center; gap: 10px;">
                     <span>⏱️</span> 18-Day Master Expedition Timeline &amp; Saddle Gantt Chart
@@ -2710,16 +2797,16 @@
                 </div>
             </div>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                <span style="background: #0f172a; border: 1px solid #3b82f6; color: #60a5fa; font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
+                <span style="background: var(--chip-bg); border: 1px solid #3b82f6; color: var(--accent-blue); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
                     🏍️ 7,854 km Total
                 </span>
-                <span style="background: #0f172a; border: 1px solid #ef4444; color: #f87171; font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
+                <span style="background: var(--chip-bg); border: 1px solid #ef4444; color: var(--accent-red); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
                     ⛽ 72 Gas Stations
                 </span>
-                <span style="background: #0f172a; border: 1px solid #f59e0b; color: #fbbf24; font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
+                <span style="background: var(--chip-bg); border: 1px solid #f59e0b; color: var(--accent-amber); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
                     ⭐ 61 Curated Gems
                 </span>
-                <span style="background: #0f172a; border: 1px solid #10b981; color: #34d399; font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
+                <span style="background: var(--chip-bg); border: 1px solid #10b981; color: var(--accent-green); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
                     🏕️ 100% Road-Snapped
                 </span>
             </div>
@@ -2727,11 +2814,11 @@
 
         <!-- View Mode Switcher: Mobile Daily Schedule vs 18-Day Full Grid -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-            <div class="gantt-view-toggle" style="display: inline-flex; background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 3px; gap: 4px;">
+            <div class="gantt-view-toggle" style="display: inline-flex; background: var(--chip-bg); border: 1px solid var(--border); border-radius: 8px; padding: 3px; gap: 4px;">
                 <button type="button" id="btn-gantt-view-day" onclick="switchGanttView('day')" style="background: #2563eb; color: #ffffff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
                     <span>📱</span> Daily Schedule
                 </button>
-                <button type="button" id="btn-gantt-view-grid" onclick="switchGanttView('grid')" style="background: transparent; color: #94a3b8; border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
+                <button type="button" id="btn-gantt-view-grid" onclick="switchGanttView('grid')" style="background: transparent; color: var(--text-muted); border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
                     <span>📊</span> Full 18-Day Grid
                 </button>
             </div>
@@ -2748,30 +2835,30 @@
             <div style="display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; margin-bottom: 14px; scrollbar-width: none;">
                 <div style="font-size: 0.72rem; font-weight: 800; color: #64748b; display: flex; align-items: center; padding-right: 4px; flex-shrink: 0;">STAGE:</div>
                 <button type="button" class="gantt-day-chip active" id="gantt-day-chip-1" onclick="selectGanttDay(1)" style="flex-shrink: 0; background: #2563eb; border: 1px solid #3b82f6; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 1</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-2" onclick="selectGanttDay(2)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 2</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-3" onclick="selectGanttDay(3)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 3</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-4" onclick="selectGanttDay(4)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 4</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-5" onclick="selectGanttDay(5)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 5</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-6" onclick="selectGanttDay(6)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 6</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-7" onclick="selectGanttDay(7)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 7</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-8" onclick="selectGanttDay(8)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 8</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-9" onclick="selectGanttDay(9)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 9</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-10" onclick="selectGanttDay(10)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 10</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-11" onclick="selectGanttDay(11)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 11</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-12" onclick="selectGanttDay(12)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 12</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-13" onclick="selectGanttDay(13)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 13</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-14" onclick="selectGanttDay(14)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 14</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-15" onclick="selectGanttDay(15)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 15</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-16" onclick="selectGanttDay(16)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 16</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-17" onclick="selectGanttDay(17)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 17</button>
-                <button type="button" class="gantt-day-chip" id="gantt-day-chip-18" onclick="selectGanttDay(18)" style="flex-shrink: 0; background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 18</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-2" onclick="selectGanttDay(2)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 2</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-3" onclick="selectGanttDay(3)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 3</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-4" onclick="selectGanttDay(4)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 4</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-5" onclick="selectGanttDay(5)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 5</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-6" onclick="selectGanttDay(6)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 6</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-7" onclick="selectGanttDay(7)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 7</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-8" onclick="selectGanttDay(8)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 8</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-9" onclick="selectGanttDay(9)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 9</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-10" onclick="selectGanttDay(10)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 10</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-11" onclick="selectGanttDay(11)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 11</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-12" onclick="selectGanttDay(12)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 12</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-13" onclick="selectGanttDay(13)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 13</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-14" onclick="selectGanttDay(14)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 14</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-15" onclick="selectGanttDay(15)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 15</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-16" onclick="selectGanttDay(16)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 16</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-17" onclick="selectGanttDay(17)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 17</button>
+                <button type="button" class="gantt-day-chip" id="gantt-day-chip-18" onclick="selectGanttDay(18)" style="flex-shrink: 0; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;">Day 18</button>
             </div>
 
             <!-- Active Day Schedule Content (Dynamic Container) -->
-            <div id="gantt-active-day-content" style="background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 16px;">
-                <div style="margin-bottom: 12px; border-bottom: 1px solid #334155; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+            <div id="gantt-active-day-content" style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-radius: 10px; padding: 16px;">
+                <div style="margin-bottom: 12px; border-bottom: 1px solid var(--gantt-border); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
                     <div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: #f8fafc;">Day 1: Hanmer Home Base to Mirabel, QC</div>
+                        <div style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">Day 1: Hanmer Home Base to Mirabel, QC</div>
                         <div style="font-size: 0.80rem; color: #94a3b8; margin-top: 3px;">Wednesday, June 16, 2027 • Motel au P'tit Sapin, Mirabel, QC</div>
                     </div>
                     <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: #60a5fa; font-family: monospace; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">
@@ -2780,128 +2867,128 @@
                 </div>
                 <div class="gantt-timeline-vlist" style="margin-top: 10px;">
 
-                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 Breakfast & Pack (30m)
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 07:00 AM – 07:30 AM (30m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Nutritious breakfast, morning route briefing, pack bikes
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 In Saddle: 245 km (2h 45m)
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 07:30 AM – 10:15 AM (2h 45m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Leg 1: Hanmer to Deep River & Pembroke • Hwy 17 East past North Bay & Mattawa to Pembroke
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #ef4444; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #ef4444; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 20m: Primary Gas Stop #1
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 10:15 AM – 10:35 AM (20m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Primary Gas Stop #1 & stretch • Primary Gas: Pembroke Esso / Circle K (45.8267, -77.1111) - 91: YES
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 In Saddle: 195 km (2h 25m)
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 10:35 AM – 01:00 PM (2h 25m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Leg 2: Pembroke across Ottawa River to Masson-Angers • Hwy 17 to Chenaux Dam -> Portage-du-Fort -> Route 148 East through Shawville & Aylmer -> Gatineau -> Angers
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 45m: Primary Gas Stop #2
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 01:00 PM – 01:45 PM (45m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Primary Gas Stop #2 + 30m LUNCH • Primary Gas: Masson-Angers Shell / Ultramar (45.5422, -75.4280) - 91: YES
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 In Saddle: 208 km (2h 45m)
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 01:45 PM – 05:05 PM (3h 20m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Leg 3: Masson-Angers along Route 148 river corridor to Mirabel • Route 148 river road through Montebello & Grenville -> Lachute -> Route 158 -> Route 117 to Mirabel
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 Arrive & Check-in / Camp Pitch
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 05:05 PM – 06:00 (55m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Check-in at Motel au P'tit Sapin, Mirabel, QC, unpack panniers, shower, relax
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 Supper (1h)
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 06:00 – 07:00 PM (1h 0m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             1-hour sit-down supper near Motel au P'tit Sapin, Mirabel, QC
                         </div>
                     </div>
 
-                    <div style="background: #1e293b; border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 Rest & Route Prep
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 07:00 PM – 10:00 PM (3h 0m)
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             Chain lube, tire pressure check, next day GPX review, restful sleep
                         </div>
                     </div>
@@ -2910,10 +2997,10 @@
                     <button type="button" onclick="focusDay(1); if (window.innerWidth <= 850) switchMobileTab('map');" style="flex: 1; min-width: 140px; background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 700; cursor: pointer;">
                         🗺️ Focus Day 1 on Map
                     </button>
-                    <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-1'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: #334155; color: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
+                    <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-1'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: var(--chip-bg); color: var(--text-main); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
                         📋 View Itinerary Details
                     </button>
-                    <button type="button" onclick="openTripNotesModal({day: 1, title: 'Day 1: Hanmer Home Base to Mirabel, QC'})" style="flex: 1; min-width: 140px; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <button type="button" onclick="openTripNotesModal({day: 1, title: 'Day 1: Hanmer Home Base to Mirabel, QC'})" style="flex: 1; min-width: 140px; background: var(--chip-bg); border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
                         💬 Add Note for Day 1
                     </button>
                 </div>
@@ -2921,9 +3008,9 @@
 
             <!-- Day Prev / Next Quick Controls -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
-                <button type="button" id="btn-gantt-prev-day" onclick="stepGanttDay(-1)" style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; padding: 6px 14px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">◀ Previous Day</button>
+                <button type="button" id="btn-gantt-prev-day" onclick="stepGanttDay(-1)" style="background: var(--chip-bg); border: 1px solid var(--border); color: var(--text-main); padding: 6px 14px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">◀ Previous Day</button>
                 <span id="gantt-day-indicator" style="font-size: 0.80rem; color: #94a3b8; font-weight: 600;">Day 1 of 18</span>
-                <button type="button" id="btn-gantt-next-day" onclick="stepGanttDay(1)" style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; padding: 6px 14px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">Next Day ▶</button>
+                <button type="button" id="btn-gantt-next-day" onclick="stepGanttDay(1)" style="background: var(--chip-bg); border: 1px solid var(--border); color: var(--text-main); padding: 6px 14px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">Next Day ▶</button>
             </div>
         </div>
 
@@ -2932,31 +3019,31 @@
         <!-- ======================================================== -->
         <div id="gantt-grid-view" style="display: none;">
             <!-- Legend -->
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; background: #0f172a; border: 1px solid #334155; padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 0.76rem; align-items: center;">
+            <div class="gantt-legend-box" style="display: flex; flex-wrap: wrap; gap: 10px; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 0.76rem; align-items: center;">
                 <span style="color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.70rem; margin-right: 4px;">Legend:</span>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #2563eb; border: 1px solid #3b82f6; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Riding</span>
+                    <span style="color: var(--text-main);">Riding</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #d97706; border: 1px solid #f59e0b; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Meals</span>
+                    <span style="color: var(--text-main);">Meals</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #dc2626; border: 1px solid #ef4444; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Fuel (15-25m)</span>
+                    <span style="color: var(--text-main);">Fuel (15-25m)</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #7c3aed; border: 1px solid #8b5cf6; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Attractions</span>
+                    <span style="color: var(--text-main);">Attractions</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #0891b2; border: 1px solid #06b6d4; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Ferries</span>
+                    <span style="color: var(--text-main);">Ferries</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span style="width: 12px; height: 12px; background: #059669; border: 1px solid #10b981; border-radius: 3px; display: inline-block;"></span>
-                    <span style="color: #e2e8f0;">Lodging</span>
+                    <span style="color: var(--text-main);">Lodging</span>
                 </div>
             </div>
 
@@ -2966,8 +3053,8 @@
                     
                     <!-- Time Scale Header -->
                     <div style="display: flex; align-items: center; margin-bottom: 8px; font-family: monospace; font-size: 0.75rem; color: #94a3b8;">
-                        <div style="width: 140px; flex-shrink: 0; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; left: 0; background: #1e293b; z-index: 15; padding: 2px 8px 2px 0;">Day &amp; Date</div>
-                        <div style="flex: 1; position: relative; height: 24px; border-bottom: 1px solid #475569;">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 15; padding: 2px 8px 2px 0;">Day &amp; Date</div>
+                        <div style="flex: 1; position: relative; height: 24px; border-bottom: 1px solid var(--gantt-border);">
                             <span style="position: absolute; left: 0.00%; transform: translateX(0); top: 2px;">06:00</span>
                             <span style="position: absolute; left: 11.11%; transform: translateX(-50%); top: 2px;">08:00</span>
                             <span style="position: absolute; left: 22.22%; transform: translateX(-50%); top: 2px;">10:00</span>
@@ -2985,13 +3072,13 @@
 
                     <!-- Day 1 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(1); const el=document.getElementById('day-card-1'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 1</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 1</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">649 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3000,15 +3087,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3077,13 +3164,13 @@
 
                     <!-- Day 2 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(2); const el=document.getElementById('day-card-2'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 2</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 2</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">709 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3092,15 +3179,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3183,13 +3270,13 @@
 
                     <!-- Day 3 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(3); const el=document.getElementById('day-card-3'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 3</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 3</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">600 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3198,15 +3285,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3289,13 +3376,13 @@
 
                     <!-- Day 4 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(4); const el=document.getElementById('day-card-4'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 4</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 4</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">532 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3304,15 +3391,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3367,13 +3454,13 @@
 
                     <!-- Day 5 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(5); const el=document.getElementById('day-card-5'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 5</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 5</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">628 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3382,15 +3469,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3473,13 +3560,13 @@
 
                     <!-- Day 6 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(6); const el=document.getElementById('day-card-6'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 6</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 6</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">213 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3488,15 +3575,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 0.00%; width: 1.39%; top: 2px; bottom: 2px; background: #475569; border: 1px solid #64748b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="06:00 AM – 06:15 AM (15m)&#10;Wake & Prep&#10;Early wake-up for MV Qajaq W ferry"
                                  onclick="event.stopPropagation(); inspectGanttBlock('06:00 AM – 06:15 AM (15m)', 'Wake & Prep', 'Early wake-up for MV Qajaq W ferry', '⏰');"
@@ -3586,13 +3673,13 @@
 
                     <!-- Day 7 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(7); const el=document.getElementById('day-card-7'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 7</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 7</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">103 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3601,15 +3688,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3664,13 +3751,13 @@
 
                     <!-- Day 8 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(8); const el=document.getElementById('day-card-8'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 8</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 8</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">412 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3679,15 +3766,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3742,13 +3829,13 @@
 
                     <!-- Day 9 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(9); const el=document.getElementById('day-card-9'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 9</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 9</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">189 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3757,15 +3844,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3820,13 +3907,13 @@
 
                     <!-- Day 10 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(10); const el=document.getElementById('day-card-10'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 10</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 10</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">581 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3835,15 +3922,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -3933,13 +4020,13 @@
 
                     <!-- Day 11 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(11); const el=document.getElementById('day-card-11'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 11</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 11</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">186 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -3948,15 +4035,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 0.00%; width: 1.39%; top: 2px; bottom: 2px; background: #475569; border: 1px solid #64748b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="06:00 AM – 06:15 AM (15m)&#10;Wake in Stateroom&#10;Marine Atlantic stateroom wakeup as ship approaches North Sydney"
                                  onclick="event.stopPropagation(); inspectGanttBlock('06:00 AM – 06:15 AM (15m)', 'Wake in Stateroom', 'Marine Atlantic stateroom wakeup as ship approaches North Sydney', '⏰');"
@@ -4039,13 +4126,13 @@
 
                     <!-- Day 12 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(12); const el=document.getElementById('day-card-12'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 12</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 12</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">191 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4054,15 +4141,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4131,13 +4218,13 @@
 
                     <!-- Day 13 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(13); const el=document.getElementById('day-card-13'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 13</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 13</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">647 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4146,15 +4233,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4223,13 +4310,13 @@
 
                     <!-- Day 14 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(14); const el=document.getElementById('day-card-14'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 14</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 14</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">329 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4238,15 +4325,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4301,13 +4388,13 @@
 
                     <!-- Day 15 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(15); const el=document.getElementById('day-card-15'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 15</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 15</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">544 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4316,15 +4403,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4393,13 +4480,13 @@
 
                     <!-- Day 16 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(16); const el=document.getElementById('day-card-16'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 16</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 16</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">437 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4408,15 +4495,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4485,13 +4572,13 @@
 
                     <!-- Day 17 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(17); const el=document.getElementById('day-card-17'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 17</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 17</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">502 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4500,15 +4587,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4577,13 +4664,13 @@
 
                     <!-- Day 18 Row -->
                     <div style="display: flex; align-items: center; margin-bottom: 7px; height: 38px; cursor: pointer; transition: background 0.15s ease;"
-                         onmouseover="this.style.background='#33415555'" onmouseout="this.style.background='transparent'"
+                         onmouseover="this.style.background='var(--chip-bg)'" onmouseout="this.style.background='transparent'"
                          onclick="if(typeof focusDay==='function') focusDay(18); const el=document.getElementById('day-card-18'); if(el) el.scrollIntoView({behavior: 'smooth', block: 'center'});">
                         
                         <!-- Sticky Freeze-Pane Day Label -->
-                        <div style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: #1e293b; z-index: 10; box-shadow: 2px 0 6px rgba(0,0,0,0.4);">
+                        <div class="gantt-col-stage" style="width: 140px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding-right: 10px; position: sticky; left: 0; background: var(--gantt-stage-bg); z-index: 10; box-shadow: 2px 0 6px var(--card-shadow);">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span style="font-weight: 700; font-size: 0.82rem; color: #f8fafc;">Day 18</span>
+                                <span style="font-weight: 700; font-size: 0.82rem; color: var(--text-main);">Day 18</span>
                                 <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">354 km</span>
                             </div>
                             <div style="font-size: 0.68rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -4592,15 +4679,15 @@
                         </div>
 
                         <!-- Day Track with Vertical Hour Lines -->
-                        <div style="flex: 1; position: relative; height: 32px; background: #0f172a; border-radius: 6px; border: 1px solid #334155; overflow: hidden;">
-                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
-                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: rgba(71, 85, 105, 0.35); pointer-events: none; z-index: 1;"></div>
+                        <div class="gantt-day-track" style="flex: 1; position: relative; height: 32px; background: var(--gantt-subtle-bg); border-radius: 6px; border: 1px solid var(--gantt-border); overflow: hidden;">
+                            <div style="position: absolute; left: 11.11%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 22.22%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 33.33%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 44.44%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 55.56%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 66.67%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 77.78%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
+                            <div style="position: absolute; left: 88.89%; top: 0; bottom: 0; width: 1px; background: var(--gantt-time-border); pointer-events: none; z-index: 1; opacity: 0.5;"></div>
                             <div style="position: absolute; left: 5.56%; width: 2.78%; top: 2px; bottom: 2px; background: #d97706; border: 1px solid #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.70rem; font-weight: 600; cursor: pointer; z-index: 2; transition: transform 0.1s ease, filter 0.1s ease;"
                                  title="07:00 AM – 07:30 AM (30m)&#10;Breakfast & Pack (30m)&#10;Nutritious breakfast, morning route briefing, pack bikes"
                                  onclick="event.stopPropagation(); inspectGanttBlock('07:00 AM – 07:30 AM (30m)', 'Breakfast & Pack (30m)', 'Nutritious breakfast, morning route briefing, pack bikes', '🍽️');"
@@ -4649,20 +4736,20 @@
             </div>
 
             <!-- Tap-to-Inspect Block Card (Visible on mobile/tap) -->
-            <div id="gantt-block-inspect-card" style="display: none; margin-top: 12px; background: #0f172a; border: 1px solid #3b82f6; border-radius: 8px; padding: 12px; position: relative;">
+            <div id="gantt-block-inspect-card" style="display: none; margin-top: 12px; background: var(--gantt-subtle-bg); border: 1px solid var(--accent-blue); border-radius: 8px; padding: 12px; position: relative;">
                 <button type="button" onclick="document.getElementById('gantt-block-inspect-card').style.display='none';" style="position: absolute; top: 8px; right: 8px; background: transparent; border: none; color: #94a3b8; font-size: 14px; cursor: pointer;">✕</button>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                     <span id="inspect-icon" style="font-size: 1.2rem;">⏱️</span>
                     <span id="inspect-time" style="font-family: monospace; font-size: 0.82rem; font-weight: 700; color: #38bdf8;"></span>
                 </div>
-                <div id="inspect-title" style="font-size: 0.88rem; font-weight: 700; color: #f8fafc; margin-bottom: 4px;"></div>
-                <div id="inspect-details" style="font-size: 0.80rem; color: #cbd5e1; line-height: 1.4;"></div>
+                <div id="inspect-title" style="font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;"></div>
+                <div id="inspect-details" style="font-size: 0.80rem; color: var(--text-card); line-height: 1.4;"></div>
             </div>
         </div>
 
         <!-- Footnote Callout -->
-        <div style="margin-top: 16px; padding: 12px 16px; background: #0f172a; border-left: 4px solid #3b82f6; border-radius: 4px; font-size: 0.80rem; color: #94a3b8; line-height: 1.45;">
-            <strong style="color: #f8fafc;">💡 Interactive Tip:</strong> Tap any day pill above or use <strong>Prev/Next</strong> to view that stage's complete minute-by-minute schedule, gas stops, and saddle intervals. Switch to <strong>Full 18-Day Grid</strong> to pan the visual cross-trip comparison with freeze-pane sticky day labels.
+        <div class="gantt-tip-box" style="margin-top: 16px; padding: 12px 16px; background: var(--gantt-subtle-bg); border: 1px solid var(--gantt-border); border-left: 4px solid #3b82f6; border-radius: 4px; font-size: 0.80rem; color: var(--text-muted); line-height: 1.45;">
+            <strong style="color: var(--text-main);">💡 Interactive Tip:</strong> Tap any day pill above or use <strong>Prev/Next</strong> to view that stage's complete minute-by-minute schedule, gas stops, and saddle intervals. Switch to <strong>Full 18-Day Grid</strong> to pan the visual cross-trip comparison with freeze-pane sticky day labels.
         </div>
     </div>
 </div> <!-- #sec-gantt -->
@@ -4948,9 +5035,9 @@
         function selectGanttDay(dayNum) {
             currentGanttDay = dayNum;
             document.querySelectorAll('.gantt-day-chip').forEach(c => {
-                c.style.background = '#0f172a';
-                c.style.borderColor = '#334155';
-                c.style.color = '#94a3b8';
+                c.style.background = 'var(--gantt-subtle-bg)';
+                c.style.borderColor = 'var(--gantt-border)';
+                c.style.color = 'var(--text-muted)';
                 c.classList.remove('active');
             });
             const activeChip = document.getElementById('gantt-day-chip-' + dayNum);
@@ -4975,13 +5062,13 @@
             if (!container) return;
 
             const typeColors = {
-                'ride': { border: '#3b82f6', bg: '#1e293b' },
-                'meal': { border: '#f59e0b', bg: '#1e293b' },
-                'fuel': { border: '#ef4444', bg: '#1e293b' },
-                'sight': { border: '#8b5cf6', bg: '#1e293b' },
-                'ferry': { border: '#06b6d4', bg: '#1e293b' },
-                'lodging': { border: '#10b981', bg: '#1e293b' },
-                'wake': { border: '#64748b', bg: '#1e293b' }
+                'ride': { border: '#3b82f6', bg: 'var(--gantt-subtle-bg)' },
+                'meal': { border: '#f59e0b', bg: 'var(--gantt-subtle-bg)' },
+                'fuel': { border: '#ef4444', bg: 'var(--gantt-subtle-bg)' },
+                'sight': { border: '#8b5cf6', bg: 'var(--gantt-subtle-bg)' },
+                'ferry': { border: '#06b6d4', bg: 'var(--gantt-subtle-bg)' },
+                'lodging': { border: '#10b981', bg: 'var(--gantt-subtle-bg)' },
+                'wake': { border: '#64748b', bg: 'var(--gantt-subtle-bg)' }
             };
 
             let blocksHtml = '';
@@ -4990,28 +5077,28 @@
                 const durStr = durM >= 60 ? (Math.floor(durM / 60) + 'h ' + (durM % 60) + 'm') : (durM + 'm');
                 const col = typeColors[b.type] || typeColors['ride'];
                 blocksHtml += `
-                    <div style="background: ${col.bg}; border-left: 4px solid ${col.border}; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="background: ${col.bg}; border: 1px solid var(--gantt-border); border-left: 4px solid ${col.border}; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-main); line-height: 1.3;">
                                 ${b.title}
                             </span>
-                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent-blue); background: var(--chip-bg); border: 1px solid var(--border); padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
                                 ${b.start_str} – ${b.end_str} (${durStr})
                             </span>
                         </div>
-                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                        <div style="font-size: 0.78rem; color: var(--text-card); line-height: 1.4;">
                             ${b.details}
                         </div>
                     </div>`;
             });
 
             container.innerHTML = `
-                <div style="margin-bottom: 12px; border-bottom: 1px solid #334155; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                <div style="margin-bottom: 12px; border-bottom: 1px solid var(--gantt-border); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
                     <div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: #f8fafc;">Day ${dayNum}: ${dayObj.title}</div>
-                        <div style="font-size: 0.80rem; color: #94a3b8; margin-top: 3px;">${dayObj.date}${dayObj.hotel ? ' • ' + dayObj.hotel : ''}</div>
+                        <div style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">Day ${dayNum}: ${dayObj.title}</div>
+                        <div style="font-size: 0.80rem; color: var(--text-muted); margin-top: 3px;">${dayObj.date}${dayObj.hotel ? ' • ' + dayObj.hotel : ''}</div>
                     </div>
-                    <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: #60a5fa; font-family: monospace; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">
+                    <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: var(--accent-blue); font-family: monospace; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">
                         📍 ${dayObj.dist} km
                     </div>
                 </div>
@@ -5022,10 +5109,10 @@
                     <button type="button" onclick="focusDay(${dayNum}); if (window.innerWidth <= 850) switchMobileTab('map');" style="flex: 1; min-width: 140px; background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 700; cursor: pointer;">
                         🗺️ Focus Day ${dayNum} on Map
                     </button>
-                    <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-${dayNum}'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: #334155; color: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
+                    <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-${dayNum}'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: var(--chip-bg); color: var(--text-main); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
                         📋 View Itinerary Details
                     </button>
-                    <button type="button" onclick="openTripNotesModal({day: dayNum, title: dayObj.title})" style="flex: 1; min-width: 140px; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <button type="button" onclick="openTripNotesModal({day: dayNum, title: dayObj.title})" style="flex: 1; min-width: 140px; background: var(--chip-bg); border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
                         💬 Add Note for Day ${dayNum}
                     </button>
                 </div>`;
