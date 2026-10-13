@@ -6,7 +6,13 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="theme-color" content="#0b1120"/>
+<meta name="theme-color" content="#f8fafc"/>
+<script>
+    (function() {
+        var t = localStorage.getItem('expedition_51_theme') || 'light';
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+</script>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
@@ -17,18 +23,129 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
         :root {
+            /* ☀️ Canadian Daylight Theme (Default) */
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-pane: #f1f5f9;
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --border: #e2e8f0;
+            --border-light: #cbd5e1;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #64748b;
+            --text-card: #334155;
+            --accent-blue: #0284c7;
+            --accent-green: #059669;
+            --accent-red: #e11d48;
+            --accent-amber: #d97706;
+            --accent-purple: #7c3aed;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --card-active-glow: 0 0 16px rgba(2, 132, 199, 0.2);
+            --header-bg: rgba(255, 255, 255, 0.96);
+            --header-text: #0f172a;
+            --header-border: #e2e8f0;
+            --nav-bg: rgba(255, 255, 255, 0.98);
+            --nav-border: #e2e8f0;
+            --jumper-bg: #ffffff;
+            --jumper-border: #e2e8f0;
+            --jumper-btn-bg: #f8fafc;
+            --jumper-btn-border: #cbd5e1;
+            --jumper-btn-color: #475569;
+            --jumper-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --chip-bg: #f1f5f9;
+            --chip-border: #e2e8f0;
+            --chip-text: #475569;
+            --btn-call-bg: #e2e8f0;
+            --btn-call-text: #1e293b;
+            --btn-call-hover: #cbd5e1;
+            --filter-bg: rgba(255, 255, 255, 0.95);
+            --filter-btn-bg: #ffffff;
+            --filter-btn-border: #cbd5e1;
+            --filter-btn-text: #334155;
+            --filter-btn-hover: #f1f5f9;
+            --filter-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            --btn-zoom-bg: #f0f9ff;
+            --btn-zoom-border: #0284c7;
+            --btn-zoom-color: #0284c7;
+            --gantt-bg: #ffffff;
+            --gantt-border: #e2e8f0;
+            --gantt-subtle-bg: #f8fafc;
+            --gantt-stage-bg: #ffffff;
+            --gantt-time-border: #cbd5e1;
+            --gantt-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --toast-bg: rgba(15, 23, 42, 0.95);
+            --toast-color: #38bdf8;
+            --split-bg: #e2e8f0;
+            --split-btn-color: #64748b;
+            --split-btn-hover: #cbd5e1;
+            --split-btn-active-bg: #ffffff;
+            --split-btn-active-color: #0284c7;
+        }
+
+        [data-theme="dark"] {
+            /* 🌙 Campfire Theme */
+            --bg-base: #0b1120;
+            --bg-surface: #111827;
+            --bg-pane: #0b1120;
             --bg-dark: #0b1120;
             --bg-card: #131d33;
             --bg-card-hover: #1a2744;
+            --border: #24355a;
+            --border-light: #334155;
             --border-color: #24355a;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --text-card: #cbd5e1;
             --accent-blue: #38bdf8;
             --accent-green: #4ade80;
             --accent-red: #f87171;
             --accent-amber: #fbbf24;
             --accent-purple: #c084fc;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
+            --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            --card-active-glow: 0 0 20px rgba(56, 189, 248, 0.2);
+            --header-bg: linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(11,17,32,0.99) 100%);
+            --header-text: #f9fafb;
+            --header-border: #24355a;
+            --nav-bg: rgba(15, 23, 42, 0.98);
+            --nav-border: #334155;
+            --jumper-bg: #0f172a;
+            --jumper-border: #334155;
+            --jumper-btn-bg: #1e293b;
+            --jumper-btn-border: #334155;
+            --jumper-btn-color: #94a3b8;
+            --jumper-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --chip-bg: #1e293b;
+            --chip-border: #334155;
+            --chip-text: #94a3b8;
+            --btn-call-bg: #374151;
+            --btn-call-text: #ffffff;
+            --btn-call-hover: #4b5563;
+            --filter-bg: rgba(15, 23, 42, 0.98);
+            --filter-btn-bg: #1e293b;
+            --filter-btn-border: #334155;
+            --filter-btn-text: #94a3b8;
+            --filter-btn-hover: #334155;
+            --filter-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            --btn-zoom-bg: rgba(56, 189, 248, 0.12);
+            --btn-zoom-border: #0284c7;
+            --btn-zoom-color: #38bdf8;
+            --gantt-bg: #1e293b;
+            --gantt-border: #334155;
+            --gantt-subtle-bg: #0f172a;
+            --gantt-stage-bg: #1e293b;
+            --gantt-time-border: #475569;
+            --gantt-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --toast-bg: rgba(15, 23, 42, 0.95);
+            --toast-color: #38bdf8;
+            --split-bg: #1e293b;
+            --split-btn-color: #94a3b8;
+            --split-btn-hover: #334155;
+            --split-btn-active-bg: #0f172a;
+            --split-btn-active-color: #38bdf8;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body {
@@ -344,6 +461,8 @@
             .brand-title { font-size: 14px; }
             .badge-pill { display: none; }
             .nav-tabs { display: none !important; }
+            #btn-header-notes { display: none !important; }
+            #mobile-notes-btn { display: inline-flex !important; align-items: center; justify-content: center; }
 
             .app-body {
                 flex-direction: column;
@@ -382,7 +501,8 @@
             body.tab-timeline .app-data-pane { display: block !important; }
             body.tab-timeline .mobile-day-jumper,
             body.tab-timeline .stats-grid,
-            body.tab-timeline #sec-itinerary > .data-section-title,
+            body.tab-timeline #sec-itinerary,
+            body.tab-timeline #sec-budget,
             body.tab-timeline #expedition-budget-card,
             body.tab-timeline .day-card,
             body.tab-timeline #sec-safety,
@@ -400,6 +520,8 @@
             body.tab-downloads .mobile-day-jumper,
             body.tab-downloads .stats-grid,
             body.tab-downloads #sec-itinerary,
+            body.tab-downloads #sec-gantt,
+            body.tab-downloads #sec-budget,
             body.tab-downloads #sec-safety,
             body.tab-downloads #sec-fleet {
                 display: none !important;
@@ -701,6 +823,244 @@
             background: #334155 !important;
             color: #ffffff !important;
         }
+    
+        /* DUAL THEME CONTROLS & UTILITIES */
+        .theme-toggle-btn {
+            background: var(--chip-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-card-hover);
+        }
+        .mobile-header-actions {
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        .mobile-theme-btn {
+            background: var(--chip-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: all 0.2s ease;
+        }
+        .mobile-theme-btn:active {
+            transform: scale(0.92);
+        }
+        @media (max-width: 850px) {
+            .theme-toggle-btn { display: none !important; }
+            .mobile-header-actions { display: flex !important; }
+        }
+
+        /* Adaptive Theme Overrides for Core Components */
+        header.app-header {
+            background: var(--header-bg) !important;
+            border-bottom: 1px solid var(--header-border) !important;
+            color: var(--header-text) !important;
+        }
+        .brand-title {
+            color: var(--text-main) !important;
+        }
+        [data-theme="dark"] .brand-title {
+            background: linear-gradient(90deg, #ffffff, #93c5fd) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        .nav-tabs {
+            background: var(--chip-bg) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+        .nav-tab-btn {
+            color: var(--text-muted) !important;
+        }
+        .nav-tab-btn:hover {
+            color: var(--text-main) !important;
+            background: var(--bg-card-hover) !important;
+        }
+        .nav-tab-btn.active {
+            background: var(--accent-blue) !important;
+            color: #ffffff !important;
+        }
+        #resizer-gutter {
+            background: var(--split-bg) !important;
+        }
+        .map-toolbar {
+            background: var(--filter-bg) !important;
+        }
+        .map-toolbar-title {
+            color: var(--text-main) !important;
+        }
+        .filter-btn {
+            background: var(--filter-btn-bg) !important;
+            border: 1px solid var(--filter-btn-border) !important;
+            color: var(--filter-btn-text) !important;
+        }
+        .filter-btn:hover {
+            background: var(--filter-btn-hover) !important;
+            color: var(--text-main) !important;
+        }
+        .filter-btn.active {
+            background: var(--accent-blue) !important;
+            border-color: var(--accent-blue) !important;
+            color: #ffffff !important;
+        }
+        .stat-card {
+            box-shadow: var(--card-shadow) !important;
+        }
+        .stat-value {
+            color: var(--text-main) !important;
+        }
+        .data-section-title {
+            color: var(--text-main) !important;
+        }
+        .day-card {
+            box-shadow: var(--card-shadow) !important;
+        }
+        .day-title {
+            color: var(--text-main) !important;
+        }
+        .day-header {
+            background: var(--chip-bg) !important;
+            border-bottom: 1px solid var(--border-color) !important;
+        }
+        .meta-pill {
+            background: var(--chip-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-muted) !important;
+        }
+        .route-path {
+            background: var(--chip-bg) !important;
+            color: var(--text-card) !important;
+        }
+        .info-box {
+            background: var(--chip-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-card) !important;
+        }
+        .info-box-content {
+            color: var(--text-card) !important;
+        }
+        .fly-to-btn {
+            background: var(--btn-zoom-bg) !important;
+            border: 1px solid var(--btn-zoom-border) !important;
+            color: var(--btn-zoom-color) !important;
+        }
+        .bike-card {
+            box-shadow: var(--card-shadow) !important;
+        }
+        .bike-card h3 {
+            color: var(--text-main) !important;
+        }
+        .spec-table td {
+            border-bottom: 1px solid var(--border-color) !important;
+        }
+        .spec-table td:last-child {
+            color: var(--text-card) !important;
+        }
+        .safety-card {
+            box-shadow: var(--card-shadow) !important;
+        }
+        .downloads-bar {
+            background: var(--bg-card) !important;
+            box-shadow: var(--card-shadow) !important;
+        }
+        [data-theme="dark"] .downloads-bar {
+            background: linear-gradient(90deg, #1e293b, #0f172a) !important;
+        }
+        .download-pill {
+            background: var(--filter-btn-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-main) !important;
+        }
+        .download-pill:hover {
+            background: var(--accent-blue) !important;
+            color: #ffffff !important;
+        }
+        .mobile-day-jumper {
+            background: var(--jumper-bg) !important;
+            border-bottom: 1px solid var(--jumper-border) !important;
+            box-shadow: var(--jumper-shadow) !important;
+        }
+        .day-jump-chip {
+            background: var(--jumper-btn-bg) !important;
+            border: 1px solid var(--jumper-btn-border) !important;
+            color: var(--jumper-btn-color) !important;
+        }
+        .mobile-bottom-nav {
+            background: var(--nav-bg) !important;
+            border-top: 1px solid var(--nav-border) !important;
+        }
+        .mobile-nav-btn {
+            color: var(--text-muted) !important;
+        }
+        .mobile-nav-btn.active {
+            color: var(--accent-blue) !important;
+        }
+        .weather-box {
+            background: var(--chip-bg) !important;
+        }
+        #sec-gantt .gantt-wrapper {
+            background: var(--gantt-bg) !important;
+            border-color: var(--gantt-border) !important;
+            box-shadow: var(--gantt-shadow) !important;
+        }
+        #sec-gantt h2 {
+            color: var(--text-main) !important;
+        }
+        #sec-gantt .gantt-view-toggle {
+            background: var(--chip-bg) !important;
+            border-color: var(--border-color) !important;
+        }
+        #gantt-active-day-content {
+            background: var(--bg-surface) !important;
+            border-color: var(--border-color) !important;
+        }
+        .gantt-timeline-vlist > div {
+            background: var(--chip-bg) !important;
+        }
+        #expedition-budget-card {
+            background: var(--bg-card) !important;
+            border-color: var(--accent-blue) !important;
+            box-shadow: var(--card-shadow) !important;
+        }
+        [data-theme="dark"] #expedition-budget-card {
+            background: linear-gradient(135deg, #131d33 0%, #1e293b 100%) !important;
+        }
+        #trip-notes-modal .notes-modal-content {
+            background: var(--bg-surface) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-main) !important;
+        }
+        #trip-notes-modal .notes-modal-content textarea,
+        #trip-notes-modal .notes-modal-content select {
+            background: var(--chip-bg) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-main) !important;
+        }
+        .note-card-item {
+            background: var(--bg-card) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-main) !important;
+        }
+
     </style>
 </head>
 <body>
@@ -710,9 +1070,17 @@
 <span class="badge-pill">Expedition 51</span>
 <span class="brand-title">All-Canadian ADV Motorcycle Tour</span>
 </div>
+<div class="mobile-header-actions">
+<button type="button" class="mobile-theme-btn" id="mobile-notes-btn" onclick="openTripNotesModal()" title="Trip Notes &amp; Feedback" aria-label="Trip Notes" style="position: relative;">
+    💬<span id="mob-header-notes-badge" style="display: none; position: absolute; top: -3px; right: -3px; background: #2563eb; color: #fff; font-size: 8px; padding: 1px 3px; border-radius: 6px;">0</span>
+</button>
+<button type="button" class="mobile-theme-btn" id="mobile-theme-btn" onclick="toggleTheme()" title="Toggle Theme (☀️ Canadian Daylight / 🌙 Campfire)" aria-label="Toggle Theme">☀️</button>
+</div>
 <div class="header-actions">
 <nav class="nav-tabs">
 <button class="nav-tab-btn active" onclick="scrollToFeed('sec-itinerary', this)">📅 18 Days</button>
+<button class="nav-tab-btn" onclick="scrollToFeed('sec-gantt', this)">⏱️ Timeline</button>
+<button class="nav-tab-btn" onclick="scrollToFeed('sec-budget', this)">💰 Budget</button>
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-safety', this)">🛡️ Safety</button>
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-downloads', this)">📥 Files</button>
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-fleet', this)">🏍️ Fleet</button>
@@ -721,6 +1089,12 @@
     <span>💬</span>
     <span>Notes</span>
     <span id="header-notes-badge" style="display: none; background: #2563eb; color: #ffffff; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 10px;">0</span>
+</button>
+<button type="button" class="btn-trip-notes mobile-theme-btn" id="mobile-notes-btn" onclick="openTripNotesModal()" title="Trip Notes &amp; Feedback" aria-label="Trip Notes" style="display: none; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 0.82rem; padding: 6px 10px; border-radius: 6px; cursor: pointer; position: relative;">
+    💬<span id="mob-header-notes-badge" style="display: none; position: absolute; top: -3px; right: -3px; background: #2563eb; color: #fff; font-size: 8px; padding: 1px 3px; border-radius: 6px;">0</span>
+</button>
+<button type="button" class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme (☀️ Canadian Daylight / 🌙 Campfire)">
+    <span class="theme-icon">☀️</span> <span class="theme-label">Daylight</span>
 </button>
 
 </div>
@@ -789,142 +1163,6 @@
 <span style="font-size: 11px; font-weight: 600; color: var(--accent-blue);">Click any day to highlight map</span>
 </div>
 <div class="itinerary-list">
-<div class="cost-summary-card" id="expedition-budget-card" style="background: linear-gradient(135deg, #131d33 0%, #1e293b 100%); border: 1px solid #3b82f6; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <span style="font-size: 11px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 6px;">
-            <span>📊</span> EXPEDITION BUDGET &amp; LODGING SUMMARY (2027)
-        </span>
-        <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-weight: 800; font-size: 11px; padding: 2px 8px; border-radius: 4px;">1 KOA • 8 PARKS • 2 CABINS • 1 FERRY STATEROOM • 5 HOTELS</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
-        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Total Estimated Cost (Couple)</div>
-            <div style="font-size: 19px; font-weight: 800; color: #34d399; font-family: monospace;">~$5,450 <span style="font-size: 10px; color: #94a3b8;">CAD</span></div>
-            <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 2px;">Balanced Lodging &amp; Fuel Strategy</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Fixed Logistics Subtotal</div>
-            <div style="font-size: 19px; font-weight: 800; color: #38bdf8; font-family: monospace;">~$3,514 <span style="font-size: 10px; color: #94a3b8;">CAD</span></div>
-            <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 2px;">Lodging, Cabins, Ferries &amp; Fuel</div>
-        </div>
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px; margin-bottom: 16px;">
-        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
-            <span style="color: #cbd5e1;">🏨 <strong>Accommodations &amp; Campsites (17 nights)</strong>:</span>
-            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,640 CAD</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
-            <span style="color: #cbd5e1;">⛴️ <strong>Marine Ferries &amp; Bridge Tolls (2 Motorcycles)</strong>:</span>
-            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$454 CAD</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
-            <span style="color: #cbd5e1;">⛽ <strong>Dual-Fleet Fuel (Africa Twin 87 + Ducati 91 + Boosters)</strong>:</span>
-            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,420 CAD</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
-            <span style="color: #cbd5e1;">🏞️ <strong>Parks Canada Discovery Pass &amp; Admissions</strong>:</span>
-            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$220 CAD</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
-            <span style="color: #cbd5e1;">🍽️ <strong>Meals &amp; Provisions (~$109/day couple estimate)</strong>:</span>
-            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,960 CAD</span>
-        </div>
-    </div>
-
-    <!-- Booking Schedule -->
-    <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 14px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span style="font-size: 11px; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 6px;">
-                <span>📅</span> RESERVATION TIMELINE &amp; BOOKING WINDOWS
-            </span>
-            <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fde68a; font-weight: 800; font-size: 10px; padding: 2px 7px; border-radius: 4px;">2026/2027 DATES</span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #38bdf8; font-weight: 700;">🏕️ Gros Morne KOA Holiday (Day 8):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Gros Morne / Norris Point KOA (Laundry &amp; Bike Wash Reset)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">JUNE 2026</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Rolling 12 Mos</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #4ade80; font-weight: 700;">🏞️ Parks Canada (Green Pt, Broad Cove, Chéticamp, Cavendish PEI, Fundy):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">reservation.pc.gc.ca (Staggered Provincial Launches)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">JAN 15–19, 2027</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">8:00 AM Local</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #a78bfa; font-weight: 700;">🏨 Commercial Hotels (Mirabel, Baie-Comeau, Wabush, Goose Bay, Pembroke):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Direct Booking Portals (Fall 2026 Reservation Window)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">OCT–DEC 2026</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Direct Booking</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #38bdf8; font-weight: 700;">🍁 NB Parks (de la République PP - Day 15):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">parcsnbparks.info (Annual Provincial Launch)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">FEB 1, 2027</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">9:00 AM AST</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #10b981; font-weight: 700;">🏕️ Sépaq (Camping des Voltigeurs - Day 16):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">sepaq.com (Quebec Parks Launch)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">NOV 2026</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">4–6 Mos Ahead</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #00e5ff; font-weight: 700;">⛴️ Marine Atlantic Ferry (Day 10 - Port aux Basques to North Sydney):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">marineatlantic.ca (Overnight Cabot Strait Crossing with Stateroom)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">LATE FALL 2026</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Oct/Nov 2026 Release</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #00e5ff; font-weight: 700;">⛴️ Labrador Marine MV Qajaq W (Day 6 - Strait of Belle Isle):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">mylmi.labradormarine.com (Blanc-Sablon to St. Barbe)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">MARCH 1, 2027</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Schedule Release</span>
-                </div>
-            </div>
-            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="color: #f43f5e; font-weight: 700;">⚔️ Snorri Cabins (Days 6–7 - Hay Cove):</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">valhalla-lodge.com (Only 4 Cabins in Hay Cove - Reserve Early)</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">SUMMER/FALL 2026</span>
-                    <span style="color: #94a3b8; font-size: 10px; display: block;">Book 8–10 Mos Ahead</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div class="day-card active" id="day-card-1" onclick="focusDay(1)" style="background: #131d33; border: 1px solid #24355a; border-radius: 12px; padding: 18px; margin-bottom: 16px; transition: border-color 0.2s;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
         <span class="badge" style="background: #2563eb; color: #ffffff; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 4px; letter-spacing: 0.5px;">DAY 1</span>
@@ -935,9 +1173,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 648.7 km (8h 00m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Hwy 17, QC-148 & QC-158)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 22°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 14°C - 24°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-1" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 14°C - 24°C • Sunny, 22°C</div>
+        <div id="weather-live-1" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Mirabel, QC...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Depart Hanmer eastward down the Upper Ottawa Valley along Highway 17 through North Bay and Petawawa to Pembroke. Cross the Ottawa River at Portage-du-Fort into Quebec, following scenic Route 148 along the river through Gatineau, Montebello, and Grenville to Lachute, then connecting via Route 158 to Mirabel for the evening.</p>
     
@@ -987,9 +1232,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 709.3 km (9h 15m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 158, Route 138 & Route 362)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 19°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 11°C - 20°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-2" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 11°C - 20°C • Partly Cloudy, 19°C</div>
+        <div id="weather-live-2" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Baie-Comeau, QC...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Depart Mirabel northeast via Route 158 through Saint-Jérôme and Joliette to Berthierville, joining the historic Chemin du Roy (Route 138) along the St. Lawrence River. Pass through Trois-Rivières and Quebec City to the Charlevoix coastal mountains on Route 362, cross the Saguenay Fjord via the Tadoussac ferry, and continue along the Côte-Nord to Baie-Comeau.</p>
     
@@ -1039,9 +1291,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 600.5 km (8h 45m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ Paved & Compacted Gravel (QC-389 & TLH 500)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 16°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 8°C - 18°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-3" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 8°C - 18°C • Partly Cloudy, 16°C</div>
+        <div id="weather-live-3" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Labrador City, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Travel north on Quebec Route 389 through the boreal wilderness, passing the Manic-2 and Manic-5 hydroelectric dams and skirting the Manicouagan crater reservoir. Continue through the unpaved northern sector past the mining town of Fermont, crossing the provincial border into Labrador City for the night.</p>
     
@@ -1091,9 +1350,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 532.4 km (6h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Trans-Labrador Hwy 500)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 18°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 9°C - 19°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-4" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 9°C - 19°C • Partly Cloudy, 18°C</div>
+        <div id="weather-live-4" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Happy Valley-Goose Bay, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Follow the Trans-Labrador Highway (Route 500) eastward across the central Labrador plateau, crossing the Churchill River at Churchill Falls. Proceed across paved taiga corridors with long sweeping turns through black spruce wilderness to Happy Valley-Goose Bay.</p>
     
@@ -1143,9 +1409,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 627.7 km (8h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Trans-Labrador Hwy 510)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Cool, Coastal Fog, 14°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 6°C - 16°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-5" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 6°C - 16°C • Cool, Coastal Fog, 14°C</div>
+        <div id="weather-live-5" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Blanc-Sablon, QC...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Head south on the Trans-Labrador Highway (Route 510) through subarctic terrain past the Mealy Mountains. Refuel at Port Hope Simpson, visit the Red Bay UNESCO Basque Whaling Station on the coast, and reach L'Anse-au-Clair on the Strait of Belle Isle.</p>
     
@@ -1195,9 +1468,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 213.0 km (4h 15m + 1h 45m Ferry)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 430 Viking Trail)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Coastal Breeze, 15°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 7°C - 16°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-6" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 7°C - 16°C • Coastal Breeze, 15°C</div>
+        <div id="weather-live-6" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for St. Anthony, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Board the morning MV Qajaq W ferry from Blanc-Sablon to St. Barbe, Newfoundland. Ride north along the coastal Viking Trail (Route 430) to St. Anthony to visit the Grenfell Historic Properties and Fishing Point Lighthouse, then continue to Hay Cove near L'Anse aux Meadows.</p>
     
@@ -1247,9 +1527,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 103.1 km (2h 15m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ Paved & Coastal Headland (Route 436 & 437)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 16°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 8°C - 17°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-7" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 8°C - 17°C • Sunny, 16°C</div>
+        <div id="weather-live-7" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Rocky Harbour, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Spend the day exploring northern tip historical and coastal sites: tour the Norstead replica Viking village and the knarr ship Snorri, and ride to the coastal bluffs of Cape Onion before returning to Hay Cove for a second night.</p>
     
@@ -1299,9 +1586,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 412.2 km (5h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 430 Viking Trail South)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 17°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 9°C - 19°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-8" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 9°C - 19°C • Partly Cloudy, 17°C</div>
+        <div id="weather-live-8" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Gros Morne KOA, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Travel south down the Great Northern Peninsula along Route 430, stopping at Point Riche Lighthouse in Port au Choix. Continue south into Gros Morne National Park to stay at the Gros Morne KOA in Norris Point for maintenance, laundry, and rest.</p>
     
@@ -1351,9 +1645,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 189.1 km (3h 15m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 431 & Route 430)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 19°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 11°C - 21°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-9" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 11°C - 21°C • Sunny, 19°C</div>
+        <div id="weather-live-9" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for St. John's, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Explore the southern sector of Gros Morne National Park around Bonne Bay. Ride and hike the Tablelands to observe exposed earth mantle rock, visit Woody Point and Trout River, and camp oceanfront at Green Point Campground.</p>
     
@@ -1403,9 +1704,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 581.3 km (7h 45m + 7h Overnight Ferry)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 430, TCH-1 & Route 406/408)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 18°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 10°C - 20°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-10" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 10°C - 20°C • Partly Cloudy, 18°C</div>
+        <div id="weather-live-10" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Cape Spear, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Ride south through western Newfoundland and the Codroy Valley, visiting Cape Anguille and the transatlantic cable landfall at Cape Ray Lighthouse. Arrive in Port aux Basques in the evening to board the Marine Atlantic overnight ferry to North Sydney, sleeping in a private cabin stateroom.</p>
     
@@ -1455,9 +1763,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 186.1 km (3h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Hwy 105 & Cabot Trail East)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 21°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 12°C - 22°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-11" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 12°C - 22°C • Sunny, 21°C</div>
+        <div id="weather-live-11" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Argentia Ferry, NL...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Disembark the ferry at 07:00 AM in North Sydney and ride west to St. Ann's to begin the Cabot Trail. Climb over Cape Smokey to Neil's Harbour Lighthouse, then camp at Broad Cove Campground in Ingonish Beach.</p>
     
@@ -1507,9 +1822,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 190.7 km (4h 15m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ Paved with Clifftop Spur (Cabot Trail West)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 22°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 13°C - 23°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-12" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 13°C - 23°C • Sunny, 22°C</div>
+        <div id="weather-live-12" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Baddeck, NS...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Ride northern Cape Breton out to the Meat Cove clifftop spur, then rejoin the Cabot Trail over North Mountain and down French Mountain to the western coast. Hike the Skyline Trail boardwalk, visit Chéticamp, and camp in the Chéticamp valley.</p>
     
@@ -1559,9 +1881,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 646.7 km (8h 00m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Hwy 19, TCH-104 & TCH-16)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 21°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 13°C - 23°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-13" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 13°C - 23°C • Partly Cloudy, 21°C</div>
+        <div id="weather-live-13" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Charlottetown, PEI...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Cross from Cape Breton over the Canso Causeway and ride northwest through Nova Scotia and New Brunswick to the Confederation Bridge. Cross onto Prince Edward Island to ride the coastal loop through Victoria-by-the-Sea, Cape Tryon Lighthouse, and Cavendish, camping at Cavendish Beach in Prince Edward Island National Park.</p>
     
@@ -1611,9 +1940,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 328.7 km (5h 00m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Route 11, TCH-2 & Route 915)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 22°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 13°C - 23°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-14" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 13°C - 23°C • Sunny, 22°C</div>
+        <div id="weather-live-14" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Alma / Fundy NP, NB...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Visit Seacow Head Lighthouse before crossing the Confederation Bridge back to New Brunswick. Follow coastal Route 915 to Cape Enrage Lighthouse, visit the sea stacks at Hopewell Rocks, and camp at Fundy National Park Headquarters in Alma.</p>
     
@@ -1663,9 +1999,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 544.1 km (6h 45m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Fundy Trail Parkway, Route 7 & TCH-2)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Partly Cloudy, 23°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 14°C - 25°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-15" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 14°C - 25°C • Partly Cloudy, 23°C</div>
+        <div id="weather-live-15" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Edmundston, NB...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Ride the 30 km Fundy Trail Parkway along the Bay of Fundy coast to St. Martins and Saint John, stopping at Reversing Falls Rapids. Continue north along Route 7 and Highway 2 through the Saint John River Valley, crossing the historic Hartland Covered Bridge to Edmundston.</p>
     
@@ -1715,9 +2058,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 436.6 km (5h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (A-85 & Highway 20 South Shore)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 24°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 15°C - 26°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-16" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 15°C - 26°C • Sunny, 24°C</div>
+        <div id="weather-live-16" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Drummondville, QC...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Follow Highway 20 along the St. Lawrence South Shore through eastern Quebec past Rivière-du-Loup and Lévis. Arrive in Drummondville for the evening, camping along the Saint-François River at Camping des Voltigeurs.</p>
     
@@ -1767,9 +2117,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 502.2 km (6h 30m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (A-30, Hwy 417 & Hwy 17)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 25°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 16°C - 27°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-17" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 16°C - 27°C • Sunny, 25°C</div>
+        <div id="weather-live-17" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Pembroke, ON...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Take Autoroute 30 around Montreal and cross into Ontario on Highway 417. Follow Mitch Owens Road through rural southern Ottawa to Carleton Place, then take Highway 17 West past Renfrew to Pembroke for the night.</p>
     
@@ -1819,9 +2176,16 @@
         <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-family: monospace;">📍 354.5 km (4h 15m)</span>
         <span style="background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.15); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 5px;">🛣️ 100% Paved (Trans-Canada Hwy 17 West)</span>
     </div>
-    <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-        <span style="color: #fbbf24; font-weight: 700;">⛅ Weather: <strong style="color: #fde68a;">Sunny, 24°C</strong></span>
-        <span style="color: #cbd5e1; font-size: 11px;">Hist. Avg: 16°C - 26°C</span>
+    <!-- Dual Historical & Live Weather Widget -->
+    <div class="weather-box" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">⛅ Stage Weather Norms &amp; Live Conditions</span>
+            <span class="weather-live-pill" id="weather-pill-18" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">⚡ Connecting...</span>
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">Hist. Avg: 16°C - 26°C • Sunny, 24°C</div>
+        <div id="weather-live-18" style="font-size: 12px; color: #cbd5e1;">
+            <span style="color: #94a3b8; font-size: 11px;">⏳ Contacting Open-Meteo API for Hanmer Home Base, ON...</span>
+        </div>
     </div>
     <p style="font-size: 13px; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;">Ride west along Highway 17 up the Ottawa River Valley through Petawawa, Deep River, and Mattawa. Pass through North Bay and continue west to complete the expedition loop at home in Hanmer.</p>
     
@@ -1835,7 +2199,12 @@
         <div style="display: flex; gap: 8px;">
             
         </div>
-        
+        <div style="margin-top: 10px; padding: 7px 10px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 6px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
+            <span style="color: #38bdf8; font-weight: 700; display: flex; align-items: center; gap: 5px;">
+                <span>⏰</span> <strong>Reservation Window:</strong>
+            </span>
+            <span style="color: #bae6fd; font-weight: 700; font-family: monospace;">No Booking Required (Home Base)</span>
+        </div>
     </div>
     <div style="background: rgba(59, 130, 246, 0.1); border-left: 3px solid #38bdf8; border-radius: 0 6px 6px 0; padding: 10px 12px; margin-bottom: 12px;">
         <div style="font-size: 11px; font-weight: 800; color: #60a5fa; margin-bottom: 4px; text-transform: uppercase;">⛽ Fuel &amp; Octane Protocol</div>
@@ -1855,6 +2224,9 @@
         </button>
     </div>
 </div>
+</div> <!-- .itinerary-list -->
+</div> <!-- #sec-itinerary -->
+
 <div class="gantt-section" id="sec-gantt" style="margin-top: 32px; margin-bottom: 24px;">
     <div class="gantt-wrapper" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); position: relative;">
         <!-- Header -->
@@ -3823,12 +4195,150 @@
             <strong style="color: #f8fafc;">💡 Interactive Tip:</strong> Tap any day pill above or use <strong>Prev/Next</strong> to view that stage's complete minute-by-minute schedule, gas stops, and saddle intervals. Switch to <strong>Full 18-Day Grid</strong> to pan the visual cross-trip comparison with freeze-pane sticky day labels.
         </div>
     </div>
+</div> <!-- #sec-gantt -->
+
+<div id="sec-budget">
+    <div class="data-section-title">
+        <span>💰 Expedition Budget &amp; Per-Rider Cost Model</span>
+        <span style="font-size: 11px; font-weight: 600; color: var(--accent-blue);">All-Canadian Currency (CAD)</span>
+    </div>
+    <div class="cost-summary-card" id="expedition-budget-card" style="background: linear-gradient(135deg, #131d33 0%, #1e293b 100%); border: 1px solid #3b82f6; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span style="font-size: 11px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 6px;">
+            <span>📊</span> EXPEDITION BUDGET &amp; LODGING SUMMARY (2027)
+        </span>
+        <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-weight: 800; font-size: 11px; padding: 2px 8px; border-radius: 4px;">1 KOA • 8 PARKS • 2 CABINS • 1 FERRY STATEROOM • 5 HOTELS</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px;">
+            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Total Estimated Cost (Couple)</div>
+            <div style="font-size: 19px; font-weight: 800; color: #34d399; font-family: monospace;">~$5,450 <span style="font-size: 10px; color: #94a3b8;">CAD</span></div>
+            <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 2px;">Balanced Lodging &amp; Fuel Strategy</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px;">
+            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Fixed Logistics Subtotal</div>
+            <div style="font-size: 19px; font-weight: 800; color: #38bdf8; font-family: monospace;">~$3,514 <span style="font-size: 10px; color: #94a3b8;">CAD</span></div>
+            <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 2px;">Lodging, Cabins, Ferries &amp; Fuel</div>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <span style="color: #cbd5e1;">🏨 <strong>Accommodations &amp; Campsites (17 nights)</strong>:</span>
+            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,640 CAD</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <span style="color: #cbd5e1;">⛴️ <strong>Marine Ferries &amp; Bridge Tolls (2 Motorcycles)</strong>:</span>
+            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$454 CAD</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <span style="color: #cbd5e1;">⛽ <strong>Dual-Fleet Fuel (Africa Twin 87 + Ducati 91 + Boosters)</strong>:</span>
+            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,420 CAD</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <span style="color: #cbd5e1;">🏞️ <strong>Parks Canada Discovery Pass &amp; Admissions</strong>:</span>
+            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$220 CAD</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+            <span style="color: #cbd5e1;">🍽️ <strong>Meals &amp; Provisions (~$109/day couple estimate)</strong>:</span>
+            <span style="color: #f8fafc; font-family: monospace; font-weight: 700;">~$1,960 CAD</span>
+        </div>
+    </div>
+
+    <!-- Booking Schedule -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-size: 11px; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 6px;">
+                <span>📅</span> RESERVATION TIMELINE &amp; BOOKING WINDOWS
+            </span>
+            <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fde68a; font-weight: 800; font-size: 10px; padding: 2px 7px; border-radius: 4px;">2026/2027 DATES</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #38bdf8; font-weight: 700;">🏕️ Gros Morne KOA Holiday (Day 8):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Gros Morne / Norris Point KOA (Laundry &amp; Bike Wash Reset)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">JUNE 2026</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Rolling 12 Mos</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #4ade80; font-weight: 700;">🏞️ Parks Canada (Green Pt, Broad Cove, Chéticamp, Cavendish PEI, Fundy):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">reservation.pc.gc.ca (Staggered Provincial Launches)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">JAN 15–19, 2027</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">8:00 AM Local</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #a78bfa; font-weight: 700;">🏨 Commercial Hotels (Mirabel, Baie-Comeau, Wabush, Goose Bay, Pembroke):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Direct Booking Portals (Fall 2026 Reservation Window)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">OCT–DEC 2026</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Direct Booking</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #38bdf8; font-weight: 700;">🍁 NB Parks (de la République PP - Day 15):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">parcsnbparks.info (Annual Provincial Launch)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">FEB 1, 2027</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">9:00 AM AST</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #10b981; font-weight: 700;">🏕️ Sépaq (Camping des Voltigeurs - Day 16):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">sepaq.com (Quebec Parks Launch)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">NOV 2026</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">4–6 Mos Ahead</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #00e5ff; font-weight: 700;">⛴️ Marine Atlantic Ferry (Day 10 - Port aux Basques to North Sydney):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">marineatlantic.ca (Overnight Cabot Strait Crossing with Stateroom)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">LATE FALL 2026</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Oct/Nov 2026 Release</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #00e5ff; font-weight: 700;">⛴️ Labrador Marine MV Qajaq W (Day 6 - Strait of Belle Isle):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">mylmi.labradormarine.com (Blanc-Sablon to St. Barbe)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #fbbf24; font-weight: 800; font-family: monospace;">MARCH 1, 2027</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Schedule Release</span>
+                </div>
+            </div>
+            <div style="padding: 7px 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: #f43f5e; font-weight: 700;">⚔️ Snorri Cabins (Days 6–7 - Hay Cove):</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">valhalla-lodge.com (Only 4 Cabins in Hay Cove - Reserve Early)</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #34d399; font-weight: 800; font-family: monospace;">SUMMER/FALL 2026</span>
+                    <span style="color: #94a3b8; font-size: 10px; display: block;">Book 8–10 Mos Ahead</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div> <!-- #sec-budget -->
 
-
-
-
-</div></div><div id="sec-safety">
+<div id="sec-safety">
 <div class="data-section-title">
 <span>🛡️ Wildlife Safety &amp; Food Storage Protocol</span>
 </div>
@@ -4642,24 +5152,25 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
         // LIVE WEATHER ENGINE (Open-Meteo API Client)
         // ========================================================
         const stageCoordinates = {
-            1: { name: 'Mirabel / Saint-Jérôme', lat: 45.7800, lon: -74.0000 },
-            2: { name: 'Baie-Comeau', lat: 49.2185, lon: -68.1520 },
-            3: { name: 'Labrador City', lat: 52.9463, lon: -66.9114 },
-            4: { name: 'Goose Bay', lat: 53.3017, lon: -60.3261 },
-            5: { name: 'Blanc-Sablon', lat: 51.4253, lon: -57.1333 },
-            6: { name: 'St. Anthony', lat: 51.3639, lon: -55.6028 },
-            7: { name: 'Rocky Harbour', lat: 49.5939, lon: -57.9150 },
-            8: { name: 'Gros Morne', lat: 49.4750, lon: -57.9620 },
-            9: { name: "St. John's", lat: 47.5615, lon: -52.7126 },
-            10: { name: "Cape Spear / St. John's", lat: 47.5242, lon: -52.6200 },
-            11: { name: "Argentia Ferry Terminal", lat: 47.2961, lon: -53.9878 },
-            12: { name: 'Baddeck / Cabot Trail', lat: 46.1008, lon: -60.7533 },
-            13: { name: 'Charlottetown (PEI)', lat: 46.2382, lon: -63.1311 },
-            14: { name: 'Alma / Fundy NP', lat: 45.6000, lon: -64.9450 },
-            15: { name: 'Edmundston', lat: 47.3736, lon: -68.3253 },
-            16: { name: 'Pembroke / Lévis', lat: 45.8270, lon: -77.1110 },
-            17: { name: 'Hanmer (Home Base)', lat: 46.6566, lon: -80.8825 }
-        };;
+            1: { name: 'Mirabel, QC', lat: 45.7800, lon: -74.0000 },
+            2: { name: 'Baie-Comeau, QC', lat: 49.2185, lon: -68.1520 },
+            3: { name: 'Labrador City, NL', lat: 52.9463, lon: -66.9114 },
+            4: { name: 'Happy Valley-Goose Bay, NL', lat: 53.3017, lon: -60.3261 },
+            5: { name: 'Blanc-Sablon, QC', lat: 51.4253, lon: -57.1333 },
+            6: { name: 'St. Anthony, NL', lat: 51.3639, lon: -55.6028 },
+            7: { name: 'Rocky Harbour, NL', lat: 49.5939, lon: -57.9150 },
+            8: { name: 'Gros Morne KOA, NL', lat: 49.4750, lon: -57.9620 },
+            9: { name: "St. John's, NL", lat: 47.5615, lon: -52.7126 },
+            10: { name: "Cape Spear, NL", lat: 47.5242, lon: -52.6200 },
+            11: { name: "Argentia Ferry, NL", lat: 47.2961, lon: -53.9878 },
+            12: { name: 'Baddeck, NS', lat: 46.1008, lon: -60.7533 },
+            13: { name: 'Charlottetown, PEI', lat: 46.2382, lon: -63.1311 },
+            14: { name: 'Alma / Fundy NP, NB', lat: 45.6000, lon: -64.9450 },
+            15: { name: 'Edmundston, NB', lat: 47.3736, lon: -68.3253 },
+            16: { name: 'Drummondville, QC', lat: 45.8833, lon: -72.4833 },
+            17: { name: 'Pembroke, ON', lat: 45.8270, lon: -77.1110 },
+            18: { name: 'Hanmer Home Base, ON', lat: 46.6566, lon: -80.8825 }
+        };
 
         const wmoCodeMap = {
             0: { desc: 'Clear sky', icon: '☀️' },
@@ -4937,12 +5448,24 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
                 hdrBadge.textContent = count;
                 hdrBadge.style.display = count > 0 ? 'inline-block' : 'none';
             }
+            const mobHdrBadge = document.getElementById('mob-header-notes-badge');
+            if (mobHdrBadge) {
+                mobHdrBadge.textContent = count;
+                mobHdrBadge.style.display = count > 0 ? 'inline-block' : 'none';
+            }
 
             // Mobile nav badge
             const mobBadge = document.getElementById('mob-notes-badge');
             if (mobBadge) {
                 mobBadge.textContent = count;
                 mobBadge.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+
+            // Mobile header badge
+            const mobHdrBadge = document.getElementById('mob-header-notes-badge');
+            if (mobHdrBadge) {
+                mobHdrBadge.textContent = count;
+                mobHdrBadge.style.display = count > 0 ? 'inline-block' : 'none';
             }
 
             // Modal counter
@@ -5286,6 +5809,43 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
             }
         }
     
+
+        // ========================================================
+        // DUAL THEME SYSTEM (Canadian Daylight & Campfire Dark)
+        // ========================================================
+        function applyTheme(theme) {
+            const dtBtn = document.getElementById('theme-toggle-btn');
+            const mbBtn = document.getElementById('mobile-theme-btn');
+            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+            
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if (dtBtn) dtBtn.innerHTML = '<span class="theme-icon">🌙</span> <span class="theme-label">Campfire</span>';
+                if (mbBtn) mbBtn.textContent = '🌙';
+                if (metaThemeColor) metaThemeColor.setAttribute('content', '#0b1120');
+                try { localStorage.setItem('expedition_51_theme', 'dark'); } catch(e) {}
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                if (dtBtn) dtBtn.innerHTML = '<span class="theme-icon">☀️</span> <span class="theme-label">Daylight</span>';
+                if (mbBtn) mbBtn.textContent = '☀️';
+                if (metaThemeColor) metaThemeColor.setAttribute('content', '#f8fafc');
+                try { localStorage.setItem('expedition_51_theme', 'light'); } catch(e) {}
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            applyTheme(isDark ? 'light' : 'dark');
+        }
+
+        // Initialize Theme from localStorage or Default to Daylight
+        try {
+            const savedTheme = localStorage.getItem('expedition_51_theme') || 'light';
+            applyTheme(savedTheme);
+        } catch(e) {
+            applyTheme('light');
+        }
+
 </script>
 
 </body>
