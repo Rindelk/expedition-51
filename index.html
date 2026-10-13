@@ -67,14 +67,53 @@
         .nav-tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-tab-btn.active { background: var(--accent-blue); color: #0b1120; }
 
-        .split-toggles { display: flex; gap: 4px; background: #0f172a; padding: 3px; border-radius: 8px; border: 1px solid #1e293b; }
-        .split-btn {
-            background: transparent; border: none; color: var(--text-dim);
-            padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 600;
-            cursor: pointer; transition: all 0.2s;
+        /* Drag-to-Resize Divider Gutter */
+        #resizer-gutter {
+            width: 10px;
+            background: #1e293b;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            cursor: col-resize;
+            position: relative;
+            z-index: 600;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            touch-action: none;
+            transition: background 0.15s ease;
         }
-        .split-btn:hover { color: #fff; }
-        .split-btn.active { background: #334155; color: #fff; }
+
+        #resizer-gutter::after {
+            content: "";
+            width: 4px;
+            height: 44px;
+            background: #64748b;
+            border-radius: 2px;
+            transition: all 0.15s ease;
+        }
+
+        #resizer-gutter:hover,
+        #resizer-gutter.dragging {
+            background: #38bdf8;
+        }
+
+        #resizer-gutter:hover::after,
+        #resizer-gutter.dragging::after {
+            background: #0b1120;
+            height: 58px;
+        }
+
+        body.is-resizing {
+            cursor: col-resize !important;
+            user-select: none !important;
+        }
+
+        body.is-resizing #map,
+        body.is-resizing iframe {
+            pointer-events: none !important;
+        }
 
         /* MAIN APP VIEWPORT: PERSISTENT MAP ON LEFT + SCROLLABLE DATA ON RIGHT */
         .app-body {
@@ -84,9 +123,9 @@
 
         /* LEFT PANE: 100% PERSISTENT MAP (ALWAYS VISIBLE!) */
         .app-map-pane {
-            flex: 1 1 54%; height: 100%; display: flex; flex-direction: column;
-            border-right: 1px solid var(--border-color); background: #070d18;
-            position: relative; transition: flex-basis 0.25s ease;
+            flex: 1 1 auto; height: 100%; display: flex; flex-direction: column;
+            border-right: none; background: #070d18;
+            position: relative; min-width: 300px;
         }
         .map-toolbar {
             padding: 10px 14px; background: rgba(15, 23, 42, 0.98);
@@ -124,9 +163,9 @@
 
         /* RIGHT PANE: INDEPENDENT SCROLLABLE DATA FEED */
         .app-data-pane {
-            flex: 1 1 46%; height: 100%; overflow-y: auto; overflow-x: hidden;
+            width: 48%; min-width: 320px; flex: none; height: 100%; overflow-y: auto; overflow-x: hidden;
             padding: 20px 24px 80px; scroll-behavior: smooth;
-            background: var(--bg-dark); transition: flex-basis 0.25s ease;
+            background: var(--bg-dark);
         }
 
         /* CUSTOM SCROLLBAR FOR DATA PANE */
@@ -291,13 +330,12 @@
         /* RESPONSIVE TOGGLES FOR MOBILE/TABLET (<850px) */
         @media (max-width: 850px) {
             .app-body { flex-direction: column; }
-            .app-map-pane { flex: 0 0 45vh !important; border-right: none; border-bottom: 1px solid var(--border-color); }
+            .app-map-pane { flex: 0 0 45vh !important; width: 100% !important; min-width: 0 !important; border-right: none; border-bottom: 1px solid var(--border-color); }
             .app-data-pane {
-            flex: 1 1 46%; height: 100%; overflow-y: auto; overflow-x: hidden;
-            padding: 20px 24px 80px; scroll-behavior: smooth;
-            background: var(--bg-dark); transition: flex-basis 0.25s ease;
-        }
-            .split-toggles { display: none; }
+                width: 100% !important; min-width: 0 !important; flex: 1 1 auto !important; height: auto;
+                padding: 16px 18px 80px;
+            }
+            #resizer-gutter { display: none !important; }
             .brand-title { font-size: 15px; }
             .badge-pill { display: none; }
         }
@@ -399,15 +437,11 @@
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-downloads', this)">📥 Files</button>
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-fleet', this)">🏍️ Fleet</button>
 </nav>
-<div class="split-toggles">
-<button class="split-btn active" id="btn-split-50" onclick="setSplit('50-50', this)" title="50/50 Split View">◫ 50/50</button>
-<button class="split-btn" id="btn-split-map" onclick="setSplit('map-wide', this)" title="Expand Map">🗺️ Map</button>
-<button class="split-btn" id="btn-split-data" onclick="setSplit('data-wide', this)" title="Expand Data Feed">📋 Feed</button>
-</div>
+
 </div>
 </header>
 <!-- FULL APP VIEWPORT -->
-<div class="app-body"><div class="app-map-pane" id="map-pane">
+<div class="app-body" id="app-body"><div class="app-map-pane" id="map-pane">
 <div class="map-toolbar">
 <div class="map-toolbar-header">
 <div class="map-toolbar-title">
@@ -431,7 +465,7 @@
 </div>
 </div>
 <div id="map"></div>
-</div><div class="app-data-pane" id="data-pane"><div class="stats-grid">
+</div><div id="resizer-gutter" title="Drag left/right to resize map and feed. Double-click to reset 50/50."></div><div class="app-data-pane" id="data-pane"><div class="stats-grid">
 <div class="stat-card">
 <div class="stat-label">Total Distance</div>
 <div class="stat-value">~7,854 km</div>
@@ -3529,28 +3563,94 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
             }
         }
 
-        // Split view ratio toggles
-        function setSplit(mode, btn) {
-            document.querySelectorAll('.split-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
+        // ========================================================
+        // INTERACTIVE MAP / FEED SPLIT RESIZER GUTTER
+        // ========================================================
+        const resizer = document.getElementById('resizer-gutter');
+        const appBody = document.getElementById('app-body');
+        const dataPane = document.getElementById('data-pane');
+        let isDragging = false;
 
-            const mapPane = document.getElementById('map-pane');
-            const dataPane = document.getElementById('data-pane');
-
-            if (mode === '50-50') {
-                mapPane.style.flex = '1 1 50%';
-                dataPane.style.flex = '1 1 50%';
-            } else if (mode === 'map-wide') {
-                mapPane.style.flex = '1 1 65%';
-                dataPane.style.flex = '1 1 35%';
-            } else if (mode === 'data-wide') {
-                mapPane.style.flex = '1 1 35%';
-                dataPane.style.flex = '1 1 65%';
+        // Restore saved width from localStorage if exists
+        let savedWidth = null;
+        try {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem) {
+                savedWidth = localStorage.getItem('moto_adv_feed_pane_width');
             }
+        } catch (e) {}
 
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 280);
+        if (savedWidth && window.innerWidth > 850) {
+            const parsed = parseInt(savedWidth, 10);
+            const containerWidth = appBody ? appBody.getBoundingClientRect().width : window.innerWidth;
+            if (!isNaN(parsed) && parsed >= 320 && parsed <= (containerWidth - 320)) {
+                dataPane.style.width = parsed + 'px';
+                dataPane.style.flex = 'none';
+            }
+        }
+
+        function onPointerDown(e) {
+            if (window.innerWidth <= 850) return;
+            isDragging = true;
+            document.body.classList.add('is-resizing');
+            resizer.classList.add('dragging');
+            if (resizer.setPointerCapture) {
+                resizer.setPointerCapture(e.pointerId);
+            }
+            e.preventDefault();
+        }
+
+        function onPointerMove(e) {
+            if (!isDragging) return;
+            const containerRect = appBody.getBoundingClientRect();
+            // Data pane is on the right side
+            let newWidth = containerRect.right - e.clientX;
+            const minWidth = 320;
+            const maxWidth = containerRect.width - 320;
+
+            if (newWidth < minWidth) newWidth = minWidth;
+            if (newWidth > maxWidth) newWidth = maxWidth;
+
+            dataPane.style.width = newWidth + 'px';
+            dataPane.style.flex = 'none';
+            if (window.map) map.invalidateSize();
+        }
+
+        function onPointerUp(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            document.body.classList.remove('is-resizing');
+            resizer.classList.remove('dragging');
+            if (resizer.releasePointerCapture) {
+                resizer.releasePointerCapture(e.pointerId);
+            }
+            if (window.map) map.invalidateSize();
+            const currentW = parseInt(dataPane.style.width, 10);
+            if (!isNaN(currentW)) {
+                try {
+                    if (typeof localStorage !== 'undefined' && localStorage.setItem) {
+                        localStorage.setItem('moto_adv_feed_pane_width', currentW);
+                    }
+                } catch (e) {}
+            }
+        }
+
+        if (resizer && typeof resizer.addEventListener === 'function' && appBody && dataPane) {
+            resizer.addEventListener('pointerdown', onPointerDown);
+            window.addEventListener('pointermove', onPointerMove);
+            window.addEventListener('pointerup', onPointerUp);
+            window.addEventListener('pointercancel', onPointerUp);
+
+            // Double-click resizer to reset to 50/50
+            resizer.addEventListener('dblclick', () => {
+                dataPane.style.width = '50%';
+                dataPane.style.flex = 'none';
+                try {
+                    if (typeof localStorage !== 'undefined' && localStorage.removeItem) {
+                        localStorage.removeItem('moto_adv_feed_pane_width');
+                    }
+                } catch (e) {}
+                if (window.map) map.invalidateSize();
+            });
         }
     
         // ========================================================
