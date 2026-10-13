@@ -121,6 +121,30 @@ In accordance with the Moto ADV Expedition Master skill standard:
 - **Drag Interaction**: Click and drag the vertical gutter left or right to seamlessly adjust the map-to-feed width ratio with live map resizing.
 - **Double-Click Reset**: Double-clicking the gutter resets the view to a perfect 50/50 split.
 - **State Persistence**: The user's preferred layout width is safely preserved in browser storage.
-- **Mobile Responsive**: Automatically falls back to a stacked vertical flow on mobile screens (`<= 850px`).
+- **Desktop Exclusive**: Active on screens `> 850px` for seamless side-by-side trip planning and analysis.
+- **Mobile Mode**: On screens `<= 850px`, the gutter gracefully hides in favor of the dedicated full-screen mobile app layout.
+
+---
+
+## 6. 📱 Native Mobile App Architecture (`<= 850px`)
+
+To eliminate vertical split-screen cramping on smartphones, the dashboard transforms into a native-feeling mobile web application on mobile viewports:
+
+1. **Dedicated Full-Height Views via Fixed Bottom Nav**:
+   - Replaced cramped vertical stacking with four dedicated, full-screen views controlled by a persistent thumb-friendly bottom navigation bar:
+     - 🗺️ **Map**: Edge-to-edge interactive Leaflet map taking 92%+ of screen height.
+     - 📋 **Itinerary**: Complete feed of all 18 day cards, turn-by-turn links, and logistics tables.
+     - ⏱️ **Timeline**: Direct access to the master 18-day interactive Gantt chart.
+     - 📥 **Files**: 1-tap downloads for GPX tracks, KML files, CSV POI tables, and guidebooks.
+2. **Horizontal Swipeable Filter Chips**:
+   - The map category filter bar condenses into a clean single-row, horizontally scrollable tray of touch chips (~38px height).
+   - Keeps map controls readily accessible without occluding route lines or satellite imagery.
+3. **Sticky Quick-Day Jumper**:
+   - A sticky horizontal pill bar (`Day 1` through `Day 18`) docks to the top of the Itinerary view for instant jumping to any leg of the journey.
+4. **1-Tap Cross-View Route Focus**:
+   - Tapping any route card's **"Focus on Map"** button on mobile automatically switches active tabs to the **Map**, smoothly flies to that leg's bounding box, highlights the route track, and displays a temporary floating notification badge (`🗺️ Focused on Day X`).
+5. **Mobile PWA & Viewport Standards**:
+   - Includes `viewport-fit=cover`, Apple mobile web app capability (`apple-mobile-web-app-capable`), status bar customization, and theme-color meta headers for seamless "Add to Home Screen" smartphone usage.
+
 
 
