@@ -112,3 +112,15 @@ Whenever you update routes, schedules, or notes:
 2. It automatically synchronizes `index.html`, stages modified files, commits with a timestamp, and pushes to GitHub.
 3. Within 30 to 45 seconds, GitHub Pages automatically deploys the updated live site worldwide.
 
+---
+
+## 5. 🎛️ Interactive Drag-to-Resize Divider Gutter (`#resizer-gutter`)
+
+In accordance with the Moto ADV Expedition Master skill standard:
+- Replaced the previous split toggle buttons (`◫ 50/50`, `🗺️ Map`, `📋 Feed`) in the navigation bar with an intuitive, drag-to-resize divider gutter located directly between the map and feed panes.
+- **Drag Interaction**: Click and drag the vertical gutter left or right to seamlessly adjust the map-to-feed width ratio with live map resizing.
+- **Double-Click Reset**: Double-clicking the gutter resets the view to a perfect 50/50 split.
+- **State Persistence**: The user's preferred layout width is safely preserved in browser storage.
+- **Mobile Responsive**: Automatically falls back to a stacked vertical flow on mobile screens (`<= 850px`).
+
+
