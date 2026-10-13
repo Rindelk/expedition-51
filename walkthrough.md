@@ -145,6 +145,10 @@ To eliminate vertical split-screen cramping on smartphones, the dashboard transf
    - Tapping any route card's **"Focus on Map"** button on mobile automatically switches active tabs to the **Map**, smoothly flies to that leg's bounding box, highlights the route track, and displays a temporary floating notification badge (`🗺️ Focused on Day X`).
 5. **Mobile PWA & Viewport Standards**:
    - Includes `viewport-fit=cover`, Apple mobile web app capability (`apple-mobile-web-app-capable`), status bar customization, and theme-color meta headers for seamless "Add to Home Screen" smartphone usage.
+6. **Dual-View Mobile Timeline & Freeze-Pane Gantt Chart**:
+   - **📱 Daily Schedule (Mobile Default)**: High-contrast vertical chronological agenda for each day with swipeable day selector chips (`[Day 1]` through `[Day 18]`). Displays minute-exact riding stints, gas stops (with 91 AKI availability), meals, and accommodations with 1-tap **"Focus Day on Map"** and **"View Itinerary Details"** buttons.
+   - **📊 Full 18-Day Grid with Freeze-Pane**: The left `Day & Date` column stays pinned (`position: sticky; left: 0`) while panning horizontally across the 06:00 to 24:00 time scale, preventing row disorientation. Tapping any colored block opens an instant touch inspector popover.
+
 
 
 
