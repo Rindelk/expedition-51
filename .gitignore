@@ -1,0 +1,19 @@
+# Temporary / Editor files
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Local logs
+*.log
+
+# Unreferenced local screenshots
+Screenshot 2026-10-12 154106.png
+Screenshot 2026-10-12 164721.png

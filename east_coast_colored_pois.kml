@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Trans-Labrador &amp; West Coast Viking POIs</name>
+    <description>Snapped road tracks and expedition waypoints.</description>
+    <Style id="trackStyle_1">
+      <LineStyle>
+        <color>ff5e881e</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_2">
+      <LineStyle>
+        <color>ffc06515</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_3">
+      <LineStyle>
+        <color>ff3539e5</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_4">
+      <LineStyle>
+        <color>ff2f2fd3</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_5">
+      <LineStyle>
+        <color>ff5b18c2</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_6">
+      <LineStyle>
+        <color>ffaa248e</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_7">
+      <LineStyle>
+        <color>ff47a043</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_8">
+      <LineStyle>
+        <color>ff327d2e</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_9">
+      <LineStyle>
+        <color>fff65c8b</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_10">
+      <LineStyle>
+        <color>fff6823b</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_11">
+      <LineStyle>
+        <color>ffd4b606</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_12">
+      <LineStyle>
+        <color>ff81b910</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_13">
+      <LineStyle>
+        <color>ff0b9ef5</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_14">
+      <LineStyle>
+        <color>fff65c8b</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_15">
+      <LineStyle>
+        <color>ff4444ef</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_16">
+      <LineStyle>
+        <color>fff6823b</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="trackStyle_17">
+      <LineStyle>
+        <color>ff81b910</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Folder>
+      <name>Daily Tracks</name>
+    </Folder>
+    <Folder>
+      <name>Points of Interest</name>
+      <Placemark>
+        <name>Hanmer Home Base (Start)</name>
+        <description>Expedition departure point (4671 Dupuis Drive, Hanmer, ON). Full 87 &amp; 91 fuel tanks.</description>
+        <Point>
+          <coordinates>-80.882479,46.656232,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Motel au P'tit Sapin (Mirabel)</name>
+        <description>Ground-level roadside motel on Route 117 in Mirabel. Room-front exterior motorcycle parking right outside your door.</description>
+        <Point>
+          <coordinates>-73.966347,45.734760,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Travelodge by Wyndham Baie-Comeau</name>
+        <description>Clean, highly-rated rider-friendly motor inn directly on Route 138. Easy ground-floor motorcycle parking.</description>
+        <Point>
+          <coordinates>-68.155000,49.215000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hotel Wabush</name>
+        <description>Safe, warm, rider-friendly hotel in Labrador West. On-site restaurant, high-speed WiFi, bear-safe protection.</description>
+        <Point>
+          <coordinates>-66.860000,52.910000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Royal Inn &amp; Suites (Goose Bay)</name>
+        <description>Quiet, comfortable suites with kitchenettes in Happy Valley-Goose Bay. Secure parking, hot showers.</description>
+        <Point>
+          <coordinates>-60.325000,53.305000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Northern Light Inn (L'Anse-au-Clair)</name>
+        <description>Rider-favorite coastal hotel 5 km from Blanc-Sablon ferry terminal. Warm rooms, seafood dining, early ferry staging.</description>
+        <Point>
+          <coordinates>-57.060000,51.420000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Snorri Cabins / Valhalla Lodge (Hay Cove)</name>
+        <description>Authentic turf-roofed and wooden rustic Viking cabins 2 km from L'Anse aux Meadows. Full kitchen, private deck, ocean vistas.</description>
+        <Point>
+          <coordinates>-55.533300,51.583300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Snorri Cabins / Valhalla Lodge (Hay Cove) - Night 2</name>
+        <description>Night 2 in the Viking cabins. Relax around the woodstove after exploring Norstead and St. Anthony.</description>
+        <Point>
+          <coordinates>-55.533300,51.583300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gros Morne / Norris Point KOA Holiday</name>
+        <description>Full-service KOA at Route 430 junction in Gros Morne. Commercial laundromat to reset riding gear, heated pool, hot showers, bike wash.</description>
+        <Point>
+          <coordinates>-57.880000,49.560000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Green Point Campground (Gros Morne NP)</name>
+        <description>World-class coastal drive-in campground in Gros Morne perched on seaside bluffs overlooking the Gulf of St. Lawrence. Ocean sunset, campfire surf.</description>
+        <Point>
+          <coordinates>-57.850000,49.683300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Marine Atlantic Overnight Ferry (Private 2-Berth Stateroom Cabin)</name>
+        <description>Private 2-berth en-suite stateroom aboard MV Highlanders / MV Blue Puttees. Boarding 21:45, sailing 23:45 across Cabot Strait to North Sydney arriving 07:00 AM.</description>
+        <Point>
+          <coordinates>-59.136000,47.575000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broad Cove Campground (Cape Breton Highlands NP)</name>
+        <description>Spectacular oceanfront National Park campground in Ingonish directly on the Cabot Trail. Sandy ocean beach, hot showers, flush toilets, campfire pits.</description>
+        <Point>
+          <coordinates>-60.400000,46.680000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chéticamp Campground (Cape Breton Highlands NP)</name>
+        <description>Tucked in the mountain valley at the western park entrance of the Cabot Trail. Hot showers, walking distance to Chéticamp village.</description>
+        <Point>
+          <coordinates>-60.980000,46.640000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cavendish Campground (Prince Edward Island National Park)</name>
+        <description>Pristine Parks Canada oceanfront campground directly on the Gulf of St. Lawrence red sand dunes and sandstone cliffs. Walking access to Cavendish Beach and 3 min to Anne of Green Gables.</description>
+        <Point>
+          <coordinates>-63.402000,46.495000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fundy National Park (Headquarters Campground)</name>
+        <description>Perched on seaside bluffs overlooking the Bay of Fundy above Alma harbor. Heated washrooms, hot showers, walk down to fresh Fundy lobster.</description>
+        <Point>
+          <coordinates>-64.952000,45.598000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>de la République Provincial Park (Edmundston)</name>
+        <description>Pristine provincial park 1.5 km off TCH-2 on the Madawaska River. Heated pool, hot showers, flush toilets, shaded wooded sites.</description>
+        <Point>
+          <coordinates>-68.390000,47.435000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camping des Voltigeurs (Sépaq - Drummondville)</name>
+        <description>Tranquil riverside Sépaq park along the Saint-François River off A-20. Clean hot showers, quiet wooded campsites, zero city congestion.</description>
+        <Point>
+          <coordinates>-72.469400,45.883300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Best Western Pembroke Inn &amp; Conference Centre</name>
+        <description>Full-service motor hotel off Hwy 17 with large indoor heated pool, hot tub, fitness center, on-site restaurant, and ground-level rooms.</description>
+        <Point>
+          <coordinates>-77.098000,45.793200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hanmer Home Base (Arrival)</name>
+        <description>Celebratory homecoming at 4671 Dupuis Drive, Hanmer, ON! Saturday afternoon completion.</description>
+        <Point>
+          <coordinates>-80.882479,46.656232,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Motel Le Mirabeau (Mirabel)</name>
+        <description>Clean, comfortable roadside motel fallback on Route 117 in Mirabel.</description>
+        <Point>
+          <coordinates>-73.978000,45.728000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Super 8 by Wyndham Saint-Jérôme / Mirabel</name>
+        <description>Convenient fallback motor hotel off Hwy 117 / A-15 gateway.</description>
+        <Point>
+          <coordinates>-74.004400,45.750800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hôtel Le Manoir Baie-Comeau</name>
+        <description>Historic stone manor overlooking the St. Lawrence River.</description>
+        <Point>
+          <coordinates>-68.148200,49.218000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Two Seasons Inn (Labrador City)</name>
+        <description>Full service hotel in Labrador City with dining and heated facilities.</description>
+        <Point>
+          <coordinates>-66.911400,52.953600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hotel North Two (Goose Bay)</name>
+        <description>Full service hotel with dining and heated indoor motorcycle parking options.</description>
+        <Point>
+          <coordinates>-60.326000,53.301500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Motel Blanc-Sablon</name>
+        <description>Waterfront motel right at the ferry terminal in Blanc-Sablon.</description>
+        <Point>
+          <coordinates>-57.130000,51.425000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Haven Inn (St. Anthony)</name>
+        <description>Modern hotel in St. Anthony with full dining, comfortable beds, and full amenities.</description>
+        <Point>
+          <coordinates>-55.605000,51.365000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Haven Inn (St. Anthony) - Night 2</name>
+        <description>St. Anthony motor inn fallback for Day 7.</description>
+        <Point>
+          <coordinates>-55.605000,51.365000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ocean View Hotel (Rocky Harbour)</name>
+        <description>Premier waterfront hotel fallback in Rocky Harbour with live music and restaurant.</description>
+        <Point>
+          <coordinates>-57.917200,49.593600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berry Hill Campground (Gros Morne NP)</name>
+        <description>Gros Morne central campground in sheltered boreal forest near Rocky Harbour.</description>
+        <Point>
+          <coordinates>-57.870000,49.610000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hotel Port aux Basques (Ferry Staging Backup)</name>
+        <description>Comfortable hotel 2 minutes from the Marine Atlantic ferry terminal dock; ideal staging backup if sailing is delayed.</description>
+        <Point>
+          <coordinates>-59.145000,47.578000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Keltic Lodge at the Highlands (Ingonish)</name>
+        <description>Historic clifftop luxury resort fallback on Middle Head Peninsula.</description>
+        <Point>
+          <coordinates>-60.395000,46.655000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laurie's Motor Inn (Chéticamp)</name>
+        <description>Comfortable Acadian motor inn on the Cabot Trail in Chéticamp; restaurant, lounge, and room-front bike parking.</description>
+        <Point>
+          <coordinates>-61.010000,46.627000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kindred Spirits Country Inn &amp; Cottages (Cavendish)</name>
+        <description>Charming country estate nestled beside the Anne of Green Gables homestead in Cavendish; heated outdoor pool.</description>
+        <Point>
+          <coordinates>-63.388000,46.488000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parkland Village Inn (Alma / Fundy)</name>
+        <description>Cozy seaside inn fallback directly across from the harbor in Alma.</description>
+        <Point>
+          <coordinates>-64.945800,45.602500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Four Points by Sheraton Edmundston</name>
+        <description>Modern hotel fallback off TCH-2 with large lighted parking and dining.</description>
+        <Point>
+          <coordinates>-68.325100,47.376500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hôtel Le Dauphin Drummondville</name>
+        <description>High-comfort hotel right off Highway 20 with indoor pool and restaurant.</description>
+        <Point>
+          <coordinates>-72.485000,45.875000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Driftwood Provincial Park (Stonecliffe / Pembroke)</name>
+        <description>Quiet provincial park along the Ottawa River with waterfront sites, hot showers.</description>
+        <Point>
+          <coordinates>-77.685000,46.185000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camping Mirabel</name>
+        <description>Lush wooded private campground with pool and hot showers in Mirabel.</description>
+        <Point>
+          <coordinates>-73.995000,45.715000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parc national du Fjord-du-Saguenay (Tadoussac)</name>
+        <description>Spectacular fjord park with marine mammal lookouts and coastal camping.</description>
+        <Point>
+          <coordinates>-69.720000,48.160000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gros Morne National Park (Rocky Harbour)</name>
+        <description>UNESCO World Heritage Site with dramatic glacial fjords, Tablelands, and coastal trails.</description>
+        <Point>
+          <coordinates>-57.900000,49.585000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gros Morne KOA Holiday Park Grounds</name>
+        <description>Full-amenity outdoor park setting with bike wash, pool, and laundromat.</description>
+        <Point>
+          <coordinates>-57.880000,49.560000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Green Point Coastal Bluffs (Gros Morne NP)</name>
+        <description>Seaside bluff camping overlooking crashing ocean waves and gravel beach.</description>
+        <Point>
+          <coordinates>-57.850000,49.683300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berry Hill Boreal Park Grounds (Gros Morne NP)</name>
+        <description>Deep boreal forest camping sheltered beneath Gros Morne Mountain.</description>
+        <Point>
+          <coordinates>-57.870000,49.610000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Breton Highlands National Park (East Entrance)</name>
+        <description>Parks Canada Atlantic jewel where mountains meet the sea.</description>
+        <Point>
+          <coordinates>-60.395000,46.640000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broad Cove Ocean Beach Park (Cape Breton Highlands NP)</name>
+        <description>Ocean beach park campground with direct sandy beach access and fire pits.</description>
+        <Point>
+          <coordinates>-60.400000,46.680000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chéticamp Mountain Valley Park (Highlands NP)</name>
+        <description>Acadian valley park campsite near the Skyline Trail and French Mountain.</description>
+        <Point>
+          <coordinates>-60.980000,46.640000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prince Edward Island National Park (Cavendish Beach)</name>
+        <description>Oceanfront National Park on the Gulf of St. Lawrence red sand dunes and sandstone cliffs.</description>
+        <Point>
+          <coordinates>-63.402000,46.495000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fundy National Park (Headquarters Bayview)</name>
+        <description>Clifftop park campground above Alma harbor overlooking the highest tides on Earth.</description>
+        <Point>
+          <coordinates>-64.952000,45.598000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parc provincial de la République (Madawaska River)</name>
+        <description>Pristine New Brunswick provincial park with botanical gardens and heated pool.</description>
+        <Point>
+          <coordinates>-68.390000,47.435000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camping des Voltigeurs (Sépaq Park)</name>
+        <description>Sépaq riverside conservation park along the Saint-François River.</description>
+        <Point>
+          <coordinates>-72.469400,45.883300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Driftwood Provincial Park (Ottawa River)</name>
+        <description>Quiet Ontario provincial park on Laurentian river shoreline.</description>
+        <Point>
+          <coordinates>-77.685000,46.185000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Phare du Moulin-à-Baude (Tadoussac)</name>
+        <description>Historic red-and-white coastal beacon perched above the St. Lawrence estuary and Saguenay Fjord confluence; world-class beluga whale lookout.</description>
+        <Point>
+          <coordinates>-69.697500,48.154200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Phare de Cap-de-Bon-Désir</name>
+        <description>Historic navigational station on granite ledges dropping 300 meters into the St. Lawrence Laurentian Channel; prime shore whale watching.</description>
+        <Point>
+          <coordinates>-69.467000,48.337000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Phare de Pointe-des-Monts</name>
+        <description>Erected 1830, one of the oldest circular stone lighthouses in North America; marks entrance to the Gulf of St. Lawrence with museum.</description>
+        <Point>
+          <coordinates>-67.380000,49.317500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point Amour Lighthouse</name>
+        <description>Tallest lighthouse in Atlantic Canada (109 ft / 33 m) and 2nd tallest in Canada; completed in 1857 guarding the treacherous Strait of Belle Isle.</description>
+        <Point>
+          <coordinates>-56.864700,51.457200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Norman Lighthouse</name>
+        <description>Towering cliffside light marking the absolute northernmost tip of the island of Newfoundland; sweeps Strait of Belle Isle iceberg alley.</description>
+        <Point>
+          <coordinates>-55.903000,51.631500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fishing Point Lighthouse (Fox Point Light - St. Anthony)</name>
+        <description>Famous red-and-white beacon perched atop jagged coastal cliffs at Fishing Point in St. Anthony. Prime iceberg watching and marine trails.</description>
+        <Point>
+          <coordinates>-55.553900,51.360800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Onion / Quirpon Island Lookout</name>
+        <description>Rugged clifftop headland looking out across the Atlantic toward Quirpon Island Light (1860) and iceberg drift channels.</description>
+        <Point>
+          <coordinates>-55.623200,51.608800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pointe Riche Lighthouse &amp; Limestone Barrens</name>
+        <description>Historic 1892 octagonal wooden pepperpot lighthouse on dramatic fossil-rich limestone sea barrens in Port au Choix.</description>
+        <Point>
+          <coordinates>-57.411000,50.703000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lobster Cove Head Lighthouse</name>
+        <description>Historic 1897 wooden light marking the entrance to Bonne Bay in Gros Morne National Park; panoramic sunset vistas and coastal trails.</description>
+        <Point>
+          <coordinates>-57.958000,49.605500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woody Point Lighthouse</name>
+        <description>Iconic 1919 square pyramid wooden pepperpot tower guarding the south entrance to Bonne Bay and the Tablelands fjord in Gros Morne NP.</description>
+        <Point>
+          <coordinates>-57.918900,49.502800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Anguille Lighthouse</name>
+        <description>Historic 1905 light marking the absolute westernmost point of the island of Newfoundland; dramatic Gulf of St. Lawrence ocean cliffs.</description>
+        <Point>
+          <coordinates>-59.408000,47.900000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Ray Lighthouse</name>
+        <description>Established 1871; historic landfall for the first transatlantic telegraph cable from Ireland; sweeps Cabot Strait and maritime trade route.</description>
+        <Point>
+          <coordinates>-59.293000,47.618000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neil's Harbour Lighthouse &amp; Chowder House</name>
+        <description>1899 coastal wooden lighthouse serving fresh ice cream and Atlantic seafood chowder perched over crashing Cabot Trail surf.</description>
+        <Point>
+          <coordinates>-60.320000,46.812000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>St. Paul Island Southwest Lighthouse (Dingwall)</name>
+        <description>Rare 1915 cylindrical cast iron lighthouse relocated from the treacherous 'Graveyard of the Gulf' (St. Paul Island) to Dingwall Harbour.</description>
+        <Point>
+          <coordinates>-60.460000,46.903000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chéticamp Enragée Point Lighthouse</name>
+        <description>Historic coastal beacon on Chéticamp Island overlooking the Gulf of St. Lawrence and Acadian fishing fleet.</description>
+        <Point>
+          <coordinates>-61.025000,46.663000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Margaree Harbour Range Lights</name>
+        <description>Twin 1900 Acadian wooden range lights guiding fishing schooners into the mouth of the Margaree River salmon estuary.</description>
+        <Point>
+          <coordinates>-61.108000,46.435000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Victoria Harbour Range Lighthouse</name>
+        <description>1879 wooden square tapered tower in the historic artisan fishing and seafaring village of Victoria-by-the-Sea on PEI's south shore.</description>
+        <Point>
+          <coordinates>-63.488000,46.215000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Tryon Lighthouse</name>
+        <description>Iconic lighthouse perched on 110-foot vertical red sandstone cliffs overlooking Gulf of St. Lawrence; inspiration for L.M. Montgomery's Four Winds Light.</description>
+        <Point>
+          <coordinates>-63.504000,46.524000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>North Rustico Harbour Lighthouse</name>
+        <description>1876 square pyramid pepperpot lighthouse with attached keeper's dwelling in a classic active PEI lobster fishing harbour.</description>
+        <Point>
+          <coordinates>-63.292000,46.460000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Covehead Harbour Lighthouse</name>
+        <description>Beloved 1975 pepperpot lighthouse nestled among the rolling coastal sand dunes of Prince Edward Island National Park.</description>
+        <Point>
+          <coordinates>-63.146000,46.431000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point Prim Lighthouse</name>
+        <description>Built 1845, the oldest lighthouse on Prince Edward Island and one of only a few round brick lighthouses in Canada.</description>
+        <Point>
+          <coordinates>-63.048000,46.058000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>West Point Lighthouse</name>
+        <description>PEI's tallest lighthouse (69 ft), famous for its striking black-and-white horizontal stripes and Northumberland Strait sunsets.</description>
+        <Point>
+          <coordinates>-64.387000,46.619000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Seacow Head Lighthouse</name>
+        <description>Built 1863; one of PEI's oldest octagonal wooden lights; famous feature in 'Road to Avonlea' perched above red sandstone sea arches.</description>
+        <Point>
+          <coordinates>-63.610000,46.319000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Tormentine Lighthouse</name>
+        <description>Historic light marking the former ice-boat and rail-ferry terminal crossing the Northumberland Strait to PEI.</description>
+        <Point>
+          <coordinates>-63.778000,46.132000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Jourimain Lighthouse</name>
+        <description>1870 octagonal wood lighthouse standing watch beside the massive spans of Confederation Bridge in Cape Jourimain Nature Centre.</description>
+        <Point>
+          <coordinates>-63.812000,46.155000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Enrage Lighthouse &amp; Cliffs</name>
+        <description>Built 1838 atop 150-foot jagged cliffs thrust into the Bay of Fundy; faces the most powerful 50-foot tidal rips in the world.</description>
+        <Point>
+          <coordinates>-64.783000,45.594000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anderson Hollow Lighthouse</name>
+        <description>Historic 1903 wooden salt-shaker pepperpot lighthouse; originally built on Salisbury Bay breakwater at Waterside, now preserved and restored at Harvey Bank Heritage Shipyard Park off Route 915.</description>
+        <Point>
+          <coordinates>-64.697300,45.735200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Quaco Head Lighthouse</name>
+        <description>Perched on towering headland near St. Martins sea caves along the Fundy Trail Parkway; sweeping vistas of the Bay of Fundy.</description>
+        <Point>
+          <coordinates>-65.538000,45.323000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anne of Green Gables Heritage Place</name>
+        <description>Historic 19th-century Victorian farmstead, Haunted Wood trail, and Lovers Lane that inspired L.M. Montgomery's classic novel.</description>
+        <Point>
+          <coordinates>-63.385000,46.491700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>L.M. Montgomery's Birthplace (New London)</name>
+        <description>Cozy white-and-green farmhouse in New London where author Lucy Maud Montgomery was born in 1874. Displays replica wedding dress and scrapbooks.</description>
+        <Point>
+          <coordinates>-63.468000,46.505000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anne of Green Gables Museum at Silver Bush</name>
+        <description>Historic Campbell family homestead where Montgomery was married. Features Matthew's carriage rides and views over the Lake of Shining Waters.</description>
+        <Point>
+          <coordinates>-63.535000,46.521000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lake of Shining Waters (Park Corner)</name>
+        <description>Pristine freshwater pond glistening behind the coastal barrier dunes immortalized by Montgomery as 'The Lake of Shining Waters'.</description>
+        <Point>
+          <coordinates>-63.538000,46.525000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>French River Overlook &amp; Fishing Cove</name>
+        <description>Postcard-perfect PEI landscape of rolling emerald green potato fields sloping down to colorful fishing shacks on the quiet river inlet.</description>
+        <Point>
+          <coordinates>-63.513000,46.516000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cavendish Beach Sandstone Sea Stacks</name>
+        <description>Towering red sandstone arches, caves, and barrier dunes glowing fiery red in the late afternoon sun along the Cavendish coastline.</description>
+        <Point>
+          <coordinates>-63.415000,46.498000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Site of L.M. Montgomery's Cavendish Home</name>
+        <description>Peaceful wooded homestead where Montgomery was raised by her grandparents and wrote Anne of Green Gables. Path through apple orchard.</description>
+        <Point>
+          <coordinates>-63.382000,46.486000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port-au-Persil Waterfall &amp; Historic Chapel</name>
+        <description>Hidden Charlevoix cove off Route 138 where a fresh mountain waterfall cascades directly over granite rocks into the saltwater St. Lawrence estuary.</description>
+        <Point>
+          <coordinates>-69.887000,47.804500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tracey Hill 700-Step Overlook (Red Bay)</name>
+        <description>700 wooden boardwalk stairs climbing Tracey Hill behind the Red Bay UNESCO Basque Whaling Station. Panoramic view over Saddle Island icebergs.</description>
+        <Point>
+          <coordinates>-56.425000,51.733000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Burnt Cape Ecological Reserve (Arctic Barrens)</name>
+        <description>Alien subarctic landscape near Raleigh resembling the surface of Mars. Coastal limestone sea arches, wave-carved caves, and rare arctic plants.</description>
+        <Point>
+          <coordinates>-55.760000,51.605000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Green Point Geological Golden Spike (GSSP)</name>
+        <description>UN Global Boundary Stratotype Section and Point (GSSP). Layered coastal shale cliffs marking 500-million-year-old geological boundary with graptolite fossils.</description>
+        <Point>
+          <coordinates>-57.962000,49.682000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trout River Eastern Point Clifftop Trail</name>
+        <description>Spectacular 30-minute wooden stairway trail rising to open grassy cliff headlands where sheep graze above crashing Gulf swells.</description>
+        <Point>
+          <coordinates>-58.125000,49.493000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>White Point Unknown Sailor Clifftop Trail</name>
+        <description>Rugged coastal path out onto an isolated rocky headland jutting into the Atlantic. Sea bird colonies and the solitary white cross of the Unknown Sailor's grave.</description>
+        <Point>
+          <coordinates>-60.355000,46.903000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Black Brook Cove Waterfall &amp; Ocean Beach</name>
+        <description>Spectacular Atlantic ocean beach in Cape Breton Highlands where a freshwater mountain brook and waterfall cascade over sea cliffs onto the sand.</description>
+        <Point>
+          <coordinates>-60.331000,46.777000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Skyline Trail Boardwalk Hike</name>
+        <description>World-famous 2-hour coastal hike to a dramatic wooden boardwalk looking down on the Cabot Trail hairpins, crashing ocean, and grazing moose.</description>
+        <Point>
+          <coordinates>-60.875000,46.745000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dickson Falls Lush Mossy Gorge Boardwalk</name>
+        <description>Fundy National Park's most popular short hike: a 1.5 km wooden boardwalk descending into a cool, lush microclimate ravine blanketed in moss and ferns.</description>
+        <Point>
+          <coordinates>-64.962000,45.589000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eau Claire Gorges Conservation Area</name>
+        <description>Dramatic 2.5 km Canadian Shield trail through an ancient granite river gorge near Mattawa with a 40-foot waterfall and 1870s logger cabin ruins.</description>
+        <Point>
+          <coordinates>-78.915000,46.262000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manic-5 (Daniel-Johnson Dam)</name>
+        <description>World's largest multiple-arch hollow buttress dam. 214 m high, 1.3 km wide. Marvel of modern engineering.</description>
+        <Point>
+          <coordinates>-68.724700,50.640600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gagnon Ghost Town (Abandoned Boreal Streets)</name>
+        <description>Km 485 on QC-389. Thriving 1970s mining city demolished in 1985. Concrete sidewalks and street curbs still intact in the forest.</description>
+        <Point>
+          <coordinates>-68.166700,51.916700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fermont Windbreak Wall ('Le Mur')</name>
+        <description>Famous 1.3 km long, 5-story windbreak building sheltering the subarctic mining community from freezing arctic gales.</description>
+        <Point>
+          <coordinates>-67.083300,52.791700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Churchill Falls Underground Hydro Plant</name>
+        <description>5,428 MW underground power station hollowed out of solid Precambrian granite 1,000 feet beneath the surface.</description>
+        <Point>
+          <coordinates>-64.000000,53.533300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>L'Anse Amour 7,500-Year Burial Mound</name>
+        <description>The oldest known human-constructed funeral burial mound in North America (Maritime Archaic Indigenous culture, 5500 BCE), marked by a stone cairn.</description>
+        <Point>
+          <coordinates>-56.865000,51.465000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HMS Raleigh 1922 Shipwreck &amp; Raleigh Trail</name>
+        <description>Remains of the 600-ft British Royal Navy heavy cruiser HMS Raleigh that ran aground in blinding fog in 1922 beneath Point Amour. Steam boilers visible on beach.</description>
+        <Point>
+          <coordinates>-56.868000,51.455000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Red Bay Basque Whaling Station (UNESCO)</name>
+        <description>UNESCO World Heritage Site. 16th-century Basque whaling headquarters in North America. Sunken galleons &amp; tryworks rendering ovens.</description>
+        <Point>
+          <coordinates>-56.416700,51.733300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>L'Anse aux Meadows (UNESCO Viking Settlement)</name>
+        <description>Only confirmed Norse Viking site in North America (circa 1000 AD). Authentic turf houses, blacksmith shop, and archaeological museum.</description>
+        <Point>
+          <coordinates>-55.531400,51.595600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Norstead Viking Village &amp; Snorri Knarr Ship</name>
+        <description>Living history Viking trading port featuring the 54-foot replica knarr merchant ship 'Snorri', axe throwing, and forge.</description>
+        <Point>
+          <coordinates>-55.520000,51.599000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grenfell Historic Properties &amp; Museum (St. Anthony)</name>
+        <description>Historic mission headquarters of Dr. Wilfred Grenfell who brought modern medicine to remote Newfoundland and Labrador. Historic home and museum.</description>
+        <Point>
+          <coordinates>-55.599000,51.363000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broom Point Traditional Cod Fishing Premises</name>
+        <description>Preserved 1960s inshore cod-fishing family cabin and workshop in Gros Morne. Restored wooden dories, drying flakes, and living history.</description>
+        <Point>
+          <coordinates>-57.872000,49.831000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wreckhouse Extreme Winds Corridor</name>
+        <description>Legendary coastal funnel where southeastern mountain gusts exceed 200 km/h, famously blowing trains off their tracks.</description>
+        <Point>
+          <coordinates>-59.325000,47.715000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>The Gaelic College / Colaisde na Gàidhlig (St. Ann's)</name>
+        <description>Historic Gaelic cultural learning institution founded in 1938 at the start of the Cabot Trail in St. Ann's; preserves Highland Scottish heritage and Celtic arts.</description>
+        <Point>
+          <coordinates>-60.598500,46.273000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Saint John City Market (1876)</name>
+        <description>Canada's oldest continuously operating farmer's market, featuring a unique timber roof hand-crafted by 19th-century shipbuilders shaped like an inverted ship's hull.</description>
+        <Point>
+          <coordinates>-66.063300,45.273300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hartland World's Longest Covered Bridge (1901)</name>
+        <description>The longest covered wooden bridge in the world (1,282 ft / 391 m), built in 1901 across the Saint John River. You can ride your bikes right through!</description>
+        <Point>
+          <coordinates>-67.528000,46.297000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Carillon Canal National Historic Lock</name>
+        <description>Historic 19th-century military canal on the Ottawa River built after the War of 1812 with a massive 20-metre single hydraulic guillotine lock.</description>
+        <Point>
+          <coordinates>-74.376000,45.568000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sturgeon Falls Shell</name>
+        <description>Hwy 17 full service Shell with V-Power 91 Premium.</description>
+        <Point>
+          <coordinates>-79.932000,46.363000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deep River Canadian Tire Gas+</name>
+        <description>Trans-Canada Hwy 17 backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-77.490000,46.200000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pembroke Esso / Circle K</name>
+        <description>Major Hwy 17 fuel stop before crossing Chenaux Dam into Quebec.</description>
+        <Point>
+          <coordinates>-77.111100,45.826700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shawville Petro-Canada</name>
+        <description>Route 148 fuel in the heart of Pontiac county.</description>
+        <Point>
+          <coordinates>-76.488000,45.603300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thurso Ultramar</name>
+        <description>Route 148 Ottawa River backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-75.241000,45.596000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Montebello Shell</name>
+        <description>Scenic Route 148 Ottawa River corridor fuel.</description>
+        <Point>
+          <coordinates>-74.941700,45.651700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mirabel Ultramar (Route 117)</name>
+        <description>Convenient fuel top-off right next to Motel au P'tit Sapin.</description>
+        <Point>
+          <coordinates>-73.968000,45.733000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berthierville Esso</name>
+        <description>Route 138 Chemin du Roy backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-73.175000,46.235000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trois-Rivières Shell</name>
+        <description>Chemin du Roy (Route 138) mid-stage top-off.</description>
+        <Point>
+          <coordinates>-72.547000,46.345000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baie-Saint-Paul Shell</name>
+        <description>Route 138 Charlevoix gateway backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-70.505000,47.442000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Les Escoumins Shell</name>
+        <description>Route 138 North Shore backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-69.405000,48.351000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baie-Comeau Shell V-Power Hub</name>
+        <description>CRITICAL: Mandatory top-off for both bikes and auxiliary fuel bladder before entering remote QC-389. Shell V-Power 91 available.</description>
+        <Point>
+          <coordinates>-68.148500,49.218500,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manic-5 Fuel (Motel de l'Énergie)</name>
+        <description>Km 214 on QC-389. Essential fuel stop next to Daniel-Johnson Dam. 87 Octane ONLY. Use bladder siphon or Lucas booster for Ducati.</description>
+        <Point>
+          <coordinates>-68.723100,50.640200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Relais Gabriel Fuel Outpost</name>
+        <description>Km 316 on QC-389. Mandatory fuel top-up on eastern Manicouagan crater rim. 87 Octane ONLY. Use bladder siphon or Lucas booster for Ducati.</description>
+        <Point>
+          <coordinates>-68.122100,51.326000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fermont Shell</name>
+        <description>Km 565 on QC-389. Full service Shell in Fermont mining town.</description>
+        <Point>
+          <coordinates>-67.083300,52.791700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Labrador City Ultramar Hub</name>
+        <description>Full city fuel station, Tim Hortons, hardware store.</description>
+        <Point>
+          <coordinates>-66.911400,52.946400,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Churchill Falls Gas &amp; Convenience</name>
+        <description>Km 238 on Route 500. Only fuel station between Lab City and Goose Bay. 87 reliable, 91 unreliable. Fill Africa Twin and dose Ducati.</description>
+        <Point>
+          <coordinates>-64.000000,53.533300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Happy Valley-Goose Bay Esso/Irving Hub</name>
+        <description>MANDATORY: Fill main tanks + Rotopax + GL Armadillo bladder before embarking on Route 510!</description>
+        <Point>
+          <coordinates>-60.326100,53.301700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CRITICAL: Route 510 Mid-Stage Bladder Transfer</name>
+        <description>405 KM ZERO-SERVICE GAP. At Km 240, transfer 1.5-2.0 gallons from Africa Twin Armadillo bladder into Ducati Multistrada V2S.</description>
+        <Point>
+          <coordinates>-57.800000,53.000000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port Hope Simpson Gas Bar</name>
+        <description>Km 405 from Goose Bay. Critical remote fuel stop on TLH 510. 87 Octane ONLY. Pour Africa Twin bladder into Ducati.</description>
+        <Point>
+          <coordinates>-56.297000,52.538000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mary's Harbour North Atlantic</name>
+        <description>Convenient coastal fuel station on Route 510.</description>
+        <Point>
+          <coordinates>-55.835000,52.311700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blanc-Sablon Ultramar</name>
+        <description>Near ferry terminal. Top off before boarding morning MV Qajaq W ferry to Newfoundland.</description>
+        <Point>
+          <coordinates>-57.147200,51.424200,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>St. Barbe North Atlantic</name>
+        <description>Immediately upon disembarking ferry in NL. Convenient top-off before riding Viking Trail.</description>
+        <Point>
+          <coordinates>-56.766700,51.200000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Raleigh Gas Bar</name>
+        <description>Route 437 backup gas bar near Burnt Cape Ecological Reserve.</description>
+        <Point>
+          <coordinates>-55.730000,51.570000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>St. Anthony Irving / North Atlantic Hub</name>
+        <description>Northern Peninsula commercial fuel hub with reliable 91 Premium.</description>
+        <Point>
+          <coordinates>-55.598000,51.365000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hawke's Bay North Atlantic</name>
+        <description>Route 430 Viking Trail backup station with 91 Premium.</description>
+        <Point>
+          <coordinates>-57.170000,50.610000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port au Choix Co-op Fuel</name>
+        <description>Convenient fuel station on way to Point Riche Lighthouse.</description>
+        <Point>
+          <coordinates>-57.365000,50.708000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rocky Harbour Irving</name>
+        <description>Gros Morne National Park central fuel, convenience, air pump.</description>
+        <Point>
+          <coordinates>-57.915000,49.593300,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woody Point Gas Bar</name>
+        <description>Bonne Bay / Tablelands backup gas outpost.</description>
+        <Point>
+          <coordinates>-57.925000,49.498000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deer Lake Irving Big Stop</name>
+        <description>Major junction of Viking Trail (NL-430) and Trans-Canada Hwy 1.</description>
+        <Point>
+          <coordinates>-57.432800,49.172800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Corner Brook Irving Big Stop</name>
+        <description>Trans-Canada Hwy 1 full service hub with 91 Premium.</description>
+        <Point>
+          <coordinates>-57.945000,48.950000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stephenville Crossing Esso</name>
+        <description>Mid-stage fuel top-off heading down the west coast.</description>
+        <Point>
+          <coordinates>-58.448000,48.512000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port aux Basques Irving</name>
+        <description>Fill tanks before checking in for overnight Marine Atlantic ferry crossing to Nova Scotia.</description>
+        <Point>
+          <coordinates>-59.136700,47.571700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>North Sydney Esso</name>
+        <description>Directly outside ferry terminal dock. Start Cabot Trail on 100% full tanks.</description>
+        <Point>
+          <coordinates>-60.253300,46.206700,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boularderie Irving (Hwy 105)</name>
+        <description>Hwy 105 service station before Seal Island Bridge and Kelly's Mountain.</description>
+        <Point>
+          <coordinates>-60.440000,46.255000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ingonish Petro-Canada / Shell</name>
+        <description>Cabot Trail East gateway and Broad Cove campground fuel hub.</description>
+        <Point>
+          <coordinates>-60.400000,46.640000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dingwall Gas Bar &amp; Convenience</name>
+        <description>Aspy Bay backup fuel station before Meat Cove clifftop spur.</description>
+        <Point>
+          <coordinates>-60.465000,46.903000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chéticamp Co-op Gas Bar</name>
+        <description>Western coastal exit of the Cabot Trail. 91 Premium available.</description>
+        <Point>
+          <coordinates>-61.000000,46.640000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port Hastings Irving</name>
+        <description>Canso Causeway gateway full service station with 91 Premium.</description>
+        <Point>
+          <coordinates>-61.405000,45.645000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Glasgow Irving</name>
+        <description>Trans-Canada Hwy 104 full service hub on mainland Nova Scotia.</description>
+        <Point>
+          <coordinates>-62.640000,45.580000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borden-Carleton Gateway Shell (PEI)</name>
+        <description>Directly at the PEI landing of Confederation Bridge.</description>
+        <Point>
+          <coordinates>-63.685000,46.255000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cavendish Shell</name>
+        <description>Route 6 PEI central North Shore station near Anne of Green Gables.</description>
+        <Point>
+          <coordinates>-63.385000,46.488000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverside-Albert Co-op Fuel</name>
+        <description>Route 114 Fundy coastal backup station.</description>
+        <Point>
+          <coordinates>-64.740000,45.750000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alma Fuel (Fundy)</name>
+        <description>Seaside village entrance to Fundy National Park.</description>
+        <Point>
+          <coordinates>-64.950000,45.600000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Saint John Irving (Route 1 / Fairville Blvd)</name>
+        <description>Major Irving station on Route 1 / Saint John Throughway before Route 7 North with 91 Premium.</description>
+        <Point>
+          <coordinates>-66.115800,45.245800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fredericton Irving Big Stop</name>
+        <description>Trans-Canada Hwy 2 / Lincoln major fuel plaza with 91 Premium.</description>
+        <Point>
+          <coordinates>-66.570000,45.890000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woodstock Irving Big Stop</name>
+        <description>Trans-Canada Hwy 2 Saint John River valley hub with 91 Premium.</description>
+        <Point>
+          <coordinates>-67.585000,46.145000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Edmundston Irving Big Stop</name>
+        <description>Last major NB fuel station before entering Quebec on Autoroute 85.</description>
+        <Point>
+          <coordinates>-68.325300,47.373600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rivière-du-Loup Shell</name>
+        <description>Autoroute 20 / 85 junction hub with Shell V-Power 91.</description>
+        <Point>
+          <coordinates>-69.535000,47.820000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lévis / St-Nicolas Esso</name>
+        <description>Autoroute 20 South Shore Quebec City bypass hub with 91 Premium.</description>
+        <Point>
+          <coordinates>-71.285000,46.705000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drummondville Petro-Canada / A-20</name>
+        <description>Full service highway fuel plaza off A-20.</description>
+        <Point>
+          <coordinates>-72.475000,45.885000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beauharnois Shell</name>
+        <description>Autoroute 30 bypass fuel station with 91 Premium.</description>
+        <Point>
+          <coordinates>-73.875000,45.310000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Carleton Place Esso</name>
+        <description>Hwy 7 / Hwy 15 junction fuel station with 91 Premium.</description>
+        <Point>
+          <coordinates>-76.145000,45.140000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mattawa Shell</name>
+        <description>Hwy 17 / Ottawa River corridor station with 91 Premium.</description>
+        <Point>
+          <coordinates>-78.705000,46.315000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>North Bay Shell</name>
+        <description>Hwy 17 / Hwy 11 bypass station with V-Power 91.</description>
+        <Point>
+          <coordinates>-79.460000,46.310000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Petawawa Shell (Hwy 17)</name>
+        <description>Strategic backup station on Hwy 17 eastbound 20 km before Pembroke.</description>
+        <Point>
+          <coordinates>-77.275000,45.895000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sainte-Anne-de-Beaupré Irving</name>
+        <description>Route 138 Côte-de-Beaupré strategic backup station before Charlevoix mountains.</description>
+        <Point>
+          <coordinates>-70.925000,47.025000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tadoussac Pétro-T</name>
+        <description>Strategic backup station directly at the mouth of the Saguenay Fjord / ferry landing.</description>
+        <Point>
+          <coordinates>-69.720000,48.150000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Forestville Crevier</name>
+        <description>Route 138 North Shore strategic backup station between Les Escoumins and Baie-Comeau.</description>
+        <Point>
+          <coordinates>-69.080000,48.740000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TLH 500 Minipi River Bladder Transfer Point</name>
+        <description>Midpoint rest area on TLH 500 (294 km gap) for auxiliary 91 fuel siphoning into Ducati.</description>
+        <Point>
+          <coordinates>-62.150000,53.350000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>L'Anse-au-Loup North Atlantic</name>
+        <description>Southern Labrador coastal strategic backup station 25 km north of Blanc-Sablon.</description>
+        <Point>
+          <coordinates>-56.830000,51.515000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plum Point Gas Bar</name>
+        <description>Route 430 Viking Trail coastal backup station between St. Barbe and Hawke's Bay.</description>
+        <Point>
+          <coordinates>-56.880000,51.080000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parson's Pond North Atlantic</name>
+        <description>Northern Gros Morne coastal backup station along Route 430.</description>
+        <Point>
+          <coordinates>-57.700000,49.980000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trout River Gas Bar</name>
+        <description>Western coastal terminus backup station on the Tablelands spur.</description>
+        <Point>
+          <coordinates>-58.120000,49.480000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Doyles Esso (Codroy Valley)</name>
+        <description>Trans-Canada Hwy 1 backup station 30 km north of Port aux Basques ferry dock.</description>
+        <Point>
+          <coordinates>-59.180000,47.835000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape North Co-op Gas Bar</name>
+        <description>Northern Cabot Trail junction backup station before Meat Cove spur.</description>
+        <Point>
+          <coordinates>-60.505000,46.885000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Antigonish Shell</name>
+        <description>Trans-Canada Hwy 104 mainland NS backup station between Canso Causeway and New Glasgow.</description>
+        <Point>
+          <coordinates>-61.980000,45.620000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dégelis Esso</name>
+        <description>Autoroute 85 Lake Témiscouata corridor backup station between Edmundston and Rivière-du-Loup.</description>
+        <Point>
+          <coordinates>-68.650000,47.550000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Pocatière Ultramar</name>
+        <description>Autoroute 20 South Shore backup station between Rivière-du-Loup and Lévis.</description>
+        <Point>
+          <coordinates>-70.040000,47.370000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boucherville Shell</name>
+        <description>Autoroute 30 South Shore bypass strategic backup station.</description>
+        <Point>
+          <coordinates>-73.440000,45.580000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cobden Esso</name>
+        <description>Highway 17 Ottawa Valley corridor backup station 35 km before Pembroke.</description>
+        <Point>
+          <coordinates>-76.880000,45.620000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deep River Esso</name>
+        <description>Highway 17 Ottawa River corridor backup station between Pembroke and Mattawa.</description>
+        <Point>
+          <coordinates>-77.495000,46.205000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tadoussac Fjord Ferry (Route 138)</name>
+        <description>Free 10-minute year-round ferry crossing across the mouth of the Saguenay Fjord. Motorcyclists directed to front of queue.</description>
+        <Point>
+          <coordinates>-69.715000,48.145000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blanc-Sablon to St. Barbe Ferry (MV Qajaq W)</name>
+        <description>90-minute marine ferry across the Strait of Belle Isle into Newfoundland. Chocks and heavy-duty straps provided for motorcycles.</description>
+        <Point>
+          <coordinates>-57.135000,51.425000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Marine Atlantic Port aux Basques Overnight Ferry</name>
+        <description>Marine Atlantic 7-hour overnight marine ferry across the Cabot Strait to North Sydney aboard MV Highlanders. Departs 23:45, arrives 07:00 AM.</description>
+        <Point>
+          <coordinates>-59.136700,47.573900,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Canso Causeway (Cape Breton Island Gateway)</name>
+        <description>Massive rock-fill causeway carrying Highway 104 across the Strait of Canso connecting mainland Nova Scotia to Cape Breton Island.</description>
+        <Point>
+          <coordinates>-61.415000,45.645000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Confederation Bridge (Inbound Toll-Free Crossing)</name>
+        <description>12.9 km curved marine highway bridge spanning Northumberland Strait from New Brunswick onto PEI. 100% modified asphalt, zero grates, 100% toll-free inbound!</description>
+        <Point>
+          <coordinates>-63.812000,46.155000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Confederation Bridge (Outbound Toll Plaza)</name>
+        <description>Toll plaza in Borden-Carleton upon departing PEI back to New Brunswick. Motorcycle toll is ~$20.25 CAD per motorcycle.</description>
+        <Point>
+          <coordinates>-63.679800,46.259600,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pont Serge-Marcil (A-30 Express Toll Bridge)</name>
+        <description>High-speed 2.5 km toll bridge over the St. Lawrence Seaway bypassing Montreal metro traffic on Autoroute 30.</description>
+        <Point>
+          <coordinates>-74.025000,45.305000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Portage-du-Fort Ottawa River Crossing</name>
+        <description>Historic Chenaux Generating Station dam bridge crossing the Ottawa River from Ontario into Quebec.</description>
+        <Point>
+          <coordinates>-76.660131,45.593286,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Route 148 Scenic River Corridor (Gatineau to Fassett)</name>
+        <description>Winding, scenic motorcycle corridor along the north shore of the Ottawa River through St-Philippe and Lachute into Mirabel.</description>
+        <Point>
+          <coordinates>-74.434600,45.625800,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boulevard Champlain &amp; Cap Diamant River Parkway</name>
+        <description>Stunning river-level motorcycle boulevard curving beneath the towering cliffs of Quebec City and Château Frontenac.</description>
+        <Point>
+          <coordinates>-71.210000,46.805000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Autoroute 50 &amp; Route 138 North Shore Scenic Corridor</name>
+        <description>Historic Chemin du Roy and Côte-de-Beaupré bypassing Montreal and Hwy 40 entirely.</description>
+        <Point>
+          <coordinates>-70.900000,46.900000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>The Tablelands (Earth's Mantle)</name>
+        <description>Rare barren orange landscape of exposed oceanic crust and Earth's mantle pushed up by continental drift.</description>
+        <Point>
+          <coordinates>-57.964000,49.475000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cape Smokey Look-off &amp; Gondola</name>
+        <description>Thrilling coastal hairpin climb to high mountain look-off overlooking Ingonish and the Atlantic Ocean.</description>
+        <Point>
+          <coordinates>-60.416700,46.600000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Meat Cove Clifftop Adventure Spur &amp; Chowder Hut</name>
+        <description>The wild northernmost tip of Nova Scotia. 29 km spur ending with an 8 km clifftop ocean track and clifftop chowder hut.</description>
+        <Point>
+          <coordinates>-60.557800,47.026400,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>French Mountain Switchbacks</name>
+        <description>The signature postcard hairpins of the Cabot Trail carved into sheer mountain coastal bluffs.</description>
+        <Point>
+          <coordinates>-60.880000,46.730000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aucoin Bakery (Chéticamp)</name>
+        <description>Famous Acadian bakery operating since 1955. Traditional meat pies, pastries, and breads.</description>
+        <Point>
+          <coordinates>-61.005000,46.635000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hopewell Rocks (Tidal Floor Walk)</name>
+        <description>Walk on the ocean floor around towering flowerpot sea stack formations carved by 46-foot Fundy tides.</description>
+        <Point>
+          <coordinates>-64.570000,45.820000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fundy Trail Parkway</name>
+        <description>Spectacular 30 km coastal motorcycling parkway ridden continuous from East Gate to West Gate past Walton Glen Gorge, Long Beach, Big Salmon River, and Fuller Falls to Saint John.</description>
+        <Point>
+          <coordinates>-65.450000,45.410000,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Reversing Falls Rapids (Saint John)</name>
+        <description>Spectacular tidal phenomenon where 28-foot Bay of Fundy tides force the mighty Saint John River to reverse its flow through a narrow rocky gorge.</description>
+        <Point>
+          <coordinates>-66.088600,45.259700,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
