@@ -654,6 +654,47 @@
             }
         }
     
+    
+        /* Expedition Trip Notes & Feedback Modal Styles */
+        .btn-trip-notes:hover {
+            background: #2563eb !important;
+            color: #ffffff !important;
+            border-color: #3b82f6 !important;
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .note-card-item {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-left: 4px solid #3b82f6;
+            border-radius: 8px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: border-color 0.15s ease;
+        }
+        .note-card-item:hover {
+            border-color: #475569;
+        }
+        @media (max-width: 850px) {
+            #trip-notes-modal {
+                padding: 0 !important;
+                align-items: flex-end !important;
+            }
+            #trip-notes-modal .notes-modal-content {
+                max-width: 100% !important;
+                max-height: 85vh !important;
+                border-bottom-left-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+            .mobile-bottom-nav {
+                grid-template-columns: repeat(5, 1fr) !important;
+            }
+        }
+    
     </style>
 </head>
 <body>
@@ -670,6 +711,11 @@
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-downloads', this)">📥 Files</button>
 <button class="nav-tab-btn" onclick="scrollToFeed('sec-fleet', this)">🏍️ Fleet</button>
 </nav>
+<button type="button" class="btn-trip-notes" id="btn-header-notes" onclick="openTripNotesModal()" title="Expedition Notes & Rider Feedback" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
+    <span>💬</span>
+    <span>Notes</span>
+    <span id="header-notes-badge" style="display: none; background: #2563eb; color: #ffffff; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 10px;">0</span>
+</button>
 
 </div>
 </header>
@@ -919,6 +965,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(1)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/4671+Dupuis+Drive,+Hanmer,+ON+P3P+0B3,+Canada/Pembroke,+Ontario/Portage-du-Fort,+Quebec/45.484148,-75.6479648/Masson-Angers,+Gatineau,+QC/45.6434004,-74.8182866/45.6258796,-74.434645/Motel+au+P%27tit+Sapin,+16033+Du,+Bd+Cur%C3%A9-Labelle,+Mirabel,+QC+J7J+2G6/" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 1, title: 'Day 1'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -968,6 +1017,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(2)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Motel+au+P%27tit+Sapin%2C+16033+Bd+Cur%C3%A9-Labelle%2C+Mirabel%2C+QC&destination=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&waypoints=Joliette%2C+QC%7CBerthierville%2C+QC%7CTrois-Rivi%C3%A8res%2C+QC%7CRoute+138%2C+Sainte-Anne-de-Beaupr%C3%A9%2C+QC%7CBaie-Saint-Paul%2C+QC%7CTadoussac%2C+QC&travelmode=driving" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 2, title: 'Day 2'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1017,6 +1069,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(3)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&destination=Hotel+Wabush%2C+Wabush%2C+NL&travelmode=driving&waypoints=Manic-5%2C+QC%7CRelais+Gabriel%2C+QC" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 3, title: 'Day 3'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1066,6 +1121,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(4)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Wabush%2C+Wabush%2C+NL&destination=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&travelmode=driving&waypoints=Churchill+Falls%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 4, title: 'Day 4'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1115,6 +1173,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(5)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&destination=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&travelmode=driving&waypoints=Port+Hope+Simpson%2C+NL%7CRed+Bay%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 5, title: 'Day 5'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1164,6 +1225,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(6)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=Blanc-Sablon+Ferry+Terminal%2C+QC%7CSt.+Barbe+Ferry+Terminal%2C+NL%7CGrenfell+Historic+Properties%2C+St.+Anthony%2C+NL%7CFishing+Point+Lighthouse%2C+St.+Anthony%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 6, title: 'Day 6'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1213,6 +1277,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(7)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=L%27Anse+aux+Meadows+National+Historic+Site%2C+NL%7CNorstead%2C+Hay+Cove%2C+NL%7CCape+Onion%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 7, title: 'Day 7'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1262,6 +1329,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(8)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&travelmode=driving&waypoints=Point+Riche+Lighthouse%2C+Port+au+Choix%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 8, title: 'Day 8'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1311,6 +1381,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(9)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&destination=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&travelmode=driving&waypoints=Tablelands+Trailhead%2C+Woody+Point%2C+NL%7CTrout+River%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 9, title: 'Day 9'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1360,6 +1433,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(10)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&destination=Marine+Atlantic+Ferry+Terminal%2C+Port+aux+Basques%2C+NL&travelmode=driving&waypoints=Cape+Anguille+Lighthouse%2C+NL%7CCape+Ray+Lighthouse%2C+NL" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 10, title: 'Day 10'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1409,6 +1485,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(11)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Marine+Atlantic+Ferry+Terminal%2C+North+Sydney%2C+NS&destination=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&travelmode=driving&waypoints=St.+Ann%27s%2C+NS%7CCape+Smokey+Provincial+Park%2C+NS%7CNeils+Harbour+Lighthouse%2C+NS" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 11, title: 'Day 11'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1458,6 +1537,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(12)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&destination=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&travelmode=driving&waypoints=Meat+Cove+Welcome+Center%2C+Meat+Cove%2C+NS%7CSkyline+Trail%2C+Cabot+Trail%2C+NS" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 12, title: 'Day 12'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1507,6 +1589,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(13)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&destination=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&travelmode=driving&waypoints=Canso+Causeway%2C+Port+Hastings%2C+NS%7CCape+Jourimain%2C+Bayfield%2C+NB%7CVictoria-by-the-Sea%2C+PE%7CFrench+River%2C+PE%7CCape+Tryon+Lighthouse%2C+PE%7CAnne+of+Green+Gables+Heritage+Place%2C+Cavendish%2C+PE%7CNorth+Rustico+Harbour%2C+PE" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 13, title: 'Day 13'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1556,6 +1641,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(14)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&destination=Fundy+National+Park+Headquarters+Campground%2C+Alma%2C+NB&travelmode=driving&waypoints=Seacow+Head+Lighthouse%2C+Borden-Carleton%2C+PE%7CCape+Jourimain%2C+Bayfield%2C+NB%7CCape+Enrage+Lighthouse%2C+NB%7CThe+Hopewell+Rocks%2C+Hopewell+Cape%2C+NB" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 14, title: 'Day 14'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1605,6 +1693,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(15)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/45.5968321,-64.9521371/45.5154872,-65.2968873/45.4310118,-65.3693319/45.4262806,-65.392869/45.4257948,-65.4093835/45.4120034,-65.4225108/45.4015382,-65.4601292/45.2733153,-66.063308/46.2970,-67.5280/47.4353,-68.3904" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 15, title: 'Day 15'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1654,6 +1745,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(16)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Parc+provincial+de+la+R%C3%A9publique%2C+Edmundston%2C+NB&destination=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&waypoints=Rivi%C3%A8re-du-Loup%2C+QC&travelmode=driving" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 16, title: 'Day 16'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1703,6 +1797,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(17)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&destination=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&waypoints=Autoroute+30%2C+Boucherville%2C+QC%7CAutoroute+30%2C+Beauharnois%2C+QC%7CCasselman%2C+ON%7CManotick%2C+Ottawa%2C+ON%7CCarleton+Place%2C+ON&travelmode=driving" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 17, title: 'Day 17'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 
@@ -1747,6 +1844,9 @@
     <div style="display: flex; gap: 8px;">
         <button style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #f8fafc; font-weight: 700; font-size: 11px; padding: 9px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseover="this.style.background='#2563eb'; this.style.borderColor='#3b82f6';" onmouseout="this.style.background='#1e293b'; this.style.borderColor='#334155';" onclick="event.stopPropagation(); focusDay(18)">🎯 Zoom Map</button>
         <a href="https://www.google.com/maps/dir/?api=1&origin=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&destination=4671+Dupuis+Dr%2C+Hanmer%2C+ON&waypoints=North+Bay%2C+ON&travelmode=driving" target="_blank" rel="noopener noreferrer" style="flex: 1.3; text-align: center; background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 11px; padding: 9px 8px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.15s;" onmouseover="this.style.background='#059669';" onmouseout="this.style.background='#047857';">🗺️ Google Maps Directions ↗</a>
+        <button type="button" class="btn-day-note" onclick="event.stopPropagation(); openTripNotesModal({day: 18, title: 'Day 18'});" style="background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; font-weight: 700; font-size: 11px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#2563eb'; this.style.color='#ffffff';" onmouseout="this.style.background='#1e293b'; this.style.color='#60a5fa';">
+            <span>💬</span> Note
+        </button>
     </div>
 </div>
 <div class="gantt-section" id="sec-gantt" style="margin-top: 32px; margin-bottom: 24px;">
@@ -1821,7 +1921,154 @@
 
             <!-- Active Day Schedule Content (Dynamic Container) -->
             <div id="gantt-active-day-content" style="background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 16px;">
-                <!-- Populated via JavaScript on load & day selection -->
+                <div style="margin-bottom: 12px; border-bottom: 1px solid #334155; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <div style="font-size: 1.15rem; font-weight: 800; color: #f8fafc;">Day 1: Hanmer Home Base to Mirabel, QC</div>
+                        <div style="font-size: 0.80rem; color: #94a3b8; margin-top: 3px;">Wednesday, June 16, 2027 • Motel au P'tit Sapin, Mirabel, QC</div>
+                    </div>
+                    <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); color: #60a5fa; font-family: monospace; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">
+                        📍 403.1 mi (648.7 km)
+                    </div>
+                </div>
+                <div class="gantt-timeline-vlist" style="margin-top: 10px;">
+
+                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                Breakfast & Pack (30m)
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                07:00 AM – 07:30 AM (30m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Nutritious breakfast, morning route briefing, pack bikes
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                In Saddle: 245 km (2h 45m)
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                07:30 AM – 10:15 AM (2h 45m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Leg 1: Hanmer to Deep River & Pembroke • Hwy 17 East past North Bay & Mattawa to Pembroke
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #ef4444; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                20m: Primary Gas Stop #1
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                10:15 AM – 10:35 AM (20m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Primary Gas Stop #1 & stretch • Primary Gas: Pembroke Esso / Circle K (45.8267, -77.1111) - 91: YES
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                In Saddle: 195 km (2h 25m)
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                10:35 AM – 01:00 PM (2h 25m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Leg 2: Pembroke across Ottawa River to Masson-Angers • Hwy 17 to Chenaux Dam -> Portage-du-Fort -> Route 148 East through Shawville & Aylmer -> Gatineau -> Angers
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                45m: Primary Gas Stop #2
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                01:00 PM – 01:45 PM (45m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Primary Gas Stop #2 + 30m LUNCH • Primary Gas: Masson-Angers Shell / Ultramar (45.5422, -75.4280) - 91: YES
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                In Saddle: 208 km (2h 45m)
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                01:45 PM – 05:05 PM (3h 20m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Leg 3: Masson-Angers along Route 148 river corridor to Mirabel • Route 148 river road through Montebello & Grenville -> Lachute -> Route 158 -> Route 117 to Mirabel
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                Arrive & Check-in / Camp Pitch
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                05:05 PM – 06:00 (55m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Check-in at Motel au P'tit Sapin, Mirabel, QC, unpack panniers, shower, relax
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                Supper (1h)
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                06:00 – 07:00 PM (1h 0m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            1-hour sit-down supper near Motel au P'tit Sapin, Mirabel, QC
+                        </div>
+                    </div>
+
+                    <div style="background: #1e293b; border-left: 4px solid #10b981; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <span style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; line-height: 1.3;">
+                                Rest & Route Prep
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: #0f172a; padding: 3px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;">
+                                07:00 PM – 10:00 PM (3h 0m)
+                            </span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;">
+                            Chain lube, tire pressure check, next day GPX review, restful sleep
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+                    <button type="button" onclick="focusDay(1); if (window.innerWidth <= 850) switchMobileTab('map');" style="flex: 1; min-width: 140px; background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 700; cursor: pointer;">
+                        🗺️ Focus Day 1 on Map
+                    </button>
+                    <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-1'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: #334155; color: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
+                        📋 View Itinerary Details
+                    </button>
+                    <button type="button" onclick="openTripNotesModal({day: 1, title: 'Day 1: Hanmer Home Base to Mirabel, QC'})" style="flex: 1; min-width: 140px; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        💬 Add Note for Day 1
+                    </button>
+                </div>
             </div>
 
             <!-- Day Prev / Next Quick Controls -->
@@ -3672,10 +3919,18 @@
         <span class="mob-nav-icon">📥</span>
         <span class="mob-nav-label">Files</span>
     </button>
+    <button class="mobile-nav-btn" id="mob-btn-notes" onclick="openTripNotesModal()">
+        <span class="mob-nav-icon" style="position: relative;">
+            💬
+            <span id="mob-notes-badge" style="display: none; position: absolute; top: -3px; right: -7px; background: #2563eb; color: #ffffff; font-size: 9px; font-weight: 800; border-radius: 8px; padding: 0 4px; line-height: 12px;">0</span>
+        </span>
+        <span class="mob-nav-label">Notes</span>
+    </button>
 </nav>
 
 <!-- LEAFLET MAP & INTERACTIVE CONTROLS SCRIPT -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
         // ========================================================
         // ENHANCED MOBILE DUAL-VIEW GANTT ENGINE
         // ========================================================
@@ -3783,6 +4038,9 @@
                     </button>
                     <button type="button" onclick="if (window.innerWidth <= 850) switchMobileTab('feed'); const el = document.getElementById('day-card-${dayNum}'); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});" style="flex: 1; min-width: 140px; background: #334155; color: #e2e8f0; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer;">
                         📋 View Itinerary Details
+                    </button>
+                    <button type="button" onclick="openTripNotesModal({day: dayNum, title: dayObj.title})" style="flex: 1; min-width: 140px; background: #1e293b; border: 1px solid #3b82f6; color: #60a5fa; border-radius: 6px; font-size: 0.80rem; font-weight: 700; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        💬 Add Note for Day ${dayNum}
                     </button>
                 </div>`;
         }
@@ -4472,5 +4730,413 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
             });
         }, 800);
     </script>
+
+<!-- ======================================================== -->
+<!-- TRIP NOTES & RIDER FEEDBACK MODAL (AI FINE-TUNING STUDIO)-->
+<!-- ======================================================== -->
+<div id="trip-notes-modal" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 99999; backdrop-filter: blur(4px); justify-content: center; align-items: center; padding: 16px;">
+    <div class="notes-modal-content" style="background: #0f172a; border: 1px solid #334155; border-radius: 12px; width: 100%; max-width: 680px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); overflow: hidden; animation: fadeInModal 0.2s ease;">
+        
+        <!-- Header -->
+        <div style="background: #1e293b; padding: 14px 18px; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.35rem;">📝</span>
+                <div>
+                    <div style="font-weight: 800; font-size: 1.05rem; color: #f8fafc; display: flex; align-items: center; gap: 8px;">
+                        <span>Expedition Notes &amp; Rider Feedback</span>
+                        <span id="notes-header-counter" style="background: #2563eb; color: #ffffff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 12px;">0 Notes</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Jot down thoughts, adjust stops, then copy prompt to fine-tune with AI assistant</div>
+                </div>
+            </div>
+            <button type="button" onclick="closeTripNotesModal()" style="background: #0f172a; border: 1px solid #334155; color: #cbd5e1; font-size: 1.2rem; cursor: pointer; padding: 4px 10px; border-radius: 6px; line-height: 1;">✕</button>
+        </div>
+
+        <!-- Body -->
+        <div style="padding: 16px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 14px;">
+            
+            <!-- Note Form -->
+            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 14px;">
+                <div style="font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                    <span>✏️</span> Add New Note or Route Feedback
+                </div>
+                
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+                    <div style="flex: 1.3; min-width: 160px;">
+                        <label style="font-size: 0.70rem; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Target Stage / Day:</label>
+                        <select id="note-target-day" style="width: 100%; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 6px; padding: 6px 10px; font-size: 0.80rem;">
+                            <option value="0">Expedition Overall (General Note)</option>
+                               <option value="1">Day 1: Hanmer to Mirabel</option>
+                               <option value="2">Day 2: Mirabel to Baie-Comeau</option>
+                               <option value="3">Day 3: Baie-Comeau to Lab City (QC-389)</option>
+                               <option value="4">Day 4: Lab City to Goose Bay (TLH 500)</option>
+                               <option value="5">Day 5: Goose Bay to Blanc-Sablon (TLH 510)</option>
+                               <option value="6">Day 6: Ferry to St. Anthony & Snorri</option>
+                               <option value="7">Day 7: Full Viking Immersion Loop</option>
+                               <option value="8">Day 8: Viking Trail to Gros Morne KOA</option>
+                               <option value="9">Day 9: Tablelands & Green Point Camp</option>
+                               <option value="10">Day 10: Codroy Valley to Ferry Terminal</option>
+                               <option value="11">Day 11: Cabot Trail Part 1 (Broad Cove)</option>
+                               <option value="12">Day 12: Cabot Trail Part 2 (Chéticamp)</option>
+                               <option value="13">Day 13: Chéticamp to PEI Grand Loop</option>
+                               <option value="14">Day 14: PEI to Hopewell Rocks & Fundy NP</option>
+                               <option value="15">Day 15: Fundy Trail Parkway to Edmundston</option>
+                               <option value="16">Day 16: Edmundston to Drummondville</option>
+                               <option value="17">Day 17: Drummondville to Pembroke</option>
+                               <option value="18">Day 18: Pembroke to Hanmer Home Base</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; min-width: 130px;">
+                        <label style="font-size: 0.70rem; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Category:</label>
+                        <select id="note-category" style="width: 100%; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 6px; padding: 6px 10px; font-size: 0.80rem;">
+                            <option value="Route ⚠️">Route Adjustment ⚠️</option>
+                            <option value="Hotel 🏨">Lodging / Hotel 🏨</option>
+                            <option value="Timing ⏱️">Saddle Timing ⏱️</option>
+                            <option value="Fuel ⛽">Fuel &amp; Logistics ⛽</option>
+                            <option value="Dining 🍽️">Meals &amp; Food 🍽️</option>
+                            <option value="POIs ⭐">Sights &amp; POIs ⭐</option>
+                            <option value="Fleet 🏍️">Fleet &amp; Gear 🏍️</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <textarea id="note-text-input" rows="2" placeholder="e.g. Day 4 saddle stint Churchill Falls to Goose Bay is long; suggest leaving at 06:30 instead..." style="width: 100%; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 6px; padding: 8px 10px; font-size: 0.82rem; resize: vertical; box-sizing: border-box; font-family: inherit; line-height: 1.4;"></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="note-input-hint" style="font-size: 0.72rem; color: #64748b;">Saved automatically in your browser</span>
+                    <button type="button" onclick="saveTripNote()" style="background: #2563eb; color: #ffffff; border: none; padding: 7px 16px; border-radius: 6px; font-size: 0.80rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.15s ease;" onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">
+                        <span>➕</span> Save Note
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notes List Header -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; border-bottom: 1px solid #334155; padding-bottom: 8px;">
+                <div style="font-size: 0.84rem; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 6px;">
+                    <span>📋</span> Recorded Notes (<span id="notes-total-count">0</span>)
+                </div>
+                <div style="display: flex; gap: 6px;">
+                    <button type="button" onclick="filterNotesBy('all')" class="note-filter-btn active" id="note-filter-all" style="background: #2563eb; border: 1px solid #3b82f6; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; cursor: pointer;">All</button>
+                    <button type="button" onclick="filterNotesBy('day')" class="note-filter-btn" id="note-filter-day" style="background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; cursor: pointer;">By Day</button>
+                </div>
+            </div>
+
+            <!-- Notes List Container -->
+            <div id="notes-list-container" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Populated via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div style="background: #1e293b; padding: 12px 16px; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" onclick="copyAIFineTunePrompt()" style="background: #047857; border: 1px solid #059669; color: #ffffff; font-weight: 700; font-size: 0.80rem; padding: 8px 14px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(4,120,87,0.3);" title="Copies formatted instructions ready to paste into Antigravity">
+                    <span>📋</span> Copy Prompt for AI
+                </button>
+                <button type="button" onclick="openGitHubNotesIssue()" style="background: #334155; border: 1px solid #475569; color: #f8fafc; font-weight: 600; font-size: 0.80rem; padding: 8px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px;" title="Open GitHub Issue in repo with pre-filled notes">
+                    <span>🐙</span> Open GitHub Issue
+                </button>
+                <button type="button" onclick="exportNotesMarkdown()" style="background: #0f172a; border: 1px solid #334155; color: #cbd5e1; font-weight: 600; font-size: 0.80rem; padding: 8px 12px; border-radius: 6px; cursor: pointer;" title="Download Markdown file">
+                    <span>📥</span> Export .md
+                </button>
+            </div>
+            <button type="button" onclick="clearAllTripNotes()" style="background: transparent; border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; font-weight: 600; font-size: 0.75rem; padding: 6px 10px; border-radius: 6px; cursor: pointer;">
+                🗑️ Clear All
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Copy Toast Notification -->
+<div id="notes-toast" style="display: none; position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); background: #047857; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 10px 22px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 100000; border: 1px solid #10b981; text-align: center; pointer-events: none;">
+    ✅ Copied prompt to clipboard! Paste into chat with Antigravity to fine-tune your trip.
+</div>
+
+
+<script>
+
+        // ========================================================
+        // EXPEDITION TRIP NOTES & AI FINE-TUNING ENGINE
+        // ========================================================
+        const STORAGE_KEY_NOTES = 'expedition_trip_notes_v1';
+        let currentNotesFilter = 'all';
+
+        function loadTripNotes() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY_NOTES);
+                return raw ? JSON.parse(raw) : [];
+            } catch(e) {
+                return [];
+            }
+        }
+
+        function saveTripNotesToStorage(notes) {
+            try {
+                localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notes));
+            } catch(e) {}
+            updateNotesBadges();
+        }
+
+        function updateNotesBadges() {
+            const notes = loadTripNotes();
+            const count = notes.length;
+            
+            // Header badge
+            const hdrBadge = document.getElementById('header-notes-badge');
+            if (hdrBadge) {
+                hdrBadge.textContent = count;
+                hdrBadge.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+
+            // Mobile nav badge
+            const mobBadge = document.getElementById('mob-notes-badge');
+            if (mobBadge) {
+                mobBadge.textContent = count;
+                mobBadge.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+
+            // Modal counter
+            const modalCounter = document.getElementById('notes-header-counter');
+            if (modalCounter) {
+                modalCounter.textContent = count + (count === 1 ? ' Note' : ' Notes');
+            }
+            const totalCount = document.getElementById('notes-total-count');
+            if (totalCount) {
+                totalCount.textContent = count;
+            }
+        }
+
+        function openTripNotesModal(preset) {
+            const modal = document.getElementById('trip-notes-modal');
+            if (!modal) return;
+            
+            if (preset && typeof preset.day !== 'undefined') {
+                const targetSelect = document.getElementById('note-target-day');
+                if (targetSelect) targetSelect.value = preset.day;
+            }
+
+            modal.style.display = 'flex';
+            renderTripNotesList();
+            updateNotesBadges();
+
+            setTimeout(() => {
+                const txt = document.getElementById('note-text-input');
+                if (txt) txt.focus();
+            }, 100);
+        }
+
+        function closeTripNotesModal() {
+            const modal = document.getElementById('trip-notes-modal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function saveTripNote() {
+            const txtEl = document.getElementById('note-text-input');
+            const targetEl = document.getElementById('note-target-day');
+            const catEl = document.getElementById('note-category');
+            if (!txtEl || !txtEl.value.trim()) {
+                if (txtEl) txtEl.focus();
+                return;
+            }
+
+            const dayNum = parseInt(targetEl ? targetEl.value : '0', 10);
+            const targetText = targetEl && targetEl.selectedOptions && targetEl.selectedOptions[0] ? targetEl.selectedOptions[0].text : 'General Note';
+            const category = catEl ? catEl.value : 'Route ⚠️';
+            const text = txtEl.value.trim();
+
+            const notes = loadTripNotes();
+            const newNote = {
+                id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+                day: dayNum,
+                target: targetText,
+                category: category,
+                text: text,
+                timestamp: new Date().toISOString(),
+                dateStr: new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+            };
+
+            notes.unshift(newNote);
+            saveTripNotesToStorage(notes);
+            txtEl.value = '';
+            renderTripNotesList();
+        }
+
+        function deleteTripNote(id) {
+            let notes = loadTripNotes();
+            notes = notes.filter(n => n.id !== id);
+            saveTripNotesToStorage(notes);
+            renderTripNotesList();
+        }
+
+        function clearAllTripNotes() {
+            if (confirm('Are you sure you want to clear all trip notes? This cannot be undone.')) {
+                saveTripNotesToStorage([]);
+                renderTripNotesList();
+            }
+        }
+
+        function filterNotesBy(filterType) {
+            currentNotesFilter = filterType;
+            const btnAll = document.getElementById('note-filter-all');
+            const btnDay = document.getElementById('note-filter-day');
+            if (btnAll) {
+                btnAll.style.background = filterType === 'all' ? '#2563eb' : '#1e293b';
+                btnAll.style.color = filterType === 'all' ? '#ffffff' : '#94a3b8';
+            }
+            if (btnDay) {
+                btnDay.style.background = filterType === 'day' ? '#2563eb' : '#1e293b';
+                btnDay.style.color = filterType === 'day' ? '#ffffff' : '#94a3b8';
+            }
+            renderTripNotesList();
+        }
+
+        function renderTripNotesList() {
+            const container = document.getElementById('notes-list-container');
+            if (!container) return;
+            const notes = loadTripNotes();
+
+            if (notes.length === 0) {
+                container.innerHTML = `
+                    <div style="background: #1e293b; border: 1px dashed #334155; border-radius: 8px; padding: 28px 16px; text-align: center; color: #94a3b8;">
+                        <div style="font-size: 1.8rem; margin-bottom: 6px;">📝</div>
+                        <div style="font-weight: 700; color: #f8fafc; font-size: 0.95rem;">No Notes Recorded Yet</div>
+                        <div style="font-size: 0.78rem; margin-top: 4px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+                            Add adjustments or reminders using the form above, or tap the <strong style="color: #60a5fa;">💬 Note</strong> button on any Day Card or Timeline view!
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            let displayNotes = [...notes];
+            if (currentNotesFilter === 'day') {
+                displayNotes.sort((a, b) => a.day - b.day);
+            }
+
+            const catColors = {
+                'Route ⚠️': '#ef4444',
+                'Hotel 🏨': '#3b82f6',
+                'Timing ⏱️': '#f59e0b',
+                'Fuel ⛽': '#dc2626',
+                'Dining 🍽️': '#10b981',
+                'POIs ⭐': '#8b5cf6',
+                'Fleet 🏍️': '#06b6d4'
+            };
+
+            let html = '';
+            displayNotes.forEach(n => {
+                const borderCol = catColors[n.category] || '#3b82f6';
+                html += `
+                    <div class="note-card-item" style="border-left-color: ${borderCol};">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <span style="font-size: 0.72rem; font-weight: 800; background: #0f172a; border: 1px solid #334155; color: #f8fafc; padding: 2px 7px; border-radius: 4px;">
+                                    ${n.day > 0 ? ('Day ' + n.day) : 'Expedition'}
+                                </span>
+                                <span style="font-size: 0.72rem; font-weight: 700; color: #94a3b8;">
+                                    ${n.target}
+                                </span>
+                                <span style="font-size: 0.70rem; font-weight: 700; color: #cbd5e1; background: rgba(59,130,246,0.15); padding: 2px 6px; border-radius: 4px;">
+                                    ${n.category}
+                                </span>
+                            </div>
+                            <button type="button" onclick="deleteTripNote('${n.id}')" title="Delete note" style="background: transparent; border: none; color: #64748b; font-size: 0.85rem; cursor: pointer; padding: 2px 6px; border-radius: 4px;" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#64748b'">✕</button>
+                        </div>
+                        <div style="font-size: 0.82rem; color: #f1f5f9; line-height: 1.45; white-space: pre-wrap;">${escapeHtml(n.text)}</div>
+                        <div style="font-size: 0.68rem; color: #64748b; text-align: right;">${n.dateStr || ''}</div>
+                    </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function generateNotesMarkdown() {
+            const notes = loadTripNotes();
+            if (notes.length === 0) return '';
+            
+            let md = '# Expedition 51 – Rider Feedback & Trip Adjustment Notes\n\n';
+            md += `Generated: ${new Date().toLocaleString()}\n`;
+            md += `Total Notes: ${notes.length}\n\n`;
+            md += 'Please apply the following adjustments and fine-tuning to the Expedition 51 route, itinerary, and schedule:\n\n';
+
+            notes.forEach((n, idx) => {
+                const targetHeader = n.day > 0 ? `Day ${n.day} (${n.target})` : 'General Expedition';
+                md += `### ${idx + 1}. [${n.category}] ${targetHeader}\n`;
+                md += `- **Feedback / Request**: ${n.text}\n`;
+                md += `- **Logged**: ${n.dateStr || ''}\n\n`;
+            });
+
+            return md;
+        }
+
+        function showNotesToast(msg) {
+            const toast = document.getElementById('notes-toast');
+            if (!toast) return;
+            if (msg) toast.innerHTML = msg;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3800);
+        }
+
+        function copyAIFineTunePrompt() {
+            const md = generateNotesMarkdown();
+            if (!md) {
+                alert('No notes recorded yet. Add some thoughts first!');
+                return;
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(md).then(() => {
+                    showNotesToast('✅ Copied prompt to clipboard! Paste into Antigravity chat to fine-tune your trip.');
+                }).catch(() => {
+                    prompt('Copy your fine-tuning prompt below:', md);
+                });
+            } else {
+                prompt('Copy your fine-tuning prompt below:', md);
+            }
+        }
+
+        function openGitHubNotesIssue() {
+            const md = generateNotesMarkdown();
+            const body = md || 'Add your feedback or suggested adjustments for the Expedition 51 route:';
+            const issueUrl = 'https://github.com/Rindelk/expedition-51/issues/new?title=' + 
+                             encodeURIComponent('Expedition 51 Rider Feedback & Notes') + 
+                             '&body=' + encodeURIComponent(body);
+            window.open(issueUrl, '_blank');
+        }
+
+        function exportNotesMarkdown() {
+            const md = generateNotesMarkdown();
+            if (!md) {
+                alert('No notes recorded yet.');
+                return;
+            }
+            const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'expedition_51_rider_notes.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize notes badges on page load
+        if (typeof document !== 'undefined') {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateNotesBadges);
+            } else {
+                updateNotesBadges();
+            }
+        }
+    
+</script>
+
 </body>
 </html>
