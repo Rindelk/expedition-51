@@ -89,3 +89,26 @@ The entire expedition package has been updated, audited, and synchronized for th
 | 🌉 **Confederation Bridge** | Cape Jourimain, NB ➔ Borden-Carleton, PEI (Days 13 & 14) | **No Reservation Needed** | [confederationbridge.com](https://www.confederationbridge.com/) | **Inbound Day 13 is 100% Toll-Free!** Exit toll collected only upon leaving PEI on Day 14 (~$20.25/bike). |
 | ⚔️ **Viking Ocean Cabins** | Snorri Cabins / Valhalla Lodge, L'Anse aux Meadows (Days 6–7) | **Summer/Fall 2026 (8–10 Mos Ahead)** | [valhalla-lodge.com](https://valhalla-lodge.com/) | Only 4 rustic cabins exist in Hay Cove! Critical bottleneck; book immediately. |
 | 🏨 **Remote Outposts & Hotels**| Baie-Comeau (Day 2), Lab City (Day 3), Goose Bay (Day 4), L'Anse-au-Clair (Day 5), Pembroke (Day 17) | **Fall 2026 (6–8 Mos Ahead)** | Direct Hotel Portals | Remote mining and highway hubs book up fast; secure flexible rates early. |
+
+---
+
+## 4. 🌐 24/7 Global GitHub Pages Deployment (Account: Rindelk)
+
+The entire expedition package has been initialized as a clean Git repository on branch `main` and linked to `https://github.com/Rindelk/expedition-51.git`.
+
+### Repository & Live Links
+* **GitHub Repository**: [https://github.com/Rindelk/expedition-51](https://github.com/Rindelk/expedition-51)
+* **Live 24/7 Web App**: [https://rindelk.github.io/expedition-51/](https://rindelk.github.io/expedition-51/)
+* **Direct GPX Navigation Download**: [https://rindelk.github.io/expedition-51/east_coast_adv_loop.gpx](https://rindelk.github.io/expedition-51/east_coast_adv_loop.gpx)
+
+### Initial Push Execution
+1. Double-click [`Deploy_To_GitHub.bat`](file:///C:/Users/Jamie/Desktop/Expedition%2051/Deploy_To_GitHub.bat) in your `Desktop\Expedition 51` folder.
+2. Sign in via the one-time GitHub Credential Manager web popup on your desktop.
+3. Enable GitHub Pages in your repo settings: [https://github.com/Rindelk/expedition-51/settings/pages](https://github.com/Rindelk/expedition-51/settings/pages) (Source: `Deploy from a branch` ➔ Branch: `main` / `/(root)` ➔ `Save`).
+
+### Routine 1-Click Updates
+Whenever you update routes, schedules, or notes:
+1. Double-click [`Update_GitHub.bat`](file:///C:/Users/Jamie/Desktop/Expedition%2051/Update_GitHub.bat).
+2. It automatically synchronizes `index.html`, stages modified files, commits with a timestamp, and pushes to GitHub.
+3. Within 30 to 45 seconds, GitHub Pages automatically deploys the updated live site worldwide.
+
