@@ -367,7 +367,7 @@
                 height: 100% !important;
                 flex: 1 1 100% !important;
                 min-width: 0 !important;
-                padding: 12px 14px 40px !important;
+                padding: 12px 14px 75px !important;
                 display: none !important;
             }
 
@@ -382,6 +382,8 @@
             body.tab-timeline .app-data-pane { display: block !important; }
             body.tab-timeline .mobile-day-jumper,
             body.tab-timeline .stats-grid,
+            body.tab-timeline #sec-itinerary > .data-section-title,
+            body.tab-timeline #expedition-budget-card,
             body.tab-timeline .day-card,
             body.tab-timeline #sec-safety,
             body.tab-timeline #sec-fleet,
@@ -397,8 +399,7 @@
             body.tab-downloads .app-data-pane { display: block !important; }
             body.tab-downloads .mobile-day-jumper,
             body.tab-downloads .stats-grid,
-            body.tab-downloads .day-card,
-            body.tab-downloads #sec-gantt,
+            body.tab-downloads #sec-itinerary,
             body.tab-downloads #sec-safety,
             body.tab-downloads #sec-fleet {
                 display: none !important;
@@ -749,7 +750,7 @@
 </div>
 </div>
 <div id="map"></div>
-<div id="map-focus-toast" onclick="switchMobileTab('feed')">
+<div id="map-focus-toast" onclick="switchMobileTab('feed'); const el = document.getElementById('day-card-' + (activeDayCard || 1)); if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});">
     <span id="toast-text">Day Route Focused</span> <span style="color: var(--accent-blue); text-decoration: underline;">View Day Card ↗</span>
 </div>
 </div><div id="resizer-gutter" title="Drag left/right to resize map and feed. Double-click to reset 50/50."></div><div class="app-data-pane" id="data-pane"><div class="mobile-day-jumper" id="mobile-day-jumper">
@@ -4485,9 +4486,23 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
 
         // Focus Day Track on Map
         let activeDayCard = null;
+        let mapFocusToastTimer = null;
+        function showMapFocusToast(day) {
+            const toast = document.getElementById('map-focus-toast');
+            const toastText = document.getElementById('toast-text');
+            if (!toast) return;
+            if (toastText) toastText.textContent = `Day ${day} Route Focused`;
+            toast.style.display = 'flex';
+            if (mapFocusToastTimer) clearTimeout(mapFocusToastTimer);
+            mapFocusToastTimer = setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4500);
+        }
+
         function focusDay(day) {
             const poly = trackLayers[day];
             if (!poly) return;
+            activeDayCard = day;
 
             // Highlight polyline
             Object.values(trackLayers).forEach(p => p.setStyle({ weight: 4, opacity: 0.35 }));
@@ -4496,12 +4511,27 @@ const tracksData = [{"day": 1, "name": "Stage 1: Hanmer Home Base to Mirabel (Pe
 
             map.fitBounds(poly.getBounds(), { padding: [40, 40], maxZoom: 9 });
 
+            // On mobile viewports, auto-switch to map view so the user actually sees the focused track,
+            // trigger Leaflet recalculation, and show the focus toast
+            if (window.innerWidth <= 850) {
+                switchMobileTab('map');
+                setTimeout(() => {
+                    if (window.map) {
+                        map.invalidateSize();
+                        map.fitBounds(poly.getBounds(), { padding: [40, 40], maxZoom: 9 });
+                    }
+                }, 150);
+                showMapFocusToast(day);
+            }
+
             // Highlight card in data feed
             document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
             const card = document.getElementById('day-card-' + day);
             if (card) {
                 card.classList.add('active');
-                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (window.innerWidth > 850) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
             }
 
             const badge = document.getElementById('map-status-badge');
