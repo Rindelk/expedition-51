@@ -833,48 +833,50 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: rgba(2, 132, 199, 0.35);
-            border: 2px solid #0284c7;
+            background: rgba(220, 38, 38, 0.35);
+            border: 2px solid #dc2626;
             animation: bikeRadar 1.8s ease-out infinite;
         }
         .live-bike-pulse.v2s {
-            background: rgba(220, 38, 38, 0.35);
-            border-color: #dc2626;
+            background: rgba(22, 163, 74, 0.38);
+            border-color: #16a34a;
         }
         .live-bike-core {
             position: relative;
             z-index: 2;
-            width: 27px;
-            height: 27px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            background: #0284c7;
-            border: 2.5px solid #ffffff;
+            background: #ffffff;
+            border: 2.5px solid #dc2626;
             box-shadow: 0 2px 8px rgba(0,0,0,0.45);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
         }
         .live-bike-core.v2s {
-            background: #dc2626;
+            background: #16a34a;
+            border: 2.5px solid #ffffff;
         }
         .live-bike-callsign {
             position: absolute;
             bottom: -11px;
             z-index: 3;
-            background: #0284c7;
-            color: #ffffff;
+            background: #ffffff;
+            color: #dc2626;
             font-size: 0.58rem;
             font-weight: 900;
             letter-spacing: 0.4px;
             padding: 1px 5px;
             border-radius: 4px;
-            border: 1.5px solid #ffffff;
+            border: 1.5px solid #dc2626;
             box-shadow: 0 1px 4px rgba(0,0,0,0.4);
             white-space: nowrap;
         }
         .live-bike-callsign.v2s {
-            background: #dc2626;
+            background: #16a34a;
+            color: #ffffff;
+            border: 1.5px solid #ffffff;
         }
         @keyframes bikeRadar {
             0% { transform: scale(0.8); opacity: 1; }
@@ -882,17 +884,24 @@
         }
 
         .lt-rider-pill {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
             padding: 1px 6px;
             border-radius: 4px;
             font-size: 0.64rem;
             font-weight: 900;
-            color: #ffffff;
+            color: #dc2626;
             letter-spacing: 0.4px;
-            background: #0284c7;
+            background: #ffffff;
+            border: 1.5px solid #dc2626;
+            box-shadow: 0 1px 2px rgba(220, 38, 38, 0.18);
         }
         .lt-rider-pill.v2s {
-            background: #dc2626;
+            background: #16a34a;
+            color: #ffffff;
+            border: 1.5px solid #15803d;
+            box-shadow: 0 1px 2px rgba(22, 163, 74, 0.22);
         }
         .lt-riders-grid {
             display: grid;
@@ -902,7 +911,7 @@
         .lt-rider-card {
             background: var(--bg-subtle);
             border: 1px solid var(--border);
-            border-left: 4px solid #0284c7;
+            border-left: 4px solid #dc2626;
             border-radius: 8px;
             padding: 7px 9px;
             cursor: pointer;
@@ -910,7 +919,7 @@
             transition: border-color 0.15s ease, transform 0.15s ease;
         }
         .lt-rider-card.v2s {
-            border-left-color: #dc2626;
+            border-left-color: #16a34a;
         }
         .lt-rider-card:hover {
             transform: translateY(-1px);
@@ -1175,7 +1184,7 @@
 
             <div id="map"></div>
 
-            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: ATAS & V2S) -->
+            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: ATAS White/Red & V2S Green) -->
             <div class="live-tracker-panel" id="live-tracker-panel">
                 <div class="lt-header">
                     <div class="lt-title">
@@ -1183,27 +1192,27 @@
                         <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:4px;">
-                        <button type="button" onclick="centerOnLiveBike('ATAS')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; border-color:#0284c7; color:#0284c7;" title="Center map on ATAS (Africa Twin)">🎯 ATAS</button>
-                        <button type="button" onclick="centerOnLiveBike('V2S')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; border-color:#dc2626; color:#dc2626;" title="Center map on V2S (Ducati)">🎯 V2S</button>
+                        <button type="button" onclick="centerOnLiveBike('ATAS')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900;" title="Center map on ATAS (White &amp; Red Africa Twin)">🎯 ATAS</button>
+                        <button type="button" onclick="centerOnLiveBike('V2S')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#16a34a; border:1.5px solid #15803d; color:#ffffff; font-weight:900;" title="Center map on V2S (Green Ducati V2S)">🎯 V2S</button>
                         <button type="button" onclick="toggleLiveTrackerPanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.95rem; cursor:pointer; padding:2px 4px;">✕</button>
                     </div>
                 </div>
 
                 <div class="lt-body">
-                    <!-- Dual-Rider Live Status Cards (ATAS & V2S) -->
+                    <!-- Dual-Rider Live Status Cards (ATAS White/Red & V2S Green) -->
                     <div class="lt-riders-grid">
-                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('ATAS')" title="Click to center on ATAS (Honda Africa Twin)">
+                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('ATAS')" title="Click to center on ATAS (White &amp; Red Honda Africa Twin)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill">🏍️ ATAS</span>
+                                <span class="lt-rider-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#dc2626"/><path d="M6 14l4-5h5l2 5"/></svg> ATAS</span>
                                 <span id="lt-time-atas" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-atas" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
                             <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">Africa Twin • Day 1</div>
                         </div>
 
-                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('V2S')" title="Click to center on V2S (Ducati Multistrada V2S)">
+                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('V2S')" title="Click to center on V2S (Green Ducati Multistrada V2S)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill v2s">🏍️ V2S</span>
+                                <span class="lt-rider-pill v2s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#ffffff"/><path d="M6 14l4-5h5l2 5"/></svg> V2S</span>
                                 <span id="lt-time-v2s" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-v2s" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
@@ -1269,12 +1278,12 @@
 
                             <!-- Unlocked Rider Broadcast Controls -->
                             <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
-                                <!-- Rider Bike Callsign Selector (ATAS vs V2S) -->
+                                <!-- Rider Bike Callsign Selector (ATAS White/Red vs V2S Green) -->
                                 <div>
                                     <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Your Bike Callsign:</div>
                                     <div style="display:flex; gap:6px;">
-                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('ATAS')" style="flex:1; border-color:#0284c7;">🏍️ ATAS (Africa Twin)</button>
-                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('V2S')" style="flex:1; border-color:#dc2626;">🏍️ V2S (Ducati V2S)</button>
+                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('ATAS')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 ATAS (Africa Twin)</button>
+                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('V2S')" style="flex:1; border:1.5px solid #16a34a;">🟢 V2S (Ducati V2S)</button>
                                     </div>
                                 </div>
 
@@ -1326,8 +1335,8 @@
                     <div class="legend-item"><span class="legend-dot" style="background: #22C55E;"></span> National &amp; Prov. Parks (14)</div>
                     <div class="legend-item"><span class="legend-dot" style="background: #EAB308;"></span> Scenic Sights (12) &amp; Hikes (10)</div>
                     <div class="legend-item"><span class="legend-dot" style="background: #06B6D4;"></span> Ferries &amp; Major Bridges (7)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #0284c7; box-shadow: 0 0 0 2px rgba(2,132,199,0.35);"></span> Live Beacon: <strong>ATAS</strong> (Africa Twin)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #dc2626; box-shadow: 0 0 0 2px rgba(220,38,38,0.35);"></span> Live Beacon: <strong>V2S</strong> (Ducati V2S)</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #ffffff; border: 2.5px solid #dc2626; box-shadow: 0 0 0 2px rgba(220,38,38,0.28);"></span> Live Beacon: <strong>ATAS</strong> (White &amp; Red)</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #16a34a; border: 2px solid #ffffff; box-shadow: 0 0 0 2px rgba(22,163,74,0.35);"></span> Live Beacon: <strong>V2S</strong> (Green)</div>
                     <div class="legend-item" style="margin-top:4px;"><span style="width:16px; border-top:3px dashed #F59E0B; display:inline-block;"></span> Unpaved QC-389 Gravel (197 km)</div>
                 </div>
             </div>
@@ -5314,22 +5323,26 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             });
         })();
 
-        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (ATAS & V2S)
+        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (ATAS White/Red & V2S Green)
         const liveCompletedTrail = L.polyline([], {
-            color: '#10b981',
+            color: '#0284c7',
             weight: 6.5,
             opacity: 0.95
         }).addTo(map);
 
         const liveCheckInLayer = L.layerGroup().addTo(map);
 
+        const ATAS_MOTO_SVG = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#ffffff"/><circle cx="18.5" cy="17.5" r="3.5" fill="#ffffff"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#dc2626"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
+        const V2S_MOTO_SVG  = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#15803d"/><circle cx="18.5" cy="17.5" r="3.5" fill="#15803d"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#ffffff"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
+
         function createLiveBikeIcon(callsign, isCoLocated) {
             const isV2S = callsign === 'V2S';
             const coClass = isCoLocated ? (isV2S ? 'co-located-v2s' : 'co-located-atas') : '';
             const v2sClass = isV2S ? 'v2s' : '';
+            const svgIcon = isV2S ? V2S_MOTO_SVG : ATAS_MOTO_SVG;
             return L.divIcon({
                 className: '',
-                html: `<div class="live-bike-marker-wrap ${coClass}"><div class="live-bike-pulse ${v2sClass}"></div><div class="live-bike-core ${v2sClass}">🏍️</div><div class="live-bike-callsign ${v2sClass}">${callsign}</div></div>`,
+                html: `<div class="live-bike-marker-wrap ${coClass}"><div class="live-bike-pulse ${v2sClass}"></div><div class="live-bike-core ${v2sClass}">${svgIcon}</div><div class="live-bike-callsign ${v2sClass}">${callsign}</div></div>`,
                 iconSize: [38, 44],
                 iconAnchor: [19, 19],
                 popupAnchor: isCoLocated ? (isV2S ? [17, -18] : [-17, -18]) : [0, -18]
@@ -5349,15 +5362,15 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         const RIDER_META = {
             ATAS: {
                 callsign: 'ATAS',
-                model: '2022 Honda Africa Twin Adv Sports ES',
+                model: '2022 Honda Africa Twin Adv Sports ES (White & Red)',
                 shortModel: 'Africa Twin',
-                color: '#0284c7'
+                color: '#dc2626'
             },
             V2S: {
                 callsign: 'V2S',
-                model: '2026 Ducati Multistrada V2S',
+                model: '2026 Ducati Multistrada V2S (Green)',
                 shortModel: 'Ducati V2S',
-                color: '#dc2626'
+                color: '#16a34a'
             }
         };
 
@@ -5376,14 +5389,19 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const btnAtas = document.getElementById('btn-rider-atas');
             const btnV2s  = document.getElementById('btn-rider-v2s');
             if (btnAtas) {
-                btnAtas.classList.toggle('active', selectedRiderCallsign === 'ATAS');
-                btnAtas.style.background = selectedRiderCallsign === 'ATAS' ? '#0284c7' : 'var(--bg-card)';
-                btnAtas.style.color = selectedRiderCallsign === 'ATAS' ? '#ffffff' : 'var(--text-main)';
+                const isAtas = selectedRiderCallsign === 'ATAS';
+                btnAtas.classList.toggle('active', isAtas);
+                btnAtas.style.background = isAtas ? '#ffffff' : 'var(--bg-card)';
+                btnAtas.style.color = isAtas ? '#dc2626' : 'var(--text-main)';
+                btnAtas.style.borderColor = '#dc2626';
+                btnAtas.style.boxShadow = isAtas ? 'inset 0 0 0 1.5px #dc2626' : 'none';
             }
             if (btnV2s) {
-                btnV2s.classList.toggle('active', selectedRiderCallsign === 'V2S');
-                btnV2s.style.background = selectedRiderCallsign === 'V2S' ? '#dc2626' : 'var(--bg-card)';
-                btnV2s.style.color = selectedRiderCallsign === 'V2S' ? '#ffffff' : 'var(--text-main)';
+                const isV2s = selectedRiderCallsign === 'V2S';
+                btnV2s.classList.toggle('active', isV2s);
+                btnV2s.style.background = isV2s ? '#16a34a' : 'var(--bg-card)';
+                btnV2s.style.color = isV2s ? '#ffffff' : 'var(--text-main)';
+                btnV2s.style.borderColor = '#16a34a';
             }
         }
 
@@ -5552,23 +5570,26 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             });
 
-            // Update Historical Check-In Pins (color-coded by ATAS vs V2S)
+            // Update Historical Check-In Pins (White & Red for ATAS, Green for V2S)
             liveCheckInLayer.clearLayers();
             sorted.slice(0, 18).forEach(item => {
                 const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
-                const pinColor = rCall === 'V2S' ? '#dc2626' : '#0284c7';
+                const isV2S = rCall === 'V2S';
+                const pinFill = isV2S ? '#16a34a' : '#ffffff';
+                const pinStroke = isV2S ? '#ffffff' : '#dc2626';
+                const pinAccent = isV2S ? '#16a34a' : '#dc2626';
                 const cm = L.circleMarker([item.lat, item.lon], {
                     radius: 5.5,
-                    fillColor: pinColor,
-                    color: '#ffffff',
-                    weight: 2,
+                    fillColor: pinFill,
+                    color: pinStroke,
+                    weight: 2.5,
                     opacity: 1,
-                    fillOpacity: 0.9
+                    fillOpacity: 0.95
                 }).addTo(liveCheckInLayer);
                 cm.bindPopup(`
                     <div class="poi-popup-card">
-                        <div class="poi-popup-type" style="color:${pinColor};">✓ ${rCall} CHECK-IN • DAY ${item.day || 1}</div>
-                        <div class="poi-popup-title"><span class="lt-rider-pill ${rCall === 'V2S' ? 'v2s' : ''}" style="margin-right:5px;">${rCall}</span>${item.status}</div>
+                        <div class="poi-popup-type" style="color:${pinAccent};">✓ ${rCall} CHECK-IN • DAY ${item.day || 1}</div>
+                        <div class="poi-popup-title"><span class="lt-rider-pill ${isV2S ? 'v2s' : ''}" style="margin-right:5px;">${rCall}</span>${item.status}</div>
                         <div class="poi-popup-desc">${item.note || ''}</div>
                         <div style="font-size:0.72rem; color:var(--text-muted);">🕒 ${new Date(item.ts).toLocaleString('en-CA')}</div>
                     </div>
