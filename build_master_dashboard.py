@@ -1326,6 +1326,181 @@ html_template = f"""<!DOCTYPE html>
             text-decoration: none;
         }}
 
+        /* Family & Friends Cloud Live Tracker HUD & Pulsing Bike Marker */
+        .live-dot {{
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+            background: var(--accent-green);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: livePulse 2s infinite;
+        }}
+        .live-dot.standby {{
+            background: var(--accent-orange);
+            animation: none;
+        }}
+        @keyframes livePulse {{
+            0% {{ box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }}
+            70% {{ box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }}
+            100% {{ box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }}
+        }}
+
+        .live-bike-marker-wrap {{
+            position: relative;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        .live-bike-pulse {{
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.35);
+            border: 2px solid #10b981;
+            animation: bikeRadar 1.8s ease-out infinite;
+        }}
+        .live-bike-core {{
+            position: relative;
+            z-index: 2;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #059669;
+            border: 2.5px solid #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }}
+        @keyframes bikeRadar {{
+            0% {{ transform: scale(0.8); opacity: 1; }}
+            100% {{ transform: scale(2.1); opacity: 0; }}
+        }}
+
+        .live-tracker-panel {{
+            position: absolute;
+            bottom: 20px;
+            right: 14px;
+            z-index: 920;
+            width: 365px;
+            max-width: calc(100vw - 28px);
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            color: var(--text-main);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }}
+        .live-tracker-panel.open {{
+            display: flex;
+        }}
+        .lt-header {{
+            padding: 10px 14px;
+            background: var(--bg-subtle);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }}
+        .lt-title {{
+            font-size: 0.84rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--text-main);
+        }}
+        .lt-body {{
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 68vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }}
+        .lt-status-box {{
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 9px 11px;
+        }}
+        .lt-metrics-grid {{
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 7px;
+        }}
+        .lt-metric-card {{
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 7px 9px;
+            min-width: 0;
+            overflow: hidden;
+        }}
+        .lt-metric-label {{
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 0.4px;
+        }}
+        .lt-metric-val {{
+            font-size: 0.80rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }}
+        .lt-feed-list {{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 135px;
+            overflow-y: auto;
+            padding-right: 2px;
+        }}
+        .lt-feed-item {{
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 7px 9px;
+            font-size: 0.74rem;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }}
+        .lt-feed-item:hover {{
+            border-color: var(--accent-blue);
+        }}
+        .lt-chip-btn {{
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 5px 8px;
+            border-radius: 6px;
+            font-size: 0.71rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }}
+        .lt-chip-btn:hover, .lt-chip-btn.active {{
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+        }}
+
         /* Native Mobile Bottom Navigation Bar */
         .mobile-bottom-nav {{
             display: none;
@@ -1412,6 +1587,12 @@ html_template = f"""<!DOCTYPE html>
             .mobile-bottom-nav {{
                 display: flex;
             }}
+            .live-tracker-panel {{
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                width: auto;
+            }}
         }}
     </style>
 </head>
@@ -1427,6 +1608,10 @@ html_template = f"""<!DOCTYPE html>
             <div class="badge badge-green hide-mobile">🏕️ 7 Camp • 9 Hotel/Cabin • 1 Ferry</div>
             <div class="badge badge-orange hide-mobile">⛽ 91 Octane + Lucas MMT Protocol</div>
             <div class="badge badge-red hide-mobile">📍 203 Curated POIs</div>
+            <button type="button" class="theme-toggle-btn" id="live-tracker-btn" onclick="toggleLiveTrackerPanel()" style="border-color: var(--accent-green); color: var(--accent-green);">
+                <span class="live-dot" id="live-tracker-dot"></span>
+                <span>📡 Live Tracker</span>
+            </button>
             <button type="button" class="theme-toggle-btn" id="notes-btn" onclick="openNotesModal()">
                 <span>📝</span> <span>Trip Notes</span>
             </button>
@@ -1455,6 +1640,123 @@ html_template = f"""<!DOCTYPE html>
             </div>
 
             <div id="map"></div>
+
+            <!-- Family & Friends Cloud Live Tracker Panel -->
+            <div class="live-tracker-panel" id="live-tracker-panel">
+                <div class="lt-header">
+                    <div class="lt-title">
+                        <span class="live-dot" id="lt-panel-dot"></span>
+                        <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <button type="button" onclick="centerOnLiveBike()" class="lt-chip-btn" style="padding:3px 8px; font-size:0.70rem;" title="Center map on riders">🎯 Center</button>
+                        <button type="button" onclick="toggleLiveTrackerPanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.95rem; cursor:pointer; padding:2px 4px;">✕</button>
+                    </div>
+                </div>
+
+                <div class="lt-body">
+                    <!-- Current Rider Status & Latest Message -->
+                    <div class="lt-status-box" id="lt-status-box">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px;">
+                            <span id="lt-status-badge" style="font-size:0.75rem; font-weight:800; color:var(--accent-green);">🏕️ Checked In • Hanmer Home Base</span>
+                            <span id="lt-updated-time" style="font-size:0.68rem; color:var(--text-muted); font-family:monospace;">Cloud Sync Ready</span>
+                        </div>
+                        <div id="lt-latest-note" style="font-size:0.78rem; color:var(--text-card); line-height:1.36;">
+                            Bikes prepped at 4671 Dupuis Dr, Hanmer, ON. Live GPS &amp; check-ins broadcast here across all 18 stages!
+                        </div>
+                    </div>
+
+                    <!-- Loop Progress Bar -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.71rem; font-weight:800; margin-bottom:4px;">
+                            <span style="color:var(--text-muted);">EXPEDITION LOOP PROGRESS</span>
+                            <span id="lt-progress-text" style="color:var(--accent-blue);">0.0 / 8,243.4 km (0.0%)</span>
+                        </div>
+                        <div style="width:100%; height:7px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:99px; overflow:hidden;">
+                            <div id="lt-progress-fill" style="width:1%; height:100%; background:linear-gradient(90deg, var(--accent-blue), var(--accent-green)); transition:width 0.35s ease;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 4-Metric Telemetry Summary (Pure Metric) -->
+                    <div class="lt-metrics-grid">
+                        <div class="lt-metric-card">
+                            <div class="lt-metric-label">📅 Active Stage</div>
+                            <div class="lt-metric-val" id="lt-metric-stage">Day 1: Hanmer → Mirabel</div>
+                        </div>
+                        <div class="lt-metric-card">
+                            <div class="lt-metric-label">🏕️ To Night's Lodging</div>
+                            <div class="lt-metric-val" id="lt-metric-hotel">648.7 km to Mirabel</div>
+                        </div>
+                        <div class="lt-metric-card">
+                            <div class="lt-metric-label">⛽ Next Fuel Ahead</div>
+                            <div class="lt-metric-val" id="lt-metric-fuel">Sturgeon Falls (91 AKI)</div>
+                        </div>
+                        <div class="lt-metric-card">
+                            <div class="lt-metric-label">🏍️ Telemetry</div>
+                            <div class="lt-metric-val" id="lt-metric-speed">0 km/h • GPS Standby</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Check-Ins & Breadcrumb Feed -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins</span>
+                            <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh Feed</button>
+                        </div>
+                        <div class="lt-feed-list" id="lt-feed-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- PIN-Protected Rider Broadcast & Check-In Drawer -->
+                    <div style="border-top:1px solid var(--border); padding-top:8px;">
+                        <button type="button" onclick="toggleRiderBroadcastDrawer()" style="width:100%; background:var(--bg-subtle); border:1px solid var(--border); color:var(--text-muted); padding:6px 10px; border-radius:6px; font-size:0.72rem; font-weight:800; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                            <span>🔐 Rider Check-In &amp; Phone GPS Broadcast</span>
+                            <span id="lt-rider-chevron">▸</span>
+                        </button>
+
+                        <div id="lt-rider-drawer" style="display:none; margin-top:8px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; padding:10px;">
+                            <!-- PIN Lock Screen -->
+                            <div id="lt-pin-gate" style="display:flex; gap:6px; align-items:center;">
+                                <input type="password" id="lt-pin-input" placeholder="Rider PIN (2027)" style="flex:1; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 9px; font-size:0.76rem;" />
+                                <button type="button" onclick="unlockRiderControls()" class="dl-btn" style="padding:6px 12px; font-size:0.74rem;">Unlock</button>
+                            </div>
+
+                            <!-- Unlocked Rider Broadcast Controls -->
+                            <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+                                    <button type="button" id="btn-auto-gps" onclick="toggleAutoGpsBroadcast()" class="lt-chip-btn" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">
+                                        📡 Start Live Phone GPS
+                                    </button>
+                                    <span id="lt-queue-badge" onclick="flushOfflineTrackerQueue()" style="font-size:0.68rem; font-weight:700; color:var(--text-muted); cursor:pointer;" title="Tap to force sync">✓ 0 queued</span>
+                                </div>
+
+                                <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">1-Tap Quick Status:</div>
+                                <div style="display:flex; flex-wrap:wrap; gap:5px;" id="lt-status-chips">
+                                    <button type="button" class="lt-chip-btn active" onclick="selectCheckInStatus('🏍️ In Saddle', 'Riding on stage — all good!', this)">🏍️ Rolling</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛽ Fuel Stop', 'Fueled up main tanks & 5L reserve bladder.', this)">⛽ Fueled Up</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('🍽️ Meal Stop', 'Stopped for a 30m meal & coffee break.', this)">🍽️ Meal Stop</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛴️ On Ferry', 'Bikes strapped down safely on ferry deck!', this)">⛴️ On Ferry</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('🏕️ Checked In', 'Arrived safely at tonight\\'s lodging!', this)">🏕️ Safe at Camp/Hotel</button>
+                                </div>
+
+                                <div>
+                                    <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); margin-bottom:3px;">LOCATION SOURCE (PHONE GPS OR WAYPOINT):</div>
+                                    <select id="lt-location-select" style="width:100%; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:5px 8px; font-size:0.74rem;">
+                                        <option value="gps">📍 Use My Phone's Live GPS Hardware</option>
+                                    </select>
+                                </div>
+
+                                <div style="display:flex; gap:6px;">
+                                    <input type="text" id="lt-note-input" placeholder="Optional check-in note for family..." style="flex:1; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 9px; font-size:0.75rem;" />
+                                    <button type="button" onclick="postRiderCheckIn()" class="dl-btn" style="padding:6px 11px; font-size:0.74rem; white-space:nowrap; background:var(--accent-green);">📍 Post Live</button>
+                                </div>
+                                <div id="lt-broadcast-feedback" style="font-size:0.70rem; color:var(--accent-green); min-height:14px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="map-legend">
                 <div class="legend-header" onclick="toggleLegend()">
@@ -2234,6 +2536,643 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             a.click();
             URL.revokeObjectURL(url);
         }}
+
+        // =========================================================================
+        // FAMILY & FRIENDS CLOUD LIVE TRACKER ENGINE (Cloud Feed + Rider Broadcast)
+        // =========================================================================
+        const LIVE_CLOUD_TOPIC = 'exp51_live_cloud_feed_2027_prod';
+        const LIVE_HISTORY_KEY = 'exp51_live_feed_history_v1';
+        const LIVE_QUEUE_KEY   = 'exp51_live_offline_queue_v1';
+        const RIDER_PIN_CODE   = '2027';
+        const TOTAL_EXP_KM     = 8243.4;
+
+        function haversineKm(lat1, lon1, lat2, lon2) {{
+            const R = 6371.0;
+            const dLat = (lat2 - lat1) * Math.PI / 180.0;
+            const dLon = (lon2 - lon1) * Math.PI / 180.0;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180.0) * Math.cos(lat2 * Math.PI / 180.0) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }}
+
+        // Build Route Spine across all 18 road-snapped stages for instant km snapping
+        const routeSpine = [];
+        const stageCumBounds = {{}};
+        (function buildRouteSpine() {{
+            let cumKm = 0.0;
+            tracksData.forEach(trk => {{
+                const startKm = cumKm;
+                const pts = trk.coords || [];
+                let rawLen = 0.0;
+                for (let i = 1; i < pts.length; i++) {{
+                    rawLen += haversineKm(pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]);
+                }}
+                const targetLen = Number(trk.dist_km) || rawLen || 1.0;
+                const scale = rawLen > 0 ? (targetLen / rawLen) : 1.0;
+                const cleanStageName = (trk.name || '').replace(/^Stage\\s+\\d+:\\s*/i, '');
+
+                let stageCum = 0.0;
+                for (let i = 0; i < pts.length; i++) {{
+                    if (i > 0) {{
+                        const seg = haversineKm(pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]) * scale;
+                        stageCum += seg;
+                        cumKm += seg;
+                    }}
+                    routeSpine.push({{
+                        lat: pts[i][0],
+                        lon: pts[i][1],
+                        day: trk.day,
+                        stageName: cleanStageName,
+                        stageDistKm: targetLen,
+                        stageCumKm: stageCum,
+                        cumKm: cumKm
+                    }});
+                }}
+                stageCumBounds[trk.day] = {{ startKm, endKm: cumKm, distKm: targetLen, name: cleanStageName }};
+            }});
+        }})();
+
+        // Project Fuel POIs onto the route spine for exact "Next Fuel Ahead" calculation
+        const fuelSpineList = poisData.filter(p => p.type === 'fuel').map(fp => {{
+            const dayNum = parseInt((fp.day || 'Day 1').replace('Day ', '')) || 1;
+            let bestIdx = 0;
+            let bestDist = Infinity;
+            for (let i = 0; i < routeSpine.length; i++) {{
+                if (routeSpine[i].day !== dayNum) continue;
+                const d = haversineKm(fp.lat, fp.lon, routeSpine[i].lat, routeSpine[i].lon);
+                if (d < bestDist) {{
+                    bestDist = d;
+                    bestIdx = i;
+                }}
+            }}
+            return {{
+                name: fp.name,
+                day: dayNum,
+                octane: fp.octane || 'YES',
+                cumKm: routeSpine[bestIdx] ? routeSpine[bestIdx].cumKm : 0
+            }};
+        }}).sort((a, b) => a.cumKm - b.cumKm);
+
+        function snapToRoute(lat, lon, preferredDay) {{
+            if (!routeSpine.length) return null;
+            let bestIdx = 0;
+            let bestDist = Infinity;
+            for (let i = 0; i < routeSpine.length; i++) {{
+                if (preferredDay && routeSpine[i].day !== preferredDay) continue;
+                const d = haversineKm(lat, lon, routeSpine[i].lat, routeSpine[i].lon);
+                if (d < bestDist) {{
+                    bestDist = d;
+                    bestIdx = i;
+                }}
+            }}
+            // Fallback across all days if preferredDay was not matched
+            if (bestDist === Infinity) {{
+                for (let i = 0; i < routeSpine.length; i++) {{
+                    const d = haversineKm(lat, lon, routeSpine[i].lat, routeSpine[i].lon);
+                    if (d < bestDist) {{
+                        bestDist = d;
+                        bestIdx = i;
+                    }}
+                }}
+            }}
+            const pt = routeSpine[bestIdx];
+            const cumKm = Math.min(TOTAL_EXP_KM, pt.cumKm);
+            const pct = Math.min(100, (cumKm / TOTAL_EXP_KM) * 100);
+            const stageRemKm = Math.max(0, pt.stageDistKm - pt.stageCumKm);
+
+            const dayHotels = poisData.filter(p => p.type === 'hotel-primary' && p.day === `Day ${{pt.day}}`);
+            const priHotel = dayHotels.length ? dayHotels[dayHotels.length - 1] : null;
+            const hotelShort = priHotel ? priHotel.name.split('(')[0].trim() : `Stage ${{pt.day}} Camp/Hotel`;
+
+            const nextFuel = fuelSpineList.find(f => f.cumKm > cumKm + 2.0) || fuelSpineList[fuelSpineList.length - 1];
+            const nextFuelKm = nextFuel ? Math.max(0, nextFuel.cumKm - cumKm) : 0;
+
+            const completedCoords = [];
+            for (let i = 0; i <= bestIdx; i += 2) {{
+                completedCoords.push([routeSpine[i].lat, routeSpine[i].lon]);
+            }}
+            completedCoords.push([pt.lat, pt.lon]);
+
+            return {{
+                lat: pt.lat,
+                lon: pt.lon,
+                day: pt.day,
+                stageName: pt.stageName,
+                cumKm: cumKm,
+                pct: pct,
+                stageRemKm: stageRemKm,
+                hotelShort: hotelShort,
+                nextFuelName: nextFuel ? nextFuel.name.split('(')[0].trim() : 'Hanmer Arrival',
+                nextFuelKm: nextFuelKm,
+                nextFuelOctane: nextFuel ? nextFuel.octane : 'YES',
+                completedCoords: completedCoords
+            }};
+        }}
+
+        // Populate Rider Waypoint Selector for quick check-ins
+        (function populateRiderLocationSelector() {{
+            const sel = document.getElementById('lt-location-select');
+            if (!sel) return;
+            const keyStops = poisData.filter(p => p.type === 'hotel-primary' || p.type === 'ferry' || p.type === 'attraction');
+            keyStops.forEach((p, idx) => {{
+                const opt = document.createElement('option');
+                opt.value = `${{p.lat}},${{p.lon}},${{(p.day || 'Day 1').replace('Day ', '')}},${{p.name.replace(/"/g, '')}}`;
+                opt.textContent = `${{p.day}}: ${{p.name}}`;
+                sel.appendChild(opt);
+            }});
+        }})();
+
+        // Completed Trail Polyline & Pulsing Live Bike Marker on Map
+        const liveCompletedTrail = L.polyline([], {{
+            color: '#10b981',
+            weight: 6.5,
+            opacity: 0.95
+        }}).addTo(map);
+
+        const liveCheckInLayer = L.layerGroup().addTo(map);
+
+        const liveBikeIcon = L.divIcon({{
+            className: '',
+            html: `<div class="live-bike-marker-wrap"><div class="live-bike-pulse"></div><div class="live-bike-core">🏍️</div></div>`,
+            iconSize: [38, 38],
+            iconAnchor: [19, 19],
+            popupAnchor: [0, -18]
+        }});
+
+        const liveBikeMarker = L.marker([46.656232, -80.882479], {{
+            icon: liveBikeIcon,
+            zIndexOffset: 2500
+        }}).addTo(map);
+
+        let latestLivePacket = null;
+        let selectedStatusLabel = '🏍️ In Saddle';
+        let selectedDefaultNote = 'Riding on stage — all good!';
+        let liveGpsWatchId = null;
+        let lastAutoBroadcastMs = 0;
+
+        function getStoredFeedHistory() {{
+            try {{
+                const raw = localStorage.getItem(LIVE_HISTORY_KEY);
+                if (raw) {{
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                }}
+            }} catch (e) {{}}
+            return [{{
+                id: 'init-hanmer-start',
+                ts: Date.now() - 3600000,
+                lat: 46.656232,
+                lon: -80.882479,
+                day: 1,
+                speedKmh: 0,
+                altM: 295,
+                status: '🏕️ Checked In • Hanmer Start',
+                note: 'Expedition 51 staging at Hanmer Home Base (4671 Dupuis Dr). Bikes prepped & ready for launch!'
+            }}];
+        }}
+
+        function saveStoredFeedHistory(list) {{
+            try {{
+                localStorage.setItem(LIVE_HISTORY_KEY, JSON.stringify(list.slice(0, 60)));
+            }} catch (e) {{}}
+        }}
+
+        function getOfflineQueue() {{
+            try {{
+                const raw = localStorage.getItem(LIVE_QUEUE_KEY);
+                return raw ? JSON.parse(raw) : [];
+            }} catch (e) {{
+                return [];
+            }}
+        }}
+
+        function saveOfflineQueue(q) {{
+            try {{
+                localStorage.setItem(LIVE_QUEUE_KEY, JSON.stringify(q));
+            }} catch (e) {{}}
+            updateOfflineQueueBadge();
+        }}
+
+        function updateOfflineQueueBadge() {{
+            const badge = document.getElementById('lt-queue-badge');
+            if (!badge) return;
+            const q = getOfflineQueue();
+            if (q.length === 0) {{
+                badge.textContent = '✓ 0 queued';
+                badge.style.color = 'var(--text-muted)';
+            }} else {{
+                badge.textContent = `⏳ ${{q.length}} queued (Tap to sync)`;
+                badge.style.color = 'var(--accent-orange)';
+            }}
+        }}
+
+        function formatRelativeTime(ts) {{
+            const diffSec = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+            if (diffSec < 45) return 'Just now';
+            if (diffSec < 3600) return `${{Math.floor(diffSec / 60)}}m ago`;
+            if (diffSec < 86400) return `${{Math.floor(diffSec / 3600)}}h ago`;
+            return new Date(ts).toLocaleDateString('en-CA', {{ month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }});
+        }}
+
+        function renderLiveTrackerState(historyList) {{
+            if (!historyList || !historyList.length) return;
+            const sorted = [...historyList].sort((a, b) => b.ts - a.ts);
+            const latest = sorted[0];
+            latestLivePacket = latest;
+
+            const snap = snapToRoute(latest.lat, latest.lon, latest.day) || {{
+                lat: latest.lat,
+                lon: latest.lon,
+                day: latest.day || 1,
+                stageName: 'Hanmer to Mirabel',
+                cumKm: 0,
+                pct: 0,
+                stageRemKm: 648.7,
+                hotelShort: "Motel au P'tit Sapin",
+                nextFuelName: 'Sturgeon Falls',
+                nextFuelKm: 92.0,
+                nextFuelOctane: 'YES',
+                completedCoords: [[46.656232, -80.882479]]
+            }};
+
+            // Update Live Bike Marker & Completed Polyline
+            liveBikeMarker.setLatLng([latest.lat, latest.lon]);
+            liveCompletedTrail.setLatLngs(snap.completedCoords);
+            liveCompletedTrail.bringToFront();
+
+            const popupHtml = `
+                <div class="poi-popup-card">
+                    <div class="poi-popup-type" style="color:var(--accent-green);">📡 LIVE EXPEDITION TRACKER • DAY ${{snap.day}}</div>
+                    <div class="poi-popup-title">${{latest.status}}</div>
+                    <div class="poi-popup-desc" style="margin-top:4px;">${{latest.note || ''}}</div>
+                    <div style="font-size:0.74rem; color:var(--text-muted); background:var(--bg-subtle); padding:6px 8px; border-radius:6px; border:1px solid var(--border); margin-bottom:6px;">
+                        <div><strong>📏 Loop Progress:</strong> ${{snap.cumKm.toFixed(1)}} / 8,243.4 km (${{snap.pct.toFixed(1)}}%)</div>
+                        <div><strong>🏕️ To Tonight's Stop:</strong> ${{snap.stageRemKm.toFixed(1)}} km (${{snap.hotelShort}})</div>
+                        <div><strong>⛽ Next Fuel:</strong> ${{snap.nextFuelName}} in ${{snap.nextFuelKm.toFixed(1)}} km</div>
+                        <div><strong>🕒 Updated:</strong> ${{formatRelativeTime(latest.ts)}} (${{latest.lat.toFixed(4)}}, ${{latest.lon.toFixed(4)}})</div>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${{latest.lat}},${{latest.lon}}" target="_blank" class="poi-popup-link">📍 Open Live Coordinates in Google Maps ↗</a>
+                </div>
+            `;
+            liveBikeMarker.bindPopup(popupHtml, {{
+                maxWidth: 300,
+                autoPanPaddingTopLeft: window.innerWidth > 768 ? [265, 130] : [16, 110],
+                autoPanPaddingBottomRight: [20, 30]
+            }});
+
+            // Update Historical Check-In Pins
+            liveCheckInLayer.clearLayers();
+            sorted.slice(1, 15).forEach(item => {{
+                const cm = L.circleMarker([item.lat, item.lon], {{
+                    radius: 5.5,
+                    fillColor: '#10b981',
+                    color: '#ffffff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.9
+                }}).addTo(liveCheckInLayer);
+                cm.bindPopup(`
+                    <div class="poi-popup-card">
+                        <div class="poi-popup-type" style="color:var(--accent-green);">✓ RIDER CHECK-IN • DAY ${{item.day || 1}}</div>
+                        <div class="poi-popup-title">${{item.status}}</div>
+                        <div class="poi-popup-desc">${{item.note || ''}}</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted);">🕒 ${{new Date(item.ts).toLocaleString('en-CA')}}</div>
+                    </div>
+                `);
+            }});
+
+            // Update Family & Friends HUD Elements
+            const elStatus = document.getElementById('lt-status-badge');
+            const elTime   = document.getElementById('lt-updated-time');
+            const elNote   = document.getElementById('lt-latest-note');
+            const elProgT  = document.getElementById('lt-progress-text');
+            const elProgF  = document.getElementById('lt-progress-fill');
+            const elStage  = document.getElementById('lt-metric-stage');
+            const elHotel  = document.getElementById('lt-metric-hotel');
+            const elFuel   = document.getElementById('lt-metric-fuel');
+            const elSpeed  = document.getElementById('lt-metric-speed');
+
+            if (elStatus) elStatus.textContent = `${{latest.status}} • Day ${{snap.day}}`;
+            if (elTime)   elTime.textContent   = formatRelativeTime(latest.ts);
+            if (elNote)   elNote.textContent   = latest.note || '';
+            if (elProgT)  elProgT.textContent  = `${{snap.cumKm.toFixed(1)}} / 8,243.4 km (${{snap.pct.toFixed(1)}}%)`;
+            if (elProgF)  elProgF.style.width  = `${{Math.max(1.5, snap.pct)}}%`;
+            if (elStage)  elStage.textContent  = `Day ${{snap.day}}: ${{snap.stageName}}`;
+            if (elHotel)  elHotel.textContent  = `${{snap.stageRemKm.toFixed(1)}} km to ${{snap.hotelShort}}`;
+            if (elFuel) {{
+                const octLabel = snap.nextFuelOctane === 'NO' ? '87 Only' : '91 AKI';
+                elFuel.textContent = `+${{snap.nextFuelKm.toFixed(0)}} km • ${{snap.nextFuelName}} (${{octLabel}})`;
+            }}
+            if (elSpeed) {{
+                const spd = Number(latest.speedKmh) || 0;
+                const alt = Number(latest.altM) || 0;
+                elSpeed.textContent = `${{spd}} km/h • ${{alt}} m elev`;
+            }}
+
+            // Populate Check-In Feed List
+            const feedEl = document.getElementById('lt-feed-list');
+            if (feedEl) {{
+                feedEl.innerHTML = sorted.slice(0, 12).map((item, idx) => `
+                    <div class="lt-feed-item" onclick="focusCheckInItem(${{item.lat}}, ${{item.lon}}, ${{idx === 0}})">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                            <span style="font-weight:800; color:var(--text-main);">${{item.status}} <span style="color:var(--accent-blue); font-weight:700;">(Day ${{item.day || 1}})</span></span>
+                            <span style="font-size:0.66rem; color:var(--text-muted); font-family:monospace;">${{formatRelativeTime(item.ts)}}</span>
+                        </div>
+                        <div style="color:var(--text-card); line-height:1.32;">${{item.note || ''}}</div>
+                    </div>
+                `).join('');
+            }}
+        }}
+
+        function focusCheckInItem(lat, lon, isLatest) {{
+            map.setView([lat + 0.04, lon], 10, {{ animate: true }});
+            if (isLatest) {{
+                liveBikeMarker.openPopup();
+            }}
+        }}
+
+        function centerOnLiveBike() {{
+            if (!latestLivePacket) return;
+            map.setView([latestLivePacket.lat + 0.04, latestLivePacket.lon], 9, {{ animate: true }});
+            liveBikeMarker.openPopup();
+        }}
+
+        function toggleLiveTrackerPanel() {{
+            const panel = document.getElementById('live-tracker-panel');
+            if (!panel) return;
+            panel.classList.toggle('open');
+        }}
+
+        function toggleRiderBroadcastDrawer() {{
+            const drawer = document.getElementById('lt-rider-drawer');
+            const chev = document.getElementById('lt-rider-chevron');
+            if (!drawer) return;
+            const isHidden = drawer.style.display === 'none';
+            drawer.style.display = isHidden ? 'block' : 'none';
+            if (chev) chev.textContent = isHidden ? '▾' : '▸';
+        }}
+
+        function unlockRiderControls() {{
+            const pinIn = document.getElementById('lt-pin-input');
+            const gate = document.getElementById('lt-pin-gate');
+            const ctrls = document.getElementById('lt-rider-controls');
+            const fb = document.getElementById('lt-broadcast-feedback');
+            if (!pinIn) return;
+            if (pinIn.value.trim() === RIDER_PIN_CODE) {{
+                gate.style.display = 'none';
+                ctrls.style.display = 'flex';
+                localStorage.setItem('exp51_rider_unlocked', 'true');
+            }} else {{
+                pinIn.style.borderColor = 'var(--accent-red)';
+                if (fb) fb.textContent = '⚠️ Invalid Rider PIN (Default: 2027)';
+            }}
+        }}
+
+        if (localStorage.getItem('exp51_rider_unlocked') === 'true') {{
+            const gate = document.getElementById('lt-pin-gate');
+            const ctrls = document.getElementById('lt-rider-controls');
+            if (gate && ctrls) {{
+                gate.style.display = 'none';
+                ctrls.style.display = 'flex';
+            }}
+        }}
+
+        function selectCheckInStatus(statusLabel, defaultNote, btnEl) {{
+            selectedStatusLabel = statusLabel;
+            selectedDefaultNote = defaultNote;
+            document.querySelectorAll('#lt-status-chips .lt-chip-btn').forEach(b => b.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+        }}
+
+        async function publishPacketToCloud(pkt) {{
+            // Save immediately to local history and update UI
+            const hist = getStoredFeedHistory();
+            if (!hist.some(x => x.id === pkt.id)) {{
+                hist.unshift(pkt);
+                saveStoredFeedHistory(hist);
+                renderLiveTrackerState(hist);
+            }}
+
+            try {{
+                const res = await fetch(`https://ntfy.sh/${{LIVE_CLOUD_TOPIC}}`, {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'text/plain;charset=utf-8' }},
+                    body: JSON.stringify(pkt)
+                }});
+                if (!res.ok) throw new Error('Cloud HTTP ' + res.status);
+                return true;
+            }} catch (err) {{
+                const q = getOfflineQueue();
+                if (!q.some(x => x.id === pkt.id)) {{
+                    q.push(pkt);
+                    saveOfflineQueue(q);
+                }}
+                return false;
+            }}
+        }}
+
+        async function flushOfflineTrackerQueue() {{
+            const q = getOfflineQueue();
+            if (!q.length) return;
+            const remaining = [];
+            for (const pkt of q) {{
+                try {{
+                    const res = await fetch(`https://ntfy.sh/${{LIVE_CLOUD_TOPIC}}`, {{
+                        method: 'POST',
+                        headers: {{ 'Content-Type': 'text/plain;charset=utf-8' }},
+                        body: JSON.stringify(pkt)
+                    }});
+                    if (!res.ok) remaining.push(pkt);
+                }} catch (e) {{
+                    remaining.push(pkt);
+                }}
+            }}
+            saveOfflineQueue(remaining);
+        }}
+        window.addEventListener('online', flushOfflineTrackerQueue);
+
+        async function postRiderCheckIn() {{
+            const locSel = document.getElementById('lt-location-select');
+            const noteIn = document.getElementById('lt-note-input');
+            const fb = document.getElementById('lt-broadcast-feedback');
+            const customNote = noteIn && noteIn.value.trim() ? noteIn.value.trim() : selectedDefaultNote;
+
+            const sendWithCoords = async (lat, lon, dayHint, speedKmh, altM) => {{
+                const snap = snapToRoute(lat, lon, dayHint);
+                const pkt = {{
+                    app: 'exp51-live',
+                    sig: RIDER_PIN_CODE,
+                    id: 'chk-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    ts: Date.now(),
+                    lat: Number(lat.toFixed(6)),
+                    lon: Number(lon.toFixed(6)),
+                    day: snap ? snap.day : (dayHint || 1),
+                    speedKmh: speedKmh || 0,
+                    altM: altM || 120,
+                    status: selectedStatusLabel,
+                    note: customNote
+                }};
+                if (fb) fb.textContent = '📡 Broadcasting check-in to Family Feed...';
+                const synced = await publishPacketToCloud(pkt);
+                if (noteIn) noteIn.value = '';
+                if (fb) {{
+                    fb.style.color = synced ? 'var(--accent-green)' : 'var(--accent-orange)';
+                    fb.textContent = synced
+                        ? '✓ Broadcast live to Family & Friends Cloud Feed!'
+                        : '⏳ Saved & queued offline (will auto-sync when cell signal returns)';
+                }}
+                centerOnLiveBike();
+            }};
+
+            if (locSel && locSel.value !== 'gps') {{
+                const parts = locSel.value.split(',');
+                const lat = parseFloat(parts[0]);
+                const lon = parseFloat(parts[1]);
+                const dayHint = parseInt(parts[2]) || 1;
+                await sendWithCoords(lat, lon, dayHint, 0, 145);
+            }} else if (navigator.geolocation) {{
+                if (fb) fb.textContent = '🛰️ Acquiring phone GPS lock...';
+                navigator.geolocation.getCurrentPosition(
+                    pos => {{
+                        const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
+                        const alt = pos.coords.altitude ? Math.round(pos.coords.altitude) : 150;
+                        sendWithCoords(pos.coords.latitude, pos.coords.longitude, null, spd, alt);
+                    }},
+                    err => {{
+                        // Fallback to current latest position if indoor/permission denied
+                        const base = latestLivePacket || {{ lat: 46.656232, lon: -80.882479, day: 1 }};
+                        sendWithCoords(base.lat, base.lon, base.day, 0, 150);
+                    }},
+                    {{ enableHighAccuracy: true, timeout: 6000 }}
+                );
+            }} else {{
+                const base = latestLivePacket || {{ lat: 46.656232, lon: -80.882479, day: 1 }};
+                await sendWithCoords(base.lat, base.lon, base.day, 0, 150);
+            }}
+        }}
+
+        function toggleAutoGpsBroadcast() {{
+            const btn = document.getElementById('btn-auto-gps');
+            const fb = document.getElementById('lt-broadcast-feedback');
+            if (liveGpsWatchId !== null) {{
+                navigator.geolocation.clearWatch(liveGpsWatchId);
+                liveGpsWatchId = null;
+                if (btn) {{
+                    btn.textContent = '📡 Start Live Phone GPS';
+                    btn.classList.remove('active');
+                }}
+                if (fb) fb.textContent = '⏹️ Live Phone GPS auto-broadcast stopped.';
+                return;
+            }}
+            if (!navigator.geolocation) {{
+                if (fb) fb.textContent = '⚠️ Geolocation API not available on this device.';
+                return;
+            }}
+            if (btn) {{
+                btn.textContent = '🟢 Live GPS Broadcasting (Stop)';
+                btn.classList.add('active');
+            }}
+            if (fb) fb.textContent = '🛰️ Watching phone GPS & broadcasting every 5 mins...';
+
+            liveGpsWatchId = navigator.geolocation.watchPosition(
+                pos => {{
+                    const now = Date.now();
+                    const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
+                    const alt = pos.coords.altitude ? Math.round(pos.coords.altitude) : 150;
+                    const snap = snapToRoute(pos.coords.latitude, pos.coords.longitude, null);
+                    // Broadcast immediately on first fix, then every 5 minutes
+                    if (now - lastAutoBroadcastMs >= 300000 || lastAutoBroadcastMs === 0) {{
+                        lastAutoBroadcastMs = now;
+                        const pkt = {{
+                            app: 'exp51-live',
+                            sig: RIDER_PIN_CODE,
+                            id: 'gps-' + now,
+                            ts: now,
+                            lat: Number(pos.coords.latitude.toFixed(6)),
+                            lon: Number(pos.coords.longitude.toFixed(6)),
+                            day: snap ? snap.day : 1,
+                            speedKmh: spd,
+                            altM: alt,
+                            status: spd > 5 ? '🏍️ In Saddle (Live GPS)' : selectedStatusLabel,
+                            note: `Auto GPS telemetry beacon • ${{spd}} km/h`
+                        }};
+                        publishPacketToCloud(pkt);
+                    }}
+                }},
+                err => {{
+                    if (fb) fb.textContent = '⚠️ GPS signal weak — standing by for satellite lock.';
+                }},
+                {{ enableHighAccuracy: true, maximumAge: 15000, timeout: 15000 }}
+            );
+        }}
+
+        async function pollCloudTrackerFeed(showFeedback = false) {{
+            const fb = document.getElementById('lt-updated-time');
+            if (showFeedback && fb) fb.textContent = 'Syncing...';
+            try {{
+                const res = await fetch(`https://ntfy.sh/${{LIVE_CLOUD_TOPIC}}/json?poll=1&since=all`);
+                if (!res.ok) throw new Error('Cloud poll HTTP ' + res.status);
+                const text = await res.text();
+                const lines = text.trim().split('\\n').filter(Boolean);
+                const hist = getStoredFeedHistory();
+                let added = false;
+
+                lines.forEach(line => {{
+                    try {{
+                        const env = JSON.parse(line);
+                        if (env && env.event === 'message' && env.message) {{
+                            const pkt = JSON.parse(env.message);
+                            if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {{
+                                if (!hist.some(x => x.id === pkt.id)) {{
+                                    hist.push(pkt);
+                                    added = true;
+                                }}
+                            }}
+                        }}
+                    }} catch (e) {{}}
+                }});
+
+                if (added || showFeedback) {{
+                    hist.sort((a, b) => b.ts - a.ts);
+                    saveStoredFeedHistory(hist);
+                    renderLiveTrackerState(hist);
+                }}
+            }} catch (e) {{
+                if (showFeedback && fb && latestLivePacket) {{
+                    fb.textContent = formatRelativeTime(latestLivePacket.ts);
+                }}
+            }}
+        }}
+
+        function connectCloudTrackerSSE() {{
+            if (typeof EventSource === 'undefined') return;
+            try {{
+                const es = new EventSource(`https://ntfy.sh/${{LIVE_CLOUD_TOPIC}}/sse`);
+                es.onmessage = (evt) => {{
+                    try {{
+                        const env = JSON.parse(evt.data);
+                        if (env && env.message) {{
+                            const pkt = JSON.parse(env.message);
+                            if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {{
+                                const hist = getStoredFeedHistory();
+                                if (!hist.some(x => x.id === pkt.id)) {{
+                                    hist.unshift(pkt);
+                                    saveStoredFeedHistory(hist);
+                                    renderLiveTrackerState(hist);
+                                }}
+                            }}
+                        }}
+                    }} catch (e) {{}}
+                }};
+            }} catch (e) {{}}
+        }}
+
+        // Initialize Family & Friends Live Tracker on Load
+        renderLiveTrackerState(getStoredFeedHistory());
+        updateOfflineQueueBadge();
+        pollCloudTrackerFeed(false);
+        connectCloudTrackerSSE();
     </script>
 </body>
 </html>
