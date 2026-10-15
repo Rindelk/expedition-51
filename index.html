@@ -820,33 +820,100 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .live-bike-marker-wrap.co-located-atas {
+            transform: translate(-17px, 0);
+        }
+        .live-bike-marker-wrap.co-located-v2s {
+            transform: translate(17px, 0);
         }
         .live-bike-pulse {
             position: absolute;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(16, 185, 129, 0.35);
-            border: 2px solid #10b981;
+            background: rgba(2, 132, 199, 0.35);
+            border: 2px solid #0284c7;
             animation: bikeRadar 1.8s ease-out infinite;
+        }
+        .live-bike-pulse.v2s {
+            background: rgba(220, 38, 38, 0.35);
+            border-color: #dc2626;
         }
         .live-bike-core {
             position: relative;
             z-index: 2;
-            width: 28px;
-            height: 28px;
+            width: 27px;
+            height: 27px;
             border-radius: 50%;
-            background: #059669;
+            background: #0284c7;
             border: 2.5px solid #ffffff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.45);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 14px;
+        }
+        .live-bike-core.v2s {
+            background: #dc2626;
+        }
+        .live-bike-callsign {
+            position: absolute;
+            bottom: -11px;
+            z-index: 3;
+            background: #0284c7;
+            color: #ffffff;
+            font-size: 0.58rem;
+            font-weight: 900;
+            letter-spacing: 0.4px;
+            padding: 1px 5px;
+            border-radius: 4px;
+            border: 1.5px solid #ffffff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+        .live-bike-callsign.v2s {
+            background: #dc2626;
         }
         @keyframes bikeRadar {
             0% { transform: scale(0.8); opacity: 1; }
             100% { transform: scale(2.1); opacity: 0; }
+        }
+
+        .lt-rider-pill {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.64rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.4px;
+            background: #0284c7;
+        }
+        .lt-rider-pill.v2s {
+            background: #dc2626;
+        }
+        .lt-riders-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 7px;
+        }
+        .lt-rider-card {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-left: 4px solid #0284c7;
+            border-radius: 8px;
+            padding: 7px 9px;
+            cursor: pointer;
+            min-width: 0;
+            transition: border-color 0.15s ease, transform 0.15s ease;
+        }
+        .lt-rider-card.v2s {
+            border-left-color: #dc2626;
+        }
+        .lt-rider-card:hover {
+            transform: translateY(-1px);
         }
 
         .live-tracker-panel {
@@ -854,7 +921,7 @@
             bottom: 20px;
             right: 14px;
             z-index: 920;
-            width: 365px;
+            width: 375px;
             max-width: calc(100vw - 28px);
             background: var(--bg-panel);
             border: 1px solid var(--border);
@@ -1108,28 +1175,39 @@
 
             <div id="map"></div>
 
-            <!-- Family & Friends Cloud Live Tracker Panel -->
+            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: ATAS & V2S) -->
             <div class="live-tracker-panel" id="live-tracker-panel">
                 <div class="lt-header">
                     <div class="lt-title">
                         <span class="live-dot" id="lt-panel-dot"></span>
                         <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:6px;">
-                        <button type="button" onclick="centerOnLiveBike()" class="lt-chip-btn" style="padding:3px 8px; font-size:0.70rem;" title="Center map on riders">🎯 Center</button>
+                    <div style="display:flex; align-items:center; gap:4px;">
+                        <button type="button" onclick="centerOnLiveBike('ATAS')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; border-color:#0284c7; color:#0284c7;" title="Center map on ATAS (Africa Twin)">🎯 ATAS</button>
+                        <button type="button" onclick="centerOnLiveBike('V2S')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; border-color:#dc2626; color:#dc2626;" title="Center map on V2S (Ducati)">🎯 V2S</button>
                         <button type="button" onclick="toggleLiveTrackerPanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.95rem; cursor:pointer; padding:2px 4px;">✕</button>
                     </div>
                 </div>
 
                 <div class="lt-body">
-                    <!-- Current Rider Status & Latest Message -->
-                    <div class="lt-status-box" id="lt-status-box">
-                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px;">
-                            <span id="lt-status-badge" style="font-size:0.75rem; font-weight:800; color:var(--accent-green);">🏕️ Checked In • Hanmer Home Base</span>
-                            <span id="lt-updated-time" style="font-size:0.68rem; color:var(--text-muted); font-family:monospace;">Cloud Sync Ready</span>
+                    <!-- Dual-Rider Live Status Cards (ATAS & V2S) -->
+                    <div class="lt-riders-grid">
+                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('ATAS')" title="Click to center on ATAS (Honda Africa Twin)">
+                            <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
+                                <span class="lt-rider-pill">🏍️ ATAS</span>
+                                <span id="lt-time-atas" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
+                            </div>
+                            <div id="lt-status-atas" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
+                            <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">Africa Twin • Day 1</div>
                         </div>
-                        <div id="lt-latest-note" style="font-size:0.78rem; color:var(--text-card); line-height:1.36;">
-                            Bikes prepped at 4671 Dupuis Dr, Hanmer, ON. Live GPS &amp; check-ins broadcast here across all 18 stages!
+
+                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('V2S')" title="Click to center on V2S (Ducati Multistrada V2S)">
+                            <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
+                                <span class="lt-rider-pill v2s">🏍️ V2S</span>
+                                <span id="lt-time-v2s" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
+                            </div>
+                            <div id="lt-status-v2s" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
+                            <div id="lt-note-v2s" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">Ducati V2S • Day 1</div>
                         </div>
                     </div>
 
@@ -1159,15 +1237,15 @@
                             <div class="lt-metric-val" id="lt-metric-fuel">Sturgeon Falls (91 AKI)</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">🏍️ Telemetry</div>
-                            <div class="lt-metric-val" id="lt-metric-speed">0 km/h • GPS Standby</div>
+                            <div class="lt-metric-label">🤝 ATAS / V2S Fleet</div>
+                            <div class="lt-metric-val" id="lt-metric-speed">Together (0.0 km apart)</div>
                         </div>
                     </div>
 
                     <!-- Recent Check-Ins & Breadcrumb Feed -->
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins</span>
+                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (ATAS &amp; V2S)</span>
                             <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh Feed</button>
                         </div>
                         <div class="lt-feed-list" id="lt-feed-list">
@@ -1191,6 +1269,15 @@
 
                             <!-- Unlocked Rider Broadcast Controls -->
                             <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
+                                <!-- Rider Bike Callsign Selector (ATAS vs V2S) -->
+                                <div>
+                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Your Bike Callsign:</div>
+                                    <div style="display:flex; gap:6px;">
+                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('ATAS')" style="flex:1; border-color:#0284c7;">🏍️ ATAS (Africa Twin)</button>
+                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('V2S')" style="flex:1; border-color:#dc2626;">🏍️ V2S (Ducati V2S)</button>
+                                    </div>
+                                </div>
+
                                 <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
                                     <button type="button" id="btn-auto-gps" onclick="toggleAutoGpsBroadcast()" class="lt-chip-btn" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">
                                         📡 Start Live Phone GPS
@@ -1198,17 +1285,17 @@
                                     <span id="lt-queue-badge" onclick="flushOfflineTrackerQueue()" style="font-size:0.68rem; font-weight:700; color:var(--text-muted); cursor:pointer;" title="Tap to force sync">✓ 0 queued</span>
                                 </div>
 
-                                <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">1-Tap Quick Status:</div>
+                                <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">2. 1-Tap Quick Status:</div>
                                 <div style="display:flex; flex-wrap:wrap; gap:5px;" id="lt-status-chips">
                                     <button type="button" class="lt-chip-btn active" onclick="selectCheckInStatus('🏍️ In Saddle', 'Riding on stage — all good!', this)">🏍️ Rolling</button>
-                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛽ Fuel Stop', 'Fueled up main tanks & 5L reserve bladder.', this)">⛽ Fueled Up</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛽ Fuel Stop', 'Fueled up main tank & reserve bladder.', this)">⛽ Fueled Up</button>
                                     <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('🍽️ Meal Stop', 'Stopped for a 30m meal & coffee break.', this)">🍽️ Meal Stop</button>
-                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛴️ On Ferry', 'Bikes strapped down safely on ferry deck!', this)">⛴️ On Ferry</button>
+                                    <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛴️ On Ferry', 'Bike strapped down safely on ferry deck!', this)">⛴️ On Ferry</button>
                                     <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('🏕️ Checked In', 'Arrived safely at tonight\'s lodging!', this)">🏕️ Safe at Camp/Hotel</button>
                                 </div>
 
                                 <div>
-                                    <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); margin-bottom:3px;">LOCATION SOURCE (PHONE GPS OR WAYPOINT):</div>
+                                    <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); margin-bottom:3px;">3. LOCATION SOURCE (PHONE GPS OR WAYPOINT):</div>
                                     <select id="lt-location-select" style="width:100%; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:5px 8px; font-size:0.74rem;">
                                         <option value="gps">📍 Use My Phone's Live GPS Hardware</option>
                                     </select>
@@ -1239,6 +1326,8 @@
                     <div class="legend-item"><span class="legend-dot" style="background: #22C55E;"></span> National &amp; Prov. Parks (14)</div>
                     <div class="legend-item"><span class="legend-dot" style="background: #EAB308;"></span> Scenic Sights (12) &amp; Hikes (10)</div>
                     <div class="legend-item"><span class="legend-dot" style="background: #06B6D4;"></span> Ferries &amp; Major Bridges (7)</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #0284c7; box-shadow: 0 0 0 2px rgba(2,132,199,0.35);"></span> Live Beacon: <strong>ATAS</strong> (Africa Twin)</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #dc2626; box-shadow: 0 0 0 2px rgba(220,38,38,0.35);"></span> Live Beacon: <strong>V2S</strong> (Ducati V2S)</div>
                     <div class="legend-item" style="margin-top:4px;"><span style="width:16px; border-top:3px dashed #F59E0B; display:inline-block;"></span> Unpaved QC-389 Gravel (197 km)</div>
                 </div>
             </div>
@@ -5225,7 +5314,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             });
         })();
 
-        // Completed Trail Polyline & Pulsing Live Bike Marker on Map
+        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (ATAS & V2S)
         const liveCompletedTrail = L.polyline([], {
             color: '#10b981',
             weight: 6.5,
@@ -5234,49 +5323,110 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
 
         const liveCheckInLayer = L.layerGroup().addTo(map);
 
-        const liveBikeIcon = L.divIcon({
-            className: '',
-            html: `<div class="live-bike-marker-wrap"><div class="live-bike-pulse"></div><div class="live-bike-core">🏍️</div></div>`,
-            iconSize: [38, 38],
-            iconAnchor: [19, 19],
-            popupAnchor: [0, -18]
-        });
+        function createLiveBikeIcon(callsign, isCoLocated) {
+            const isV2S = callsign === 'V2S';
+            const coClass = isCoLocated ? (isV2S ? 'co-located-v2s' : 'co-located-atas') : '';
+            const v2sClass = isV2S ? 'v2s' : '';
+            return L.divIcon({
+                className: '',
+                html: `<div class="live-bike-marker-wrap ${coClass}"><div class="live-bike-pulse ${v2sClass}"></div><div class="live-bike-core ${v2sClass}">🏍️</div><div class="live-bike-callsign ${v2sClass}">${callsign}</div></div>`,
+                iconSize: [38, 44],
+                iconAnchor: [19, 19],
+                popupAnchor: isCoLocated ? (isV2S ? [17, -18] : [-17, -18]) : [0, -18]
+            });
+        }
 
-        const liveBikeMarker = L.marker([46.656232, -80.882479], {
-            icon: liveBikeIcon,
+        const liveMarkerATAS = L.marker([46.656232, -80.882479], {
+            icon: createLiveBikeIcon('ATAS', true),
+            zIndexOffset: 2510
+        }).addTo(map);
+
+        const liveMarkerV2S = L.marker([46.656232, -80.882479], {
+            icon: createLiveBikeIcon('V2S', true),
             zIndexOffset: 2500
         }).addTo(map);
 
-        let latestLivePacket = null;
+        const RIDER_META = {
+            ATAS: {
+                callsign: 'ATAS',
+                model: '2022 Honda Africa Twin Adv Sports ES',
+                shortModel: 'Africa Twin',
+                color: '#0284c7'
+            },
+            V2S: {
+                callsign: 'V2S',
+                model: '2026 Ducati Multistrada V2S',
+                shortModel: 'Ducati V2S',
+                color: '#dc2626'
+            }
+        };
+
+        let latestATASPacket = null;
+        let latestV2SPacket = null;
+        let latestLeadPacket = null;
+        let selectedRiderCallsign = localStorage.getItem('exp51_rider_callsign') === 'V2S' ? 'V2S' : 'ATAS';
         let selectedStatusLabel = '🏍️ In Saddle';
         let selectedDefaultNote = 'Riding on stage — all good!';
         let liveGpsWatchId = null;
         let lastAutoBroadcastMs = 0;
 
+        function selectRiderCallsign(callsign) {
+            selectedRiderCallsign = callsign === 'V2S' ? 'V2S' : 'ATAS';
+            localStorage.setItem('exp51_rider_callsign', selectedRiderCallsign);
+            const btnAtas = document.getElementById('btn-rider-atas');
+            const btnV2s  = document.getElementById('btn-rider-v2s');
+            if (btnAtas) {
+                btnAtas.classList.toggle('active', selectedRiderCallsign === 'ATAS');
+                btnAtas.style.background = selectedRiderCallsign === 'ATAS' ? '#0284c7' : 'var(--bg-card)';
+                btnAtas.style.color = selectedRiderCallsign === 'ATAS' ? '#ffffff' : 'var(--text-main)';
+            }
+            if (btnV2s) {
+                btnV2s.classList.toggle('active', selectedRiderCallsign === 'V2S');
+                btnV2s.style.background = selectedRiderCallsign === 'V2S' ? '#dc2626' : 'var(--bg-card)';
+                btnV2s.style.color = selectedRiderCallsign === 'V2S' ? '#ffffff' : 'var(--text-main)';
+            }
+        }
+
         function getStoredFeedHistory() {
             try {
-                const raw = localStorage.getItem(LIVE_HISTORY_KEY);
+                const raw = localStorage.getItem(LIVE_HISTORY_KEY + '_v2');
                 if (raw) {
                     const parsed = JSON.parse(raw);
                     if (Array.isArray(parsed) && parsed.length > 0) return parsed;
                 }
             } catch (e) {}
-            return [{
-                id: 'init-hanmer-start',
-                ts: Date.now() - 3600000,
-                lat: 46.656232,
-                lon: -80.882479,
-                day: 1,
-                speedKmh: 0,
-                altM: 295,
-                status: '🏕️ Checked In • Hanmer Start',
-                note: 'Expedition 51 staging at Hanmer Home Base (4671 Dupuis Dr). Bikes prepped & ready for launch!'
-            }];
+            const now = Date.now();
+            return [
+                {
+                    id: 'init-hanmer-atas',
+                    rider: 'ATAS',
+                    ts: now - 3500000,
+                    lat: 46.656232,
+                    lon: -80.882479,
+                    day: 1,
+                    speedKmh: 0,
+                    altM: 295,
+                    status: '🏕️ Checked In • Hanmer Start',
+                    note: 'ATAS (2022 Honda Africa Twin ES) prepped at Hanmer Home Base (4671 Dupuis Dr) — 24.8L tank & panniers loaded!'
+                },
+                {
+                    id: 'init-hanmer-v2s',
+                    rider: 'V2S',
+                    ts: now - 3550000,
+                    lat: 46.656232,
+                    lon: -80.882479,
+                    day: 1,
+                    speedKmh: 0,
+                    altM: 295,
+                    status: '🏕️ Checked In • Hanmer Start',
+                    note: 'V2S (2026 Ducati Multistrada V2S) prepped at Hanmer Home Base — 5L auxiliary bladder & Lucas MMT packed!'
+                }
+            ];
         }
 
         function saveStoredFeedHistory(list) {
             try {
-                localStorage.setItem(LIVE_HISTORY_KEY, JSON.stringify(list.slice(0, 60)));
+                localStorage.setItem(LIVE_HISTORY_KEY + '_v2', JSON.stringify(list.slice(0, 80)));
             } catch (e) {}
         }
 
@@ -5317,58 +5467,99 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             return new Date(ts).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         }
 
-        function renderLiveTrackerState(historyList) {
-            if (!historyList || !historyList.length) return;
-            const sorted = [...historyList].sort((a, b) => b.ts - a.ts);
-            const latest = sorted[0];
-            latestLivePacket = latest;
-
-            const snap = snapToRoute(latest.lat, latest.lon, latest.day) || {
-                lat: latest.lat,
-                lon: latest.lon,
-                day: latest.day || 1,
-                stageName: 'Hanmer to Mirabel',
-                cumKm: 0,
-                pct: 0,
-                stageRemKm: 648.7,
-                hotelShort: "Motel au P'tit Sapin",
-                nextFuelName: 'Sturgeon Falls',
-                nextFuelKm: 92.0,
-                nextFuelOctane: 'YES',
-                completedCoords: [[46.656232, -80.882479]]
-            };
-
-            // Update Live Bike Marker & Completed Polyline
-            liveBikeMarker.setLatLng([latest.lat, latest.lon]);
-            liveCompletedTrail.setLatLngs(snap.completedCoords);
-            liveCompletedTrail.bringToFront();
-
-            const popupHtml = `
+        function buildBikePopupHtml(callsign, pkt, snap, separationKm) {
+            const meta = RIDER_META[callsign] || RIDER_META.ATAS;
+            const sepText = separationKm < 0.5
+                ? '🤝 Riding Together with ' + (callsign === 'ATAS' ? 'V2S' : 'ATAS')
+                : `📏 ${separationKm.toFixed(1)} km from ${callsign === 'ATAS' ? 'V2S' : 'ATAS'}`;
+            return `
                 <div class="poi-popup-card">
-                    <div class="poi-popup-type" style="color:var(--accent-green);">📡 LIVE EXPEDITION TRACKER • DAY ${snap.day}</div>
-                    <div class="poi-popup-title">${latest.status}</div>
-                    <div class="poi-popup-desc" style="margin-top:4px;">${latest.note || ''}</div>
+                    <div class="poi-popup-type" style="color:${meta.color};">📡 ${meta.callsign} LIVE TRACKER • DAY ${snap.day}</div>
+                    <div class="poi-popup-title"><span class="lt-rider-pill ${callsign === 'V2S' ? 'v2s' : ''}" style="margin-right:5px; vertical-align:middle;">${callsign}</span>${pkt.status}</div>
+                    <div style="font-size:0.71rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">🏍️ ${meta.model}</div>
+                    <div class="poi-popup-desc" style="margin-top:2px;">${pkt.note || ''}</div>
                     <div style="font-size:0.74rem; color:var(--text-muted); background:var(--bg-subtle); padding:6px 8px; border-radius:6px; border:1px solid var(--border); margin-bottom:6px;">
                         <div><strong>📏 Loop Progress:</strong> ${snap.cumKm.toFixed(1)} / 8,243.4 km (${snap.pct.toFixed(1)}%)</div>
                         <div><strong>🏕️ To Tonight's Stop:</strong> ${snap.stageRemKm.toFixed(1)} km (${snap.hotelShort})</div>
                         <div><strong>⛽ Next Fuel:</strong> ${snap.nextFuelName} in ${snap.nextFuelKm.toFixed(1)} km</div>
-                        <div><strong>🕒 Updated:</strong> ${formatRelativeTime(latest.ts)} (${latest.lat.toFixed(4)}, ${latest.lon.toFixed(4)})</div>
+                        <div><strong>🏍️ Fleet Status:</strong> ${sepText} • ${Number(pkt.speedKmh) || 0} km/h</div>
+                        <div><strong>🕒 Updated:</strong> ${formatRelativeTime(pkt.ts)} (${pkt.lat.toFixed(4)}, ${pkt.lon.toFixed(4)})</div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=${latest.lat},${latest.lon}" target="_blank" class="poi-popup-link">📍 Open Live Coordinates in Google Maps ↗</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${pkt.lat},${pkt.lon}" target="_blank" class="poi-popup-link">📍 Open ${callsign} Coordinates in Google Maps ↗</a>
                 </div>
             `;
-            liveBikeMarker.bindPopup(popupHtml, {
-                maxWidth: 300,
-                autoPanPaddingTopLeft: window.innerWidth > 768 ? [265, 130] : [16, 110],
-                autoPanPaddingBottomRight: [20, 30]
+        }
+
+        function renderLiveTrackerState(historyList) {
+            if (!historyList || !historyList.length) return;
+            const sorted = [...historyList].sort((a, b) => b.ts - a.ts);
+
+            const defaultAtas = {
+                id: 'fallback-atas', rider: 'ATAS', ts: Date.now() - 3600000,
+                lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
+                status: '🏕️ Hanmer Start', note: 'Africa Twin staged at Hanmer Home Base.'
+            };
+            const defaultV2s = {
+                id: 'fallback-v2s', rider: 'V2S', ts: Date.now() - 3600000,
+                lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
+                status: '🏕️ Hanmer Start', note: 'Ducati V2S staged at Hanmer Home Base.'
+            };
+
+            latestATASPacket = sorted.find(x => (x.rider || 'ATAS') === 'ATAS') || defaultAtas;
+            latestV2SPacket  = sorted.find(x => x.rider === 'V2S') || defaultV2s;
+            latestLeadPacket = sorted[0];
+
+            const snapATAS = snapToRoute(latestATASPacket.lat, latestATASPacket.lon, latestATASPacket.day) || {
+                lat: latestATASPacket.lat, lon: latestATASPacket.lon, day: latestATASPacket.day || 1,
+                stageName: 'Hanmer to Mirabel', cumKm: 0, pct: 0, stageRemKm: 648.7,
+                hotelShort: "Motel au P'tit Sapin", nextFuelName: 'Sturgeon Falls', nextFuelKm: 92.0,
+                nextFuelOctane: 'YES', completedCoords: [[46.656232, -80.882479]]
+            };
+            const snapV2S = snapToRoute(latestV2SPacket.lat, latestV2SPacket.lon, latestV2SPacket.day) || {
+                lat: latestV2SPacket.lat, lon: latestV2SPacket.lon, day: latestV2SPacket.day || 1,
+                stageName: 'Hanmer to Mirabel', cumKm: 0, pct: 0, stageRemKm: 648.7,
+                hotelShort: "Motel au P'tit Sapin", nextFuelName: 'Sturgeon Falls', nextFuelKm: 92.0,
+                nextFuelOctane: 'YES', completedCoords: [[46.656232, -80.882479]]
+            };
+
+            // Lead progress uses whichever rider is further along the loop
+            const leadSnap = snapATAS.cumKm >= snapV2S.cumKm ? snapATAS : snapV2S;
+
+            // Calculate live separation between ATAS and V2S
+            const separationKm = haversineKm(
+                latestATASPacket.lat, latestATASPacket.lon,
+                latestV2SPacket.lat, latestV2SPacket.lon
+            );
+            const isCoLocated = separationKm < 0.5;
+
+            // Update both Live Bike Markers & Completed Polyline
+            liveMarkerATAS.setIcon(createLiveBikeIcon('ATAS', isCoLocated));
+            liveMarkerV2S.setIcon(createLiveBikeIcon('V2S', isCoLocated));
+            liveMarkerATAS.setLatLng([latestATASPacket.lat, latestATASPacket.lon]);
+            liveMarkerV2S.setLatLng([latestV2SPacket.lat, latestV2SPacket.lon]);
+
+            liveCompletedTrail.setLatLngs(leadSnap.completedCoords);
+            liveCompletedTrail.bringToFront();
+
+            liveMarkerATAS.bindPopup(buildBikePopupHtml('ATAS', latestATASPacket, snapATAS, separationKm), {
+                maxWidth: 305,
+                autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
+                autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
+            });
+            liveMarkerV2S.bindPopup(buildBikePopupHtml('V2S', latestV2SPacket, snapV2S, separationKm), {
+                maxWidth: 305,
+                autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
+                autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             });
 
-            // Update Historical Check-In Pins
+            // Update Historical Check-In Pins (color-coded by ATAS vs V2S)
             liveCheckInLayer.clearLayers();
-            sorted.slice(1, 15).forEach(item => {
+            sorted.slice(0, 18).forEach(item => {
+                const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
+                const pinColor = rCall === 'V2S' ? '#dc2626' : '#0284c7';
                 const cm = L.circleMarker([item.lat, item.lon], {
                     radius: 5.5,
-                    fillColor: '#10b981',
+                    fillColor: pinColor,
                     color: '#ffffff',
                     weight: 2,
                     opacity: 1,
@@ -5376,18 +5567,30 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 }).addTo(liveCheckInLayer);
                 cm.bindPopup(`
                     <div class="poi-popup-card">
-                        <div class="poi-popup-type" style="color:var(--accent-green);">✓ RIDER CHECK-IN • DAY ${item.day || 1}</div>
-                        <div class="poi-popup-title">${item.status}</div>
+                        <div class="poi-popup-type" style="color:${pinColor};">✓ ${rCall} CHECK-IN • DAY ${item.day || 1}</div>
+                        <div class="poi-popup-title"><span class="lt-rider-pill ${rCall === 'V2S' ? 'v2s' : ''}" style="margin-right:5px;">${rCall}</span>${item.status}</div>
                         <div class="poi-popup-desc">${item.note || ''}</div>
                         <div style="font-size:0.72rem; color:var(--text-muted);">🕒 ${new Date(item.ts).toLocaleString('en-CA')}</div>
                     </div>
                 `);
             });
 
-            // Update Family & Friends HUD Elements
-            const elStatus = document.getElementById('lt-status-badge');
-            const elTime   = document.getElementById('lt-updated-time');
-            const elNote   = document.getElementById('lt-latest-note');
+            // Update ATAS & V2S Status Cards in HUD
+            const elTimeAtas   = document.getElementById('lt-time-atas');
+            const elStatusAtas = document.getElementById('lt-status-atas');
+            const elNoteAtas   = document.getElementById('lt-note-atas');
+            if (elTimeAtas)   elTimeAtas.textContent   = formatRelativeTime(latestATASPacket.ts);
+            if (elStatusAtas) elStatusAtas.textContent = `${latestATASPacket.status}`;
+            if (elNoteAtas)   elNoteAtas.textContent   = `Day ${snapATAS.day} • ${latestATASPacket.note || 'Africa Twin'}`;
+
+            const elTimeV2s   = document.getElementById('lt-time-v2s');
+            const elStatusV2s = document.getElementById('lt-status-v2s');
+            const elNoteV2s   = document.getElementById('lt-note-v2s');
+            if (elTimeV2s)   elTimeV2s.textContent   = formatRelativeTime(latestV2SPacket.ts);
+            if (elStatusV2s) elStatusV2s.textContent = `${latestV2SPacket.status}`;
+            if (elNoteV2s)   elNoteV2s.textContent   = `Day ${snapV2S.day} • ${latestV2SPacket.note || 'Ducati V2S'}`;
+
+            // Update Loop Progress & 4-Metric Telemetry Grid
             const elProgT  = document.getElementById('lt-progress-text');
             const elProgF  = document.getElementById('lt-progress-fill');
             const elStage  = document.getElementById('lt-metric-stage');
@@ -5395,49 +5598,64 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const elFuel   = document.getElementById('lt-metric-fuel');
             const elSpeed  = document.getElementById('lt-metric-speed');
 
-            if (elStatus) elStatus.textContent = `${latest.status} • Day ${snap.day}`;
-            if (elTime)   elTime.textContent   = formatRelativeTime(latest.ts);
-            if (elNote)   elNote.textContent   = latest.note || '';
-            if (elProgT)  elProgT.textContent  = `${snap.cumKm.toFixed(1)} / 8,243.4 km (${snap.pct.toFixed(1)}%)`;
-            if (elProgF)  elProgF.style.width  = `${Math.max(1.5, snap.pct)}%`;
-            if (elStage)  elStage.textContent  = `Day ${snap.day}: ${snap.stageName}`;
-            if (elHotel)  elHotel.textContent  = `${snap.stageRemKm.toFixed(1)} km to ${snap.hotelShort}`;
+            if (elProgT)  elProgT.textContent  = `${leadSnap.cumKm.toFixed(1)} / 8,243.4 km (${leadSnap.pct.toFixed(1)}%)`;
+            if (elProgF)  elProgF.style.width  = `${Math.max(1.5, leadSnap.pct)}%`;
+            if (elStage)  elStage.textContent  = `Day ${leadSnap.day}: ${leadSnap.stageName}`;
+            if (elHotel)  elHotel.textContent  = `${leadSnap.stageRemKm.toFixed(1)} km to ${leadSnap.hotelShort}`;
             if (elFuel) {
-                const octLabel = snap.nextFuelOctane === 'NO' ? '87 Only' : '91 AKI';
-                elFuel.textContent = `+${snap.nextFuelKm.toFixed(0)} km • ${snap.nextFuelName} (${octLabel})`;
+                const octLabel = leadSnap.nextFuelOctane === 'NO' ? '87 Only' : '91 AKI';
+                elFuel.textContent = `+${leadSnap.nextFuelKm.toFixed(0)} km • ${leadSnap.nextFuelName} (${octLabel})`;
             }
             if (elSpeed) {
-                const spd = Number(latest.speedKmh) || 0;
-                const alt = Number(latest.altM) || 0;
-                elSpeed.textContent = `${spd} km/h • ${alt} m elev`;
+                if (separationKm < 0.5) {
+                    const maxSpd = Math.max(Number(latestATASPacket.speedKmh) || 0, Number(latestV2SPacket.speedKmh) || 0);
+                    elSpeed.textContent = maxSpd > 0 ? `Together • ${maxSpd} km/h` : 'Together (0.0 km apart)';
+                } else {
+                    elSpeed.textContent = `${separationKm.toFixed(1)} km apart`;
+                }
             }
 
-            // Populate Check-In Feed List
+            // Populate Check-In Feed List with ATAS / V2S Callsign Pills
             const feedEl = document.getElementById('lt-feed-list');
             if (feedEl) {
-                feedEl.innerHTML = sorted.slice(0, 12).map((item, idx) => `
-                    <div class="lt-feed-item" onclick="focusCheckInItem(${item.lat}, ${item.lon}, ${idx === 0})">
+                feedEl.innerHTML = sorted.slice(0, 14).map((item) => {
+                    const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
+                    const pillClass = rCall === 'V2S' ? 'v2s' : '';
+                    return `
+                    <div class="lt-feed-item" onclick="focusCheckInItem(${item.lat}, ${item.lon}, '${rCall}')">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
-                            <span style="font-weight:800; color:var(--text-main);">${item.status} <span style="color:var(--accent-blue); font-weight:700;">(Day ${item.day || 1})</span></span>
+                            <span style="font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:5px;">
+                                <span class="lt-rider-pill ${pillClass}">${rCall}</span>
+                                <span>${item.status}</span>
+                                <span style="color:var(--accent-blue); font-weight:700;">(Day ${item.day || 1})</span>
+                            </span>
                             <span style="font-size:0.66rem; color:var(--text-muted); font-family:monospace;">${formatRelativeTime(item.ts)}</span>
                         </div>
                         <div style="color:var(--text-card); line-height:1.32;">${item.note || ''}</div>
                     </div>
-                `).join('');
+                    `;
+                }).join('');
             }
         }
 
-        function focusCheckInItem(lat, lon, isLatest) {
-            map.setView([lat + 0.04, lon], 10, { animate: true });
-            if (isLatest) {
-                liveBikeMarker.openPopup();
+        function focusCheckInItem(lat, lon, callsign) {
+            const lonOffset = window.innerWidth > 768 ? 0.25 : 0;
+            map.setView([lat + 0.08, lon + lonOffset], 10, { animate: true });
+            if (callsign === 'V2S') {
+                liveMarkerV2S.openPopup();
+            } else {
+                liveMarkerATAS.openPopup();
             }
         }
 
-        function centerOnLiveBike() {
-            if (!latestLivePacket) return;
-            map.setView([latestLivePacket.lat + 0.04, latestLivePacket.lon], 9, { animate: true });
-            liveBikeMarker.openPopup();
+        function centerOnLiveBike(callsign) {
+            const targetCall = callsign === 'V2S' ? 'V2S' : (callsign === 'ATAS' ? 'ATAS' : (latestLeadPacket && latestLeadPacket.rider === 'V2S' ? 'V2S' : 'ATAS'));
+            const pkt = targetCall === 'V2S' ? latestV2SPacket : latestATASPacket;
+            const marker = targetCall === 'V2S' ? liveMarkerV2S : liveMarkerATAS;
+            if (!pkt) return;
+            const lonOffset = window.innerWidth > 768 ? 0.55 : 0;
+            map.setView([pkt.lat + 0.14, pkt.lon + lonOffset], 9, { animate: true });
+            if (marker) marker.openPopup();
         }
 
         function toggleLiveTrackerPanel() {
@@ -5479,6 +5697,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 ctrls.style.display = 'flex';
             }
         }
+        selectRiderCallsign(selectedRiderCallsign);
 
         function selectCheckInStatus(statusLabel, defaultNote, btnEl) {
             selectedStatusLabel = statusLabel;
@@ -5539,13 +5758,15 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const noteIn = document.getElementById('lt-note-input');
             const fb = document.getElementById('lt-broadcast-feedback');
             const customNote = noteIn && noteIn.value.trim() ? noteIn.value.trim() : selectedDefaultNote;
+            const callsign = selectedRiderCallsign;
 
             const sendWithCoords = async (lat, lon, dayHint, speedKmh, altM) => {
                 const snap = snapToRoute(lat, lon, dayHint);
                 const pkt = {
                     app: 'exp51-live',
                     sig: RIDER_PIN_CODE,
-                    id: 'chk-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    rider: callsign,
+                    id: 'chk-' + callsign.toLowerCase() + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
                     ts: Date.now(),
                     lat: Number(lat.toFixed(6)),
                     lon: Number(lon.toFixed(6)),
@@ -5555,17 +5776,19 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     status: selectedStatusLabel,
                     note: customNote
                 };
-                if (fb) fb.textContent = '📡 Broadcasting check-in to Family Feed...';
+                if (fb) fb.textContent = `📡 Broadcasting ${callsign} check-in to Family Feed...`;
                 const synced = await publishPacketToCloud(pkt);
                 if (noteIn) noteIn.value = '';
                 if (fb) {
                     fb.style.color = synced ? 'var(--accent-green)' : 'var(--accent-orange)';
                     fb.textContent = synced
-                        ? '✓ Broadcast live to Family & Friends Cloud Feed!'
-                        : '⏳ Saved & queued offline (will auto-sync when cell signal returns)';
+                        ? `✓ [${callsign}] Broadcast live to Family & Friends Cloud Feed!`
+                        : `⏳ [${callsign}] Saved & queued offline (will auto-sync on cell signal)`;
                 }
-                centerOnLiveBike();
+                centerOnLiveBike(callsign);
             };
+
+            const fallbackPkt = (callsign === 'V2S' ? latestV2SPacket : latestATASPacket) || { lat: 46.656232, lon: -80.882479, day: 1 };
 
             if (locSel && locSel.value !== 'gps') {
                 const parts = locSel.value.split(',');
@@ -5574,7 +5797,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 const dayHint = parseInt(parts[2]) || 1;
                 await sendWithCoords(lat, lon, dayHint, 0, 145);
             } else if (navigator.geolocation) {
-                if (fb) fb.textContent = '🛰️ Acquiring phone GPS lock...';
+                if (fb) fb.textContent = `🛰️ [${callsign}] Acquiring phone GPS lock...`;
                 navigator.geolocation.getCurrentPosition(
                     pos => {
                         const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
@@ -5582,15 +5805,12 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         sendWithCoords(pos.coords.latitude, pos.coords.longitude, null, spd, alt);
                     },
                     err => {
-                        // Fallback to current latest position if indoor/permission denied
-                        const base = latestLivePacket || { lat: 46.656232, lon: -80.882479, day: 1 };
-                        sendWithCoords(base.lat, base.lon, base.day, 0, 150);
+                        sendWithCoords(fallbackPkt.lat, fallbackPkt.lon, fallbackPkt.day, 0, 150);
                     },
                     { enableHighAccuracy: true, timeout: 6000 }
                 );
             } else {
-                const base = latestLivePacket || { lat: 46.656232, lon: -80.882479, day: 1 };
-                await sendWithCoords(base.lat, base.lon, base.day, 0, 150);
+                await sendWithCoords(fallbackPkt.lat, fallbackPkt.lon, fallbackPkt.day, 0, 150);
             }
         }
 
@@ -5604,7 +5824,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     btn.textContent = '📡 Start Live Phone GPS';
                     btn.classList.remove('active');
                 }
-                if (fb) fb.textContent = '⏹️ Live Phone GPS auto-broadcast stopped.';
+                if (fb) fb.textContent = `⏹️ [${selectedRiderCallsign}] Live Phone GPS auto-broadcast stopped.`;
                 return;
             }
             if (!navigator.geolocation) {
@@ -5612,14 +5832,15 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 return;
             }
             if (btn) {
-                btn.textContent = '🟢 Live GPS Broadcasting (Stop)';
+                btn.textContent = `🟢 [${selectedRiderCallsign}] GPS Broadcasting (Stop)`;
                 btn.classList.add('active');
             }
-            if (fb) fb.textContent = '🛰️ Watching phone GPS & broadcasting every 5 mins...';
+            if (fb) fb.textContent = `🛰️ Watching [${selectedRiderCallsign}] phone GPS & broadcasting every 5 mins...`;
 
             liveGpsWatchId = navigator.geolocation.watchPosition(
                 pos => {
                     const now = Date.now();
+                    const callsign = selectedRiderCallsign;
                     const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
                     const alt = pos.coords.altitude ? Math.round(pos.coords.altitude) : 150;
                     const snap = snapToRoute(pos.coords.latitude, pos.coords.longitude, null);
@@ -5629,7 +5850,8 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         const pkt = {
                             app: 'exp51-live',
                             sig: RIDER_PIN_CODE,
-                            id: 'gps-' + now,
+                            rider: callsign,
+                            id: 'gps-' + callsign.toLowerCase() + '-' + now,
                             ts: now,
                             lat: Number(pos.coords.latitude.toFixed(6)),
                             lon: Number(pos.coords.longitude.toFixed(6)),
@@ -5637,7 +5859,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                             speedKmh: spd,
                             altM: alt,
                             status: spd > 5 ? '🏍️ In Saddle (Live GPS)' : selectedStatusLabel,
-                            note: `Auto GPS telemetry beacon • ${spd} km/h`
+                            note: `[${callsign}] Auto GPS telemetry beacon • ${spd} km/h`
                         };
                         publishPacketToCloud(pkt);
                     }
@@ -5650,8 +5872,6 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }
 
         async function pollCloudTrackerFeed(showFeedback = false) {
-            const fb = document.getElementById('lt-updated-time');
-            if (showFeedback && fb) fb.textContent = 'Syncing...';
             try {
                 const res = await fetch(`https://ntfy.sh/${LIVE_CLOUD_TOPIC}/json?poll=1&since=all`);
                 if (!res.ok) throw new Error('Cloud poll HTTP ' + res.status);
@@ -5666,6 +5886,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.event === 'message' && env.message) {
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {
+                                if (!pkt.rider) pkt.rider = 'ATAS';
                                 if (!hist.some(x => x.id === pkt.id)) {
                                     hist.push(pkt);
                                     added = true;
@@ -5680,11 +5901,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     saveStoredFeedHistory(hist);
                     renderLiveTrackerState(hist);
                 }
-            } catch (e) {
-                if (showFeedback && fb && latestLivePacket) {
-                    fb.textContent = formatRelativeTime(latestLivePacket.ts);
-                }
-            }
+            } catch (e) {}
         }
 
         function connectCloudTrackerSSE() {
@@ -5697,6 +5914,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.message) {
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {
+                                if (!pkt.rider) pkt.rider = 'ATAS';
                                 const hist = getStoredFeedHistory();
                                 if (!hist.some(x => x.id === pkt.id)) {
                                     hist.unshift(pkt);
@@ -5710,7 +5928,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             } catch (e) {}
         }
 
-        // Initialize Family & Friends Live Tracker on Load
+        // Initialize Family & Friends Live Tracker on Load (Dual-Rider: ATAS & V2S)
         renderLiveTrackerState(getStoredFeedHistory());
         updateOfflineQueueBadge();
         pollCloudTrackerFeed(false);
