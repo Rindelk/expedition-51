@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "lastUpdated": "2026-10-16T02:02:00Z",
+  "lastUpdated": "2026-10-16T14:28:33.866Z",
   "updatedBy": "Jamie & Rosie",
   "repo": "Rindelk/expedition-51",
   "branch": "main",
@@ -61,7 +61,7 @@
         {
           "id": "j-1",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Dagger OSMO Lightweight Backpacking Tent (2020g)",
+          "name": "Nemo Dagger OSMO Lightweight Backpacking Tent",
           "volumeL": 9,
           "weightKg": 2.02,
           "packed": true,
@@ -70,7 +70,7 @@
         {
           "id": "j-2",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Dagger OSMO Footprint (300g)",
+          "name": "Nemo Dagger OSMO Footprint",
           "volumeL": 1,
           "weightKg": 0.3,
           "packed": true,
@@ -79,7 +79,7 @@
         {
           "id": "j-3",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Disco Men's Endless Promise Down Sleeping Bag (1120g)",
+          "name": "Nemo Disco Men's Endless Promise Down Sleeping Bag",
           "volumeL": 8,
           "weightKg": 1.12,
           "packed": true,
@@ -88,7 +88,7 @@
         {
           "id": "j-4",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Tensor Extreme Conditions Ultralight Insulated Pad (746g)",
+          "name": "Nemo Tensor Extreme Conditions Ultralight Insulated Pad",
           "volumeL": 2.5,
           "weightKg": 0.75,
           "packed": true,
@@ -97,7 +97,7 @@
         {
           "id": "j-5",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Fillo Backpacking & Camping Pillow (265g)",
+          "name": "Nemo Fillo Backpacking & Camping Pillow",
           "volumeL": 1.2,
           "weightKg": 0.27,
           "packed": true,
@@ -106,7 +106,7 @@
         {
           "id": "j-6",
           "compartmentId": "jamie-left-pannier",
-          "name": "Nemo Moonlite Elite Reclining Backpacking Chair (617g)",
+          "name": "Nemo Moonlite Elite Reclining Backpacking Chair",
           "volumeL": 2.5,
           "weightKg": 0.62,
           "packed": true,
@@ -115,7 +115,7 @@
         {
           "id": "j-8",
           "compartmentId": "jamie-left-pannier",
-          "name": "2x Sea to Summit Ultra-SIL 13L Dry Bags (86g) + ZPacks Bear Bag Kit (92g)",
+          "name": "2x Sea to Summit Ultra-SIL 13L Dry Bags + ZPacks Bear Bag Kit",
           "volumeL": 1.5,
           "weightKg": 0.18,
           "packed": true,
@@ -124,7 +124,7 @@
         {
           "id": "j-9",
           "compartmentId": "jamie-left-pannier",
-          "name": "TREKOLOGY Collapsible Hiking Poles (725g)",
+          "name": "2x (Collapsible Hiking Poles)",
           "volumeL": 2,
           "weightKg": 0.73,
           "packed": true,
@@ -133,7 +133,7 @@
         {
           "id": "j-10",
           "compartmentId": "jamie-right-pannier",
-          "name": "MSR DragonFly Stove (399g) + MSR 30oz Fuel Bottle (218g) + Coleman Fuel (710g)",
+          "name": "MSR DragonFly Stove + MSR 30oz Fuel Bottle + Coleman Fuel ",
           "volumeL": 3.5,
           "weightKg": 1.33,
           "packed": true,
@@ -142,7 +142,7 @@
         {
           "id": "j-11",
           "compartmentId": "jamie-right-pannier",
-          "name": "TOAKS Titanium 1600ml Pot with Pan (232g) + TOAKS 3-Piece Cutlery Set (48g)",
+          "name": "TOAKS Titanium 1600ml Pot with Pan + TOAKS 3-Piece Cutlery Set",
           "volumeL": 2.5,
           "weightKg": 0.28,
           "packed": true,
@@ -151,7 +151,7 @@
         {
           "id": "j-13",
           "compartmentId": "jamie-right-pannier",
-          "name": "Platypus GravityWorks 6L Water Filter System (350g) + LifeStraw (40g)",
+          "name": "Platypus GravityWorks 6L Water Filter System + LifeStraw",
           "volumeL": 2,
           "weightKg": 0.39,
           "packed": true,
@@ -160,7 +160,7 @@
         {
           "id": "j-14",
           "compartmentId": "jamie-right-pannier",
-          "name": "Nalgene 32oz Wide-Mouth Bottles (x2, 356g) + 2L Water Reserve (2000g)",
+          "name": "Nalgene 32oz Wide-Mouth Bottles (x2) + 2L Water Reserve",
           "volumeL": 3,
           "weightKg": 2.36,
           "packed": true,
@@ -169,7 +169,7 @@
         {
           "id": "j-15",
           "compartmentId": "jamie-right-pannier",
-          "name": "Morakniv Companion Heavy Duty Knife (162g) + Pocket Chainsaw (145g) + Suunto MC-2 Compass (74g)",
+          "name": "Morakniv Companion Heavy Duty Knife + Pocket Chainsaw + Suunto MC-2 Compass (74g)",
           "volumeL": 1.2,
           "weightKg": 0.38,
           "packed": true,
@@ -197,7 +197,7 @@
           "id": "j-18",
           "compartmentId": "jamie-aux-pox",
           "name": "Aux Pod 2: 1L Synthetic Top-Up Oil + Funnel + Nitrile Gloves",
-          "volumeL": 2.0,
+          "volumeL": 2,
           "weightKg": 1.1,
           "packed": true,
           "notes": "Upright in rear MOLLE Aux Pox"
@@ -205,8 +205,8 @@
         {
           "id": "j-19",
           "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 3: Ferry Tie-Down Straps (4x Soft Loops + Cam Buckles)",
-          "volumeL": 4.0,
+          "name": "Aux Pod 3: Ferry Tie-Down Straps 2x (4x Soft Loops) + Cam Buckles",
+          "volumeL": 4,
           "weightKg": 1.5,
           "packed": true,
           "notes": "Instant access at Blanc-Sablon, Port aux Basques & Saint John ferries"
@@ -214,8 +214,8 @@
         {
           "id": "j-20",
           "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 4: Adventure Medical Ultralight Medkit .9 (198g) + Wilderness Wipes 36pk (292g) + Rainleaf Towel 40x20\" (120g)",
-          "volumeL": 3.0,
+          "name": "Aux Pod 4: Adventure Medical Ultralight Medkit  + Wilderness Wipes 36pk+ Rainleaf Towel 40x20\"",
+          "volumeL": 3,
           "weightKg": 0.61,
           "packed": true,
           "notes": "Watertight first aid, hygiene wipes & fast-dry towel"
@@ -223,7 +223,7 @@
         {
           "id": "j-21",
           "compartmentId": "jamie-backcountry-duffel",
-          "name": "Hiking Track Kit: Fjällräven Abisko Wool SS Tee (125g) + Abisko Trekking Shirt (325g) + Abisko Shorts (316g) + Patagonia Quandary Hat (115g)",
+          "name": "Hiking Track Kit: Fjällräven Abisko Wool SS Tee + Abisko Trekking Shirt  + Abisko Shorts + Patagonia Quandary Hat",
           "volumeL": 3.5,
           "weightKg": 0.88,
           "packed": true,
@@ -232,7 +232,7 @@
         {
           "id": "j-22",
           "compartmentId": "jamie-backcountry-duffel",
-          "name": "Hiking Footwear: Altra Lone Peak 9+ Trail Shoes (316g) + ZPacks Camp Shoes (53g) + Smartwool Hike Ankle Socks (2x 55g) & Liner Crew (50g)",
+          "name": "Hiking Footwear: Altra Lone Peak 9+ Trail Shoes + ZPacks Camp Shoes + Smartwool Hike Ankle Socks (2x) & Liner Crew",
           "volumeL": 4.5,
           "weightKg": 0.53,
           "packed": true,
@@ -241,7 +241,7 @@
         {
           "id": "j-23",
           "compartmentId": "jamie-backcountry-duffel",
-          "name": "Camp & Backup Kit: Patagonia Capilene Merino Shirt (111g) + Sun Shirt (244g) + Quandary Shorts (221g) + Prana Pants (377g) + 2x Woolly Boxers (340g)",
+          "name": "Camp & Backup Kit: Patagonia Capilene Merino Shirt + Sun Shirt + Quandary Shorts + Prana Pants + 2x Woolly Boxers",
           "volumeL": 5.5,
           "weightKg": 1.29,
           "packed": true,
@@ -259,7 +259,7 @@
         {
           "id": "j-26",
           "compartmentId": "jamie-hood-tailbag",
-          "name": "Garmin inReach Mini 2 Satellite SOS (100g) + Garmin Fenix 5X Watch (98g)",
+          "name": "Garmin inReach Mini 2 Satellite SOS ",
           "volumeL": 0.8,
           "weightKg": 0.2,
           "packed": true,
@@ -268,7 +268,7 @@
         {
           "id": "j-27",
           "compartmentId": "jamie-hood-tailbag",
-          "name": "Nitecore NU25 Headlamp (47g) + Nitecore NB10000 Gen 3 Power Bank (150g)",
+          "name": "Nitecore NU25 Headlamp + Nitecore NB10000 Gen 3 Power Bank",
           "volumeL": 0.8,
           "weightKg": 0.2,
           "packed": true,
@@ -371,7 +371,7 @@
         {
           "id": "r-3",
           "compartmentId": "rosie-r80-stinger",
-          "name": "Nemo Fillo Backpacking & Camping Pillow (265g)",
+          "name": "Nemo Fillo Backpacking & Camping Pillow",
           "volumeL": 1.2,
           "weightKg": 0.27,
           "packed": true,
@@ -380,7 +380,7 @@
         {
           "id": "r-4",
           "compartmentId": "rosie-r80-stinger",
-          "name": "Nemo Moonlite Elite Ultralight Backpacking Chair (617g)",
+          "name": "Nemo Moonlite Elite Ultralight Backpacking Chair ",
           "volumeL": 2.5,
           "weightKg": 0.62,
           "packed": true,
@@ -389,7 +389,7 @@
         {
           "id": "r-8",
           "compartmentId": "rosie-r80-left",
-          "name": "Merino Thermal Base Layers (3x Tops, 3x Leggings, 5x Socks)",
+          "name": "Merino Thermal Base Layers (3x Tops, 3x Leggings, 5x Socks, 3x Underwear)",
           "volumeL": 6.5,
           "weightKg": 1,
           "packed": true,
@@ -416,7 +416,7 @@
         {
           "id": "r-11",
           "compartmentId": "rosie-r80-right",
-          "name": "Hiking & Off-Bike Wardrobe (Compression Cube: Trekking Pants, Tops, Sweater)",
+          "name": "Hiking & Off-Bike Wardrobe (Compression Cube: 3x Pants, T-Shirt, 2x UV Shirt, Sweater)",
           "volumeL": 10,
           "weightKg": 1.8,
           "packed": true,
@@ -425,7 +425,7 @@
         {
           "id": "r-12",
           "compartmentId": "rosie-r80-right",
-          "name": "Lightweight Trail Hiking Shoes + Camp Sandals",
+          "name": "Lightweight Trail Hiking Shoes + Light Running Shoes",
           "volumeL": 4.5,
           "weightKg": 0.7,
           "packed": true,
@@ -434,7 +434,7 @@
         {
           "id": "r-13",
           "compartmentId": "rosie-r80-right",
-          "name": "Personal Toiletry Bag + Microfiber Towel + Sunscreen + Medications",
+          "name": "Personal Toiletry Bag + Microfiber Towel + Sunscreen + Medications + Wilderness Wipes",
           "volumeL": 3.5,
           "weightKg": 0.7,
           "packed": true,
@@ -443,7 +443,7 @@
         {
           "id": "r-14",
           "compartmentId": "rosie-r80-right",
-          "name": "Trail Snacks, Electrolyte Mix, Nalgene Bottle & AeroPress Go",
+          "name": "Trail Snacks, Electrolyte Mix, Water Bottle & AeroPress Go Lite",
           "volumeL": 3,
           "weightKg": 0.8,
           "packed": true,
@@ -461,7 +461,7 @@
         {
           "id": "r-16",
           "compartmentId": "rosie-r80-auxpox",
-          "name": "Aux Pod 1: Kickstand Puck + Spare Ducati Key Fob (Faraday Pouch)",
+          "name": "Aux Pod 1: Kickstand Puck + Spare Ducati and Honda Key Fob (Faraday Pouch)",
           "volumeL": 1,
           "weightKg": 0.3,
           "packed": true,
@@ -470,7 +470,7 @@
         {
           "id": "r-18",
           "compartmentId": "rosie-r80-auxpox",
-          "name": "Aux Pod 2: Sena / Cardo Cables + Anker Power Bank + First Aid Pouch",
+          "name": "Aux Pod 2: Sena / Cardo Cables + Anker Power Bank + First Aid Pouch + Lifestraw",
           "volumeL": 2,
           "weightKg": 0.6,
           "packed": true,
