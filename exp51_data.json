@@ -224643,85 +224643,94 @@
       "hotel": "Motel au P'tit Sapin, Mirabel, QC",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup at Hanmer Home Base (4671 Dupuis Dr)"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Bike Prep (45m)",
+          "details": "Eat breakfast before hitting the road, final luggage & tire check — stands up at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 585,
+          "start_str": "07:00 AM",
+          "end_str": "09:45 AM",
           "type": "ride",
           "title": "In Saddle: 245 km (2h 45m)",
-          "start_m": 450,
-          "end_m": 615,
-          "start_str": "07:30 AM",
-          "end_str": "10:15 AM",
-          "details": "Leg 1: Hanmer to Deep River & Pembroke • Hwy 17 East past North Bay & Mattawa to Pembroke"
+          "details": "07:00 AM Sharp Departure! Leg 1: Hanmer to Mattawa via Hwy 17 East past Sturgeon Falls & North Bay"
         },
         {
+          "start_m": 585,
+          "end_m": 605,
+          "start_str": "09:45 AM",
+          "end_str": "10:05 AM",
           "type": "fuel",
           "title": "20m: Primary Gas Stop #1",
-          "start_m": 615,
-          "end_m": 635,
-          "start_str": "10:15 AM",
-          "end_str": "10:35 AM",
-          "details": "Primary Gas Stop #1 & stretch • Primary Gas: Pembroke Esso / Circle K (45.8267, -77.1111) - 91: YES"
+          "details": "Primary Gas Stop #1 at Mattawa Shell / Esso (91 Premium)"
         },
         {
+          "start_m": 605,
+          "end_m": 720,
+          "start_str": "10:05 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 195 km (2h 25m)",
-          "start_m": 635,
-          "end_m": 780,
-          "start_str": "10:35 AM",
-          "end_str": "01:00 PM",
-          "details": "Leg 2: Pembroke across Ottawa River to Masson-Angers • Hwy 17 to Chenaux Dam -> Portage-du-Fort -> Route 148 East through Shawville & Aylmer -> Gatineau -> Angers"
+          "title": "In Saddle: 165 km (1h 55m)",
+          "details": "Leg 2: Mattawa via Pembroke to Route 148 Pontiac Shore"
         },
         {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "45m: Primary Gas Stop #2",
-          "start_m": 780,
-          "end_m": 825,
-          "start_str": "01:00 PM",
-          "end_str": "01:45 PM",
-          "details": "Primary Gas Stop #2 + 30m LUNCH • Primary Gas: Masson-Angers Shell / Ultramar (45.5422, -75.4280) - 91: YES"
+          "title": "Lunch & Fuel (45m)",
+          "details": "12:00 PM Lunch + Primary Gas Stop #2 along Ottawa River (Pembroke / Waltham)"
         },
         {
+          "start_m": 765,
+          "end_m": 990,
+          "start_str": "12:45 PM",
+          "end_str": "04:30 PM",
           "type": "ride",
-          "title": "In Saddle: 208 km (2h 45m)",
-          "start_m": 825,
-          "end_m": 1025,
-          "start_str": "01:45 PM",
-          "end_str": "05:05 PM",
-          "details": "Leg 3: Masson-Angers along Route 148 river corridor to Mirabel • Route 148 river road through Montebello & Grenville -> Lachute -> Route 158 -> Route 117 to Mirabel"
+          "title": "In Saddle: 238 km (3h 45m)",
+          "details": "Leg 3: Route 148 East along Ottawa River past Portage-du-Fort & Lachute to Mirabel"
         },
         {
+          "start_m": 990,
+          "end_m": 1050,
+          "start_str": "04:30 PM",
+          "end_str": "05:30 PM",
           "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 1025,
-          "end_m": 1080,
-          "start_str": "05:05 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Motel au P'tit Sapin, Mirabel, QC, unpack panniers, shower, relax"
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Motel au P'tit Sapin (Mirabel, QC), unpack Mosko Moto bags & shower"
         },
         {
+          "start_m": 1050,
+          "end_m": 1110,
+          "start_str": "05:30 PM",
+          "end_str": "06:30 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1080,
-          "end_m": 1140,
-          "start_str": "06:00",
-          "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Motel au P'tit Sapin, Mirabel, QC"
+          "details": "Sit-down supper (05:30 PM – 06:30 PM) near Mirabel, QC"
         },
         {
+          "start_m": 1110,
+          "end_m": 1320,
+          "start_str": "06:30 PM",
+          "end_str": "10:00 PM",
           "type": "lodging",
           "title": "Rest & Route Prep",
-          "start_m": 1140,
-          "end_m": 1320,
-          "start_str": "07:00 PM",
-          "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "details": "Chain check, next day GPX review, restful sleep"
         }
       ]
     },
@@ -224734,103 +224743,103 @@
       "hotel": "Travelodge by Wyndham Baie-Comeau",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Mirabel, QC"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load panniers — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 555,
+          "start_str": "07:00 AM",
+          "end_str": "09:15 AM",
           "type": "ride",
           "title": "In Saddle: 165 km (2h 15m)",
-          "start_m": 450,
-          "end_m": 585,
-          "start_str": "07:30 AM",
-          "end_str": "09:45 AM",
-          "details": "Leg 1: Mirabel to Trois-Rivières • Route 158 through Joliette to Berthierville -> Route 138 Chemin du Roy"
+          "details": "07:00 AM Sharp Departure! Leg 1: Mirabel via Route 158 & Route 138 to Trois-Rivières"
         },
         {
+          "start_m": 555,
+          "end_m": 575,
+          "start_str": "09:15 AM",
+          "end_str": "09:35 AM",
           "type": "fuel",
           "title": "20m: Primary Gas Stop #1",
-          "start_m": 585,
-          "end_m": 605,
-          "start_str": "09:45 AM",
-          "end_str": "10:05 AM",
-          "details": "Primary Gas Stop #1 & stretch • Primary Gas: Trois-Rivières Shell (46.3450, -72.5470) - 91: YES (V-Power)"
+          "details": "Primary Gas Stop #1 at Trois-Rivières Shell (91 Premium)"
         },
         {
+          "start_m": 575,
+          "end_m": 720,
+          "start_str": "09:35 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 185 km (2h 30m)",
-          "start_m": 605,
-          "end_m": 755,
-          "start_str": "10:05 AM",
-          "end_str": "12:35 PM",
-          "details": "Leg 2: Trois-Rivières to Baie-Saint-Paul • Route 138 Chemin du Roy -> Blvd Champlain under Château Frontenac -> Côte-de-Beaupré -> Charlevoix"
+          "title": "In Saddle: 185 km (2h 25m)",
+          "details": "Leg 2: Trois-Rivières past Québec City & Montmorency Falls to Baie-Saint-Paul"
         },
         {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "45m: Primary Gas Stop #2",
-          "start_m": 755,
-          "end_m": 800,
-          "start_str": "12:35 PM",
-          "end_str": "01:20 PM",
-          "details": "Primary Gas Stop #2 + 30m LUNCH in historic artisan village • Primary Gas: Baie-Saint-Paul Shell (47.4420, -70.5050) - 91: YES"
+          "title": "Lunch & Fuel (45m)",
+          "details": "12:00 PM Lunch + Primary Gas Stop #2 at Baie-Saint-Paul Petro-Canada (Charlevoix)"
         },
         {
+          "start_m": 765,
+          "end_m": 930,
+          "start_str": "12:45 PM",
+          "end_str": "03:30 PM",
           "type": "ride",
-          "title": "In Saddle: 175 km (2h 15m (+ 15m ferry))",
-          "start_m": 800,
-          "end_m": 970,
-          "start_str": "01:20 PM",
-          "end_str": "04:10 PM",
-          "details": "Leg 3: Baie-Saint-Paul to Les Escoumins via Tadoussac Ferry • Route 362 coastal hairpins past Port-au-Persil -> Tadoussac marine ferry (15m) -> Les Escoumins"
+          "title": "In Saddle: 175 km (2h 45m incl. Ferry)",
+          "details": "Leg 3: Route 362 Scenic Charlevoix Cliffs + Tadoussac Saguenay Fjord Ferry to Les Escoumins"
         },
         {
+          "start_m": 930,
+          "end_m": 950,
+          "start_str": "03:30 PM",
+          "end_str": "03:50 PM",
           "type": "fuel",
           "title": "20m: Primary Gas Stop #3",
-          "start_m": 970,
-          "end_m": 990,
-          "start_str": "04:10 PM",
-          "end_str": "04:30 PM",
-          "details": "Primary Gas Stop #3 & Saguenay Fjord whale view • Primary Gas: Les Escoumins Shell (48.3550, -69.4050) - 91: YES"
+          "details": "Primary Gas Stop #3 at Les Escoumins Shell (91 Premium)"
         },
         {
+          "start_m": 950,
+          "end_m": 1065,
+          "start_str": "03:50 PM",
+          "end_str": "05:45 PM",
           "type": "ride",
-          "title": "In Saddle: 184 km (2h 15m)",
-          "start_m": 990,
-          "end_m": 1125,
-          "start_str": "04:30 PM",
-          "end_str": "06:45 PM",
-          "details": "Leg 4: Les Escoumins to Baie-Comeau • Route 138 North Shore along St. Lawrence estuary into Baie-Comeau"
+          "title": "In Saddle: 184 km (1h 55m)",
+          "details": "Leg 4: Les Escoumins along St. Lawrence North Shore (Route 138) into Baie-Comeau"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 1125,
-          "end_m": 1170,
-          "start_str": "06:45 PM",
-          "end_str": "07:30",
-          "details": "Check-in at Travelodge by Wyndham Baie-Comeau, unpack panniers, shower, relax"
-        },
-        {
+          "start_m": 1065,
+          "end_m": 1140,
+          "start_str": "05:45 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
-          "title": "Supper (1h)",
-          "start_m": 1170,
-          "end_m": 1230,
-          "start_str": "07:30",
-          "end_str": "08:30 PM",
-          "details": "1-hour sit-down supper near Travelodge by Wyndham Baie-Comeau"
+          "title": "Supper & Check-in (1h 15m)",
+          "details": "Check-in at Travelodge Baie-Comeau & Supper (05:45 PM – 07:00 PM) at St-Pancrace Microbrasserie"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
-          "start_m": 1230,
+          "start_m": 1140,
           "end_m": 1320,
-          "start_str": "08:30 PM",
+          "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & QC-389 Prep",
+          "details": "Fill 1-Gal RotopaX & 3-Gal Armadillo bladder, verify Lucas MMT in Rosie's Aux Pox"
         }
       ]
     },
@@ -224843,103 +224852,112 @@
       "hotel": "Hotel Wabush (Labrador City, NL)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Early wilderness stage wakeup in Baie-Comeau"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat hot breakfast before riding, check tire pressures — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 600,
+          "start_str": "07:00 AM",
+          "end_str": "10:00 AM",
           "type": "ride",
           "title": "In Saddle: 214 km (3h 00m)",
-          "start_m": 450,
+          "details": "07:00 AM Sharp Departure! Leg 1: Baie-Comeau up QC-389 Canyon & 22km gravel to Manic-5"
+        },
+        {
+          "start_m": 600,
           "end_m": 630,
-          "start_str": "07:30 AM",
+          "start_str": "10:00 AM",
           "end_str": "10:30 AM",
-          "details": "Leg 1: Baie-Comeau to Manic-5 (Daniel-Johnson Dam) • QC-389 North through Laurentian mountain switchbacks. Zero services!"
-        },
-        {
           "type": "fuel",
-          "title": "45m: Fuel",
-          "start_m": 630,
-          "end_m": 675,
-          "start_str": "10:30 AM",
-          "end_str": "11:15 AM",
-          "details": "Fuel + Daniel-Johnson Dam Multiple-Arch Lookout • Primary Gas: Manic-5 Fuel (Motel de l'Énergie, Km 214) - 91: NO (87 Regular ONLY)"
+          "title": "30m: Manic-5 Dam & Fuel",
+          "details": "Fuel at Manic-5 (87 Regular + Lucas MMT for Rosie's V2S) + Daniel-Johnson Dam lookout photos"
         },
         {
+          "start_m": 630,
+          "end_m": 720,
+          "start_str": "10:30 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
           "title": "In Saddle: 102 km (1h 30m)",
-          "start_m": 675,
+          "details": "Leg 2: Manic-5 along Manicouagan Crater rim to Relais Gabriel"
+        },
+        {
+          "start_m": 720,
           "end_m": 765,
-          "start_str": "11:15 AM",
+          "start_str": "12:00 PM",
           "end_str": "12:45 PM",
-          "details": "Leg 2: Manic-5 to Relais Gabriel (Manicouagan Crater rim) • QC-389 North across Manicouagan reservoir crater rim"
-        },
-        {
           "type": "meal",
-          "title": "45m: Fuel",
+          "title": "Lunch & Fuel at Relais Gabriel (45m)",
+          "details": "12:00 PM Lunch at Pourvoirie Relais Gabriel + top off tanks & 3-Gal Armadillo bladder"
+        },
+        {
           "start_m": 765,
-          "end_m": 810,
+          "end_m": 995,
           "start_str": "12:45 PM",
-          "end_str": "01:30 PM",
-          "details": "Fuel + 30m LUNCH at outpost restaurant • Primary Gas: Relais Gabriel Fuel Outpost (Km 316, 51.3260, -68.1221) - 91: NO (87 ONLY)"
-        },
-        {
+          "end_str": "04:35 PM",
           "type": "ride",
-          "title": "In Saddle: 249 km (3h 30m)",
-          "start_m": 810,
-          "end_m": 1065,
-          "start_str": "01:30 PM",
-          "end_str": "05:45 PM",
-          "details": "Leg 3: Relais Gabriel past Gagnon to Fermont • QC-389 gravel & winding pavement past Gagnon ghost town to mining hub"
+          "title": "In Saddle: 249 km (3h 50m)",
+          "details": "Leg 3: Unpaved 175km Fire Lake -> Mont-Wright section (drone stops at Fire Lake & Mont-Wright) to Fermont"
         },
         {
+          "start_m": 995,
+          "end_m": 1015,
+          "start_str": "04:35 PM",
+          "end_str": "04:55 PM",
           "type": "fuel",
-          "title": "20m: Primary Gas Stop #3 - Retur...",
-          "start_m": 1065,
-          "end_m": 1085,
-          "start_str": "05:45 PM",
-          "end_str": "06:05 PM",
-          "details": "Primary Gas Stop #3 - Return to 91 Premium! • Primary Gas: Fermont Shell (Km 565, 52.7917, -67.0833) - 91: YES"
+          "title": "20m: Fermont 91 Premium Fuel",
+          "details": "Primary Gas Stop #3 at Fermont Shell (Return to 91 Premium!) + Fermont & Labrador border signs"
         },
         {
+          "start_m": 1015,
+          "end_m": 1050,
+          "start_str": "04:55 PM",
+          "end_str": "05:30 PM",
           "type": "ride",
           "title": "In Saddle: 35 km (35m)",
-          "start_m": 1085,
-          "end_m": 1120,
-          "start_str": "06:05 PM",
-          "end_str": "06:40 PM",
-          "details": "Leg 4: Fermont across NL border into Wabush / Lab City • Route 389 into NL Route 500 through iron ore mining corridor"
+          "details": "Leg 4: Fermont across NL border into Labrador City / Wabush"
         },
         {
+          "start_m": 1050,
+          "end_m": 1080,
+          "start_str": "05:30 PM",
+          "end_str": "06:00 PM",
           "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 1120,
-          "end_m": 1155,
-          "start_str": "06:40 PM",
-          "end_str": "07:15",
-          "details": "Check-in at Hotel Wabush (Labrador City, NL), unpack panniers, shower, relax"
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Hotel Wabush (05:30 PM), wash dust off visors & shower"
         },
         {
+          "start_m": 1080,
+          "end_m": 1140,
+          "start_str": "06:00 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1155,
-          "end_m": 1215,
-          "start_str": "07:15",
-          "end_str": "08:15 PM",
-          "details": "1-hour sit-down supper near Hotel Wabush (Labrador City, NL)"
+          "details": "Supper (06:00 PM – 07:00 PM) at Iron Rock Brewing Co. or Baba Q's Smoke & Grill"
         },
         {
+          "start_m": 1140,
+          "end_m": 1320,
+          "start_str": "07:00 PM",
+          "end_str": "10:00 PM",
           "type": "lodging",
           "title": "Rest & Route Prep",
-          "start_m": 1215,
-          "end_m": 1320,
-          "start_str": "08:15 PM",
-          "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "details": "Inspect chains & tires after QC-389 gravel, restful sleep"
         }
       ]
     },
@@ -224952,67 +224970,94 @@
       "hotel": "Royal Inn & Suites (Happy Valley-Goose Bay, NL)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Labrador City / Wabush"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 600,
+          "start_str": "07:00 AM",
+          "end_str": "10:00 AM",
           "type": "ride",
           "title": "In Saddle: 238 km (3h 00m)",
-          "start_m": 450,
-          "end_m": 630,
-          "start_str": "07:30 AM",
-          "end_str": "10:30 AM",
-          "details": "Leg 1: Labrador City to Churchill Falls • TLH 500 East through central subarctic spruce forests. Zero services!"
+          "details": "07:00 AM Sharp Departure! Leg 1: Labrador City east on paved TLH 500 to Churchill Falls"
         },
         {
-          "type": "meal",
-          "title": "60m: Fuel",
-          "start_m": 630,
-          "end_m": 690,
-          "start_str": "10:30 AM",
-          "end_str": "11:30 AM",
-          "details": "Fuel + 30m LUNCH at Midway Restaurant + town walk • Primary Gas: Churchill Falls Gas & Convenience (53.5333, -64.0000) - 91: UNRELIABLE"
+          "start_m": 600,
+          "end_m": 625,
+          "start_str": "10:00 AM",
+          "end_str": "10:25 AM",
+          "type": "fuel",
+          "title": "25m: Churchill Falls Fuel",
+          "details": "Mandatory Fuel Stop at Churchill Falls Gas Bar (top off both bikes)"
         },
         {
+          "start_m": 625,
+          "end_m": 720,
+          "start_str": "10:25 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 294 km (3h 40m)",
-          "start_m": 690,
-          "end_m": 910,
-          "start_str": "11:30 AM",
-          "end_str": "03:10 PM",
-          "details": "Leg 2: Churchill Falls to Happy Valley-Goose Bay • TLH 500 East descending toward Lake Melville. Zero commercial services!"
+          "title": "In Saddle: 125 km (1h 35m)",
+          "details": "Leg 2: Churchill Falls east along Churchill River Valley"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 910,
-          "end_m": 1080,
-          "start_str": "03:10 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Royal Inn & Suites (Happy Valley-Goose Bay, NL), unpack panniers, shower, relax"
-        },
-        {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "Supper (1h)",
+          "title": "Roadside Trail Lunch (45m)",
+          "details": "12:00 PM Lunch break at scenic Churchill River / Muskrat pullout (hot MSR stove coffee & lunch)"
+        },
+        {
+          "start_m": 765,
+          "end_m": 900,
+          "start_str": "12:45 PM",
+          "end_str": "03:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 169 km (2h 15m)",
+          "details": "Leg 3: TLH 500 East past Muskrat Falls into Happy Valley-Goose Bay"
+        },
+        {
+          "start_m": 900,
+          "end_m": 1080,
+          "start_str": "03:00 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Royal Inn & Suites (Happy Valley-Goose Bay, NL), unpack & relax"
+        },
+        {
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Royal Inn & Suites (Happy Valley-Goose Bay, NL)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at Mamattuk or Hotel North Restaurant"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & TLH 510 Prep",
+          "details": "Fill 3-Gal Giant Loop Armadillo & 1-Gal RotopaX for tomorrow's 405 km fuel-free stretch"
         }
       ]
     },
@@ -225025,103 +225070,112 @@
       "hotel": "Northern Light Inn (L'Anse-au-Clair, NL)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Happy Valley-Goose Bay"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, verify 15.2L aux fuel strapped — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 600,
+          "start_str": "07:00 AM",
+          "end_str": "10:00 AM",
           "type": "ride",
           "title": "In Saddle: 240 km (3h 00m)",
-          "start_m": 450,
-          "end_m": 630,
-          "start_str": "07:30 AM",
-          "end_str": "10:30 AM",
-          "details": "Leg 1: Goose Bay through Mealy Mountains to Bladder Stop • TLH 510 mainline south through deep wilderness. 405 km zero-service gap!"
+          "details": "07:00 AM Sharp Departure! Leg 1: Goose Bay south through Mealy Mountains to Km 240 Overlook"
         },
         {
+          "start_m": 600,
+          "end_m": 620,
+          "start_str": "10:00 AM",
+          "end_str": "10:20 AM",
           "type": "fuel",
-          "title": "20m: MANDATORY AUXILIARY BLADDER...",
-          "start_m": 630,
-          "end_m": 650,
-          "start_str": "10:30 AM",
-          "end_str": "10:50 AM",
-          "details": "MANDATORY AUXILIARY BLADDER FUEL TRANSFER • Primary Gas: Km 240 Mealy Overlook (53.0000, -57.8000) - Pour 6.0-7.5L 91 from AT bladder into Ducati"
+          "title": "20m: Aux Fuel Transfer Stop",
+          "details": "MANDATORY AUXILIARY FUEL TRANSFER at Km 240 Mealy Overlook (transfer 3-Gal Armadillo into Rosie's V2S + dose Lucas MMT)"
         },
         {
+          "start_m": 620,
+          "end_m": 720,
+          "start_str": "10:20 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 165 km (2h 05m)",
-          "start_m": 650,
-          "end_m": 775,
-          "start_str": "10:50 AM",
-          "end_str": "12:55 PM",
-          "details": "Leg 2: Km 240 to Port Hope Simpson • TLH 510 mainline south to coastal inlet settlement"
+          "title": "In Saddle: 135 km (1h 40m)",
+          "details": "Leg 2: Km 240 south on TLH 510 toward Port Hope Simpson"
         },
         {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "45m: Fuel",
-          "start_m": 775,
-          "end_m": 820,
-          "start_str": "12:55 PM",
-          "end_str": "01:40 PM",
-          "details": "Fuel + 30m LUNCH at local cafe • Primary Gas: Port Hope Simpson Gas Bar (52.5380, -56.2970) - 91: NO (87 ONLY)"
+          "title": "Lunch & Fuel in Port Hope Simpson (45m)",
+          "details": "12:00 PM Lunch + Primary Gas Stop at Port Hope Simpson Gas Bar (87 Regular + Lucas MMT)"
         },
         {
+          "start_m": 765,
+          "end_m": 810,
+          "start_str": "12:45 PM",
+          "end_str": "01:30 PM",
           "type": "ride",
-          "title": "In Saddle: 53 km (40m)",
-          "start_m": 820,
-          "end_m": 860,
-          "start_str": "01:40 PM",
-          "end_str": "02:20 PM",
-          "details": "Leg 3: Port Hope Simpson to Mary's Harbour • TLH 510 South along Labrador coast"
+          "title": "In Saddle: 53 km (45m)",
+          "details": "Leg 3: Port Hope Simpson to Mary's Harbour"
         },
         {
+          "start_m": 810,
+          "end_m": 825,
+          "start_str": "01:30 PM",
+          "end_str": "01:45 PM",
           "type": "fuel",
-          "title": "15m: Quick fuel top-off with ful...",
-          "start_m": 860,
-          "end_m": 875,
-          "start_str": "02:20 PM",
-          "end_str": "02:35 PM",
-          "details": "Quick fuel top-off with full 91 Premium! • Primary Gas: Mary's Harbour North Atlantic (52.3117, -55.8350) - 91: YES"
+          "title": "15m: Mary's Harbour 91 Premium",
+          "details": "Top off with 91 Premium at Mary's Harbour North Atlantic"
         },
         {
+          "start_m": 825,
+          "end_m": 1020,
+          "start_str": "01:45 PM",
+          "end_str": "05:00 PM",
           "type": "ride",
-          "title": "In Saddle: 169 km (2h 15m)",
-          "start_m": 875,
+          "title": "In Saddle: 169 km (3h 15m incl. Red Bay & Point Amour)",
+          "details": "Leg 4: Mary's Harbour past Red Bay UNESCO Basque Whaling Station & Point Amour Lighthouse to L'Anse-au-Clair"
+        },
+        {
+          "start_m": 1020,
           "end_m": 1080,
-          "start_str": "02:35 PM",
+          "start_str": "05:00 PM",
           "end_str": "06:00 PM",
-          "details": "Leg 4: Mary's Harbour to Red Bay & Point Amour to L'Anse-au-Clair • TLH 510 South past Red Bay Basque Whaling Station & Point Amour Light to Blanc-Sablon"
-        },
-        {
           "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 1080,
-          "end_m": 1110,
-          "start_str": "06:00 PM",
-          "end_str": "06:30",
-          "details": "Check-in at Northern Light Inn (L'Anse-au-Clair, NL), unpack panniers, shower, relax"
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Northern Light Inn (L'Anse-au-Clair, NL) at 05:00 PM"
         },
         {
+          "start_m": 1080,
+          "end_m": 1140,
+          "start_str": "06:00 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1110,
-          "end_m": 1170,
-          "start_str": "06:30",
-          "end_str": "07:30 PM",
-          "details": "1-hour sit-down supper near Northern Light Inn (L'Anse-au-Clair, NL)"
+          "details": "Supper (06:00 PM – 07:00 PM) at Northern Light Inn Dining Room"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
-          "start_m": 1170,
+          "start_m": 1140,
           "end_m": 1320,
-          "start_str": "07:30 PM",
+          "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Ferry Prep",
+          "details": "Prep ferry confirmation & tie-down straps in Aux Pod 3 for tomorrow morning"
         }
       ]
     },
@@ -225134,112 +225188,112 @@
       "hotel": "Snorri Cabins / Valhalla Lodge (Hay Cove, NL)",
       "blocks": [
         {
-          "type": "wake",
-          "title": "Wake & Prep",
           "start_m": 360,
           "end_m": 375,
           "start_str": "06:00 AM",
           "end_str": "06:15 AM",
-          "details": "Early wake-up for MV Qajaq W ferry"
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup at Northern Light Inn"
         },
         {
-          "type": "meal",
-          "title": "Breakfast (30m)",
           "start_m": 375,
-          "end_m": 405,
-          "start_str": "06:15 AM",
-          "end_str": "06:45 AM",
-          "details": "Hot breakfast & final gear pack"
-        },
-        {
-          "type": "ride",
-          "title": "Ride to Ferry (5 km)",
-          "start_m": 410,
           "end_m": 420,
-          "start_str": "06:50 AM",
+          "start_str": "06:15 AM",
           "end_str": "07:00 AM",
-          "details": "Short rollout to Blanc-Sablon ferry dock"
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp for Blanc-Sablon dock!"
         },
         {
-          "type": "ferry",
-          "title": "Ferry Staging & Check-in",
           "start_m": 420,
           "end_m": 480,
           "start_str": "07:00 AM",
           "end_str": "08:00 AM",
-          "details": "Mandatory 1h check-in & motorcycle strap-down"
+          "type": "ferry",
+          "title": "Ride to Dock & Ferry Check-in",
+          "details": "07:00 AM Sharp rollout to Blanc-Sablon dock & MV Qajaq W boarding staging"
         },
         {
-          "type": "ferry",
-          "title": "MV Qajaq W Crossing (Strait of Belle Isle)",
           "start_m": 480,
           "end_m": 585,
           "start_str": "08:00 AM",
           "end_str": "09:45 AM",
-          "details": "1h 45m marine crossing to St. Barbe, NL"
+          "type": "ferry",
+          "title": "MV Qajaq W Crossing (Strait of Belle Isle)",
+          "details": "1h 45m ferry crossing across Iceberg Alley to St. Barbe, NL"
         },
         {
-          "type": "fuel",
-          "title": "15m: Disembark in St. Barbe, NL,...",
-          "start_m": 570,
-          "end_m": 585,
-          "start_str": "09:30 AM",
-          "end_str": "09:45 AM",
-          "details": "Disembark in St. Barbe, NL, staging check • Primary Gas: St. Barbe North Atlantic (51.2000, -56.7667) - 91: YES"
-        },
-        {
-          "type": "ride",
-          "title": "In Saddle: 136 km (1h 45m)",
           "start_m": 585,
-          "end_m": 690,
+          "end_m": 600,
           "start_str": "09:45 AM",
-          "end_str": "11:30 AM",
-          "details": "Leg 2: St. Barbe to St. Anthony (Fishing Point Light & Grenfell) • Route 430 Viking Trail northeast across Northern Peninsula to St. Anthony"
+          "end_str": "10:00 AM",
+          "type": "fuel",
+          "title": "15m: St. Barbe Fuel",
+          "details": "Disembark in St. Barbe & top off at North Atlantic (91 Premium)"
         },
         {
-          "type": "meal",
-          "title": "2h 15m: Fuel",
-          "start_m": 690,
-          "end_m": 850,
-          "start_str": "11:30 AM",
-          "end_str": "02:10 PM",
-          "details": "Fuel + Grenfell Properties Museum + 30m LUNCH + Fishing Point Light trails • Primary Gas: St. Anthony Irving / North Atlantic Hub (51.3650, -55.5980) - 91: YES"
-        },
-        {
+          "start_m": 600,
+          "end_m": 720,
+          "start_str": "10:00 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 77 km (1h 05m)",
-          "start_m": 850,
-          "end_m": 915,
-          "start_str": "02:10 PM",
-          "end_str": "03:15 PM",
-          "details": "Leg 3: St. Anthony to Snorri Cabins (Hay Cove) • Route 430 & Route 436 north into historic Norse coastal cove"
+          "title": "In Saddle: 136 km (2h 00m)",
+          "details": "Leg 2: St. Barbe north on Viking Trail (Route 430) to St. Anthony"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 915,
-          "end_m": 1080,
-          "start_str": "03:15 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Snorri Cabins / Valhalla Lodge (Hay Cove, NL), unpack panniers, shower, relax"
-        },
-        {
+          "start_m": 720,
+          "end_m": 780,
+          "start_str": "12:00 PM",
+          "end_str": "01:00 PM",
           "type": "meal",
-          "title": "Supper (1h)",
+          "title": "Lunch in St. Anthony (1h)",
+          "details": "12:00 PM Lunch at Lightkeepers Café or The Daily Catch + St. Anthony Fuel top-off"
+        },
+        {
+          "start_m": 780,
+          "end_m": 900,
+          "start_str": "01:00 PM",
+          "end_str": "03:00 PM",
+          "type": "sight",
+          "title": "Grenfell Properties & Fox Point Lighthouse (2h)",
+          "details": "Tour Grenfell Historic Properties & Fishing Point / Fox Point Lighthouse iceberg trails"
+        },
+        {
+          "start_m": 900,
+          "end_m": 960,
+          "start_str": "03:00 PM",
+          "end_str": "04:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 77 km (1h 00m)",
+          "details": "Leg 3: St. Anthony via Burnt Cape Ecological Reserve to Snorri Cabins (Hay Cove)"
+        },
+        {
+          "start_m": 960,
+          "end_m": 1080,
+          "start_str": "04:00 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Snorri Cabins / Valhalla Lodge (2-Night Stay), unpack & relax"
+        },
+        {
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Snorri Cabins / Valhalla Lodge (Hay Cove, NL)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at Rudder's Restaurant & Pub or Norseman Restaurant"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Evening",
+          "details": "Coastal sunset at Hay Cove"
         }
       ]
     },
@@ -225252,67 +225306,85 @@
       "hotel": "Snorri Cabins / Valhalla Lodge (Night 2)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup at Snorri Cabins"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Prep (45m)",
+          "details": "Eat breakfast at cabin before riding — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 440,
+          "start_str": "07:00 AM",
+          "end_str": "07:20 AM",
           "type": "ride",
           "title": "In Saddle: 15 km (20m)",
-          "start_m": 450,
-          "end_m": 465,
-          "start_str": "07:30 AM",
-          "end_str": "07:45 AM",
-          "details": "Leg 1: Snorri Cabins to L'Anse aux Meadows UNESCO & Norstead • Route 436 north to original 1000 AD Viking settlement & port of trade"
+          "details": "07:00 AM Sharp Departure! Ride unloaded bikes to L'Anse aux Meadows & Cape Bauld"
         },
         {
-          "type": "meal",
-          "title": "4h 45m: UNESCO Longhouses (2.5h)",
-          "start_m": 465,
+          "start_m": 440,
+          "end_m": 720,
+          "start_str": "07:20 AM",
+          "end_str": "12:00 PM",
+          "type": "sight",
+          "title": "L'Anse aux Meadows UNESCO & Norstead Viking Port",
+          "details": "Tour original 1000 AD Norse turf longhouses, archaeological site & Norstead Viking replica ship Snorri"
+        },
+        {
+          "start_m": 720,
           "end_m": 780,
-          "start_str": "07:45 AM",
+          "start_str": "12:00 PM",
           "end_str": "01:00 PM",
-          "details": "UNESCO Longhouses (2.5h) + Norstead Snorri Ship (2h) + 30m LUNCH • Primary Gas: Local Raleigh / St. Anthony pumps"
+          "type": "meal",
+          "title": "Lunch at L'Anse aux Meadows / St. Lunaire (1h)",
+          "details": "12:00 PM Lunch at Norseman Restaurant or Café Nymphe (Dark Tickle Company)"
         },
         {
-          "type": "ride",
-          "title": "In Saddle: 88 km (1h 25m)",
           "start_m": 780,
           "end_m": 930,
           "start_str": "01:00 PM",
           "end_str": "03:30 PM",
-          "details": "Leg 2: Norstead to Cape Onion & Quirpon Overlook return to Cabins • Route 436 to Route 437 out to northernmost headland of Newfoundland"
+          "type": "ride",
+          "title": "In Saddle: 88 km (2h 30m incl. Cape Onion)",
+          "details": "Afternoon scenic loop to Quirpon Overlook, Cape Bauld Lighthouse & Raleigh coastal coves"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
           "start_m": 930,
           "end_m": 1080,
           "start_str": "03:30 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Snorri Cabins / Valhalla Lodge (Night 2), unpack panniers, shower, relax"
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Return to Snorri Cabins",
+          "details": "Relax at Snorri Cabins (Night 2), pack bags for tomorrow's ride south"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Snorri Cabins / Valhalla Lodge (Night 2)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) — Great Viking Feast Dinner Theatre or Rudder's Seafood"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Prep bikes for Viking Trail South to Gros Morne"
         }
       ]
     },
@@ -225325,67 +225397,94 @@
       "hotel": "Gros Morne / Norris Point KOA Holiday",
       "blocks": [
         {
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup at Snorri Cabins"
+        },
+        {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
           "type": "meal",
-          "title": "Breakfast & Pack (30m)",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
           "start_m": 420,
-          "end_m": 450,
+          "end_m": 610,
           "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
-        },
-        {
+          "end_str": "10:10 AM",
           "type": "ride",
-          "title": "In Saddle: 236 km (3h 05m)",
-          "start_m": 450,
-          "end_m": 635,
-          "start_str": "07:30 AM",
-          "end_str": "10:35 AM",
-          "details": "Leg 1: Snorri Cabins to Port au Choix (Point Riche Light) • Route 430 Viking Trail South along Gulf of St. Lawrence shoreline"
+          "title": "In Saddle: 236 km (3h 10m)",
+          "details": "07:00 AM Sharp Departure! Leg 1: Hay Cove south on Route 430 Viking Trail to Port au Choix"
         },
         {
+          "start_m": 610,
+          "end_m": 665,
+          "start_str": "10:10 AM",
+          "end_str": "11:05 AM",
+          "type": "sight",
+          "title": "Port au Choix & Point Riche Lighthouse (55m)",
+          "details": "Fuel top-off + explore Point Riche Lighthouse & limestone coastal barrens"
+        },
+        {
+          "start_m": 665,
+          "end_m": 720,
+          "start_str": "11:05 AM",
+          "end_str": "12:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 68 km (55m)",
+          "details": "Leg 2: Port au Choix south to The Arches Provincial Park & Cow Head"
+        },
+        {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "1h 55m: Fuel",
-          "start_m": 635,
-          "end_m": 750,
-          "start_str": "10:35 AM",
-          "end_str": "12:30 PM",
-          "details": "Fuel + Point Riche Light & fossil barrens (55m) + 30m LUNCH • Primary Gas: Port au Choix Co-op Fuel (50.7080, -57.3650) - 91: YES"
+          "title": "Lunch on the Viking Trail (45m)",
+          "details": "12:00 PM Lunch stop at Cow Head / Shallow Bay coastal café"
         },
         {
+          "start_m": 765,
+          "end_m": 915,
+          "start_str": "12:45 PM",
+          "end_str": "03:15 PM",
           "type": "ride",
-          "title": "In Saddle: 176 km (2h 20m)",
-          "start_m": 750,
-          "end_m": 960,
-          "start_str": "12:30 PM",
-          "end_str": "04:00 PM",
-          "details": "Leg 2: Port au Choix to Gros Morne KOA (Rocky Harbour) • Route 430 South past Broom Point & Lobster Cove Head Lighthouse into Rocky Harbour"
+          "title": "In Saddle: 108 km (2h 30m incl. Western Brook & Broom Point)",
+          "details": "Leg 3: Cow Head past Broom Point & Western Brook Pond into Rocky Harbour / Norris Point"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 960,
+          "start_m": 915,
           "end_m": 1080,
-          "start_str": "04:00 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Gros Morne / Norris Point KOA Holiday, unpack panniers, shower, relax"
+          "start_str": "03:15 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Gros Morne / Norris Point KOA Holiday (2-Night Base), unpack & relax"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Gros Morne / Norris Point KOA Holiday"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at Java Jack's Restaurant or Ocean View Bistro in Rocky Harbour"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Prep daypack & Altra Lone Peak trail shoes for tomorrow's Tablelands hike"
         }
       ]
     },
@@ -225398,67 +225497,94 @@
       "hotel": "Green Point Campground (Gros Morne NP)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup at Gros Morne KOA"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Prep (45m)",
+          "details": "Eat breakfast before riding — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 480,
+          "start_str": "07:00 AM",
+          "end_str": "08:00 AM",
           "type": "ride",
           "title": "In Saddle: 65 km (1h 00m)",
-          "start_m": 450,
-          "end_m": 510,
-          "start_str": "07:30 AM",
-          "end_str": "08:30 AM",
-          "details": "Leg 1: KOA around Bonne Bay to Woody Point Light & Tablelands • Route 430 to Route 431 south arm of Bonne Bay fjord to Tablelands trailhead"
+          "details": "07:00 AM Sharp Departure! Leg 1: Ride around Bonne Bay fjord to Woody Point & Tablelands Trailhead"
         },
         {
+          "start_m": 480,
+          "end_m": 690,
+          "start_str": "08:00 AM",
+          "end_str": "11:30 AM",
           "type": "sight",
-          "title": "2h 45m: Woody Point Light (15m)",
-          "start_m": 510,
-          "end_m": 675,
-          "start_str": "08:30 AM",
-          "end_str": "11:15 AM",
-          "details": "Woody Point Light (15m) + Tablelands hike on Earth's mantle (2.5h) • Primary Gas: Rocky Harbour Irving (Km 0)"
+          "title": "Tablelands Hike & Discovery Centre (3h 30m)",
+          "details": "Hike the UNESCO Tablelands (exposed Earth's mantle peridotite) & visit Discovery Centre"
         },
         {
+          "start_m": 690,
+          "end_m": 720,
+          "start_str": "11:30 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 124 km (1h 45m)",
-          "start_m": 675,
-          "end_m": 900,
-          "start_str": "11:15 AM",
-          "end_str": "03:00 PM",
-          "details": "Leg 2: Tablelands to Trout River & Green Point Camp • Route 431 to Trout River coastal headland -> backtrack around Bonne Bay to Green Point seaside bluffs"
+          "title": "In Saddle: 20 km (30m)",
+          "details": "Leg 2: Ride from Tablelands down to Trout River"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 900,
-          "end_m": 1080,
-          "start_str": "03:00 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Green Point Campground (Gros Morne NP), unpack panniers, shower, relax"
-        },
-        {
+          "start_m": 720,
+          "end_m": 780,
+          "start_str": "12:00 PM",
+          "end_str": "01:00 PM",
           "type": "meal",
-          "title": "Supper (1h)",
+          "title": "Lunch in Trout River / Woody Point (1h)",
+          "details": "12:00 PM Seaside Seafood Lunch at Trout River beach / Woody Point waterfront"
+        },
+        {
+          "start_m": 780,
+          "end_m": 915,
+          "start_str": "01:00 PM",
+          "end_str": "03:15 PM",
+          "type": "ride",
+          "title": "In Saddle: 104 km (2h 15m incl. Green Point Cliffs)",
+          "details": "Leg 3: Scenic ride past Woody Point Lighthouse & Green Point Geological Cliffs back to KOA"
+        },
+        {
+          "start_m": 915,
+          "end_m": 1080,
+          "start_str": "03:15 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Return to Gros Morne Base",
+          "details": "Afternoon relaxation at Gros Morne KOA / Bonne Bay"
+        },
+        {
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Green Point Campground (Gros Morne NP)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) in Rocky Harbour / Norris Point"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Pack panniers for tomorrow's ride to Port aux Basques overnight ferry"
         }
       ]
     },
@@ -225471,121 +225597,121 @@
       "hotel": "Marine Atlantic Overnight Ferry Stateroom Cabin (MV Highlanders)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Gros Morne"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 515,
+          "start_str": "07:00 AM",
+          "end_str": "08:35 AM",
           "type": "ride",
           "title": "In Saddle: 118 km (1h 35m)",
-          "start_m": 450,
-          "end_m": 545,
-          "start_str": "07:30 AM",
-          "end_str": "09:05 AM",
-          "details": "Leg 1: Green Point to Deer Lake • Route 430 South past Wiltondale into Humber River Valley"
+          "details": "07:00 AM Sharp Departure! Leg 1: Gros Morne south to Deer Lake & Corner Brook"
         },
         {
+          "start_m": 515,
+          "end_m": 540,
+          "start_str": "08:35 AM",
+          "end_str": "09:00 AM",
           "type": "fuel",
-          "title": "20m: Primary Gas Stop #1",
-          "start_m": 545,
-          "end_m": 565,
-          "start_str": "09:05 AM",
-          "end_str": "09:25 AM",
-          "details": "Primary Gas Stop #1 & coffee • Primary Gas: Deer Lake Irving Big Stop (49.1728, -57.4328) - 91: YES"
+          "title": "25m: Deer Lake Big Stop Fuel",
+          "details": "Primary Gas Stop #1 at Deer Lake Irving Big Stop (91 Premium)"
         },
         {
+          "start_m": 540,
+          "end_m": 720,
+          "start_str": "09:00 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 105 km (1h 25m)",
-          "start_m": 565,
-          "end_m": 650,
-          "start_str": "09:25 AM",
-          "end_str": "10:50 AM",
-          "details": "Leg 2: Deer Lake to Stephenville Crossing • TCH-1 South past Corner Brook to Bay St. George gateway"
+          "title": "In Saddle: 183 km (3h 00m incl. Corner Brook Steam Trail)",
+          "details": "Leg 2: Deer Lake via Corner Brook & Bay St. George to Stephenville Crossing"
         },
         {
-          "type": "fuel",
-          "title": "20m: Primary Gas Stop #2 (top of...",
-          "start_m": 650,
-          "end_m": 670,
-          "start_str": "10:50 AM",
-          "end_str": "11:10 AM",
-          "details": "Primary Gas Stop #2 (top off before Codroy Valley) • Primary Gas: Stephenville Crossing Esso (48.5120, -58.4480) - 91: YES"
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
+          "type": "meal",
+          "title": "Lunch & Fuel Stop (45m)",
+          "details": "12:00 PM Lunch + Primary Gas Stop #2 at Stephenville Crossing / St. George's"
         },
         {
+          "start_m": 765,
+          "end_m": 960,
+          "start_str": "12:45 PM",
+          "end_str": "04:00 PM",
           "type": "ride",
-          "title": "In Saddle: 140 km (2h 00m)",
-          "start_m": 670,
-          "end_m": 975,
-          "start_str": "11:10 AM",
-          "end_str": "04:15 PM",
-          "details": "Leg 3: Stephenville Crossing into Codroy Valley to Cape Ray • TCH-1 into emerald Codroy Valley -> Cape Anguille Light -> Cape Ray Light"
+          "title": "In Saddle: 240 km (3h 15m)",
+          "details": "Leg 3: TCH-1 South through lush Codroy Valley to Cape Ray Lighthouse"
         },
         {
+          "start_m": 960,
+          "end_m": 995,
+          "start_str": "04:00 PM",
+          "end_str": "04:35 PM",
           "type": "sight",
-          "title": "Sightseeing: Tour westernmost ti...",
-          "start_m": 975,
-          "end_m": 975,
-          "start_str": "04:15 PM",
-          "end_str": "04:15 PM",
-          "details": "Tour westernmost tip of NL & transatlantic cable landfall • Primary Gas: Doyles Shell (Codroy Valley)"
+          "title": "Cape Ray Lighthouse & Wreckhouse Coast (35m)",
+          "details": "Visit Cape Ray Lighthouse before rolling into Port aux Basques"
         },
         {
+          "start_m": 995,
+          "end_m": 1030,
+          "start_str": "04:35 PM",
+          "end_str": "05:10 PM",
           "type": "ride",
           "title": "In Saddle: 40 km (35m)",
-          "start_m": 975,
-          "end_m": 1010,
-          "start_str": "04:15 PM",
-          "end_str": "04:50 PM",
-          "details": "Leg 4: Cape Ray to Port aux Basques Ferry Terminal • TCH-1 past Wreckhouse wind corridor into ferry port"
+          "details": "Leg 4: Cape Ray into Channel-Port aux Basques"
         },
         {
-          "type": "lodging",
-          "title": "Ferry Staging & Check-in",
-          "start_m": 1010,
+          "start_m": 1030,
           "end_m": 1080,
-          "start_str": "04:50 PM",
-          "end_str": "06:00",
-          "details": "Port aux Basques ferry staging, gas fill at Irving, check-in"
+          "start_str": "05:10 PM",
+          "end_str": "06:00 PM",
+          "type": "fuel",
+          "title": "Top Off Fuel & Ferry Check-in Prep",
+          "details": "Top off tanks at Port aux Basques Irving before terminal staging"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "Hot supper in Port aux Basques before boarding"
+          "type": "meal",
+          "title": "Supper in Port aux Basques (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at Alma's Family Restaurant before ferry staging"
         },
         {
-          "type": "lodging",
-          "title": "Vehicle Lane Staging",
           "start_m": 1140,
           "end_m": 1305,
           "start_str": "07:00 PM",
           "end_str": "09:45 PM",
-          "details": "Ferry marshaling lanes, gear check"
+          "type": "lodging",
+          "title": "Ferry Terminal Staging",
+          "details": "Marine Atlantic terminal check-in & vehicle lane staging"
         },
         {
-          "type": "ferry",
-          "title": "Boarding & Motorcycle Tie-down",
           "start_m": 1305,
-          "end_m": 1425,
-          "start_str": "09:45 PM",
-          "end_str": "11:45 PM",
-          "details": "Board MV Highlanders, secure bikes with ratchet straps, settle into stateroom"
-        },
-        {
-          "type": "ferry",
-          "title": "Midnight Ferry Departure (Cabot Strait)",
-          "start_m": 1425,
           "end_m": 1440,
-          "start_str": "11:45 PM",
+          "start_str": "09:45 PM",
           "end_str": "Midnight",
-          "details": "7-hour sea crossing to North Sydney, NS with private cabin sleep"
+          "type": "ferry",
+          "title": "Board MV Highlanders & Overnight Crossing",
+          "details": "Secure bikes with Aux Pod 3 tie-down straps, sleep in private stateroom across Cabot Strait"
         }
       ]
     },
@@ -225598,103 +225724,94 @@
       "hotel": "Broad Cove Campground (Cape Breton Highlands NP)",
       "blocks": [
         {
-          "type": "wake",
-          "title": "Wake in Stateroom",
           "start_m": 360,
           "end_m": 375,
           "start_str": "06:00 AM",
           "end_str": "06:15 AM",
-          "details": "Marine Atlantic stateroom wakeup as ship approaches North Sydney"
+          "type": "wake",
+          "title": "Wake in Stateroom",
+          "details": "Wakeup aboard Marine Atlantic ferry approaching North Sydney, NS"
         },
         {
-          "type": "meal",
-          "title": "Breakfast (30m)",
           "start_m": 375,
-          "end_m": 405,
-          "start_str": "06:15 AM",
-          "end_str": "06:45 AM",
-          "details": "Breakfast in ship cafeteria"
-        },
-        {
-          "type": "ferry",
-          "title": "Vehicle Deck Prep",
-          "start_m": 405,
           "end_m": 420,
-          "start_str": "06:45 AM",
+          "start_str": "06:15 AM",
           "end_str": "07:00 AM",
-          "details": "Release motorcycle tie-downs & staging on vehicle deck"
+          "type": "meal",
+          "title": "Ship Breakfast & Deck Prep (45m)",
+          "details": "Eat breakfast aboard ship before docking, unstrap bikes — roll off dock at 07:00 AM sharp!"
         },
         {
-          "type": "ride",
-          "title": "In Saddle: 45 km (40m)",
           "start_m": 420,
-          "end_m": 460,
-          "start_str": "07:00 AM",
-          "end_str": "07:40 AM",
-          "details": "Leg 1: North Sydney Ferry Dock to St. Ann's (Cabot Trail Start) • Hwy 105 West over Seal Island Bridge and Kelly's Mountain directly to St. Ann's (Exit 12 onto Cabot Trail)"
-        },
-        {
-          "type": "sight",
-          "title": "20m: Visit The Gaelic College / ...",
-          "start_m": 460,
           "end_m": 480,
-          "start_str": "07:40 AM",
+          "start_str": "07:00 AM",
           "end_str": "08:00 AM",
-          "details": "Visit The Gaelic College / Colaisde na Gàidhlig gateway, photo at Cabot Trail official start • Primary Gas: Boularderie Irving (Hwy 105) (46.2550, -60.4400) - 91: YES"
+          "type": "ride",
+          "title": "In Saddle: 45 km (1h 00m)",
+          "details": "07:00 AM Sharp Departure! Leg 1: North Sydney dock via Seal Island Bridge to St. Ann's Gaelic College"
         },
         {
-          "type": "ride",
-          "title": "In Saddle: 116 km (1h 45m)",
           "start_m": 480,
-          "end_m": 615,
+          "end_m": 510,
           "start_str": "08:00 AM",
-          "end_str": "10:15 AM",
-          "details": "Leg 2: St. Ann's over Cape Smokey to Neil's Harbour Lighthouse • Cabot Trail North along St. Ann's Bay through Indian Brook, climbing exhilarating Cape Smokey switchbacks to Ingonish & Neil's Harbour"
+          "end_str": "08:30 AM",
+          "type": "sight",
+          "title": "Gaelic College & Cabot Trail Gateway (30m)",
+          "details": "Visit Gaelic College at St. Ann's Harbour"
         },
         {
-          "type": "meal",
-          "title": "45m: 30m LUNCH at Neil's Harbour...",
-          "start_m": 615,
-          "end_m": 660,
-          "start_str": "10:15 AM",
-          "end_str": "11:00 AM",
-          "details": "30m LUNCH at Neil's Harbour Lighthouse Chowder House + lighthouse visit (10:15 AM - 11:00 AM) • Primary Gas: Ingonish Petro-Canada / Shell (46.6400, -60.4000) - 91: YES"
-        },
-        {
-          "type": "ride",
-          "title": "In Saddle: 25 km (25m)",
-          "start_m": 660,
+          "start_m": 510,
           "end_m": 720,
-          "start_str": "11:00 AM",
+          "start_str": "08:30 AM",
           "end_str": "12:00 PM",
-          "details": "Leg 3: Neil's Harbour to Black Brook Cove to Broad Cove Camp • Cabot Trail ocean coast past Black Brook waterfall to Broad Cove Campground"
+          "type": "ride",
+          "title": "In Saddle: 116 km (3h 30m incl. Cape Smokey & Ingonish)",
+          "details": "Leg 2: Ride up Cape Smokey switchbacks, Ingonish Beach & Keltic Lodge headland to Neil's Harbour"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
           "start_m": 720,
-          "end_m": 1080,
+          "end_m": 780,
           "start_str": "12:00 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Broad Cove Campground (Cape Breton Highlands NP), unpack panniers, shower, relax"
+          "end_str": "01:00 PM",
+          "type": "meal",
+          "title": "Lunch at Neil's Harbour Lighthouse (1h)",
+          "details": "12:00 PM Chowder Lunch at Chowder House by Neil's Harbour Lighthouse"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
+          "start_m": 780,
+          "end_m": 840,
+          "start_str": "01:00 PM",
+          "end_str": "02:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 25 km (1h 00m incl. Black Brook Cove)",
+          "details": "Leg 3: Neil's Harbour past Black Brook Cove waterfall to Ingonish / Broad Cove"
+        },
+        {
+          "start_m": 840,
+          "end_m": 1080,
+          "start_str": "02:00 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in / Coastal Hike",
+          "details": "Check-in at Broad Cove / Ingonish & hike Middle Head Peninsula trail"
+        },
+        {
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Broad Cove Campground (Cape Breton Highlands NP)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at Coastal Restaurant & Pub or The Chanterelle"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Evening campfire & route prep for Meat Cove & Skyline Trail"
         }
       ]
     },
@@ -225707,85 +225824,103 @@
       "hotel": "Chéticamp Campground (Cape Breton Highlands NP)",
       "blocks": [
         {
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup on the Cabot Trail"
+        },
+        {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
           "type": "meal",
-          "title": "Breakfast & Pack (30m)",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
           "start_m": 420,
-          "end_m": 450,
+          "end_m": 540,
           "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
-        },
-        {
+          "end_str": "09:00 AM",
           "type": "ride",
-          "title": "In Saddle: 82 km (1h 35m)",
-          "start_m": 450,
-          "end_m": 545,
-          "start_str": "07:30 AM",
-          "end_str": "09:05 AM",
-          "details": "Leg 1: Broad Cove over North Mountain to Meat Cove Spur • Cabot Trail past Dingwall & Cape North -> 29 km spur road to northernmost ocean cliffs"
+          "title": "In Saddle: 82 km (2h 00m)",
+          "details": "07:00 AM Sharp Departure! Leg 1: Ride over North Mountain to dramatic Meat Cove clifftop spur"
         },
         {
-          "type": "fuel",
-          "title": "1h 00m: Meat Cove clifftop chowd...",
-          "start_m": 545,
-          "end_m": 605,
-          "start_str": "09:05 AM",
-          "end_str": "10:05 AM",
-          "details": "Meat Cove clifftop chowder hut & ocean look-off • Primary Gas: Dingwall Gas Bar & Convenience (46.9030, -60.4600) - 91: YES"
-        },
-        {
-          "type": "ride",
-          "title": "In Saddle: 68 km (1h 25m)",
-          "start_m": 605,
-          "end_m": 720,
-          "start_str": "10:05 AM",
-          "end_str": "12:00 PM",
-          "details": "Leg 2: Meat Cove to Skyline Trail Hike (Pleasant Bay) • Meat Cove road -> Cabot Trail over MacKenzie Mountain to French Mountain"
-        },
-        {
+          "start_m": 540,
+          "end_m": 585,
+          "start_str": "09:00 AM",
+          "end_str": "09:45 AM",
           "type": "sight",
-          "title": "2h 00m: Hike Skyline Trail Board...",
-          "start_m": 720,
-          "end_m": 870,
-          "start_str": "12:00 PM",
-          "end_str": "02:30 PM",
-          "details": "Hike Skyline Trail Boardwalk (look down on Cabot Trail hairpins & moose) • Primary Gas: Pleasant Bay Esso (Km 35 into leg)"
+          "title": "Meat Cove Look-off & Dingwall Fuel (45m)",
+          "details": "Explore northernmost tip of Cape Breton & top off fuel at Dingwall"
         },
         {
+          "start_m": 585,
+          "end_m": 720,
+          "start_str": "09:45 AM",
+          "end_str": "12:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 68 km (2h 15m incl. Beulach Ban Falls)",
+          "details": "Leg 2: Meat Cove via Aspy Fault & Mackenzie Mountain switchbacks to Pleasant Bay"
+        },
+        {
+          "start_m": 720,
+          "end_m": 780,
+          "start_str": "12:00 PM",
+          "end_str": "01:00 PM",
+          "type": "meal",
+          "title": "Lunch in Pleasant Bay (1h)",
+          "details": "12:00 PM Lunch at Rusty Anchor / Pleasant Bay before Skyline Trail hike"
+        },
+        {
+          "start_m": 780,
+          "end_m": 915,
+          "start_str": "01:00 PM",
+          "end_str": "03:15 PM",
+          "type": "sight",
+          "title": "Hike Skyline Trail Headland Loop (2h 15m)",
+          "details": "Walk the famous Skyline Trail boardwalk overlooking Cabot Trail hairpins & Gulf of St. Lawrence"
+        },
+        {
+          "start_m": 915,
+          "end_m": 960,
+          "start_str": "03:15 PM",
+          "end_str": "04:00 PM",
           "type": "ride",
           "title": "In Saddle: 40 km (45m)",
-          "start_m": 870,
-          "end_m": 945,
-          "start_str": "02:30 PM",
-          "end_str": "03:45 PM",
-          "details": "Leg 3: Skyline Trail down French Mountain Switchbacks to Chéticamp • Cabot Trail sea cliff hairpins -> Aucoin Bakery -> Chéticamp Acadian village"
+          "details": "Leg 3: Descend French Mountain ocean ledges into Acadian Chéticamp"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 945,
+          "start_m": 960,
           "end_m": 1080,
-          "start_str": "03:45 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Chéticamp Campground (Cape Breton Highlands NP), unpack panniers, shower, relax"
+          "start_str": "04:00 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Chéticamp Campground / Laurie's Motor Inn, unpack & shower"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Chéticamp Campground (Cape Breton Highlands NP)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) at L'Abri Restaurant, Le Gabriel, or Doryman Pub in Chéticamp"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Evening live Acadian fiddle music & route prep for PEI"
         }
       ]
     },
@@ -225798,85 +225933,94 @@
       "hotel": "Cavendish Campground (Prince Edward Island National Park)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Chéticamp"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, grab Aucoin Bakery pastries — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 600,
+          "start_str": "07:00 AM",
+          "end_str": "10:00 AM",
           "type": "ride",
           "title": "In Saddle: 245 km (3h 00m)",
-          "start_m": 450,
-          "end_m": 645,
-          "start_str": "07:30 AM",
-          "end_str": "10:45 AM",
-          "details": "Leg 1: Chéticamp via Ceilidh Trail to New Glasgow, NS • Route 19 past Margaree Range Light -> Canso Causeway bridge -> Hwy 104 West"
+          "details": "07:00 AM Sharp Departure! Leg 1: Chéticamp down Ceilidh Trail (Route 19) & Canso Causeway to New Glasgow, NS"
         },
         {
+          "start_m": 600,
+          "end_m": 620,
+          "start_str": "10:00 AM",
+          "end_str": "10:20 AM",
           "type": "fuel",
-          "title": "20m: Primary Gas Stop #1",
-          "start_m": 645,
-          "end_m": 665,
-          "start_str": "10:45 AM",
-          "end_str": "11:05 AM",
-          "details": "Primary Gas Stop #1 & stretch • Primary Gas: New Glasgow Irving Big Stop (45.5800, -62.6400) - 91: YES"
+          "title": "20m: New Glasgow Fuel Stop",
+          "details": "Primary Gas Stop #1 at New Glasgow Irving Big Stop (91 Premium)"
         },
         {
+          "start_m": 620,
+          "end_m": 720,
+          "start_str": "10:20 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 165 km (2h 05m)",
-          "start_m": 665,
-          "end_m": 790,
-          "start_str": "11:05 AM",
-          "end_str": "01:10 PM",
-          "details": "Leg 2: New Glasgow to Confederation Bridge & Victoria-by-the-Sea (PEI) • Hwy 104 & Route 16 to Cape Jourimain -> 12.9 km Confederation Bridge (Toll-Free!) -> Route 1 PEI"
+          "title": "In Saddle: 165 km (1h 40m)",
+          "details": "Leg 2: New Glasgow across Confederation Bridge (12.9 km) into Prince Edward Island"
         },
         {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
           "type": "meal",
-          "title": "45m: Primary Gas Stop #2",
-          "start_m": 790,
-          "end_m": 835,
-          "start_str": "01:10 PM",
-          "end_str": "01:55 PM",
-          "details": "Primary Gas Stop #2 + 30m LUNCH in Victoria-by-the-Sea (1879 Range Light) • Primary Gas: Borden-Carleton Gateway Shell (46.2550, -63.6850) - 91: YES"
+          "title": "Lunch & Fuel in Victoria-by-the-Sea / Borden (45m)",
+          "details": "12:00 PM Lunch in historic Victoria-by-the-Sea + Primary Gas Stop #2 at Borden-Carleton"
         },
         {
+          "start_m": 765,
+          "end_m": 1035,
+          "start_str": "12:45 PM",
+          "end_str": "05:15 PM",
           "type": "ride",
-          "title": "In Saddle: 236 km (2h 00m (riding) + 1h 50m sightseeing)",
-          "start_m": 835,
-          "end_m": 1050,
-          "start_str": "01:55 PM",
-          "end_str": "05:30 PM",
-          "details": "Leg 3: PEI Grand Loop (French River, Cape Tryon Light, Anne, Rustico) • PEI coastal routes through French River overlook -> Cape Tryon red cliffs -> Anne Heritage Place -> Cavendish"
+          "title": "In Saddle: 236 km (4h 30m incl. PEI Red Cliffs & Lighthouses)",
+          "details": "Leg 3: PEI Scenic Loop via West Point Light, French River, Thunder Cove & Green Gables to Cavendish"
         },
         {
+          "start_m": 1035,
+          "end_m": 1080,
+          "start_str": "05:15 PM",
+          "end_str": "06:00 PM",
           "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 1050,
-          "end_m": 1110,
-          "start_str": "05:30 PM",
-          "end_str": "06:30",
-          "details": "Check-in at Cavendish Campground (Prince Edward Island National Park), unpack panniers, shower, relax"
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Cavendish Campground / Kindred Spirits Inn (PEI National Park)"
         },
         {
+          "start_m": 1080,
+          "end_m": 1140,
+          "start_str": "06:00 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1110,
-          "end_m": 1170,
-          "start_str": "06:30",
-          "end_str": "07:30 PM",
-          "details": "1-hour sit-down supper near Cavendish Campground (Prince Edward Island National Park)"
+          "details": "Lobster Supper (06:00 PM – 07:00 PM) at Blue Mussel Café, New Glasgow Lobster Suppers, or Dave's Lobster"
         },
         {
+          "start_m": 1140,
+          "end_m": 1320,
+          "start_str": "07:00 PM",
+          "end_str": "10:00 PM",
           "type": "lodging",
           "title": "Rest & Route Prep",
-          "start_m": 1170,
-          "end_m": 1320,
-          "start_str": "07:30 PM",
-          "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "details": "Sunset walk on Cavendish red sandstone cliffs"
         }
       ]
     },
@@ -225889,67 +226033,94 @@
       "hotel": "Fundy National Park (Headquarters Campground, Alma, NB)",
       "blocks": [
         {
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Cavendish, PEI"
+        },
+        {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
           "type": "meal",
-          "title": "Breakfast & Pack (30m)",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
           "start_m": 420,
-          "end_m": 450,
+          "end_m": 600,
           "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
-        },
-        {
+          "end_str": "10:00 AM",
           "type": "ride",
-          "title": "In Saddle: 155 km (2h 05m)",
-          "start_m": 450,
-          "end_m": 635,
-          "start_str": "07:30 AM",
-          "end_str": "10:35 AM",
-          "details": "Leg 1: Cavendish via Seacow Head Light & Confederation Bridge to Moncton • Seacow Head Light -> Confederation Bridge exit (toll ~$20.25/bike) -> Route 16 to Moncton"
+          "title": "In Saddle: 155 km (3h 00m incl. Charlottetown & Point Prim)",
+          "details": "07:00 AM Sharp Departure! Leg 1: Brackley Beach, Victoria Row (Charlottetown) & Confederation Bridge to Shediac"
         },
         {
+          "start_m": 600,
+          "end_m": 625,
+          "start_str": "10:00 AM",
+          "end_str": "10:25 AM",
           "type": "fuel",
-          "title": "25m: Primary Gas Stop #1",
-          "start_m": 635,
-          "end_m": 660,
-          "start_str": "10:35 AM",
-          "end_str": "11:00 AM",
-          "details": "Primary Gas Stop #1 & Cape Jourimain Light view • Primary Gas: Shediac / Moncton Irving (46.0900, -64.7800) - 91: YES"
+          "title": "25m: Shediac Giant Lobster & Fuel",
+          "details": "Primary Gas Stop #1 at Shediac / Moncton Irving (91 Premium) + Giant Lobster photo"
         },
         {
+          "start_m": 625,
+          "end_m": 720,
+          "start_str": "10:25 AM",
+          "end_str": "12:00 PM",
           "type": "ride",
-          "title": "In Saddle: 173 km (2h 25m)",
-          "start_m": 660,
-          "end_m": 990,
-          "start_str": "11:00 AM",
-          "end_str": "04:30 PM",
-          "details": "Leg 2: Moncton to Hopewell Rocks, Anderson Hollow & Cape Enrage to Alma • Route 114 to Hopewell Rocks (1.5h ocean floor walk) -> Route 915 past Anderson Hollow Lighthouse (Harvey Bank Heritage Shipyard Park at 45.7352, -64.6973) -> Cape Enrage Light (150-ft cliffs) -> Alma"
+          "title": "In Saddle: 75 km (1h 35m)",
+          "details": "Leg 2: Moncton south along Petitcodiac River (Route 114) to Hopewell Rocks"
         },
         {
+          "start_m": 720,
+          "end_m": 780,
+          "start_str": "12:00 PM",
+          "end_str": "01:00 PM",
+          "type": "meal",
+          "title": "Lunch at Hopewell Rocks (1h)",
+          "details": "12:00 PM Lunch + walk the ocean floor among the Flowerpot sea stacks at low tide"
+        },
+        {
+          "start_m": 780,
+          "end_m": 960,
+          "start_str": "01:00 PM",
+          "end_str": "04:00 PM",
+          "type": "ride",
+          "title": "In Saddle: 98 km (3h 00m incl. Cape Enrage & Dickson Falls)",
+          "details": "Leg 3: Route 915 coastal detour to Cape Enrage Lighthouse & Dickson Falls into Alma / Fundy NP"
+        },
+        {
+          "start_m": 960,
+          "end_m": 1080,
+          "start_str": "04:00 PM",
+          "end_str": "06:00 PM",
           "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 990,
-          "end_m": 1110,
-          "start_str": "04:30 PM",
-          "end_str": "06:30",
-          "details": "Check-in at Fundy National Park (Headquarters Campground, Alma, NB), unpack panniers, shower, relax"
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Fundy National Park (Headquarters Campground / Parkland Village Inn) in Alma, NB"
         },
         {
+          "start_m": 1080,
+          "end_m": 1140,
+          "start_str": "06:00 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1110,
-          "end_m": 1170,
-          "start_str": "06:30",
-          "end_str": "07:30 PM",
-          "details": "1-hour sit-down supper near Fundy National Park (Headquarters Campground, Alma, NB)"
+          "details": "Supper (06:00 PM – 07:00 PM) in Alma (Octopus' Garden Café / Tides Restaurant & Holy Whale Brewing)"
         },
         {
+          "start_m": 1140,
+          "end_m": 1320,
+          "start_str": "07:00 PM",
+          "end_str": "10:00 PM",
           "type": "lodging",
           "title": "Rest & Route Prep",
-          "start_m": 1170,
-          "end_m": 1320,
-          "start_str": "07:30 PM",
-          "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "details": "Bay of Fundy evening tide walk & route prep"
         }
       ]
     },
@@ -225962,85 +226133,112 @@
       "hotel": "de la République Provincial Park (Edmundston, NB)",
       "blocks": [
         {
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Alma, NB"
+        },
+        {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
           "type": "meal",
-          "title": "Breakfast & Pack (30m)",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, grab sticky buns at Kelly's Bake Shop — on the road at 07:00 AM sharp!"
+        },
+        {
           "start_m": 420,
-          "end_m": 450,
+          "end_m": 600,
           "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
-        },
-        {
+          "end_str": "10:00 AM",
           "type": "ride",
-          "title": "In Saddle: 141 km (2h 35m)",
-          "start_m": 450,
-          "end_m": 645,
-          "start_str": "07:30 AM",
-          "end_str": "10:45 AM",
-          "details": "Leg 1: Alma via Fundy Trail Parkway to Saint John, NB • Route 114 through Fundy NP to paved Eastern Connector -> Fundy Trail Parkway East Gate (Walton Glen Gorge, Long Beach, Big Salmon River suspension bridge, Fuller Falls) -> West Gate -> St. Martins -> Route 111 West directly into Saint John (Reversing Falls Rapids & City Market)"
+          "title": "In Saddle: 141 km (3h 00m)",
+          "details": "07:00 AM Sharp Departure! Leg 1: Carve the full Fundy Trail Parkway coastal hairpins & St. Martins Sea Caves to Saint John"
         },
         {
-          "type": "meal",
-          "title": "1h 15m: Primary Gas Stop #1 at S...",
-          "start_m": 645,
+          "start_m": 600,
+          "end_m": 660,
+          "start_str": "10:00 AM",
+          "end_str": "11:00 AM",
+          "type": "sight",
+          "title": "Reversing Falls & AREA 506 Container Village (1h)",
+          "details": "Fuel at Saint John Irving + visit Reversing Falls Observation Deck & historic Saint John City Market"
+        },
+        {
+          "start_m": 660,
           "end_m": 720,
-          "start_str": "10:45 AM",
+          "start_str": "11:00 AM",
           "end_str": "12:00 PM",
-          "details": "Primary Gas Stop #1 at Saint John Irving (Fairville Blvd) + 30m LUNCH at historic Saint John City Market + Reversing Falls view • Primary Gas: Saint John Irving (Route 1 / Fairville Blvd, 45.2458, -66.1158) - 91: YES"
-        },
-        {
           "type": "ride",
-          "title": "In Saddle: 208 km (2h 15m)",
+          "title": "In Saddle: 85 km (1h 00m)",
+          "details": "Leg 2: Saint John north up Saint John River Valley toward Fredericton"
+        },
+        {
           "start_m": 720,
-          "end_m": 855,
+          "end_m": 765,
           "start_str": "12:00 PM",
-          "end_str": "02:15 PM",
-          "details": "Leg 2: Saint John via Route 7 North & TCH-2 to Woodstock • Saint John Throughway (Route 1) to Route 7 North past Grand Bay-Westfield, Welsford, Oromocto to TCH-2 West, continuing past Fredericton to Woodstock"
+          "end_str": "12:45 PM",
+          "type": "meal",
+          "title": "Lunch in Fredericton / River Valley (45m)",
+          "details": "12:00 PM Lunch at Picaroons Roundhouse / River Valley café"
         },
         {
+          "start_m": 765,
+          "end_m": 885,
+          "start_str": "12:45 PM",
+          "end_str": "02:45 PM",
+          "type": "ride",
+          "title": "In Saddle: 123 km (2h 00m)",
+          "details": "Leg 3: Fredericton to Woodstock & World's Longest Covered Bridge in Hartland"
+        },
+        {
+          "start_m": 885,
+          "end_m": 910,
+          "start_str": "02:45 PM",
+          "end_str": "03:10 PM",
           "type": "fuel",
-          "title": "25m: Primary Gas Stop #2 at Wood...",
-          "start_m": 855,
-          "end_m": 880,
-          "start_str": "02:15 PM",
-          "end_str": "02:40 PM",
-          "details": "Primary Gas Stop #2 at Woodstock Irving Big Stop + hydration & snack break • Primary Gas: Woodstock Irving Big Stop (Exit 188, 46.1450, -67.5850) - 91: YES"
+          "title": "25m: Woodstock / Hartland Fuel Stop",
+          "details": "Primary Gas Stop #2 at Woodstock Irving Big Stop (91 Premium)"
         },
         {
+          "start_m": 910,
+          "end_m": 1035,
+          "start_str": "03:10 PM",
+          "end_str": "05:15 PM",
           "type": "ride",
           "title": "In Saddle: 195 km (2h 05m)",
-          "start_m": 880,
-          "end_m": 1035,
-          "start_str": "02:40 PM",
-          "end_str": "05:15 PM",
-          "details": "Leg 3: Woodstock via Hartland Covered Bridge & Grand Falls to Edmundston • TCH-2 West to Hartland Covered Bridge (ride through 1,282-ft wooden tunnel) -> Grand Falls gorge overlook -> Saint-Léonard -> Edmundston"
+          "details": "Leg 4: Hartland via Grand Falls Gorge into Edmundston, NB"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
           "start_m": 1035,
-          "end_m": 1110,
+          "end_m": 1080,
           "start_str": "05:15 PM",
-          "end_str": "06:30",
-          "details": "Check-in at de la République Provincial Park (Edmundston, NB), unpack panniers, shower, relax"
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at de la République Provincial Park / Best Western Plus Edmundston"
         },
         {
+          "start_m": 1080,
+          "end_m": 1140,
+          "start_str": "06:00 PM",
+          "end_str": "07:00 PM",
           "type": "meal",
           "title": "Supper (1h)",
-          "start_m": 1110,
-          "end_m": 1170,
-          "start_str": "06:30",
-          "end_str": "07:30 PM",
-          "details": "1-hour sit-down supper near de la République Provincial Park (Edmundston, NB)"
+          "details": "Supper (06:00 PM – 07:00 PM) at Frank's Bar and Grill, Le Café, or Les Brasseurs du Petit-Sault"
         },
         {
+          "start_m": 1140,
+          "end_m": 1320,
+          "start_str": "07:00 PM",
+          "end_str": "10:00 PM",
           "type": "lodging",
           "title": "Rest & Route Prep",
-          "start_m": 1170,
-          "end_m": 1320,
-          "start_str": "07:30 PM",
-          "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "details": "Chain lube & route prep for return into Québec"
         }
       ]
     },
@@ -226053,85 +226251,103 @@
       "hotel": "Camping des Voltigeurs (Sépaq - Drummondville, QC)",
       "blocks": [
         {
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Edmundston, NB"
+        },
+        {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
           "type": "meal",
-          "title": "Breakfast & Pack (30m)",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
           "start_m": 420,
-          "end_m": 450,
+          "end_m": 510,
           "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
-        },
-        {
+          "end_str": "08:30 AM",
           "type": "ride",
-          "title": "In Saddle: 120 km (1h 25m)",
-          "start_m": 450,
-          "end_m": 535,
-          "start_str": "07:30 AM",
-          "end_str": "08:55 AM",
-          "details": "Leg 1: Edmundston via A-85 to Rivière-du-Loup • A-85 through Témiscouata to St. Lawrence South Shore junction"
+          "title": "In Saddle: 120 km (1h 30m)",
+          "details": "07:00 AM Sharp Departure! Leg 1: Edmundston via A-85 past Lake Témiscouata to Rivière-du-Loup"
         },
         {
+          "start_m": 510,
+          "end_m": 530,
+          "start_str": "08:30 AM",
+          "end_str": "08:50 AM",
           "type": "fuel",
-          "title": "20m: Primary Gas Stop #1",
-          "start_m": 535,
-          "end_m": 555,
-          "start_str": "08:55 AM",
-          "end_str": "09:15 AM",
-          "details": "Primary Gas Stop #1 & coffee • Primary Gas: Rivière-du-Loup Shell (47.8150, -69.5250) - 91: YES"
+          "title": "20m: Rivière-du-Loup Fuel Stop",
+          "details": "Primary Gas Stop #1 at Rivière-du-Loup Shell (91 Premium)"
         },
         {
+          "start_m": 530,
+          "end_m": 690,
+          "start_str": "08:50 AM",
+          "end_str": "11:30 AM",
           "type": "ride",
-          "title": "In Saddle: 195 km (2h 10m)",
-          "start_m": 555,
-          "end_m": 685,
-          "start_str": "09:15 AM",
-          "end_str": "11:25 AM",
-          "details": "Leg 2: Rivière-du-Loup along Highway 20 South Shore to Lévis • Strictly Highway 20 West (Autoroute Jean-Lesage) past Montmagny south of Quebec City"
+          "title": "In Saddle: 195 km (2h 40m)",
+          "details": "Leg 2: Rivière-du-Loup west along St. Lawrence South Shore (Hwy 20 / Route 132) to Lévis"
         },
         {
+          "start_m": 690,
+          "end_m": 720,
+          "start_str": "11:30 AM",
+          "end_str": "12:00 PM",
+          "type": "sight",
+          "title": "Lévis Terrace View of Château Frontenac (30m)",
+          "details": "Scenic overlook across the St. Lawrence River to Old Québec + Primary Gas Stop #2"
+        },
+        {
+          "start_m": 720,
+          "end_m": 780,
+          "start_str": "12:00 PM",
+          "end_str": "01:00 PM",
           "type": "meal",
-          "title": "45m: Primary Gas Stop #2",
-          "start_m": 685,
-          "end_m": 730,
-          "start_str": "11:25 AM",
-          "end_str": "12:10 PM",
-          "details": "Primary Gas Stop #2 + 30m Canada Day LUNCH • Primary Gas: Lévis / St-Nicolas Esso (Exit 311, 46.7050, -71.2850) - 91: YES"
+          "title": "Canada Day Lunch in Lévis (1h)",
+          "details": "12:00 PM Lunch overlooking the St. Lawrence River in Lévis"
         },
         {
+          "start_m": 780,
+          "end_m": 880,
+          "start_str": "01:00 PM",
+          "end_str": "02:40 PM",
           "type": "ride",
-          "title": "In Saddle: 122 km (1h 20m)",
-          "start_m": 730,
-          "end_m": 810,
-          "start_str": "12:10 PM",
-          "end_str": "01:30 PM",
-          "details": "Leg 3: Lévis to Drummondville • Highway 20 West open 4-lane divided highway directly into Drummondville"
+          "title": "In Saddle: 122 km (1h 40m)",
+          "details": "Leg 3: Lévis west on Highway 20 into Drummondville, QC"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
-          "start_m": 810,
+          "start_m": 880,
           "end_m": 1080,
-          "start_str": "01:30 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Camping des Voltigeurs (Sépaq - Drummondville, QC), unpack panniers, shower, relax"
+          "start_str": "02:40 PM",
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Camping des Voltigeurs / Hôtel & Suites Le Dauphin (Drummondville, QC)"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Camping des Voltigeurs (Sépaq - Drummondville, QC)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Supper (06:00 PM – 07:00 PM) in Drummondville"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Route Prep",
+          "details": "Evening relaxation & route prep for Ontario return"
         }
       ]
     },
@@ -226144,85 +226360,94 @@
       "hotel": "Best Western Pembroke Inn & Conference Centre (Pembroke, ON)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Morning wakeup in Drummondville, QC"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 530,
+          "start_str": "07:00 AM",
+          "end_str": "08:50 AM",
           "type": "ride",
           "title": "In Saddle: 165 km (1h 50m)",
-          "start_m": 450,
-          "end_m": 560,
-          "start_str": "07:30 AM",
-          "end_str": "09:20 AM",
-          "details": "Leg 1: Drummondville via A-30 Bypass to Beauharnois • Highway 20 West -> A-30 West bypass over Pont Serge-Marcil toll bridge ($3.50/bike)"
+          "details": "07:00 AM Sharp Departure! Leg 1: Drummondville via A-30 South Shore Bypass to Beauharnois"
         },
         {
+          "start_m": 530,
+          "end_m": 550,
+          "start_str": "08:50 AM",
+          "end_str": "09:10 AM",
           "type": "fuel",
-          "title": "20m: Primary Gas Stop #1",
-          "start_m": 560,
-          "end_m": 580,
-          "start_str": "09:20 AM",
-          "end_str": "09:40 AM",
-          "details": "Primary Gas Stop #1 & stretch • Primary Gas: Beauharnois Shell (45.3150, -74.0350) - 91: YES"
+          "title": "20m: Beauharnois Fuel Stop",
+          "details": "Primary Gas Stop #1 at Beauharnois Shell (91 Premium) before Pont Serge-Marcil"
         },
         {
-          "type": "ride",
-          "title": "In Saddle: 175 km (2h 20m)",
-          "start_m": 580,
+          "start_m": 550,
           "end_m": 720,
-          "start_str": "09:40 AM",
+          "start_str": "09:10 AM",
           "end_str": "12:00 PM",
-          "details": "Leg 2: Beauharnois via Southern Ottawa Bypass to Carleton Place • Hwy 417 -> Casselman -> Mitch Owens Rd through Manotick greenbelt -> Carleton Place"
+          "type": "ride",
+          "title": "In Saddle: 195 km (2h 50m)",
+          "details": "Leg 2: Cross St. Lawrence into Ontario -> Southern Ottawa Bypass to Carleton Place"
         },
         {
-          "type": "meal",
-          "title": "45m: Primary Gas Stop #2",
           "start_m": 720,
           "end_m": 765,
           "start_str": "12:00 PM",
           "end_str": "12:45 PM",
-          "details": "Primary Gas Stop #2 + 30m LUNCH in Carleton Place • Primary Gas: Carleton Place Esso (Hwy 7 / Hwy 15, 45.1380, -76.1350) - 91: YES"
+          "type": "meal",
+          "title": "Lunch & Fuel in Carleton Place (45m)",
+          "details": "12:00 PM Lunch + Primary Gas Stop #2 at Carleton Place Esso (91 Premium)"
         },
         {
-          "type": "ride",
-          "title": "In Saddle: 162 km (2h 00m)",
           "start_m": 765,
           "end_m": 885,
           "start_str": "12:45 PM",
           "end_str": "02:45 PM",
-          "details": "Leg 3: Carleton Place to Pembroke • Hwy 15 north to Arnprior -> Trans-Canada Hwy 17 West past Renfrew into Pembroke"
+          "type": "ride",
+          "title": "In Saddle: 142 km (2h 00m)",
+          "details": "Leg 3: Carleton Place via Arnprior & Renfrew up Hwy 17 to Pembroke, ON"
         },
         {
-          "type": "lodging",
-          "title": "Arrive & Check-in / Camp Pitch",
           "start_m": 885,
           "end_m": 1080,
           "start_str": "02:45 PM",
-          "end_str": "06:00",
-          "details": "Check-in at Best Western Pembroke Inn & Conference Centre (Pembroke, ON), unpack panniers, shower, relax"
+          "end_str": "06:00 PM",
+          "type": "lodging",
+          "title": "Arrive & Check-in",
+          "details": "Check-in at Best Western Pembroke Inn & Conference Centre, unpack & relax"
         },
         {
-          "type": "meal",
-          "title": "Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "1-hour sit-down supper near Best Western Pembroke Inn & Conference Centre (Pembroke, ON)"
+          "type": "meal",
+          "title": "Supper (1h)",
+          "details": "Final Road Supper (06:00 PM – 07:00 PM) in Pembroke"
         },
         {
-          "type": "lodging",
-          "title": "Rest & Route Prep",
           "start_m": 1140,
           "end_m": 1320,
           "start_str": "07:00 PM",
           "end_str": "10:00 PM",
-          "details": "Chain lube, tire pressure check, next day GPX review, restful sleep"
+          "type": "lodging",
+          "title": "Rest & Final Stage Prep",
+          "details": "Prep for tomorrow's final victory ride home to Hanmer"
         }
       ]
     },
@@ -226235,58 +226460,94 @@
       "hotel": "Home Base (4671 Dupuis Dr, Hanmer, ON)",
       "blocks": [
         {
-          "type": "meal",
-          "title": "Breakfast & Pack (30m)",
-          "start_m": 420,
-          "end_m": 450,
-          "start_str": "07:00 AM",
-          "end_str": "07:30 AM",
-          "details": "Nutritious breakfast, morning route briefing, pack bikes"
+          "start_m": 360,
+          "end_m": 375,
+          "start_str": "06:00 AM",
+          "end_str": "06:15 AM",
+          "type": "wake",
+          "title": "Wake & Prep",
+          "details": "Final expedition stage wakeup in Pembroke, ON"
         },
         {
+          "start_m": 375,
+          "end_m": 420,
+          "start_str": "06:15 AM",
+          "end_str": "07:00 AM",
+          "type": "meal",
+          "title": "Breakfast & Pack (45m)",
+          "details": "Eat breakfast before riding, load bikes — on the road at 07:00 AM sharp!"
+        },
+        {
+          "start_m": 420,
+          "end_m": 530,
+          "start_str": "07:00 AM",
+          "end_str": "08:50 AM",
           "type": "ride",
           "title": "In Saddle: 146 km (1h 50m)",
-          "start_m": 450,
+          "details": "07:00 AM Sharp Departure! Leg 1: Pembroke up Ottawa River Valley (Hwy 17 West) to Mattawa"
+        },
+        {
+          "start_m": 530,
           "end_m": 560,
-          "start_str": "07:30 AM",
+          "start_str": "08:50 AM",
           "end_str": "09:20 AM",
-          "details": "Leg 1: Pembroke up the Ottawa River Valley to Mattawa • Trans-Canada Hwy 17 West past Petawawa, Deep River & Stonecliffe to Mattawa"
-        },
-        {
           "type": "fuel",
-          "title": "30m: Primary Gas Stop #1",
+          "title": "30m: Mattawa Fuel & Eau Claire Gorge",
+          "details": "Primary Gas Stop #1 at Mattawa Shell (91 Premium) & stretch"
+        },
+        {
           "start_m": 560,
-          "end_m": 590,
+          "end_m": 660,
           "start_str": "09:20 AM",
-          "end_str": "09:50 AM",
-          "details": "Primary Gas Stop #1 & Eau Claire Gorges stretch • Primary Gas: Mattawa Shell / Canadian Tire (46.3150, -78.7100) - 91: YES"
-        },
-        {
+          "end_str": "11:00 AM",
           "type": "ride",
-          "title": "In Saddle: 208 km (2h 40m)",
-          "start_m": 590,
-          "end_m": 840,
-          "start_str": "09:50 AM",
-          "end_str": "02:00 PM",
-          "details": "Leg 2: Mattawa through North Bay to Hanmer Home Base! • Hwy 17 West past Lake Nipissing through North Bay -> Sturgeon Falls -> Garson -> Dupuis Dr"
+          "title": "In Saddle: 95 km (1h 40m)",
+          "details": "Leg 2: Mattawa west along Lake Nipissing into North Bay"
         },
         {
+          "start_m": 660,
+          "end_m": 720,
+          "start_str": "11:00 AM",
+          "end_str": "12:00 PM",
+          "type": "sight",
+          "title": "Lake Nipissing Waterfront & Twiggs Roasters (1h)",
+          "details": "Coffee & stretch at Twiggs Coffee Roasters on Lake Nipissing"
+        },
+        {
+          "start_m": 720,
+          "end_m": 765,
+          "start_str": "12:00 PM",
+          "end_str": "12:45 PM",
+          "type": "meal",
+          "title": "Victory Lunch in North Bay / Sturgeon Falls (45m)",
+          "details": "12:00 PM Lunch before the final stretch home to Hanmer"
+        },
+        {
+          "start_m": 765,
+          "end_m": 870,
+          "start_str": "12:45 PM",
+          "end_str": "02:30 PM",
+          "type": "ride",
+          "title": "In Saddle: 113 km (1h 45m)",
+          "details": "Leg 3: Final ride west on Hwy 17 & Municipal Rd 80 into Hanmer Home Base (4671 Dupuis Dr)!"
+        },
+        {
+          "start_m": 870,
+          "end_m": 1080,
+          "start_str": "02:30 PM",
+          "end_str": "06:00 PM",
           "type": "lodging",
           "title": "Homecoming Arrival!",
-          "start_m": 840,
-          "end_m": 1080,
-          "start_str": "02:00 PM",
-          "end_str": "06:00",
-          "details": "Roll into driveway at 4671 Dupuis Drive, Hanmer! Expedition Complete! 🎉"
+          "details": "Roll into driveway at 4671 Dupuis Drive, Hanmer — 8,243.4 km Complete! 🎉"
         },
         {
-          "type": "meal",
-          "title": "Celebration Supper (1h)",
           "start_m": 1080,
           "end_m": 1140,
-          "start_str": "06:00",
+          "start_str": "06:00 PM",
           "end_str": "07:00 PM",
-          "details": "Celebration homecoming supper with family"
+          "type": "meal",
+          "title": "Celebration Supper (1h)",
+          "details": "Homecoming Celebration Supper (06:00 PM – 07:00 PM)"
         }
       ]
     }

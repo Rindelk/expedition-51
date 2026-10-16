@@ -4225,7 +4225,7 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
                 }} catch (e) {{}}
             }}
 
-            // Also check cloud relay for any newer commits/broadcasts across devices
+            // Also check cloud relay for any newer commits/broadcasts across devices (including >4KB attachment URLs)
             try {{
                 const relayRes = await fetch(`https://ntfy.sh/${{GIT_CHECKLIST_RELAY_TOPIC}}/json?poll=1&since=all`, {{ cache: 'no-store' }});
                 if (relayRes.ok) {{
@@ -4234,8 +4234,14 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
                     for (let i = lines.length - 1; i >= 0; i--) {{
                         try {{
                             const env = JSON.parse(lines[i]);
-                            if (env && env.event === 'message' && env.message) {{
-                                const payload = JSON.parse(env.message);
+                            if (env && env.event === 'message') {{
+                                let payload = null;
+                                if (env.attachment && env.attachment.url) {{
+                                    const attRes = await fetch(env.attachment.url, {{ cache: 'no-store' }});
+                                    if (attRes.ok) payload = await attRes.json();
+                                }} else if (env.message && env.message.trim().startsWith('{{')) {{
+                                    payload = JSON.parse(env.message);
+                                }}
                                 if (payload && payload.bikes && payload.lastUpdated) {{
                                     const curTs = Date.parse(checklistState.lastUpdated || '') || 0;
                                     const newTs = Date.parse(payload.lastUpdated) || 0;
