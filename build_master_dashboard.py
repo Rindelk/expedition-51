@@ -2229,7 +2229,7 @@ html_template = f"""<!DOCTYPE html>
                         <th>Fuel Tank</th>
                         <th>Consumption</th>
                         <th>Highway Range</th>
-                        <th>Aux Bladder</th>
+                        <th>Aux Fuel System</th>
                         <th>Fuel Grade &amp; Notes</th>
                     </tr>
                 </thead>
@@ -2239,15 +2239,15 @@ html_template = f"""<!DOCTYPE html>
                         <td>24.8 L</td>
                         <td>4.9 L/100km</td>
                         <td>~450 km</td>
-                        <td>+100 km (~550 km)</td>
-                        <td><strong>87 Regular</strong> — Native low-octane map handles all remote Labrador pumps.</td>
+                        <td>1-Gal RotopaX (3.8L) + 3-Gal Giant Loop Armadillo (11.4L)</td>
+                        <td><strong>87 Regular</strong> — Carries 15.2 L (4 US Gal) total aux fuel for both bikes; native low-octane map handles remote pumps.</td>
                     </tr>
                     <tr>
                         <td><strong>Rosie — 2026 Ducati Multistrada V2S (Green)</strong></td>
                         <td>19.0 L</td>
                         <td>5.2 L/100km</td>
                         <td>~315 km</td>
-                        <td>+95 km (~410 km)</td>
+                        <td>Shared via Jamie's 3-Gal Armadillo (+215 km)</td>
                         <td><strong>91 Premium</strong> — Dose <strong>6 ml/L Lucas Oil MMT</strong> at remote 87-only pumps (Days 2–7).</td>
                     </tr>
                 </tbody>
@@ -2266,8 +2266,8 @@ html_template = f"""<!DOCTYPE html>
             <div style="display:flex; gap:7px; flex-wrap:wrap; align-items:center;">
                 <div style="display:flex; gap:4px; background:var(--bg-subtle); padding:3px; border-radius:8px; border:1px solid var(--border);">
                     <button type="button" class="lt-chip-btn active" id="chk-view-both" onclick="setChecklistBikeFilter('both')">🏍️ Both Bikes</button>
-                    <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (139L)</button>
-                    <button type="button" class="lt-chip-btn" id="chk-view-rosie" onclick="setChecklistBikeFilter('rosie')">🟢 Rosie (104L)</button>
+                    <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (156.2L)</button>
+                    <button type="button" class="lt-chip-btn" id="chk-view-rosie" onclick="setChecklistBikeFilter('rosie')">🟢 Rosie (80.0L)</button>
                 </div>
                 <button type="button" class="theme-toggle-btn" onclick="pullChecklistFromGit(true)" title="Fetch latest luggage_checklist.json from GitHub">🔄 Pull</button>
                 <button type="button" class="dl-btn" id="btn-commit-git" onclick="commitChecklistToGit()" style="padding:6px 12px; font-size:0.76rem; background:var(--accent-green);">☁️ Save to Git</button>
@@ -3853,7 +3853,7 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
         const GIT_REPO_NAME  = 'expedition-51';
         const GIT_BRANCH     = 'main';
         const GIT_FILE_PATH  = 'luggage_checklist.json';
-        const GIT_CHECKLIST_RELAY_TOPIC = 'exp51_git_checklist_sync_2027';
+        const GIT_CHECKLIST_RELAY_TOPIC = 'exp51_git_checklist_sync_2027_v2';
 
         // In-memory state loaded from Git (luggage_checklist.json) — not stored on local device storage
         let checklistState = JSON.parse(JSON.stringify(defaultChecklistData));
@@ -3888,7 +3888,7 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
         function markChecklistDirty() {{
             checklistDirty = true;
             checklistState.lastUpdated = new Date().toISOString();
-            setGitStatusBadge('✏️ Uncommitted Edits — Click "Commit & Save to Git"', 'orange');
+            setGitStatusBadge('✏️ Uncommitted Edits — Click "Save to Git"', 'orange');
         }}
 
         function setChecklistBikeFilter(mode) {{
@@ -3932,6 +3932,18 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
         function renderLuggageChecklist() {{
             const container = document.getElementById('chk-bikes-container');
             if (!container || !checklistState || !checklistState.bikes) return;
+
+            // Update filter chip labels with live total capacities
+            ['jamie', 'rosie'].forEach(k => {{
+                const b = checklistState.bikes[k];
+                if (!b) return;
+                const cap = (b.compartments || []).reduce((acc, c) => acc + (Number(c.capacityL) || 0), 0);
+                b.totalCapacityL = Number(cap.toFixed(1));
+                const btnEl = document.getElementById('chk-view-' + k);
+                if (btnEl) {{
+                    btnEl.textContent = (k === 'jamie' ? '⚪🔴 Jamie (' : '🟢 Rosie (') + b.totalCapacityL + 'L)';
+                }}
+            }});
 
             const bikeKeys = checklistViewFilter === 'both'
                 ? ['jamie', 'rosie']
@@ -4185,7 +4197,11 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
                         checklistGitSha = meta.sha;
                         const parsed = JSON.parse(base64ToUtf8(meta.content));
                         if (parsed && parsed.bikes) {{
-                            checklistState = parsed;
+                            const curTs = Date.parse(checklistState.lastUpdated || '') || 0;
+                            const remTs = Date.parse(parsed.lastUpdated || '') || 0;
+                            if (remTs >= curTs) {{
+                                checklistState = parsed;
+                            }}
                             loadedFromGitApi = true;
                         }}
                     }}
@@ -4198,7 +4214,11 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
                     if (rawRes.ok) {{
                         const parsed = await rawRes.json();
                         if (parsed && parsed.bikes) {{
-                            checklistState = parsed;
+                            const curTs = Date.parse(checklistState.lastUpdated || '') || 0;
+                            const remTs = Date.parse(parsed.lastUpdated || '') || 0;
+                            if (remTs >= curTs) {{
+                                checklistState = parsed;
+                            }}
                             loadedFromGitApi = true;
                         }}
                     }}

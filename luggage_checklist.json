@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2026-10-16T01:15:00Z",
+  "version": "1.1.0",
+  "lastUpdated": "2026-10-16T01:40:00Z",
   "updatedBy": "Jamie & Rosie",
   "repo": "Rindelk/expedition-51",
   "branch": "main",
@@ -12,76 +12,83 @@
       "model": "2025 Honda CRF1100L Africa Twin Adv Sports ES",
       "color": "White & Red",
       "accentHex": "#ef4444",
-      "totalCapacityL": 139.0,
+      "totalCapacityL": 156.2,
       "compartments": [
         {
           "id": "jamie-left-pannier",
-          "name": "Left Pannier (37L Aluminum/Hard)",
-          "capacityL": 37.0,
+          "name": "Mosko Moto Backcountry 35L — Left Pannier (35L)",
+          "capacityL": 35.0,
           "icon": "⛺",
-          "role": "Shelter, Tent & Emergency Bivouac System"
+          "role": "Shelter, Tent & Sub-Arctic Sleep System"
         },
         {
           "id": "jamie-right-pannier",
-          "name": "Right Pannier (33L Exhaust Cutout)",
-          "capacityL": 33.0,
+          "name": "Mosko Moto Backcountry 35L — Right Pannier (35L)",
+          "capacityL": 35.0,
           "icon": "🔧",
-          "role": "Tools, Tire Repair, Spares & Camp Kitchen"
+          "role": "Tools, Tire Repair, Air Compressor & Camp Kitchen"
         },
         {
-          "id": "jamie-top-duffel",
-          "name": "Top Case / Dry Duffel (42L Waterproof)",
-          "capacityL": 42.0,
+          "id": "jamie-aux-pox",
+          "name": "4x Mosko Moto Aux Pox (4x 4L MOLLE Pods — 16L)",
+          "capacityL": 16.0,
+          "icon": "🧰",
+          "role": "Quick-Access Chain Lube, Oil, Ferry Straps, Rain Gloves & First Aid"
+        },
+        {
+          "id": "jamie-backcountry-duffel",
+          "name": "Mosko Moto Backcountry 30L Duffel (30L)",
+          "capacityL": 30.0,
           "icon": "🧥",
-          "role": "Riding Layers, Heated Gear, Rain & Street Clothes"
+          "role": "Riding Layers, Heated Liner, Merino & Off-Bike Wardrobe"
         },
         {
-          "id": "jamie-tank-bag",
-          "name": "Tank Bag (12L Quick-Release)",
-          "capacityL": 12.0,
+          "id": "jamie-hood-tailbag",
+          "name": "25L Hood Tailbag (25L)",
+          "capacityL": 25.0,
           "icon": "📷",
-          "role": "Drone, Cockpit Electronics, Optics & Documents"
+          "role": "Drone, Cockpit Electronics, Rain Shell, Food Reserve & Documents"
         },
         {
-          "id": "jamie-aux-rack",
-          "name": "External Rack / Crash Bars (15L)",
-          "capacityL": 15.0,
+          "id": "jamie-fuel-systems",
+          "name": "External Fuel: 1-Gal RotopaX (3.8L) + 3-Gal Giant Loop Armadillo (11.4L)",
+          "capacityL": 15.2,
           "icon": "⛽",
-          "role": "Auxiliary Fuel Bladders & Quick-Access Recovery"
+          "role": "4 US Gal (15.2L) Total Auxiliary Fuel Reserve for Honda & Ducati"
         }
       ],
       "items": [
         { "id": "j-1", "compartmentId": "jamie-left-pannier", "name": "3-Season Backpacking Tent (2-Person + Footprint)", "volumeL": 9.5, "weightKg": 2.4, "packed": true, "notes": "Shared shelter for QC-389 / Labrador emergency backup" },
-        { "id": "j-2", "compartmentId": "jamie-left-pannier", "name": "Down Sleeping Bag (-7°C Comfort Rated, Compression Sack)", "volumeL": 8.0, "weightKg": 1.1, "packed": true, "notes": "Packed in waterproof sea-to-summit dry sack" },
+        { "id": "j-2", "compartmentId": "jamie-left-pannier", "name": "Down Sleeping Bag (-7°C Comfort Rated, Compression Sack)", "volumeL": 8.0, "weightKg": 1.1, "packed": true, "notes": "Packed in inner waterproof drybag" },
         { "id": "j-3", "compartmentId": "jamie-left-pannier", "name": "Insulated Air Sleeping Pad (R-Value 4.5+)", "volumeL": 3.0, "weightKg": 0.6, "packed": true, "notes": "Sub-arctic ground insulation" },
-        { "id": "j-4", "compartmentId": "jamie-left-pannier", "name": "Compressible Camp Pillow + Microfiber Towel", "volumeL": 2.0, "weightKg": 0.35, "packed": true, "notes": "Quick-dry pack towel for ferries/cabins" },
+        { "id": "j-4", "compartmentId": "jamie-left-pannier", "name": "Compressible Camp Pillow + Microfiber Pack Towel", "volumeL": 2.0, "weightKg": 0.35, "packed": true, "notes": "Quick-dry towel for ferries & cabins" },
         { "id": "j-5", "compartmentId": "jamie-left-pannier", "name": "Heavy-Duty Motorcycle Half-Cover (Packable)", "volumeL": 3.5, "weightKg": 0.65, "packed": true, "notes": "Overnight dew & ferry salt-spray protection" },
-        { "id": "j-6", "compartmentId": "jamie-left-pannier", "name": "Camp Chair (Helinox Zero Ultralight)", "volumeL": 3.5, "weightKg": 0.55, "packed": false, "notes": "Optional for Fire Lake & Labrador pullouts" },
+        { "id": "j-6", "compartmentId": "jamie-left-pannier", "name": "Camp Chair (Helinox Zero Ultralight)", "volumeL": 3.5, "weightKg": 0.55, "packed": true, "notes": "Compact chair for Fire Lake & Labrador pullouts" },
 
-        { "id": "j-7", "compartmentId": "jamie-right-pannier", "name": "Master Tool Roll (Metric Sockets, Torx, Hex, Axle Wrench)", "volumeL": 4.5, "weightKg": 3.2, "packed": true, "notes": "Covers both Honda ATAS & Ducati V2S fasteners" },
+        { "id": "j-7", "compartmentId": "jamie-right-pannier", "name": "Master Tool Roll (Metric Sockets, Torx, Hex, Axle Wrenches)", "volumeL": 5.0, "weightKg": 3.2, "packed": true, "notes": "Covers both Honda ATAS & Ducati V2S fasteners" },
         { "id": "j-8", "compartmentId": "jamie-right-pannier", "name": "12V Compact Tire Inflator + Heavy-Duty Tubeless Plug Kit", "volumeL": 3.5, "weightKg": 1.2, "packed": true, "notes": "Essential after QC-389 Fire Lake / Mont-Wright gravel" },
-        { "id": "j-9", "compartmentId": "jamie-right-pannier", "name": "Chain Maintenance Kit (Travel Lube, Brush, Spare Master Link)", "volumeL": 2.0, "weightKg": 0.7, "packed": true, "notes": "Lubricate every 500 km & after gravel/rain stages" },
-        { "id": "j-10", "compartmentId": "jamie-right-pannier", "name": "Jetboil Stove + 2x Isobutane Canisters + Titanium Mugs", "volumeL": 3.5, "weightKg": 0.9, "packed": true, "notes": "Roadside hot coffee & freeze-dried meals on QC-389" },
-        { "id": "j-11", "compartmentId": "jamie-right-pannier", "name": "4x Freeze-Dried Expedition Meals + Electrolyte Packs + Bars", "volumeL": 5.5, "weightKg": 1.4, "packed": true, "notes": "48-hour emergency calorie reserve" },
-        { "id": "j-12", "compartmentId": "jamie-right-pannier", "name": "2.0L collapsible Water Bladder + Sawyer Squeeze Filter", "volumeL": 2.5, "weightKg": 0.5, "packed": true, "notes": "Backcountry hydration safety" },
-        { "id": "j-13", "compartmentId": "jamie-right-pannier", "name": "Ferry Tie-Down Ratchet Straps (4x Soft Loops + Cam Buckles)", "volumeL": 3.5, "weightKg": 1.5, "packed": true, "notes": "Mandatory for Blanc-Sablon, Port aux Basques & Saint John ferries" },
-        { "id": "j-14", "compartmentId": "jamie-right-pannier", "name": "1L Synthetic 10W-30 / 15W-50 Top-Up Oil + Zip Ties + JB Weld", "volumeL": 2.0, "weightKg": 1.1, "packed": true, "notes": "Long-haul engine check reserve" },
+        { "id": "j-9", "compartmentId": "jamie-right-pannier", "name": "Jetboil Stove + 2x Isobutane Canisters + Titanium Mugs", "volumeL": 4.0, "weightKg": 0.9, "packed": true, "notes": "Roadside hot coffee & freeze-dried meals on QC-389" },
+        { "id": "j-10", "compartmentId": "jamie-right-pannier", "name": "4x Freeze-Dried Expedition Meals + Electrolyte Packs + Bars", "volumeL": 6.0, "weightKg": 1.4, "packed": true, "notes": "48-hour emergency calorie reserve" },
+        { "id": "j-11", "compartmentId": "jamie-right-pannier", "name": "2.0L Collapsible Water Bladder + Sawyer Squeeze Filter", "volumeL": 2.5, "weightKg": 0.5, "packed": true, "notes": "Backcountry hydration safety" },
+        { "id": "j-12", "compartmentId": "jamie-right-pannier", "name": "Spare Tubes / BeadPro Tire Levers + JB Weld + Zip Ties", "volumeL": 3.5, "weightKg": 1.1, "packed": true, "notes": "Remote Labrador mechanical self-sufficiency" },
 
-        { "id": "j-15", "compartmentId": "jamie-top-duffel", "name": "12V Heated Jacket Liner + Controller", "volumeL": 4.5, "weightKg": 0.8, "packed": true, "notes": "Labrador Straits & 5°C coastal fog mornings" },
-        { "id": "j-16", "compartmentId": "jamie-top-duffel", "name": "Gore-Tex Waterproof Over-Suit / Rain Shell + Rain Boot Covers", "volumeL": 6.5, "weightKg": 1.1, "packed": true, "notes": "Top of bag for instant roadside access" },
-        { "id": "j-17", "compartmentId": "jamie-top-duffel", "name": "Merino Base Layers (3x Sets: Top, Bottom, 5x Riding Socks)", "volumeL": 7.5, "weightKg": 1.2, "packed": true, "notes": "250gsm Merino wool" },
-        { "id": "j-18", "compartmentId": "jamie-top-duffel", "name": "Off-Bike Clothing (Jeans, Hoodie, 4x Tees, Evening Shoes)", "volumeL": 11.0, "weightKg": 2.1, "packed": true, "notes": "Compression cube for hotel evenings" },
-        { "id": "j-19", "compartmentId": "jamie-top-duffel", "name": "Insulated Waterproof Cold-Weather Riding Gloves (Spare Pair)", "volumeL": 2.5, "weightKg": 0.4, "packed": true, "notes": "Always keep a dry second pair" },
-        { "id": "j-20", "compartmentId": "jamie-top-duffel", "name": "Toiletry Kit + Laundry Sheets + Sea-ickness Bands (Ferry)", "volumeL": 3.0, "weightKg": 0.6, "packed": true, "notes": "Includes Scopolamine/Gravol for Cabot Strait crossing" },
+        { "id": "j-13", "compartmentId": "jamie-aux-pox", "name": "Aux Pod 1: Chain Maintenance Kit (Travel Lube, Brush, Master Link)", "volumeL": 3.5, "weightKg": 0.8, "packed": true, "notes": "Isolated in outer MOLLE pod away from clean gear" },
+        { "id": "j-14", "compartmentId": "jamie-aux-pox", "name": "Aux Pod 2: 1L Synthetic Top-Up Oil + Funnel + Nitrile Gloves", "volumeL": 3.5, "weightKg": 1.1, "packed": true, "notes": "Upright in rear MOLLE Aux Pox" },
+        { "id": "j-15", "compartmentId": "jamie-aux-pox", "name": "Aux Pod 3: Ferry Tie-Down Straps (4x Soft Loops + Cam Buckles)", "volumeL": 4.0, "weightKg": 1.5, "packed": true, "notes": "Instant access at Blanc-Sablon, Port aux Basques & Saint John ferries" },
+        { "id": "j-16", "compartmentId": "jamie-aux-pox", "name": "Aux Pod 4: Trauma First Aid Kit + Labrador Blackfly Head Nets + DEET", "volumeL": 3.5, "weightKg": 0.8, "packed": true, "notes": "Immediate roadside grab without opening main panniers" },
 
-        { "id": "j-21", "compartmentId": "jamie-tank-bag", "name": "DJI Mini 4 Pro Drone + RC2 Controller + 3x Batteries", "volumeL": 4.5, "weightKg": 1.1, "packed": true, "notes": "For Fire Lake Mine, Mont-Wright & Manic-5 aerial shots" },
-        { "id": "j-22", "compartmentId": "jamie-tank-bag", "name": "Garmin inReach Mini 2 Satellite SOS + Power Bank (20,000mAh)", "volumeL": 1.5, "weightKg": 0.55, "packed": true, "notes": "Zero cell coverage between Manic-5 & Labrador City" },
-        { "id": "j-23", "compartmentId": "jamie-tank-bag", "name": "Labrador Blackfly Head Nets (2x) + 30% DEET Picardin Spray", "volumeL": 1.0, "weightKg": 0.25, "packed": true, "notes": "Keep in tank bag for immediate pullout stops" },
-        { "id": "j-24", "compartmentId": "jamie-tank-bag", "name": "Visor Cleaner Spray + Microfiber + Spare Earplugs + Registration", "volumeL": 1.5, "weightKg": 0.3, "packed": true, "notes": "Insurance, ferry confirmations & Parks Canada Discovery Pass" },
-        { "id": "j-25", "compartmentId": "jamie-tank-bag", "name": "Disc Lock + Kickstand Puck (Aluminum Sand/Gravel Plate)", "volumeL": 1.0, "weightKg": 0.6, "packed": true, "notes": "Crucial for soft gravel pullouts on QC-389" },
+        { "id": "j-17", "compartmentId": "jamie-backcountry-duffel", "name": "12V Heated Jacket Liner + Controller", "volumeL": 4.5, "weightKg": 0.8, "packed": true, "notes": "Labrador Straits & 5°C coastal fog mornings" },
+        { "id": "j-18", "compartmentId": "jamie-backcountry-duffel", "name": "Merino Base Layers (3x Sets: Top, Bottom, 5x Riding Socks)", "volumeL": 7.0, "weightKg": 1.2, "packed": true, "notes": "250gsm Merino wool" },
+        { "id": "j-19", "compartmentId": "jamie-backcountry-duffel", "name": "Off-Bike Clothing (Jeans, Hoodie, 4x Tees, Evening Shoes)", "volumeL": 10.5, "weightKg": 2.1, "packed": true, "notes": "Compression cube inside 30L Backcountry duffel" },
+        { "id": "j-20", "compartmentId": "jamie-backcountry-duffel", "name": "Toiletry Kit + Laundry Sheets + Seasickness Bands (Ferry)", "volumeL": 3.0, "weightKg": 0.6, "packed": true, "notes": "Includes Scopolamine/Gravol for Cabot Strait crossing" },
 
-        { "id": "j-26", "compartmentId": "jamie-aux-rack", "name": "Giant Loop Armadillo 3-Gallon (11.4L) Collapsible Fuel Bladder", "volumeL": 11.4, "weightKg": 1.0, "packed": true, "notes": "Fill at Relais Gabriel & Port Hope Simpson for Rosie's V2S" },
-        { "id": "j-27", "compartmentId": "jamie-aux-rack", "name": "Rotopax 1-Gallon (3.6L) Emergency Fuel Pack + Siphon Hose", "volumeL": 3.6, "weightKg": 1.2, "packed": true, "notes": "Hard-mounted emergency reserve" }
+        { "id": "j-21", "compartmentId": "jamie-hood-tailbag", "name": "Gore-Tex Waterproof Over-Suit / Rain Shell + Spare Waterproof Gloves", "volumeL": 7.5, "weightKg": 1.3, "packed": true, "notes": "Top of 25L Hood tailbag for fast roadside rain changes" },
+        { "id": "j-22", "compartmentId": "jamie-hood-tailbag", "name": "DJI Mini 4 Pro Drone + RC2 Controller + 3x Batteries", "volumeL": 5.0, "weightKg": 1.1, "packed": true, "notes": "For Fire Lake Mine, Mont-Wright & Manic-5 aerial shots" },
+        { "id": "j-23", "compartmentId": "jamie-hood-tailbag", "name": "Garmin inReach Mini 2 Satellite SOS + 20,000mAh Power Bank", "volumeL": 2.0, "weightKg": 0.55, "packed": true, "notes": "Zero cell coverage between Manic-5 & Labrador City" },
+        { "id": "j-24", "compartmentId": "jamie-hood-tailbag", "name": "Visor Cleaner + Disc Lock + Kickstand Puck + Parks Pass & Docs", "volumeL": 3.0, "weightKg": 0.9, "packed": true, "notes": "Crucial kickstand plate for soft gravel pullouts on QC-389" },
+
+        { "id": "j-25", "compartmentId": "jamie-fuel-systems", "name": "3-Gal Giant Loop Armadillo Fuel Bladder (11.4L)", "volumeL": 11.4, "weightKg": 1.0, "packed": true, "notes": "Fills at Relais Gabriel & Port Hope Simpson to refuel Rosie's Ducati V2S" },
+        { "id": "j-26", "compartmentId": "jamie-fuel-systems", "name": "1-Gal RotopaX Hard-Mounted Fuel Pack (3.8L) + Pour Spout", "volumeL": 3.8, "weightKg": 1.2, "packed": true, "notes": "Hard-mounted emergency reserve for Honda ATAS & Ducati V2S" }
       ]
     },
     "rosie": {
@@ -90,69 +97,57 @@
       "model": "2026 Ducati Multistrada V2S",
       "color": "Green",
       "accentHex": "#10b981",
-      "totalCapacityL": 104.0,
+      "totalCapacityL": 80.0,
       "compartments": [
         {
-          "id": "rosie-left-pannier",
-          "name": "Left Pannier (30L Ducati Side Case)",
-          "capacityL": 30.0,
+          "id": "rosie-r80-left",
+          "name": "Mosko Moto Reckless 80 — Left Leg Holster (25L Drybag)",
+          "capacityL": 25.0,
           "icon": "🧥",
-          "role": "Riding Apparel, Thermal Layers & Rain Gear"
+          "role": "Riding Apparel, Merino Thermal Layers & Rain Gear"
         },
         {
-          "id": "rosie-right-pannier",
-          "name": "Right Pannier (26L Exhaust Side Case)",
-          "capacityL": 26.0,
+          "id": "rosie-r80-right",
+          "name": "Mosko Moto Reckless 80 — Right Leg Holster (25L Drybag)",
+          "capacityL": 25.0,
           "icon": "👟",
-          "role": "Off-Bike Clothes, Footwear, Toiletries & Provisions"
+          "role": "Off-Bike Wardrobe, Footwear, Toiletries & Trail Snacks"
         },
         {
-          "id": "rosie-top-case",
-          "name": "Top Case / Tail Bag (35L Waterproof)",
-          "capacityL": 35.0,
+          "id": "rosie-r80-stinger",
+          "name": "Mosko Moto Reckless 80 — Center Stinger Tailbag (22L Drybag)",
+          "capacityL": 22.0,
           "icon": "🛌",
-          "role": "Sleep System, Insulated Pad, Heated Gear & Camp Comfort"
+          "role": "Sleep System, Insulated Air Pad, Heated Liner & Bike Cover"
         },
         {
-          "id": "rosie-tank-bag",
-          "name": "Tank Bag (8L Pocket Lock)",
+          "id": "rosie-r80-auxpox",
+          "name": "Mosko Moto Reckless 80 — 2x Rear Aux Pox (2x 4L Pods — 8L)",
           "capacityL": 8.0,
           "icon": "🧪",
-          "role": "Octane Booster, Trauma Kit, Comms & Cockpit Essentials"
-        },
-        {
-          "id": "rosie-aux-rack",
-          "name": "External Pillion / Rack Mount (5L)",
-          "capacityL": 5.0,
-          "icon": "⛽",
-          "role": "5L Collapsible Fuel Reserve Bladder"
+          "role": "Lucas Oil MMT Octane Booster, Ducati Tool Kit, Comms & First Aid"
         }
       ],
       "items": [
-        { "id": "r-1", "compartmentId": "rosie-left-pannier", "name": "Waterproof Rain Jacket + Rain Pants (High-Vis Accents)", "volumeL": 5.5, "weightKg": 0.9, "packed": true, "notes": "Packed near top latch for quick maritime rain changes" },
-        { "id": "r-2", "compartmentId": "rosie-left-pannier", "name": "Merino Thermal Base Layers (3x Tops, 3x Leggings, 5x Socks)", "volumeL": 6.5, "weightKg": 1.0, "packed": true, "notes": "Warm layering for Labrador & Cabot Trail" },
-        { "id": "r-3", "compartmentId": "rosie-left-pannier", "name": "Packable Down Mid-Layer Jacket + Windproof Neck Gaiters (2x)", "volumeL": 4.5, "weightKg": 0.5, "packed": true, "notes": "Doubles as evening jacket in St. Anthony & Chéticamp" },
-        { "id": "r-4", "compartmentId": "rosie-left-pannier", "name": "Spare Waterproof Touring Gloves + Silk Glove Liners", "volumeL": 2.5, "weightKg": 0.35, "packed": true, "notes": "Dry backup for multi-day coastal rain" },
-        { "id": "r-5", "compartmentId": "rosie-left-pannier", "name": "Pannier Inner Dry Liner Bag (30L Fitted)", "volumeL": 1.5, "weightKg": 0.3, "packed": true, "notes": "Carry straight into hotel rooms without removing hard case" },
+        { "id": "r-1", "compartmentId": "rosie-r80-left", "name": "Waterproof Rain Jacket + Rain Pants (High-Vis Accents)", "volumeL": 5.5, "weightKg": 0.9, "packed": true, "notes": "Packed at top of left R80 drybag for quick maritime rain changes" },
+        { "id": "r-2", "compartmentId": "rosie-r80-left", "name": "Merino Thermal Base Layers (3x Tops, 3x Leggings, 5x Socks)", "volumeL": 6.5, "weightKg": 1.0, "packed": true, "notes": "Warm layering for Labrador & Cabot Trail" },
+        { "id": "r-3", "compartmentId": "rosie-r80-left", "name": "Packable Down Mid-Layer Jacket + Windproof Neck Gaiters (2x)", "volumeL": 4.5, "weightKg": 0.5, "packed": true, "notes": "Doubles as evening jacket in St. Anthony & Chéticamp" },
+        { "id": "r-4", "compartmentId": "rosie-r80-left", "name": "Spare Waterproof Touring Gloves + Silk Glove Liners", "volumeL": 2.5, "weightKg": 0.35, "packed": true, "notes": "Dry backup for multi-day coastal rain" },
 
-        { "id": "r-6", "compartmentId": "rosie-right-pannier", "name": "Off-Bike Casual Wardrobe (Packing Cube: Pants, Tops, Sweater)", "volumeL": 10.5, "weightKg": 1.8, "packed": true, "notes": "Evening dining & sightseeing clothes" },
-        { "id": "r-7", "compartmentId": "rosie-right-pannier", "name": "Lightweight Trail Running / Walking Shoes", "volumeL": 4.5, "weightKg": 0.65, "packed": true, "notes": "For Gros Morne, L'Anse aux Meadows & PEI walks" },
-        { "id": "r-8", "compartmentId": "rosie-right-pannier", "name": "Personal Toiletry Bag + Sunscreen + Lip Balm + Medications", "volumeL": 3.5, "weightKg": 0.7, "packed": true, "notes": "Waterproof hanging organizer" },
-        { "id": "r-9", "compartmentId": "rosie-right-pannier", "name": "Trail Snacks, Protein Bars, Hydration Mix & AeroPress Go", "volumeL": 3.5, "weightKg": 0.8, "packed": true, "notes": "Backup coffee maker & high-energy snacks" },
+        { "id": "r-5", "compartmentId": "rosie-r80-right", "name": "Off-Bike Casual Wardrobe (Compression Cube: Pants, Tops, Sweater)", "volumeL": 10.0, "weightKg": 1.8, "packed": true, "notes": "Evening dining & sightseeing clothes" },
+        { "id": "r-6", "compartmentId": "rosie-r80-right", "name": "Lightweight Trail Running / Walking Shoes", "volumeL": 4.5, "weightKg": 0.65, "packed": true, "notes": "For Gros Morne, L'Anse aux Meadows & PEI walks" },
+        { "id": "r-7", "compartmentId": "rosie-r80-right", "name": "Personal Toiletry Bag + Sunscreen + Lip Balm + Medications", "volumeL": 3.5, "weightKg": 0.7, "packed": true, "notes": "Waterproof hanging organizer" },
+        { "id": "r-8", "compartmentId": "rosie-r80-right", "name": "Trail Snacks, Protein Bars, Hydration Mix & AeroPress Go", "volumeL": 3.0, "weightKg": 0.8, "packed": true, "notes": "Backup coffee maker & high-energy snacks" },
 
-        { "id": "r-10", "compartmentId": "rosie-top-case", "name": "Down Sleeping Bag (-7°C Rated in Compression Dry Sack)", "volumeL": 7.5, "weightKg": 1.05, "packed": true, "notes": "Matches Jamie's cold-rating for Relais Gabriel / Monts Groulx" },
-        { "id": "r-11", "compartmentId": "rosie-top-case", "name": "Insulated Ultralight Air Pad + Camp Pillow + Silk Liner", "volumeL": 3.5, "weightKg": 0.65, "packed": true, "notes": "Compact sleep comfort" },
-        { "id": "r-12", "compartmentId": "rosie-top-case", "name": "12V Heated Vest / Jacket Liner + Dual-Controller Harness", "volumeL": 4.0, "weightKg": 0.75, "packed": true, "notes": "Plugs directly into Ducati accessory socket" },
-        { "id": "r-13", "compartmentId": "rosie-top-case", "name": "Ducati Specific Tool Kit + Rear Axle Socket + Spare Fuse Kit", "volumeL": 2.5, "weightKg": 1.1, "packed": true, "notes": "Specific to Multistrada V2S wheel & fairing fasteners" },
-        { "id": "r-14", "compartmentId": "rosie-top-case", "name": "Lightweight Packable Bike Cover + Microfiber Drying Towels", "volumeL": 3.0, "weightKg": 0.55, "packed": true, "notes": "Morning condensation wipe-down" },
-        { "id": "r-15", "compartmentId": "rosie-top-case", "name": "Foldable Daypack (18L Ultralight Packable Backpack)", "volumeL": 1.5, "weightKg": 0.2, "packed": true, "notes": "For Tablelands hike, St. Anthony & Charlottetown strolls" },
+        { "id": "r-9", "compartmentId": "rosie-r80-stinger", "name": "Down Sleeping Bag (-7°C Rated in Compression Dry Sack)", "volumeL": 7.5, "weightKg": 1.05, "packed": true, "notes": "Matches Jamie's cold-rating for Relais Gabriel / Monts Groulx" },
+        { "id": "r-10", "compartmentId": "rosie-r80-stinger", "name": "Insulated Ultralight Air Pad + Camp Pillow + Silk Liner", "volumeL": 3.5, "weightKg": 0.65, "packed": true, "notes": "Compact sleep comfort in center Stinger 22L bag" },
+        { "id": "r-11", "compartmentId": "rosie-r80-stinger", "name": "12V Heated Vest / Jacket Liner + Dual-Controller Harness", "volumeL": 4.0, "weightKg": 0.75, "packed": true, "notes": "Plugs directly into Ducati accessory socket" },
+        { "id": "r-12", "compartmentId": "rosie-r80-stinger", "name": "Lightweight Packable Bike Cover + Foldable 18L Daypack", "volumeL": 3.5, "weightKg": 0.65, "packed": true, "notes": "For Tablelands hike, St. Anthony & Charlottetown strolls" },
 
-        { "id": "r-16", "compartmentId": "rosie-tank-bag", "name": "2x Lucas Oil Octane Booster Bottles (MMT Formula, 444mL each)", "volumeL": 1.8, "weightKg": 0.95, "packed": true, "notes": "CRITICAL: Treats 87-octane regular gas on QC-389 & TLH (Days 3-6)" },
-        { "id": "r-17", "compartmentId": "rosie-tank-bag", "name": "Expedition First Aid & Trauma Kit (Tourniquet, QuikClot, SAM Splint)", "volumeL": 2.2, "weightKg": 0.65, "packed": true, "notes": "Quick-access medical kit in tank bag" },
-        { "id": "r-18", "compartmentId": "rosie-tank-bag", "name": "Sena / Cardo Charging Cables + Anker Power Bank + GoPro Hero 12", "volumeL": 1.8, "weightKg": 0.5, "packed": true, "notes": "Cockpit action cam & helmet comms charging" },
-        { "id": "r-19", "compartmentId": "rosie-tank-bag", "name": "Spare Ducati Key Fob (Faraday Pouch) + Documents + Kickstand Puck", "volumeL": 1.0, "weightKg": 0.3, "packed": true, "notes": "Jamie & Rosie swap spare keys in Faraday pouches" },
-
-        { "id": "r-20", "compartmentId": "rosie-aux-rack", "name": "Giant Loop Armadillo 1-Gallon+ (5.0L) Fuel Bladder", "volumeL": 5.0, "weightKg": 0.6, "packed": true, "notes": "Strapped flat; extends V2S range across 410km Port Hope Simpson leg" }
+        { "id": "r-13", "compartmentId": "rosie-r80-auxpox", "name": "Aux Pod 1: 2x Lucas Oil Octane Booster Bottles (MMT Formula, 444mL)", "volumeL": 2.0, "weightKg": 0.95, "packed": true, "notes": "CRITICAL: Instant access at 87-octane pumps on QC-389 & TLH (Days 3-6)" },
+        { "id": "r-14", "compartmentId": "rosie-r80-auxpox", "name": "Aux Pod 1: Kickstand Puck + Spare Ducati Key Fob (Faraday Pouch)", "volumeL": 1.0, "weightKg": 0.3, "packed": true, "notes": "Jamie & Rosie swap spare keys in Faraday pouches" },
+        { "id": "r-15", "compartmentId": "rosie-r80-auxpox", "name": "Aux Pod 2: Ducati Specific Tool Kit + Rear Axle Socket + Fuses", "volumeL": 2.5, "weightKg": 1.1, "packed": true, "notes": "Specific to Multistrada V2S wheel & fairing fasteners" },
+        { "id": "r-16", "compartmentId": "rosie-r80-auxpox", "name": "Aux Pod 2: Sena / Cardo Cables + Anker Power Bank + First Aid Pouch", "volumeL": 2.0, "weightKg": 0.6, "packed": true, "notes": "Quick-access electronics & medical pouch" }
       ]
     }
   }
