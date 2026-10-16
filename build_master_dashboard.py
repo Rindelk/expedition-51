@@ -2436,9 +2436,9 @@ html_template = f"""<!DOCTYPE html>
             trackLayers[trk.day] = poly;
         }});
 
-        // Permanently Mark Unpaved QC-389 Gravel Segments on Map (Cased Dashed Amber Overlay + Map Badges)
+        // Permanently Mark Unpaved QC-389 Gravel Segments on Map (Visual Hashed Lines Only)
         const gravelGroup = L.featureGroup().addTo(map);
-        gravelData.forEach((g, idx) => {{
+        gravelData.forEach((g) => {{
             // High-contrast dark amber casing so unpaved segments stand out at any zoom
             L.polyline(g.coords, {{
                 color: '#78350F',
@@ -2456,24 +2456,6 @@ html_template = f"""<!DOCTYPE html>
             gPoly.bindTooltip(`<strong>⚠️ ${{g.name}}</strong><br>Unpaved Graded Gravel • Maintain 70–80 km/h • Daylight Riding Only`, {{
                 sticky: true
             }});
-
-            if (g.coords && g.coords.length > 0) {{
-                const midPt = g.coords[Math.floor(g.coords.length / 2)];
-                const shortLbl = idx === 0 ? '╌╌ Unpaved QC-389: Manic-5 (22 km)' : '╌╌ Unpaved QC-389: Fire Lake → Mont-Wright (175 km)';
-                const lblMarker = L.marker(midPt, {{
-                    icon: L.divIcon({{
-                        className: '',
-                        html: `<div class="gravel-map-label">${{shortLbl}}</div>`,
-                        iconSize: [210, 22],
-                        iconAnchor: [-8, 11]
-                    }}),
-                    interactive: true
-                }}).addTo(gravelGroup);
-                lblMarker.bindTooltip(`<strong>⚠️ ${{g.name}}</strong><br>Click to zoom to unpaved QC-389 section`);
-                lblMarker.on('click', () => {{
-                    map.fitBounds(gPoly.getBounds().pad(0.2));
-                }});
-            }}
         }});
 
         // Render 452 Curated POIs with Contextual Photo Cards, Hours & Admission
