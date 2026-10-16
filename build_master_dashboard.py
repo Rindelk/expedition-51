@@ -231,23 +231,10 @@ def build_gantt_section_html(days_list):
     out.append("""<div class="gantt-section" id="sec-gantt" style="margin-top: 32px; margin-bottom: 24px;">
     <div class="gantt-wrapper" style="background: var(--gantt-bg, #ffffff); border: 1px solid var(--gantt-border, #e2e8f0); border-radius: 12px; padding: 24px; box-shadow: var(--gantt-shadow, 0 4px 15px rgba(0, 0, 0, 0.08)); position: relative;">
         <!-- Header -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--gantt-border, #e2e8f0); padding-bottom: 16px;">
-            <div>
-                <h2 style="margin: 0; font-size: 1.45rem; color: var(--text-main, #0f172a); display: flex; align-items: center; gap: 10px;">
-                    <span>⏱️</span> Expedition 51 Master Saddle Timeline &amp; Gantt Chart
-                </h2>
-                <div style="margin-top: 6px; font-size: 0.88rem; color: var(--text-muted, #64748b); line-height: 1.4;">
-                    Visualizing daily rhythms • <strong>07:00 AM standard starts</strong> • <strong>30m breakfast &amp; lunch</strong> • <strong>1h supper</strong> • in-the-saddle stints • dual-octane fuel &amp; ferry logistics
-                </div>
-            </div>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                <span style="background: var(--gantt-subtle-bg, #f8fafc); border: 1px solid var(--accent-blue, #0284c7); color: var(--accent-blue, #0284c7); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
-                    🏍️ 18 Stages
-                </span>
-                <span style="background: var(--gantt-subtle-bg, #f8fafc); border: 1px solid var(--accent-green, #059669); color: var(--accent-green, #059669); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
-                    🏕️ Road-Snapped Pacing
-                </span>
-            </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--gantt-border, #e2e8f0); padding-bottom: 12px;">
+            <h2 style="margin: 0; font-size: 1.25rem; color: var(--text-main, #0f172a); display: flex; align-items: center; gap: 8px;">
+                <span>⏱️</span> Daily Schedule
+            </h2>
         </div>
 
         <!-- View Mode Switcher -->
@@ -526,7 +513,7 @@ for idx, dm in enumerate(days_meta):
     hl_items = "\n                        ".join([f"<li>{h}</li>" for h in highlights])
 
     card_html = f"""
-            <div class="day-card" id="day-card-{day_num}" onclick="focusDay({day_num})">
+            <div class="day-card collapsed" id="day-card-{day_num}" onclick="focusDay({day_num})">
                 <div class="day-header" onclick="handleDayHeaderClick(event, {day_num})">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: {color};">Day {day_num}</span>
@@ -534,7 +521,7 @@ for idx, dm in enumerate(days_meta):
                     </div>
                     <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
                         <span class="day-date">{date_str}</span>
-                        <button type="button" class="day-collapse-btn" id="day-chevron-{day_num}" onclick="event.stopPropagation(); toggleDayCard({day_num});" title="Collapse / Expand Day {day_num}">▾</button>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-{day_num}" onclick="event.stopPropagation(); toggleDayCard({day_num});" title="Collapse / Expand Day {day_num}">▸</button>
                     </div>
                 </div>
 
@@ -600,7 +587,7 @@ html_template = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>2027 East Coast &amp; Labrador Moto Expedition (Expedition 51) — Master Dashboard</title>
+    <title>Expedition 51</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
@@ -788,7 +775,7 @@ html_template = f"""<!DOCTYPE html>
         /* Map Side */
         .map-wrapper {{
             flex: 1 1 auto;
-            min-width: 320px;
+            min-width: 140px;
             position: relative;
             height: 100%;
         }}
@@ -893,8 +880,8 @@ html_template = f"""<!DOCTYPE html>
         .sidebar {{
             flex: 0 0 540px;
             width: 540px;
-            min-width: 320px;
-            max-width: 920px;
+            min-width: 160px;
+            max-width: none;
             background: var(--bg-panel);
             display: flex;
             flex-direction: column;
@@ -971,6 +958,7 @@ html_template = f"""<!DOCTYPE html>
         .itinerary-list {{
             flex: 1;
             overflow-y: auto;
+            overflow-x: hidden;
             padding: 14px;
             display: flex;
             flex-direction: column;
@@ -1036,6 +1024,7 @@ html_template = f"""<!DOCTYPE html>
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: wrap;
             margin-bottom: 10px;
             gap: 8px;
         }}
@@ -1931,27 +1920,24 @@ html_template = f"""<!DOCTYPE html>
 
     <header>
         <div class="header-title">
-            <h1>
-                <span style="font-size:0.70rem; background:rgba(16, 185, 129, 0.14); color:var(--accent-green); border:1px solid var(--accent-green); padding:2px 8px; border-radius:99px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">Mission Ready</span>
-                2027 East Coast &amp; Labrador Moto Expedition (Expedition 51)
-            </h1>
-            <p>18-Day Wilderness, Viking, Coastal &amp; Fjord Loop • June 16 – July 3, 2027 • Hanmer, ON → Labrador → Newfoundland → Maritimes → Hanmer, ON</p>
+            <h1>Expedition 51</h1>
+            <p>June 16 – July 3, 2027 • 18 Days • 8,243.4 km</p>
         </div>
         <div class="header-badges">
             <div class="stats-strip hide-mobile">
-                <div class="stat-item"><span class="val">8,243.4 km</span><span class="lbl">Pure Metric</span></div>
+                <div class="stat-item"><span class="val">8,243.4 km</span><span class="lbl">Distance</span></div>
                 <div class="stat-item"><span class="val">18 Days</span><span class="lbl">Stages</span></div>
-                <div class="stat-item"><span class="val">{len(pois_data)} POIs</span><span class="lbl">Verified</span></div>
+                <div class="stat-item"><span class="val">{len(pois_data)} POIs</span><span class="lbl">Pins</span></div>
             </div>
             <button type="button" class="theme-toggle-btn" id="live-tracker-btn" onclick="toggleLiveTrackerPanel()" style="border-color: var(--accent-green); color: var(--accent-green);">
                 <span class="live-dot" id="live-tracker-dot"></span>
                 <span>📡 Live Tracker</span>
             </button>
             <button type="button" class="theme-toggle-btn" id="checklist-nav-btn" onclick="document.getElementById('sec-checklist').scrollIntoView({{behavior:'smooth'}})" style="border-color: var(--accent-orange); color: var(--accent-orange);">
-                <span>🧳</span> <span>Bike Checklist</span>
+                <span>🧳</span> <span>Checklist</span>
             </button>
             <button type="button" class="theme-toggle-btn" id="notes-btn" onclick="openNotesModal()">
-                <span>📝</span> <span>Trip Notes</span>
+                <span>📝</span> <span>Notes</span>
             </button>
             <button type="button" class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()">
                 <span id="theme-icon">🌙</span> <span id="theme-label">Dark Mode</span>
@@ -1963,21 +1949,14 @@ html_template = f"""<!DOCTYPE html>
         <!-- Interactive Map -->
         <div class="map-wrapper" id="sec-map">
             <div class="filter-toolbar" id="poi-filter-toolbar">
-                <button type="button" class="filter-btn active" data-cat="all" onclick="filterPOIs('all', this)">🌐 All POIs</button>
-                <button type="button" class="filter-btn" data-cat="hotel-primary" onclick="filterPOIs('hotel-primary', this)">🏕️ Primary Lodging</button>
-                <button type="button" class="filter-btn" data-cat="hotel-secondary" onclick="filterPOIs('hotel-secondary', this)">⛺ Backup Lodging</button>
+                <button type="button" class="filter-btn active" data-cat="all" onclick="filterPOIs('all', this)">🌐 All</button>
+                <button type="button" class="filter-btn" data-cat="lodging" onclick="filterPOIs('lodging', this)">🏕️ Lodging</button>
                 <button type="button" class="filter-btn" data-cat="fuel" onclick="filterPOIs('fuel', this)">⛽ Fuel</button>
                 <button type="button" class="filter-btn" data-cat="food" onclick="filterPOIs('food', this)">🍽️ Food</button>
                 <button type="button" class="filter-btn" data-cat="coffee" onclick="filterPOIs('coffee', this)">☕ Coffee</button>
-                <button type="button" class="filter-btn" data-cat="curated-gems" onclick="filterPOIs('curated-gems', this)">⭐ Curated Gems</button>
-                <button type="button" class="filter-btn" data-cat="attraction" onclick="filterPOIs('attraction', this)">🏛️ Attractions</button>
-                <button type="button" class="filter-btn" data-cat="sight" onclick="filterPOIs('sight', this)">📸 Sights</button>
-                <button type="button" class="filter-btn" data-cat="hike" onclick="filterPOIs('hike', this)">🥾 Hikes</button>
-                <button type="button" class="filter-btn" data-cat="lighthouse" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
-                <button type="button" class="filter-btn" data-cat="park" onclick="filterPOIs('park', this)">🌲 Parks</button>
+                <button type="button" class="filter-btn" data-cat="sights" onclick="filterPOIs('sights', this)">📸 Sights</button>
                 <button type="button" class="filter-btn" data-cat="ferry" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
-                <button type="button" class="filter-btn" data-cat="hazard" onclick="filterPOIs('hazard', this)">⚠️ QC-389 Hazards</button>
-                <button type="button" class="filter-btn" data-cat="pullout" onclick="filterPOIs('pullout', this)">🅿️ QC-389 Pullouts</button>
+                <button type="button" class="filter-btn" data-cat="qc389" onclick="filterPOIs('qc389', this)">⚠️ QC-389</button>
             </div>
 
             <div id="map"></div>
@@ -1987,7 +1966,7 @@ html_template = f"""<!DOCTYPE html>
                 <div class="lt-header">
                     <div class="lt-title">
                         <span class="live-dot" id="lt-panel-dot"></span>
-                        <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
+                        <span>📡 Live Tracker</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
                         <button type="button" onclick="centerOnLiveBike('Jamie')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.65rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900; white-space:nowrap;" title="Center map on Jamie (White &amp; Red 2025 Africa Twin)">🎯 Jamie</button>
@@ -2021,7 +2000,7 @@ html_template = f"""<!DOCTYPE html>
                     <!-- Loop Progress Bar -->
                     <div>
                         <div style="display:flex; justify-content:space-between; font-size:0.71rem; font-weight:800; margin-bottom:4px;">
-                            <span style="color:var(--text-muted);">EXPEDITION LOOP PROGRESS</span>
+                            <span style="color:var(--text-muted);">PROGRESS</span>
                             <span id="lt-progress-text" style="color:var(--accent-blue);">0.0 / 8,243.4 km (0.0%)</span>
                         </div>
                         <div style="width:100%; height:7px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:99px; overflow:hidden;">
@@ -2032,19 +2011,19 @@ html_template = f"""<!DOCTYPE html>
                     <!-- 4-Metric Telemetry Summary (Pure Metric) -->
                     <div class="lt-metrics-grid">
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">📅 Active Stage</div>
+                            <div class="lt-metric-label">📅 Stage</div>
                             <div class="lt-metric-val" id="lt-metric-stage">Day 1: Hanmer → Mirabel</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">🏕️ To Night's Lodging</div>
+                            <div class="lt-metric-label">🏕️ To Lodging</div>
                             <div class="lt-metric-val" id="lt-metric-hotel">648.7 km to Mirabel</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">⛽ Next Fuel Ahead</div>
+                            <div class="lt-metric-label">⛽ Next Fuel</div>
                             <div class="lt-metric-val" id="lt-metric-fuel">Sturgeon Falls (91 AKI)</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">🤝 Jamie &amp; Rosie</div>
+                            <div class="lt-metric-label">🤝 Riders</div>
                             <div class="lt-metric-val" id="lt-metric-speed">Together (0.0 km apart)</div>
                         </div>
                     </div>
@@ -2052,8 +2031,8 @@ html_template = f"""<!DOCTYPE html>
                     <!-- Recent Check-Ins & Breadcrumb Feed -->
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (Jamie &amp; Rosie)</span>
-                            <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh Feed</button>
+                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Check-Ins</span>
+                            <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh</button>
                         </div>
                         <div class="lt-feed-list" id="lt-feed-list">
                             <!-- Populated dynamically -->
@@ -2063,7 +2042,7 @@ html_template = f"""<!DOCTYPE html>
                     <!-- PIN-Protected Rider Broadcast & Check-In Drawer -->
                     <div style="border-top:1px solid var(--border); padding-top:8px;">
                         <button type="button" onclick="toggleRiderBroadcastDrawer()" style="width:100%; background:var(--bg-subtle); border:1px solid var(--border); color:var(--text-muted); padding:6px 10px; border-radius:6px; font-size:0.72rem; font-weight:800; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
-                            <span>🔐 Rider Check-In &amp; Phone GPS Broadcast</span>
+                            <span>🔐 Rider Check-In &amp; GPS</span>
                             <span id="lt-rider-chevron">▸</span>
                         </button>
 
@@ -2078,7 +2057,7 @@ html_template = f"""<!DOCTYPE html>
                             <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
                                 <!-- Rider Bike Callsign Selector (Jamie White/Red vs Rosie Green) -->
                                 <div>
-                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Rider &amp; Bike:</div>
+                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Rider:</div>
                                     <div style="display:flex; gap:6px;">
                                         <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('Jamie')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 Jamie (2025 Africa Twin)</button>
                                         <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('Rosie')" style="flex:1; border:1.5px solid #16a34a;">🟢 Rosie (Ducati V2S)</button>
@@ -2092,7 +2071,7 @@ html_template = f"""<!DOCTYPE html>
                                     <span id="lt-queue-badge" onclick="flushOfflineTrackerQueue()" style="font-size:0.68rem; font-weight:700; color:var(--text-muted); cursor:pointer;" title="Tap to force sync">✓ 0 queued</span>
                                 </div>
 
-                                <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">2. 1-Tap Quick Status:</div>
+                                <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">2. Status:</div>
                                 <div style="display:flex; flex-wrap:wrap; gap:5px;" id="lt-status-chips">
                                     <button type="button" class="lt-chip-btn active" onclick="selectCheckInStatus('🏍️ In Saddle', 'Riding on stage — all good!', this)">🏍️ Rolling</button>
                                     <button type="button" class="lt-chip-btn" onclick="selectCheckInStatus('⛽ Fuel Stop', 'Fueled up main tank & reserve bladder.', this)">⛽ Fueled Up</button>
@@ -2102,14 +2081,14 @@ html_template = f"""<!DOCTYPE html>
                                 </div>
 
                                 <div>
-                                    <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); margin-bottom:3px;">3. LOCATION SOURCE (PHONE GPS OR WAYPOINT):</div>
+                                    <div style="font-size:0.68rem; font-weight:800; color:var(--text-muted); margin-bottom:3px;">3. LOCATION:</div>
                                     <select id="lt-location-select" style="width:100%; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:5px 8px; font-size:0.74rem;">
                                         <option value="gps">📍 Use My Phone's Live GPS Hardware</option>
                                     </select>
                                 </div>
 
                                 <div style="display:flex; gap:6px;">
-                                    <input type="text" id="lt-note-input" placeholder="Optional check-in note for family..." style="flex:1; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 9px; font-size:0.75rem;" />
+                                    <input type="text" id="lt-note-input" placeholder="Optional check-in note..." style="flex:1; background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 9px; font-size:0.75rem;" />
                                     <button type="button" onclick="postRiderCheckIn()" class="dl-btn" style="padding:6px 11px; font-size:0.74rem; white-space:nowrap; background:var(--accent-green);">📍 Post Live</button>
                                 </div>
                                 <div id="lt-broadcast-feedback" style="font-size:0.70rem; color:var(--accent-green); min-height:14px;"></div>
@@ -2126,10 +2105,10 @@ html_template = f"""<!DOCTYPE html>
         <!-- Right Sidebar: 18-Day Itinerary -->
         <div class="sidebar" id="sec-itinerary">
             <div class="sidebar-header">
-                <h2>📅 18-Day Stage-by-Stage Itinerary</h2>
+                <h2>📅 Itinerary</h2>
                 <div style="display:flex; gap:6px; align-items:center;">
-                    <button type="button" class="reset-map-btn" id="btn-collapse-all" onclick="toggleAllDayCards()">↕️ Collapse All</button>
-                    <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Show Full Loop</button>
+                    <button type="button" class="reset-map-btn" id="btn-collapse-all" onclick="toggleAllDayCards()">↕️ Expand All</button>
+                    <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Full Loop</button>
                 </div>
             </div>
             <div class="day-jump-bar">
@@ -2141,34 +2120,34 @@ html_template = f"""<!DOCTYPE html>
         </div>
     </div>
 
-    <!-- Bottom Comprehensive Logistics, Gantt, Budget, Fleet & Downloads -->
+    <!-- Bottom Sections: Schedule, Budget, Motorcycles, Checklist & Exports -->
     <div class="details-section">
 
         <!-- 1. Interactive Master Gantt Timeline -->
         {gantt_html}
 
-        <!-- 2. Per-Rider Expedition Financial Model & 3-Tier Budget Matrix -->
-        <h2 class="section-title" id="sec-budget" style="margin-top: 36px;">💰 Per-Rider Expedition Financial Model (CAD • 18 Days • 8,243.4 km)</h2>
+        <!-- 2. Budget -->
+        <h2 class="section-title" id="sec-budget" style="margin-top: 32px;">💰 Budget</h2>
         <div class="budget-grid">
             <div class="budget-card">
-                <div class="label">🏕️ Lodging &amp; Campgrounds (17 Nights)</div>
+                <div class="label">🏕️ Lodging (17 Nights)</div>
                 <div class="amount">$1,671 CAD</div>
-                <div class="sub">7 National/Prov. Park &amp; KOA camp nights ($306) + 9 remote hotel/Viking cabin nights ($1,225) + 1 Marine Atlantic private stateroom share ($140).</div>
+                <div class="sub">7 camp nights ($306) + 9 hotel/cabin nights ($1,225) + 1 ferry stateroom share ($140).</div>
             </div>
             <div class="budget-card">
-                <div class="label">⛽ Fuel &amp; Lucas Oil MMT (8,243.4 km)</div>
+                <div class="label">⛽ Fuel &amp; Octane Booster</div>
                 <div class="amount">$890 CAD</div>
-                <div class="sub">~445 L per bike @ avg $1.95/L across QC/NL/NB/NS/PEI + 1× 946ml bottle of Lucas Oil Octane Booster ($24 CAD) for remote 87-octane legs.</div>
+                <div class="sub">~445 L per bike @ avg $1.95/L + 2× Lucas Oil MMT Octane Booster bottles ($24 CAD).</div>
             </div>
             <div class="budget-card">
-                <div class="label">⛴️ Ferries, Bridges &amp; UNESCO Parks</div>
+                <div class="label">⛴️ Ferries, Bridges &amp; Parks</div>
                 <div class="amount">$485 CAD</div>
-                <div class="sub">Blanc-Sablon MV Qajaq W ferry ($55) + Marine Atlantic overnight ferry bike &amp; passenger ($185) + Confederation Bridge ($21.50) + Parks Canada Discovery Pass &amp; sites ($223).</div>
+                <div class="sub">MV Qajaq W ($55) + Marine Atlantic ($185) + Confederation Bridge ($21.50) + Parks ($223).</div>
             </div>
             <div class="budget-card">
-                <div class="label">🍽️ Meals &amp; Total Hybrid Baseline</div>
+                <div class="label">🍽️ Total Per Rider (Hybrid)</div>
                 <div class="amount">$4,486 CAD</div>
-                <div class="sub">Includes $1,440 food &amp; dining ($80/day across 18 days). <strong>3-Tier Range:</strong> $3,580 (Max Camp) • <strong>$4,486 (Recommended Hybrid)</strong> • $5,890 (100% Hotel/Resort).</div>
+                <div class="sub">Includes $1,440 meals ($80/day). <strong>Range:</strong> $3,580 (Camp) • <strong>$4,486 (Hybrid)</strong> • $5,890 (Hotel).</div>
             </div>
         </div>
 
@@ -2176,11 +2155,11 @@ html_template = f"""<!DOCTYPE html>
             <table>
                 <thead>
                     <tr>
-                        <th>Expense Category (Per Rider in CAD)</th>
-                        <th>🏕️ Tier 1: Max Camping &amp; Motel</th>
-                        <th>⚖️ Tier 2: Recommended Hybrid Plan</th>
-                        <th>🏨 Tier 3: Full Hotel &amp; Resort</th>
-                        <th>Notes &amp; Booking Strategy</th>
+                        <th>Category (Per Rider CAD)</th>
+                        <th>🏕️ Max Camping</th>
+                        <th>⚖️ Hybrid (Recommended)</th>
+                        <th>🏨 Full Hotel</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -2189,151 +2168,99 @@ html_template = f"""<!DOCTYPE html>
                         <td>$980 CAD</td>
                         <td><strong>$1,671 CAD</strong></td>
                         <td>$3,075 CAD</td>
-                        <td>Hybrid uses Hotels/Cabins in Labrador &amp; Northern NL (Days 1–7, 17) + Parks Canada/KOA on Days 8–9, 11–16.</td>
+                        <td>Hotels/Cabins on Days 1–7, 17 + Parks/KOA on Days 8–9, 11–16.</td>
                     </tr>
                     <tr>
-                        <td><strong>Fuel &amp; Octane Booster (8,243.4 km)</strong></td>
+                        <td><strong>Fuel (8,243.4 km)</strong></td>
                         <td>$890 CAD</td>
                         <td><strong>$890 CAD</strong></td>
                         <td>$890 CAD</td>
-                        <td>5.1 L/100km avg + 5L Giant Loop Armadillo bladder on QC-389 &amp; Trans-Labrador + Lucas Oil MMT.</td>
+                        <td>5.1 L/100km avg + auxiliary fuel bladders + Lucas Oil MMT.</td>
                     </tr>
                     <tr>
-                        <td><strong>Ferries &amp; Bridge Tolls (4 Crossings)</strong></td>
+                        <td><strong>Ferries &amp; Tolls</strong></td>
                         <td>$265 CAD</td>
                         <td><strong>$265 CAD</strong></td>
                         <td>$265 CAD</td>
                         <td>Tadoussac (Free), MV Qajaq W ($55), Marine Atlantic ($185), Confederation Bridge ($21.50), A-30 ($3.50).</td>
                     </tr>
                     <tr>
-                        <td><strong>Parks Canada &amp; Historic Sites</strong></td>
+                        <td><strong>Parks &amp; Admissions</strong></td>
                         <td>$220 CAD</td>
                         <td><strong>$220 CAD</strong></td>
                         <td>$220 CAD</td>
-                        <td>Manic-5 Dam Tour, Red Bay UNESCO, L'Anse aux Meadows, Norstead, Gros Morne, Cape Breton, PEI, Hopewell Rocks.</td>
+                        <td>Manic-5 Dam, Red Bay, L'Anse aux Meadows, Norstead, Gros Morne, Cape Breton, PEI, Hopewell Rocks.</td>
                     </tr>
                     <tr>
-                        <td><strong>Meals, Chowder Stops &amp; Provisions</strong></td>
+                        <td><strong>Meals &amp; Provisions</strong></td>
                         <td>$1,225 CAD</td>
                         <td><strong>$1,440 CAD</strong></td>
                         <td>$1,440 CAD</td>
-                        <td>30m breakfast, 30m road lunch, 1h sit-down maritime seafood/steak supper ($80/day).</td>
+                        <td>Breakfast, road lunch, and sit-down supper ($80/day).</td>
                     </tr>
                     <tr style="background: rgba(5, 150, 105, 0.08); font-weight: 800;">
-                        <td><strong>TOTAL PER RIDER (18 DAYS)</strong></td>
+                        <td><strong>TOTAL PER RIDER</strong></td>
                         <td><strong>$3,580 CAD</strong></td>
                         <td style="color: var(--accent-green); font-size: 0.95rem;"><strong>$4,486 CAD</strong></td>
                         <td><strong>$5,890 CAD</strong></td>
-                        <td>All figures in Canadian Dollars (CAD) including provincial HST/QST.</td>
+                        <td>All figures in CAD including tax.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- 3. Critical Wilderness Safety, Gravel & Ferry Protocols -->
-        <h2 class="section-title" id="sec-safety">🛡️ Critical Wilderness, Gravel &amp; Ferry Protocols</h2>
-        <div class="downloads-grid">
-            <div class="download-card" style="border-left: 4px solid var(--accent-orange);">
-                <div>
-                    <h4>⚠️ Route 389 Unpaved Gravel (Days 2–3)</h4>
-                    <p>Only two gravel stretches remain on the entire 8,243.4 km loop: <strong>22 km around Manic-5</strong> (winding dirt bypass) and <strong>175 km from Fire Lake to Fermont</strong> (wide graded crushed stone). Maintain 70–80 km/h, watch for iron-ore haul trucks, and ride in daylight only.</p>
-                </div>
-                <span class="badge badge-orange" style="align-self:flex-start;">197 km Total Unpaved (2.4% of Trip)</span>
-            </div>
-            <div class="download-card" style="border-left: 4px solid var(--accent-red);">
-                <div>
-                    <h4>⛽ longest Fuel Gap: 410 km (Day 4 TLH)</h4>
-                    <p>Between <strong>Churchill Falls and Happy Valley-Goose Bay (292 km)</strong> and <strong>Goose Bay to Port Hope Simpson (410 km)</strong>, there are zero gas stations. Top up 100% at Churchill Falls and Goose Bay, and carry a filled <strong>5L Giant Loop Armadillo fuel bladder</strong> per bike.</p>
-                </div>
-                <span class="badge badge-red" style="align-self:flex-start;">Mandatory 5L Reserve Bladder</span>
-            </div>
-            <div class="download-card" style="border-left: 4px solid var(--accent-blue);">
-                <div>
-                    <h4>⛴️ Marine Atlantic &amp; Labrador Ferries (Days 6 &amp; 10)</h4>
-                    <p>Book <strong>Labrador Marine (MV Qajaq W)</strong> from Blanc-Sablon to St. Barbe and <strong>Marine Atlantic Overnight Ferry</strong> (Port aux Basques → North Sydney with private 2-berth cabin) in January 2027. Pack <strong>4 heavy-duty cam-buckle tie-down straps per bike</strong>.</p>
-                </div>
-                <span class="badge badge-blue" style="align-self:flex-start;">4 Tie-Down Straps Per Bike</span>
-            </div>
+        <!-- 3. Simplified GPS & Data Exports Bar -->
+        <h2 class="section-title" id="sec-downloads" style="margin-top: 28px;">📡 Exports</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; box-shadow:var(--shadow-card); margin-bottom:28px;">
+            <span style="font-size:0.80rem; font-weight:700; color:var(--text-muted); margin-right:6px;">Download 18 tracks &amp; {len(pois_data)} waypoints:</span>
+            <a href="east_coast_adv_loop.gpx" download class="dl-btn" style="padding:7px 14px; font-size:0.78rem;">⬇️ GPX Route &amp; POIs (.gpx)</a>
+            <a href="east_coast_route_tracks.kml" download class="dl-btn" style="padding:7px 14px; font-size:0.78rem; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border);">⬇️ Route Tracks (.kml)</a>
+            <a href="east_coast_colored_pois.kml" download class="dl-btn" style="padding:7px 14px; font-size:0.78rem; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border);">⬇️ POIs (.kml)</a>
+            <a href="east_coast_adv_pois.csv" download class="dl-btn" style="padding:7px 14px; font-size:0.78rem; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border);">⬇️ Spreadsheet (.csv)</a>
         </div>
 
-        <!-- 4. GPS Navigation & GPX/KML/CSV Downloads -->
-        <h2 class="section-title" id="sec-downloads">📡 Offline GPS Navigation &amp; Data Exports</h2>
-        <div class="downloads-grid">
-            <div class="download-card">
-                <div>
-                    <h4>📍 Complete GPX Navigation File</h4>
-                    <p>Contains all 18 OSRM road-snapped daily stage tracks plus all {len(pois_data)} waypoints (lodging, camping backups, 72 fuel stops, 62 restaurants, 57 coffee shops including 29 local roasters &amp; cafés, lighthouses, sights, QC-389 pullouts &amp; rail crossings). Compatible with Garmin Zumo XT/XT2, OsmAnd, Scenic, and Rever.</p>
-                </div>
-                <a href="east_coast_adv_loop.gpx" download class="dl-btn">⬇️ Download GPX (east_coast_adv_loop.gpx)</a>
-            </div>
-            <div class="download-card">
-                <div>
-                    <h4>🌍 Google Earth / My Maps Route Tracks (KML)</h4>
-                    <p>Color-coded 18-day highway &amp; coastal road-snapped polylines with unpaved QC-389 gravel segments highlighted. Ideal for 3D terrain flyovers in Google Earth or importing into Google My Maps.</p>
-                </div>
-                <a href="east_coast_route_tracks.kml" download class="dl-btn">⬇️ Download Route KML (east_coast_route_tracks.kml)</a>
-            </div>
-            <div class="download-card">
-                <div>
-                    <h4>🎨 Categorized &amp; Color-Coded POIs (KML)</h4>
-                    <p>All {len(pois_data)} expedition pins organized into custom color-coded folders (Primary Lodging, Backup Lodging &amp; Camp, Fuel, Food, Coffee, Lighthouses, Attractions, Parks, Sights, Hikes, Ferries, QC-389 Hazards &amp; Pullouts).</p>
-                </div>
-                <a href="east_coast_colored_pois.kml" download class="dl-btn">⬇️ Download Colored POIs KML</a>
-            </div>
-            <div class="download-card">
-                <div>
-                    <h4>📊 Master Expedition Spreadsheet (CSV)</h4>
-                    <p>Complete tabular audit of all {len(pois_data)} POIs with exact GPS coordinates, day number, category, 87/91 octane availability, hotel rates, admission info, operating hours, food/coffee stops, and QC-389 safety waypoints.</p>
-                </div>
-                <a href="east_coast_adv_pois.csv" download class="dl-btn">⬇️ Download Master CSV (east_coast_adv_pois.csv)</a>
-            </div>
-        </div>
-
-        <!-- 5. Fleet Specifications & Dual-Octane Fuel Physics -->
-        <h2 class="section-title" id="sec-fleet">🏍️ Expedition Fleet &amp; Dual-Octane Fuel Physics</h2>
+        <!-- 4. Motorcycles -->
+        <h2 class="section-title" id="sec-fleet">🏍️ Motorcycles</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Motorcycle Model</th>
+                        <th>Rider &amp; Motorcycle</th>
                         <th>Fuel Tank</th>
                         <th>Consumption</th>
-                        <th>Safe Highway Range</th>
-                        <th>5L Bladder Extension</th>
-                        <th>Required Fuel Grade &amp; Remote Protocol</th>
+                        <th>Highway Range</th>
+                        <th>Aux Bladder</th>
+                        <th>Fuel Grade &amp; Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>2025 Honda CRF1100L Africa Twin Adventure Sports ES (Jamie — White &amp; Red)</strong></td>
+                        <td><strong>Jamie — 2025 Honda CRF1100L Africa Twin Adventure Sports ES (White &amp; Red)</strong></td>
                         <td>24.8 L</td>
                         <td>4.9 L/100km</td>
-                        <td>~450 km (+50 km reserve)</td>
-                        <td>+100 km (Total ~550 km)</td>
-                        <td><strong>86–87 AKI Regular Unleaded</strong> — Native low-octane map handles all remote Labrador &amp; Northern Peninsula pumps effortlessly.</td>
+                        <td>~450 km</td>
+                        <td>+100 km (~550 km)</td>
+                        <td><strong>87 Regular</strong> — Native low-octane map handles all remote Labrador pumps.</td>
                     </tr>
                     <tr>
-                        <td><strong>2026 Ducati Multistrada V2S (Rosie — Green)</strong></td>
+                        <td><strong>Rosie — 2026 Ducati Multistrada V2S (Green)</strong></td>
                         <td>19.0 L</td>
                         <td>5.2 L/100km</td>
-                        <td>~315 km (+45 km reserve)</td>
-                        <td>+95 km (Total ~410 km)</td>
-                        <td><strong>91 AKI Premium Required</strong> — Carry <strong>1× 946 ml (1 Quart) Lucas Oil Octane Booster (MMT)</strong>. Dose <strong>6 ml per Litre of 87 Regular</strong> (~90 ml per 15 L fill) at remote 87-only pumps on Days 2–7.</td>
+                        <td>~315 km</td>
+                        <td>+95 km (~410 km)</td>
+                        <td><strong>91 Premium</strong> — Dose <strong>6 ml/L Lucas Oil MMT</strong> at remote 87-only pumps (Days 2–7).</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- 6. Editable Per-Bike Luggage Volume & Packing Checklist (Git-Backed) -->
-        <h2 class="section-title" id="sec-checklist" style="margin-top: 36px;">🧳 Per-Bike Luggage Volume &amp; Packing Checklist (Git-Backed • Jamie &amp; Rosie)</h2>
+        <!-- 5. Packing Checklist (Git-Backed) -->
+        <h2 class="section-title" id="sec-checklist" style="margin-top: 32px;">🧳 Packing Checklist</h2>
         <div class="chk-sync-bar">
             <div>
                 <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                    <span style="font-size:0.86rem; font-weight:800; color:var(--text-main);">📦 Git Repository Storage: <code style="background:var(--bg-subtle); padding:2px 6px; border-radius:4px; border:1px solid var(--border);">Rindelk/expedition-51/luggage_checklist.json</code></span>
+                    <span style="font-size:0.84rem; font-weight:800; color:var(--text-main);">📦 Git Sync: <code style="background:var(--bg-subtle); padding:2px 6px; border-radius:4px; border:1px solid var(--border);">luggage_checklist.json</code></span>
                     <span id="chk-git-status-badge" style="font-size:0.73rem; font-weight:700; padding:3px 9px; border-radius:99px; background:rgba(5,150,105,0.14); color:var(--accent-green); border:1px solid rgba(5,150,105,0.3);">✓ Synced with Git (main)</span>
-                </div>
-                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
-                    Edits calculate compartment &amp; total bike volume in Litres (L) in real time and store directly in Git (<code style="font-size:0.71rem;">luggage_checklist.json</code>) + cloud relay — no local device storage lock-in.
                 </div>
             </div>
             <div style="display:flex; gap:7px; flex-wrap:wrap; align-items:center;">
@@ -2342,23 +2269,20 @@ html_template = f"""<!DOCTYPE html>
                     <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (139L)</button>
                     <button type="button" class="lt-chip-btn" id="chk-view-rosie" onclick="setChecklistBikeFilter('rosie')">🟢 Rosie (104L)</button>
                 </div>
-                <button type="button" class="theme-toggle-btn" onclick="pullChecklistFromGit(true)" title="Fetch latest luggage_checklist.json from GitHub repository">🔄 Pull from Git</button>
-                <button type="button" class="dl-btn" id="btn-commit-git" onclick="commitChecklistToGit()" style="padding:6px 12px; font-size:0.76rem; background:var(--accent-green);">☁️ Commit &amp; Save to Git</button>
-                <button type="button" class="theme-toggle-btn" onclick="toggleGitTokenDrawer()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Configure GitHub Personal Access Token for direct Git commits">🔑 Git Auth</button>
-                <button type="button" class="theme-toggle-btn" onclick="downloadChecklistJson()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Download luggage_checklist.json file">⬇️ .json</button>
+                <button type="button" class="theme-toggle-btn" onclick="pullChecklistFromGit(true)" title="Fetch latest luggage_checklist.json from GitHub">🔄 Pull</button>
+                <button type="button" class="dl-btn" id="btn-commit-git" onclick="commitChecklistToGit()" style="padding:6px 12px; font-size:0.76rem; background:var(--accent-green);">☁️ Save to Git</button>
+                <button type="button" class="theme-toggle-btn" onclick="toggleGitTokenDrawer()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Configure GitHub Token">🔑 Git Auth</button>
+                <button type="button" class="theme-toggle-btn" onclick="downloadChecklistJson()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Download luggage_checklist.json">⬇️ .json</button>
             </div>
         </div>
 
-        <!-- Optional GitHub Token Configuration Bar for Direct Browser-to-GitHub REST API Commits -->
+        <!-- Optional GitHub Token Configuration Bar -->
         <div id="chk-git-token-drawer" style="display:none; background:var(--bg-card); border:1px solid var(--border); border-left:4px solid var(--accent-purple); border-radius:10px; padding:12px 16px; margin-bottom:18px; box-shadow:var(--shadow-card);">
-            <div style="font-size:0.80rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">🔑 GitHub Repository Direct Commit Configuration (<code style="font-weight:700;">PUT /repos/Rindelk/expedition-51/contents/luggage_checklist.json</code>)</div>
-            <div style="font-size:0.74rem; color:var(--text-muted); margin-bottom:8px;">
-                Enter a GitHub Personal Access Token (Fine-Grained PAT with <strong>Contents: Read &amp; Write</strong> on <code>Rindelk/expedition-51</code>) to push commits directly to the <code>main</code> branch on GitHub from any device, in addition to instant cloud state sync.
-            </div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <div style="font-size:0.80rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">🔑 GitHub Direct Commit Token</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px;">
                 <input type="password" id="chk-github-pat-input" placeholder="github_pat_... or ghp_..." style="flex:1; min-width:240px; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.78rem; font-family:monospace;" />
-                <input type="text" id="chk-commit-author-input" placeholder="Committer (e.g. Jamie or Rosie)" value="Jamie & Rosie" style="width:175px; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.78rem;" />
-                <button type="button" class="dl-btn" onclick="applyGitAuthConfig()" style="padding:6px 14px; font-size:0.76rem;">✓ Apply &amp; Test Git Connection</button>
+                <input type="text" id="chk-commit-author-input" placeholder="Committer" value="Jamie & Rosie" style="width:160px; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.78rem;" />
+                <button type="button" class="dl-btn" onclick="applyGitAuthConfig()" style="padding:6px 14px; font-size:0.76rem;">✓ Apply</button>
             </div>
         </div>
 
@@ -2381,7 +2305,7 @@ html_template = f"""<!DOCTYPE html>
         </button>
         <button type="button" class="mob-nav-btn" onclick="mobileNav('gantt', this)">
             <span class="icon">⏱️</span>
-            <span>Timeline</span>
+            <span>Schedule</span>
         </button>
         <button type="button" class="mob-nav-btn" onclick="mobileNav('checklist', this)">
             <span class="icon">🧳</span>
@@ -2389,7 +2313,7 @@ html_template = f"""<!DOCTYPE html>
         </button>
         <button type="button" class="mob-nav-btn" onclick="mobileNav('downloads', this)">
             <span class="icon">📡</span>
-            <span>Budget/GPX</span>
+            <span>Budget</span>
         </button>
     </nav>
 
@@ -2398,8 +2322,8 @@ html_template = f"""<!DOCTYPE html>
         <div style="background:var(--bg-panel); border:1px solid var(--border); border-radius:12px; width:100%; max-width:780px; max-height:88vh; display:flex; flex-direction:column; box-shadow:0 20px 50px rgba(0,0,0,0.5); overflow:hidden;">
             <div style="padding:16px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--bg-subtle);">
                 <div>
-                    <h3 style="margin:0; font-size:1.1rem; color:var(--text-main); display:flex; align-items:center; gap:8px;">📝 Expedition 51 Rider Notes &amp; Reservation Log</h3>
-                    <div id="notes-sync-status" style="font-size:0.74rem; color:var(--accent-green); margin-top:2px;">✓ Synced with Git Checklist &amp; Cloud Relay</div>
+                    <h3 style="margin:0; font-size:1.05rem; color:var(--text-main); display:flex; align-items:center; gap:8px;">📝 Trip Notes</h3>
+                    <div id="notes-sync-status" style="font-size:0.74rem; color:var(--accent-green); margin-top:2px;">✓ Saved</div>
                 </div>
                 <button type="button" onclick="closeNotesModal()" style="background:transparent; border:1px solid var(--border); color:var(--text-muted); width:32px; height:32px; border-radius:6px; font-size:1rem; cursor:pointer;">✕</button>
             </div>
@@ -2675,24 +2599,24 @@ html_template = f"""<!DOCTYPE html>
 
         function filterPOIs(category, btnEl) {{
             if (category === 'all') {{
-                // Toggle "All POIs" ON or OFF
+                // Toggle "All" ON or OFF
                 allPoisActive = !allPoisActive;
                 activeCategories.clear();
             }} else {{
                 if (allPoisActive) {{
-                    // Switching from "All POIs" to individual category toggle mode
+                    // Switching from "All" to major category toggle mode
                     allPoisActive = false;
                     activeCategories.clear();
                     activeCategories.add(category);
                 }} else {{
-                    // Toggle this specific category ON or OFF
+                    // Toggle this specific major category ON or OFF
                     if (activeCategories.has(category)) {{
                         activeCategories.delete(category);
                     }} else {{
                         activeCategories.add(category);
                     }}
                 }}
-                if (activeCategories.has(category) && (category === 'hazard' || category === 'pullout') && trackLayers[3]) {{
+                if (activeCategories.has(category) && category === 'qc389' && trackLayers[3]) {{
                     map.fitBounds(trackLayers[3].getBounds().pad(0.12));
                 }}
             }}
@@ -2706,7 +2630,7 @@ html_template = f"""<!DOCTYPE html>
                 // All POIs toggled OFF
                 return;
             }}
-            const gemTypes = new Set(['lighthouse', 'attraction', 'sight', 'hike', 'park']);
+            const sightsTypes = new Set(['lighthouse', 'attraction', 'sight', 'hike', 'park']);
             poiMarkers.forEach(m => {{
                 const p = m.poiData;
                 let catMatch = false;
@@ -2721,7 +2645,11 @@ html_template = f"""<!DOCTYPE html>
                 }} else {{
                     if (activeCategories.has(p.type)) {{
                         catMatch = true;
-                    }} else if (activeCategories.has('curated-gems') && gemTypes.has(p.type)) {{
+                    }} else if (activeCategories.has('lodging') && (p.type === 'hotel-primary' || p.type === 'hotel-secondary')) {{
+                        catMatch = true;
+                    }} else if (activeCategories.has('sights') && sightsTypes.has(p.type)) {{
+                        catMatch = true;
+                    }} else if (activeCategories.has('qc389') && (p.type === 'hazard' || p.type === 'pullout')) {{
                         catMatch = true;
                     }}
                 }}
@@ -2793,14 +2721,14 @@ html_template = f"""<!DOCTYPE html>
                     return;
                 }}
                 const rect = container.getBoundingClientRect();
-                const maxW = Math.min(920, Math.max(420, rect.width - 360));
-                const clamped = Math.max(320, Math.min(maxW, w));
+                const maxW = Math.max(160, rect.width - 140);
+                const clamped = Math.max(160, Math.min(maxW, w));
                 sidebar.style.flex = `0 0 ${{clamped}}px`;
                 sidebar.style.width = `${{clamped}}px`;
             }}
 
             const savedW = parseInt(localStorage.getItem(STORAGE_KEY), 10);
-            if (!isNaN(savedW) && savedW >= 320 && window.innerWidth > 1024) {{
+            if (!isNaN(savedW) && savedW >= 160 && window.innerWidth > 1024) {{
                 applySidebarWidth(savedW);
                 setTimeout(() => map.invalidateSize({{ pan: false }}), 60);
             }}
@@ -2828,7 +2756,7 @@ html_template = f"""<!DOCTYPE html>
                 gutter.classList.remove('dragging');
                 document.body.classList.remove('is-resizing');
                 const currentW = Math.round(sidebar.getBoundingClientRect().width);
-                if (currentW >= 320 && window.innerWidth > 1024) {{
+                if (currentW >= 160 && window.innerWidth > 1024) {{
                     localStorage.setItem(STORAGE_KEY, String(currentW));
                 }}
                 map.invalidateSize({{ pan: false }});
@@ -2874,7 +2802,7 @@ html_template = f"""<!DOCTYPE html>
                     sidebar.style.width = '';
                 }} else {{
                     const sw = parseInt(localStorage.getItem(STORAGE_KEY), 10);
-                    if (!isNaN(sw) && sw >= 320) applySidebarWidth(sw);
+                    if (!isNaN(sw) && sw >= 160) applySidebarWidth(sw);
                 }}
                 map.invalidateSize({{ pan: false }});
             }});
