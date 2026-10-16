@@ -524,12 +524,15 @@ for idx, dm in enumerate(days_meta):
 
     card_html = f"""
             <div class="day-card" id="day-card-{day_num}" onclick="focusDay({day_num})">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, {day_num})">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: {color};">Day {day_num}</span>
                         <h3 class="day-title">{title}</h3>
                     </div>
-                    <span class="day-date">{date_str}</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">{date_str}</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-{day_num}" onclick="event.stopPropagation(); toggleDayCard({day_num});" title="Collapse / Expand Day {day_num}">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -538,43 +541,45 @@ for idx, dm in enumerate(days_meta):
                     <span class="stat-chip">{surf_chip}</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-{day_num}">
-                    <span>🌤️ {hist_weather}</span>
-                    <span class="live-weather-badge" id="live-weather-{day_num}">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">{desc}</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">{hotel_title}</div>
-                        <span class="hotel-rate-pill">{hotel_rate}</span>
+                <div class="day-collapsible-body" id="day-body-{day_num}">
+                    <div class="weather-bar" id="weather-day-{day_num}">
+                        <span>🌤️ {hist_weather}</span>
+                        <span class="live-weather-badge" id="live-weather-{day_num}">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">{hotel_loc}</div>
-                    <div class="hotel-actions">
-                        {pri_btns_html}
+
+                    <p class="day-desc">{desc}</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">{hotel_title}</div>
+                            <span class="hotel-rate-pill">{hotel_rate}</span>
+                        </div>
+                        <div class="hotel-sub">{hotel_loc}</div>
+                        <div class="hotel-actions">
+                            {pri_btns_html}
+                        </div>
                     </div>
-                </div>
-                {sec_hotel_box_html}
+                    {sec_hotel_box_html}
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> {fuel_desc}
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> {fuel_desc}
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        {hl_items}
-                    </ul>
-                </div>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            {hl_items}
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay({day_num});" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage {day_num} on Map
-                    </button>
-                    <a href="{gmaps_url}" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay({day_num});" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage {day_num} on Map
+                        </button>
+                        <a href="{gmaps_url}" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>"""
     day_cards_html.append(card_html)
@@ -779,7 +784,8 @@ html_template = f"""<!DOCTYPE html>
 
         /* Map Side */
         .map-wrapper {{
-            flex: 1.38;
+            flex: 1 1 auto;
+            min-width: 320px;
             position: relative;
             height: 100%;
         }}
@@ -788,6 +794,45 @@ html_template = f"""<!DOCTYPE html>
             width: 100%;
             height: 100%;
             background: #cbd5e1;
+        }}
+
+        /* Resizable Split Divider Gutter (Map <-> Itinerary) */
+        #resizer-gutter {{
+            width: 10px;
+            background: var(--bg-subtle);
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            cursor: col-resize;
+            position: relative;
+            z-index: 950;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            user-select: none;
+            touch-action: none;
+        }}
+        #resizer-gutter::after {{
+            content: "⋮";
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+        }}
+        #resizer-gutter:hover,
+        #resizer-gutter.dragging {{
+            background: rgba(2, 132, 199, 0.16);
+            border-color: var(--accent-blue);
+        }}
+        #resizer-gutter:hover::after,
+        #resizer-gutter.dragging::after {{
+            color: var(--accent-blue);
+        }}
+        body.is-resizing {{
+            cursor: col-resize !important;
+            user-select: none !important;
         }}
 
         /* Floating Map Filter Toolbar — Single-Row Horizontal Scroll (Zero Multi-Row Clutter) */
@@ -843,28 +888,29 @@ html_template = f"""<!DOCTYPE html>
 
         /* Right Sidebar (Itinerary) */
         .sidebar {{
-            flex: 1;
-            min-width: 450px;
-            max-width: 640px;
+            flex: 0 0 540px;
+            width: 540px;
+            min-width: 320px;
+            max-width: 920px;
             background: var(--bg-panel);
-            border-left: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             height: 100%;
         }}
 
         .sidebar-header {{
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--bg-subtle);
             gap: 8px;
+            flex-wrap: wrap;
         }}
 
         .sidebar-header h2 {{
-            font-size: 1.02rem;
+            font-size: 0.98rem;
             font-weight: 800;
             color: var(--text-main);
         }}
@@ -873,12 +919,13 @@ html_template = f"""<!DOCTYPE html>
             background: var(--bg-card);
             border: 1px solid var(--accent-blue);
             color: var(--accent-blue);
-            padding: 6px 11px;
+            padding: 5px 10px;
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.15s ease;
+            white-space: nowrap;
         }}
 
         .reset-map-btn:hover {{
@@ -947,6 +994,39 @@ html_template = f"""<!DOCTYPE html>
         .day-card.active {{
             border-color: var(--accent-blue);
             box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25);
+        }}
+
+        .day-card.collapsed {{
+            padding: 12px 16px;
+        }}
+        .day-card.collapsed .day-collapsible-body {{
+            display: none;
+        }}
+        .day-card.collapsed .stats-row {{
+            margin-bottom: 0;
+        }}
+
+        .day-collapse-btn {{
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 0.80rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            padding: 0;
+            line-height: 1;
+        }}
+        .day-collapse-btn:hover {{
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
         }}
 
         .day-header {{
@@ -1399,10 +1479,10 @@ html_template = f"""<!DOCTYPE html>
             transition: transform 0.25s ease;
         }}
         .live-bike-marker-wrap.co-located-atas {{
-            transform: translate(-17px, 0);
+            transform: translate(-23px, 0);
         }}
         .live-bike-marker-wrap.co-located-v2s {{
-            transform: translate(17px, 0);
+            transform: translate(23px, 0);
         }}
         .live-bike-pulse {{
             position: absolute;
@@ -1522,21 +1602,22 @@ html_template = f"""<!DOCTYPE html>
             display: flex;
         }}
         .lt-header {{
-            padding: 10px 14px;
+            padding: 10px 12px;
             background: var(--bg-subtle);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }}
         .lt-title {{
-            font-size: 0.84rem;
+            font-size: 0.78rem;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 7px;
+            gap: 6px;
             color: var(--text-main);
+            white-space: nowrap;
         }}
         .lt-body {{
             padding: 12px 14px;
@@ -1692,9 +1773,14 @@ html_template = f"""<!DOCTYPE html>
                 scrollbar-width: none;
             }}
             .filter-toolbar::-webkit-scrollbar {{ display: none; }}
+            #resizer-gutter {{
+                display: none !important;
+            }}
             .sidebar {{
-                min-width: 100%;
-                max-width: 100%;
+                flex: none !important;
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
                 height: auto;
                 border-left: none;
                 border-top: 2px solid var(--border);
@@ -1768,35 +1854,35 @@ html_template = f"""<!DOCTYPE html>
 
             <div id="map"></div>
 
-            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: ATAS White/Red & V2S Green) -->
+            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: Jamie White/Red & Rosie Green) -->
             <div class="live-tracker-panel" id="live-tracker-panel">
                 <div class="lt-header">
                     <div class="lt-title">
                         <span class="live-dot" id="lt-panel-dot"></span>
                         <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:4px;">
-                        <button type="button" onclick="centerOnLiveBike('ATAS')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900;" title="Center map on ATAS (White &amp; Red Africa Twin)">🎯 ATAS</button>
-                        <button type="button" onclick="centerOnLiveBike('V2S')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#16a34a; border:1.5px solid #15803d; color:#ffffff; font-weight:900;" title="Center map on V2S (Green Ducati V2S)">🎯 V2S</button>
+                    <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                        <button type="button" onclick="centerOnLiveBike('Jamie')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.65rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900; white-space:nowrap;" title="Center map on Jamie (White &amp; Red 2025 Africa Twin)">🎯 Jamie</button>
+                        <button type="button" onclick="centerOnLiveBike('Rosie')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.65rem; background:#16a34a; border:1.5px solid #15803d; color:#ffffff; font-weight:900; white-space:nowrap;" title="Center map on Rosie (Green Ducati V2S)">🎯 Rosie</button>
                         <button type="button" onclick="toggleLiveTrackerPanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.95rem; cursor:pointer; padding:2px 4px;">✕</button>
                     </div>
                 </div>
 
                 <div class="lt-body">
-                    <!-- Dual-Rider Live Status Cards (ATAS White/Red & V2S Green) -->
+                    <!-- Dual-Rider Live Status Cards (Jamie White/Red & Rosie Green) -->
                     <div class="lt-riders-grid">
-                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('ATAS')" title="Click to center on ATAS (White &amp; Red Honda Africa Twin)">
+                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('Jamie')" title="Click to center on Jamie (White &amp; Red 2025 Honda Africa Twin)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#dc2626"/><path d="M6 14l4-5h5l2 5"/></svg> ATAS</span>
+                                <span class="lt-rider-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#dc2626"/><path d="M6 14l4-5h5l2 5"/></svg> Jamie</span>
                                 <span id="lt-time-atas" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-atas" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
-                            <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">Africa Twin • Day 1</div>
+                            <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">2025 Africa Twin • Day 1</div>
                         </div>
 
-                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('V2S')" title="Click to center on V2S (Green Ducati Multistrada V2S)">
+                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('Rosie')" title="Click to center on Rosie (Green Ducati Multistrada V2S)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill v2s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#ffffff"/><path d="M6 14l4-5h5l2 5"/></svg> V2S</span>
+                                <span class="lt-rider-pill v2s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#ffffff"/><path d="M6 14l4-5h5l2 5"/></svg> Rosie</span>
                                 <span id="lt-time-v2s" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-v2s" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
@@ -1830,7 +1916,7 @@ html_template = f"""<!DOCTYPE html>
                             <div class="lt-metric-val" id="lt-metric-fuel">Sturgeon Falls (91 AKI)</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">🤝 ATAS / V2S Fleet</div>
+                            <div class="lt-metric-label">🤝 Jamie &amp; Rosie</div>
                             <div class="lt-metric-val" id="lt-metric-speed">Together (0.0 km apart)</div>
                         </div>
                     </div>
@@ -1838,7 +1924,7 @@ html_template = f"""<!DOCTYPE html>
                     <!-- Recent Check-Ins & Breadcrumb Feed -->
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (ATAS &amp; V2S)</span>
+                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (Jamie &amp; Rosie)</span>
                             <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh Feed</button>
                         </div>
                         <div class="lt-feed-list" id="lt-feed-list">
@@ -1862,12 +1948,12 @@ html_template = f"""<!DOCTYPE html>
 
                             <!-- Unlocked Rider Broadcast Controls -->
                             <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
-                                <!-- Rider Bike Callsign Selector (ATAS White/Red vs V2S Green) -->
+                                <!-- Rider Bike Callsign Selector (Jamie White/Red vs Rosie Green) -->
                                 <div>
-                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Your Bike Callsign:</div>
+                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Rider &amp; Bike:</div>
                                     <div style="display:flex; gap:6px;">
-                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('ATAS')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 ATAS (Africa Twin)</button>
-                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('V2S')" style="flex:1; border:1.5px solid #16a34a;">🟢 V2S (Ducati V2S)</button>
+                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('Jamie')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 Jamie (2025 Africa Twin)</button>
+                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('Rosie')" style="flex:1; border:1.5px solid #16a34a;">🟢 Rosie (Ducati V2S)</button>
                                     </div>
                                 </div>
 
@@ -1906,11 +1992,17 @@ html_template = f"""<!DOCTYPE html>
             </div>
         </div>
 
+        <!-- Draggable Resizer Gutter -->
+        <div id="resizer-gutter" title="Drag left/right to resize Map &amp; Itinerary panels (Double-click to reset)"></div>
+
         <!-- Right Sidebar: 18-Day Itinerary -->
         <div class="sidebar" id="sec-itinerary">
             <div class="sidebar-header">
                 <h2>📅 18-Day Stage-by-Stage Itinerary</h2>
-                <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Show Full Loop</button>
+                <div style="display:flex; gap:6px; align-items:center;">
+                    <button type="button" class="reset-map-btn" id="btn-collapse-all" onclick="toggleAllDayCards()">↕️ Collapse All</button>
+                    <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Show Full Loop</button>
+                </div>
             </div>
             <div class="day-jump-bar">
                 {day_jump_pills}
@@ -2085,7 +2177,7 @@ html_template = f"""<!DOCTYPE html>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>2022 Honda CRF1100L Africa Twin Adventure Sports ES</strong></td>
+                        <td><strong>2025 Honda CRF1100L Africa Twin Adventure Sports ES (Jamie — White &amp; Red)</strong></td>
                         <td>24.8 L</td>
                         <td>4.9 L/100km</td>
                         <td>~450 km (+50 km reserve)</td>
@@ -2093,7 +2185,7 @@ html_template = f"""<!DOCTYPE html>
                         <td><strong>86–87 AKI Regular Unleaded</strong> — Native low-octane map handles all remote Labrador &amp; Northern Peninsula pumps effortlessly.</td>
                     </tr>
                     <tr>
-                        <td><strong>2026 Ducati Multistrada V2S</strong></td>
+                        <td><strong>2026 Ducati Multistrada V2S (Rosie — Green)</strong></td>
                         <td>19.0 L</td>
                         <td>5.2 L/100km</td>
                         <td>~315 km (+45 km reserve)</td>
@@ -2410,13 +2502,162 @@ html_template = f"""<!DOCTYPE html>
         // Populate initial visible POIs
         updateVisiblePOIs();
 
+        // Collapsible Day Cards & Focus Stage Logic
+        function updateCollapseAllButtonState() {{
+            const btn = document.getElementById('btn-collapse-all');
+            if (!btn) return;
+            const allCards = Array.from(document.querySelectorAll('.day-card'));
+            const allCollapsed = allCards.length > 0 && allCards.every(c => c.classList.contains('collapsed'));
+            btn.textContent = allCollapsed ? '↕️ Expand All' : '↕️ Collapse All';
+        }}
+
+        function toggleDayCard(dayNum, forceCollapse) {{
+            const card = document.getElementById(`day-card-${{dayNum}}`);
+            const chev = document.getElementById(`day-chevron-${{dayNum}}`);
+            if (!card) return;
+            const shouldCollapse = (typeof forceCollapse === 'boolean')
+                ? forceCollapse
+                : !card.classList.contains('collapsed');
+            card.classList.toggle('collapsed', shouldCollapse);
+            if (chev) chev.textContent = shouldCollapse ? '▸' : '▾';
+            updateCollapseAllButtonState();
+        }}
+
+        function toggleAllDayCards() {{
+            const allCards = Array.from(document.querySelectorAll('.day-card'));
+            const allCollapsed = allCards.length > 0 && allCards.every(c => c.classList.contains('collapsed'));
+            const targetCollapse = !allCollapsed;
+            for (let d = 1; d <= 18; d++) {{
+                toggleDayCard(d, targetCollapse);
+            }}
+        }}
+
+        function handleDayHeaderClick(evt, dayNum) {{
+            const card = document.getElementById(`day-card-${{dayNum}}`);
+            if (!card) return;
+            // If clicking the header of an already active & expanded card, collapse it cleanly
+            if (activeFocusedDay === dayNum && !card.classList.contains('collapsed')) {{
+                evt.stopPropagation();
+                toggleDayCard(dayNum, true);
+            }}
+        }}
+
+        // Resizable Split Divider Gutter (Map <-> Itinerary)
+        (function initResizerGutter() {{
+            const gutter = document.getElementById('resizer-gutter');
+            const container = document.getElementById('sec-top');
+            const sidebar = document.getElementById('sec-itinerary');
+            if (!gutter || !container || !sidebar) return;
+
+            const STORAGE_KEY = 'exp51_sidebar_width_px';
+            const DEFAULT_WIDTH = 540;
+
+            function applySidebarWidth(w) {{
+                if (window.innerWidth <= 1024) {{
+                    sidebar.style.flex = '';
+                    sidebar.style.width = '';
+                    return;
+                }}
+                const rect = container.getBoundingClientRect();
+                const maxW = Math.min(920, Math.max(420, rect.width - 360));
+                const clamped = Math.max(320, Math.min(maxW, w));
+                sidebar.style.flex = `0 0 ${{clamped}}px`;
+                sidebar.style.width = `${{clamped}}px`;
+            }}
+
+            const savedW = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+            if (!isNaN(savedW) && savedW >= 320 && window.innerWidth > 1024) {{
+                applySidebarWidth(savedW);
+                setTimeout(() => map.invalidateSize({{ pan: false }}), 60);
+            }}
+
+            let isDragging = false;
+            let rafPending = false;
+
+            function onMove(clientX) {{
+                if (!isDragging) return;
+                const rect = container.getBoundingClientRect();
+                const newSidebarWidth = rect.right - clientX;
+                applySidebarWidth(newSidebarWidth);
+                if (!rafPending) {{
+                    rafPending = true;
+                    requestAnimationFrame(() => {{
+                        map.invalidateSize({{ pan: false }});
+                        rafPending = false;
+                    }});
+                }}
+            }}
+
+            function stopDrag() {{
+                if (!isDragging) return;
+                isDragging = false;
+                gutter.classList.remove('dragging');
+                document.body.classList.remove('is-resizing');
+                const currentW = Math.round(sidebar.getBoundingClientRect().width);
+                if (currentW >= 320 && window.innerWidth > 1024) {{
+                    localStorage.setItem(STORAGE_KEY, String(currentW));
+                }}
+                map.invalidateSize({{ pan: false }});
+            }}
+
+            gutter.addEventListener('mousedown', (e) => {{
+                if (window.innerWidth <= 1024) return;
+                e.preventDefault();
+                isDragging = true;
+                gutter.classList.add('dragging');
+                document.body.classList.add('is-resizing');
+            }});
+
+            window.addEventListener('mousemove', (e) => {{
+                if (isDragging) onMove(e.clientX);
+            }});
+
+            window.addEventListener('mouseup', stopDrag);
+
+            gutter.addEventListener('touchstart', (e) => {{
+                if (window.innerWidth <= 1024 || !e.touches.length) return;
+                isDragging = true;
+                gutter.classList.add('dragging');
+                document.body.classList.add('is-resizing');
+            }}, {{ passive: true }});
+
+            window.addEventListener('touchmove', (e) => {{
+                if (isDragging && e.touches.length) onMove(e.touches[0].clientX);
+            }}, {{ passive: true }});
+
+            window.addEventListener('touchend', stopDrag);
+
+            gutter.addEventListener('dblclick', () => {{
+                if (window.innerWidth <= 1024) return;
+                localStorage.removeItem(STORAGE_KEY);
+                applySidebarWidth(DEFAULT_WIDTH);
+                map.invalidateSize({{ pan: false }});
+            }});
+
+            window.addEventListener('resize', () => {{
+                if (window.innerWidth <= 1024) {{
+                    sidebar.style.flex = '';
+                    sidebar.style.width = '';
+                }} else {{
+                    const sw = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+                    if (!isNaN(sw) && sw >= 320) applySidebarWidth(sw);
+                }}
+                map.invalidateSize({{ pan: false }});
+            }});
+        }})();
+
         // Focus Specific Day Stage
         function focusDay(dayNum) {{
             activeFocusedDay = dayNum;
 
             document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
             const activeCard = document.getElementById(`day-card-${{dayNum}}`);
-            if (activeCard) activeCard.classList.add('active');
+            if (activeCard) {{
+                activeCard.classList.add('active');
+                if (activeCard.classList.contains('collapsed')) {{
+                    toggleDayCard(dayNum, false);
+                }}
+            }}
 
             document.querySelectorAll('.day-jump-pill').forEach(p => p.classList.remove('active'));
             const activePill = document.getElementById(`jump-pill-${{dayNum}}`);
@@ -2617,7 +2858,7 @@ html_template = f"""<!DOCTYPE html>
         const NOTES_STORAGE_KEY = 'exp51_master_trip_notes_v1';
         const DEFAULT_NOTES_TEXT = `=== 2027 EAST COAST & LABRADOR MOTO EXPEDITION (EXPEDITION 51) ===
 Dates: June 16 – July 3, 2027 (18 Days • 8,243.4 km Pure Metric)
-Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
+Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2S (Rosie)
 
 [CRITICAL RESERVATION CHECKLIST]
 [ ] Jan 2027: Book Marine Atlantic Overnight Ferry (Day 10: Port aux Basques -> North Sydney + 2-Berth Cabin)
@@ -2815,7 +3056,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             }});
         }})();
 
-        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (ATAS White/Red & V2S Green)
+        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (Jamie White/Red & Rosie Green)
         const liveCompletedTrail = L.polyline([], {{
             color: '#0284c7',
             weight: 6.5,
@@ -2827,39 +3068,45 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         const ATAS_MOTO_SVG = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#ffffff"/><circle cx="18.5" cy="17.5" r="3.5" fill="#ffffff"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#dc2626"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
         const V2S_MOTO_SVG  = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#15803d"/><circle cx="18.5" cy="17.5" r="3.5" fill="#15803d"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#ffffff"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
 
+        function normalizeRider(r) {{
+            if (r === 'Rosie' || r === 'V2S') return 'Rosie';
+            return 'Jamie';
+        }}
+
         function createLiveBikeIcon(callsign, isCoLocated) {{
-            const isV2S = callsign === 'V2S';
-            const coClass = isCoLocated ? (isV2S ? 'co-located-v2s' : 'co-located-atas') : '';
-            const v2sClass = isV2S ? 'v2s' : '';
-            const svgIcon = isV2S ? V2S_MOTO_SVG : ATAS_MOTO_SVG;
+            const norm = normalizeRider(callsign);
+            const isRosie = norm === 'Rosie';
+            const coClass = isCoLocated ? (isRosie ? 'co-located-v2s' : 'co-located-atas') : '';
+            const v2sClass = isRosie ? 'v2s' : '';
+            const svgIcon = isRosie ? V2S_MOTO_SVG : ATAS_MOTO_SVG;
             return L.divIcon({{
                 className: '',
-                html: `<div class="live-bike-marker-wrap ${{coClass}}"><div class="live-bike-pulse ${{v2sClass}}"></div><div class="live-bike-core ${{v2sClass}}">${{svgIcon}}</div><div class="live-bike-callsign ${{v2sClass}}">${{callsign}}</div></div>`,
+                html: `<div class="live-bike-marker-wrap ${{coClass}}"><div class="live-bike-pulse ${{v2sClass}}"></div><div class="live-bike-core ${{v2sClass}}">${{svgIcon}}</div><div class="live-bike-callsign ${{v2sClass}}">${{norm}}</div></div>`,
                 iconSize: [38, 44],
                 iconAnchor: [19, 19],
-                popupAnchor: isCoLocated ? (isV2S ? [17, -18] : [-17, -18]) : [0, -18]
+                popupAnchor: isCoLocated ? (isRosie ? [23, -18] : [-23, -18]) : [0, -18]
             }});
         }}
 
         const liveMarkerATAS = L.marker([46.656232, -80.882479], {{
-            icon: createLiveBikeIcon('ATAS', true),
+            icon: createLiveBikeIcon('Jamie', true),
             zIndexOffset: 2510
         }}).addTo(map);
 
         const liveMarkerV2S = L.marker([46.656232, -80.882479], {{
-            icon: createLiveBikeIcon('V2S', true),
+            icon: createLiveBikeIcon('Rosie', true),
             zIndexOffset: 2500
         }}).addTo(map);
 
         const RIDER_META = {{
-            ATAS: {{
-                callsign: 'ATAS',
-                model: '2022 Honda Africa Twin Adv Sports ES (White & Red)',
-                shortModel: 'Africa Twin',
+            Jamie: {{
+                callsign: 'Jamie',
+                model: '2025 Honda CRF1100L Africa Twin Adv Sports ES (White & Red)',
+                shortModel: '2025 Africa Twin',
                 color: '#dc2626'
             }},
-            V2S: {{
-                callsign: 'V2S',
+            Rosie: {{
+                callsign: 'Rosie',
                 model: '2026 Ducati Multistrada V2S (Green)',
                 shortModel: 'Ducati V2S',
                 color: '#16a34a'
@@ -2869,47 +3116,49 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         let latestATASPacket = null;
         let latestV2SPacket = null;
         let latestLeadPacket = null;
-        let selectedRiderCallsign = localStorage.getItem('exp51_rider_callsign') === 'V2S' ? 'V2S' : 'ATAS';
+        let selectedRiderCallsign = normalizeRider(localStorage.getItem('exp51_rider_callsign') || 'Jamie');
         let selectedStatusLabel = '🏍️ In Saddle';
         let selectedDefaultNote = 'Riding on stage — all good!';
         let liveGpsWatchId = null;
         let lastAutoBroadcastMs = 0;
 
         function selectRiderCallsign(callsign) {{
-            selectedRiderCallsign = callsign === 'V2S' ? 'V2S' : 'ATAS';
+            selectedRiderCallsign = normalizeRider(callsign);
             localStorage.setItem('exp51_rider_callsign', selectedRiderCallsign);
             const btnAtas = document.getElementById('btn-rider-atas');
             const btnV2s  = document.getElementById('btn-rider-v2s');
             if (btnAtas) {{
-                const isAtas = selectedRiderCallsign === 'ATAS';
-                btnAtas.classList.toggle('active', isAtas);
-                btnAtas.style.background = isAtas ? '#ffffff' : 'var(--bg-card)';
-                btnAtas.style.color = isAtas ? '#dc2626' : 'var(--text-main)';
+                const isJamie = selectedRiderCallsign === 'Jamie';
+                btnAtas.classList.toggle('active', isJamie);
+                btnAtas.style.background = isJamie ? '#ffffff' : 'var(--bg-card)';
+                btnAtas.style.color = isJamie ? '#dc2626' : 'var(--text-main)';
                 btnAtas.style.borderColor = '#dc2626';
-                btnAtas.style.boxShadow = isAtas ? 'inset 0 0 0 1.5px #dc2626' : 'none';
+                btnAtas.style.boxShadow = isJamie ? 'inset 0 0 0 1.5px #dc2626' : 'none';
             }}
             if (btnV2s) {{
-                const isV2s = selectedRiderCallsign === 'V2S';
-                btnV2s.classList.toggle('active', isV2s);
-                btnV2s.style.background = isV2s ? '#16a34a' : 'var(--bg-card)';
-                btnV2s.style.color = isV2s ? '#ffffff' : 'var(--text-main)';
+                const isRosie = selectedRiderCallsign === 'Rosie';
+                btnV2s.classList.toggle('active', isRosie);
+                btnV2s.style.background = isRosie ? '#16a34a' : 'var(--bg-card)';
+                btnV2s.style.color = isRosie ? '#ffffff' : 'var(--text-main)';
                 btnV2s.style.borderColor = '#16a34a';
             }}
         }}
 
         function getStoredFeedHistory() {{
             try {{
-                const raw = localStorage.getItem(LIVE_HISTORY_KEY + '_v2');
+                const raw = localStorage.getItem(LIVE_HISTORY_KEY + '_v3');
                 if (raw) {{
                     const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                    if (Array.isArray(parsed) && parsed.length > 0) {{
+                        return parsed.map(p => ({{ ...p, rider: normalizeRider(p.rider) }}));
+                    }}
                 }}
             }} catch (e) {{}}
             const now = Date.now();
             return [
                 {{
-                    id: 'init-hanmer-atas',
-                    rider: 'ATAS',
+                    id: 'init-hanmer-jamie',
+                    rider: 'Jamie',
                     ts: now - 3500000,
                     lat: 46.656232,
                     lon: -80.882479,
@@ -2917,11 +3166,11 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     speedKmh: 0,
                     altM: 295,
                     status: '🏕️ Checked In • Hanmer Start',
-                    note: 'ATAS (2022 Honda Africa Twin ES) prepped at Hanmer Home Base (4671 Dupuis Dr) — 24.8L tank & panniers loaded!'
+                    note: 'Jamie (2025 Honda Africa Twin ES) prepped at Hanmer Home Base (4671 Dupuis Dr) — 24.8L tank & panniers loaded!'
                 }},
                 {{
-                    id: 'init-hanmer-v2s',
-                    rider: 'V2S',
+                    id: 'init-hanmer-rosie',
+                    rider: 'Rosie',
                     ts: now - 3550000,
                     lat: 46.656232,
                     lon: -80.882479,
@@ -2929,14 +3178,14 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     speedKmh: 0,
                     altM: 295,
                     status: '🏕️ Checked In • Hanmer Start',
-                    note: 'V2S (2026 Ducati Multistrada V2S) prepped at Hanmer Home Base — 5L auxiliary bladder & Lucas MMT packed!'
+                    note: 'Rosie (2026 Ducati Multistrada V2S) prepped at Hanmer Home Base — 5L auxiliary bladder & Lucas MMT packed!'
                 }}
             ];
         }}
 
         function saveStoredFeedHistory(list) {{
             try {{
-                localStorage.setItem(LIVE_HISTORY_KEY + '_v2', JSON.stringify(list.slice(0, 80)));
+                localStorage.setItem(LIVE_HISTORY_KEY + '_v3', JSON.stringify(list.slice(0, 80)));
             }} catch (e) {{}}
         }}
 
@@ -2978,14 +3227,16 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }}
 
         function buildBikePopupHtml(callsign, pkt, snap, separationKm) {{
-            const meta = RIDER_META[callsign] || RIDER_META.ATAS;
+            const norm = normalizeRider(callsign);
+            const meta = RIDER_META[norm] || RIDER_META.Jamie;
+            const otherRider = norm === 'Jamie' ? 'Rosie' : 'Jamie';
             const sepText = separationKm < 0.5
-                ? '🤝 Riding Together with ' + (callsign === 'ATAS' ? 'V2S' : 'ATAS')
-                : `📏 ${{separationKm.toFixed(1)}} km from ${{callsign === 'ATAS' ? 'V2S' : 'ATAS'}}`;
+                ? '🤝 Riding Together with ' + otherRider
+                : `📏 ${{separationKm.toFixed(1)}} km from ${{otherRider}}`;
             return `
                 <div class="poi-popup-card">
-                    <div class="poi-popup-type" style="color:${{meta.color}};">📡 ${{meta.callsign}} LIVE TRACKER • DAY ${{snap.day}}</div>
-                    <div class="poi-popup-title"><span class="lt-rider-pill ${{callsign === 'V2S' ? 'v2s' : ''}}" style="margin-right:5px; vertical-align:middle;">${{callsign}}</span>${{pkt.status}}</div>
+                    <div class="poi-popup-type" style="color:${{meta.color}};">📡 ${{meta.callsign.toUpperCase()}} LIVE TRACKER • DAY ${{snap.day}}</div>
+                    <div class="poi-popup-title"><span class="lt-rider-pill ${{norm === 'Rosie' ? 'v2s' : ''}}" style="margin-right:5px; vertical-align:middle;">${{norm}}</span>${{pkt.status}}</div>
                     <div style="font-size:0.71rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">🏍️ ${{meta.model}}</div>
                     <div class="poi-popup-desc" style="margin-top:2px;">${{pkt.note || ''}}</div>
                     <div style="font-size:0.74rem; color:var(--text-muted); background:var(--bg-subtle); padding:6px 8px; border-radius:6px; border:1px solid var(--border); margin-bottom:6px;">
@@ -2995,28 +3246,28 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         <div><strong>🏍️ Fleet Status:</strong> ${{sepText}} • ${{Number(pkt.speedKmh) || 0}} km/h</div>
                         <div><strong>🕒 Updated:</strong> ${{formatRelativeTime(pkt.ts)}} (${{pkt.lat.toFixed(4)}}, ${{pkt.lon.toFixed(4)}})</div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=${{pkt.lat}},${{pkt.lon}}" target="_blank" class="poi-popup-link">📍 Open ${{callsign}} Coordinates in Google Maps ↗</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${{pkt.lat}},${{pkt.lon}}" target="_blank" class="poi-popup-link">📍 Open ${{norm}} Coordinates in Google Maps ↗</a>
                 </div>
             `;
         }}
 
         function renderLiveTrackerState(historyList) {{
             if (!historyList || !historyList.length) return;
-            const sorted = [...historyList].sort((a, b) => b.ts - a.ts);
+            const sorted = [...historyList].map(x => ({{ ...x, rider: normalizeRider(x.rider) }})).sort((a, b) => b.ts - a.ts);
 
-            const defaultAtas = {{
-                id: 'fallback-atas', rider: 'ATAS', ts: Date.now() - 3600000,
+            const defaultJamie = {{
+                id: 'fallback-jamie', rider: 'Jamie', ts: Date.now() - 3600000,
                 lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
-                status: '🏕️ Hanmer Start', note: 'Africa Twin staged at Hanmer Home Base.'
+                status: '🏕️ Hanmer Start', note: '2025 Africa Twin staged at Hanmer Home Base.'
             }};
-            const defaultV2s = {{
-                id: 'fallback-v2s', rider: 'V2S', ts: Date.now() - 3600000,
+            const defaultRosie = {{
+                id: 'fallback-rosie', rider: 'Rosie', ts: Date.now() - 3600000,
                 lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
                 status: '🏕️ Hanmer Start', note: 'Ducati V2S staged at Hanmer Home Base.'
             }};
 
-            latestATASPacket = sorted.find(x => (x.rider || 'ATAS') === 'ATAS') || defaultAtas;
-            latestV2SPacket  = sorted.find(x => x.rider === 'V2S') || defaultV2s;
+            latestATASPacket = sorted.find(x => x.rider === 'Jamie') || defaultJamie;
+            latestV2SPacket  = sorted.find(x => x.rider === 'Rosie') || defaultRosie;
             latestLeadPacket = sorted[0];
 
             const snapATAS = snapToRoute(latestATASPacket.lat, latestATASPacket.lon, latestATASPacket.day) || {{
@@ -3035,7 +3286,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             // Lead progress uses whichever rider is further along the loop
             const leadSnap = snapATAS.cumKm >= snapV2S.cumKm ? snapATAS : snapV2S;
 
-            // Calculate live separation between ATAS and V2S
+            // Calculate live separation between Jamie and Rosie
             const separationKm = haversineKm(
                 latestATASPacket.lat, latestATASPacket.lon,
                 latestV2SPacket.lat, latestV2SPacket.lon
@@ -3043,33 +3294,33 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const isCoLocated = separationKm < 0.5;
 
             // Update both Live Bike Markers & Completed Polyline
-            liveMarkerATAS.setIcon(createLiveBikeIcon('ATAS', isCoLocated));
-            liveMarkerV2S.setIcon(createLiveBikeIcon('V2S', isCoLocated));
+            liveMarkerATAS.setIcon(createLiveBikeIcon('Jamie', isCoLocated));
+            liveMarkerV2S.setIcon(createLiveBikeIcon('Rosie', isCoLocated));
             liveMarkerATAS.setLatLng([latestATASPacket.lat, latestATASPacket.lon]);
             liveMarkerV2S.setLatLng([latestV2SPacket.lat, latestV2SPacket.lon]);
 
             liveCompletedTrail.setLatLngs(leadSnap.completedCoords);
             liveCompletedTrail.bringToFront();
 
-            liveMarkerATAS.bindPopup(buildBikePopupHtml('ATAS', latestATASPacket, snapATAS, separationKm), {{
+            liveMarkerATAS.bindPopup(buildBikePopupHtml('Jamie', latestATASPacket, snapATAS, separationKm), {{
                 maxWidth: 305,
                 autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
                 autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             }});
-            liveMarkerV2S.bindPopup(buildBikePopupHtml('V2S', latestV2SPacket, snapV2S, separationKm), {{
+            liveMarkerV2S.bindPopup(buildBikePopupHtml('Rosie', latestV2SPacket, snapV2S, separationKm), {{
                 maxWidth: 305,
                 autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
                 autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             }});
 
-            // Update Historical Check-In Pins (White & Red for ATAS, Green for V2S)
+            // Update Historical Check-In Pins (White & Red for Jamie, Green for Rosie)
             liveCheckInLayer.clearLayers();
             sorted.slice(0, 18).forEach(item => {{
-                const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
-                const isV2S = rCall === 'V2S';
-                const pinFill = isV2S ? '#16a34a' : '#ffffff';
-                const pinStroke = isV2S ? '#ffffff' : '#dc2626';
-                const pinAccent = isV2S ? '#16a34a' : '#dc2626';
+                const rCall = normalizeRider(item.rider);
+                const isRosie = rCall === 'Rosie';
+                const pinFill = isRosie ? '#16a34a' : '#ffffff';
+                const pinStroke = isRosie ? '#ffffff' : '#dc2626';
+                const pinAccent = isRosie ? '#16a34a' : '#dc2626';
                 const cm = L.circleMarker([item.lat, item.lon], {{
                     radius: 5.5,
                     fillColor: pinFill,
@@ -3080,21 +3331,21 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 }}).addTo(liveCheckInLayer);
                 cm.bindPopup(`
                     <div class="poi-popup-card">
-                        <div class="poi-popup-type" style="color:${{pinAccent}};">✓ ${{rCall}} CHECK-IN • DAY ${{item.day || 1}}</div>
-                        <div class="poi-popup-title"><span class="lt-rider-pill ${{isV2S ? 'v2s' : ''}}" style="margin-right:5px;">${{rCall}}</span>${{item.status}}</div>
+                        <div class="poi-popup-type" style="color:${{pinAccent}};">✓ ${{rCall.toUpperCase()}} CHECK-IN • DAY ${{item.day || 1}}</div>
+                        <div class="poi-popup-title"><span class="lt-rider-pill ${{isRosie ? 'v2s' : ''}}" style="margin-right:5px;">${{rCall}}</span>${{item.status}}</div>
                         <div class="poi-popup-desc">${{item.note || ''}}</div>
                         <div style="font-size:0.72rem; color:var(--text-muted);">🕒 ${{new Date(item.ts).toLocaleString('en-CA')}}</div>
                     </div>
                 `);
             }});
 
-            // Update ATAS & V2S Status Cards in HUD
+            // Update Jamie & Rosie Status Cards in HUD
             const elTimeAtas   = document.getElementById('lt-time-atas');
             const elStatusAtas = document.getElementById('lt-status-atas');
             const elNoteAtas   = document.getElementById('lt-note-atas');
             if (elTimeAtas)   elTimeAtas.textContent   = formatRelativeTime(latestATASPacket.ts);
             if (elStatusAtas) elStatusAtas.textContent = `${{latestATASPacket.status}}`;
-            if (elNoteAtas)   elNoteAtas.textContent   = `Day ${{snapATAS.day}} • ${{latestATASPacket.note || 'Africa Twin'}}`;
+            if (elNoteAtas)   elNoteAtas.textContent   = `Day ${{snapATAS.day}} • ${{latestATASPacket.note || '2025 Africa Twin'}}`;
 
             const elTimeV2s   = document.getElementById('lt-time-v2s');
             const elStatusV2s = document.getElementById('lt-status-v2s');
@@ -3128,12 +3379,12 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 }}
             }}
 
-            // Populate Check-In Feed List with ATAS / V2S Callsign Pills
+            // Populate Check-In Feed List with Jamie / Rosie Callsign Pills
             const feedEl = document.getElementById('lt-feed-list');
             if (feedEl) {{
                 feedEl.innerHTML = sorted.slice(0, 14).map((item) => {{
-                    const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
-                    const pillClass = rCall === 'V2S' ? 'v2s' : '';
+                    const rCall = normalizeRider(item.rider);
+                    const pillClass = rCall === 'Rosie' ? 'v2s' : '';
                     return `
                     <div class="lt-feed-item" onclick="focusCheckInItem(${{item.lat}}, ${{item.lon}}, '${{rCall}}')">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
@@ -3154,7 +3405,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         function focusCheckInItem(lat, lon, callsign) {{
             const lonOffset = window.innerWidth > 768 ? 0.25 : 0;
             map.setView([lat + 0.08, lon + lonOffset], 10, {{ animate: true }});
-            if (callsign === 'V2S') {{
+            if (normalizeRider(callsign) === 'Rosie') {{
                 liveMarkerV2S.openPopup();
             }} else {{
                 liveMarkerATAS.openPopup();
@@ -3162,9 +3413,9 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }}
 
         function centerOnLiveBike(callsign) {{
-            const targetCall = callsign === 'V2S' ? 'V2S' : (callsign === 'ATAS' ? 'ATAS' : (latestLeadPacket && latestLeadPacket.rider === 'V2S' ? 'V2S' : 'ATAS'));
-            const pkt = targetCall === 'V2S' ? latestV2SPacket : latestATASPacket;
-            const marker = targetCall === 'V2S' ? liveMarkerV2S : liveMarkerATAS;
+            const targetCall = callsign ? normalizeRider(callsign) : (latestLeadPacket ? normalizeRider(latestLeadPacket.rider) : 'Jamie');
+            const pkt = targetCall === 'Rosie' ? latestV2SPacket : latestATASPacket;
+            const marker = targetCall === 'Rosie' ? liveMarkerV2S : liveMarkerATAS;
             if (!pkt) return;
             const lonOffset = window.innerWidth > 768 ? 0.55 : 0;
             map.setView([pkt.lat + 0.14, pkt.lon + lonOffset], 9, {{ animate: true }});
@@ -3220,6 +3471,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }}
 
         async function publishPacketToCloud(pkt) {{
+            pkt.rider = normalizeRider(pkt.rider);
             // Save immediately to local history and update UI
             const hist = getStoredFeedHistory();
             if (!hist.some(x => x.id === pkt.id)) {{
@@ -3271,7 +3523,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const noteIn = document.getElementById('lt-note-input');
             const fb = document.getElementById('lt-broadcast-feedback');
             const customNote = noteIn && noteIn.value.trim() ? noteIn.value.trim() : selectedDefaultNote;
-            const callsign = selectedRiderCallsign;
+            const callsign = normalizeRider(selectedRiderCallsign);
 
             const sendWithCoords = async (lat, lon, dayHint, speedKmh, altM) => {{
                 const snap = snapToRoute(lat, lon, dayHint);
@@ -3301,7 +3553,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 centerOnLiveBike(callsign);
             }};
 
-            const fallbackPkt = (callsign === 'V2S' ? latestV2SPacket : latestATASPacket) || {{ lat: 46.656232, lon: -80.882479, day: 1 }};
+            const fallbackPkt = (callsign === 'Rosie' ? latestV2SPacket : latestATASPacket) || {{ lat: 46.656232, lon: -80.882479, day: 1 }};
 
             if (locSel && locSel.value !== 'gps') {{
                 const parts = locSel.value.split(',');
@@ -3353,7 +3605,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             liveGpsWatchId = navigator.geolocation.watchPosition(
                 pos => {{
                     const now = Date.now();
-                    const callsign = selectedRiderCallsign;
+                    const callsign = normalizeRider(selectedRiderCallsign);
                     const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
                     const alt = pos.coords.altitude ? Math.round(pos.coords.altitude) : 150;
                     const snap = snapToRoute(pos.coords.latitude, pos.coords.longitude, null);
@@ -3399,7 +3651,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.event === 'message' && env.message) {{
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {{
-                                if (!pkt.rider) pkt.rider = 'ATAS';
+                                pkt.rider = normalizeRider(pkt.rider);
                                 if (!hist.some(x => x.id === pkt.id)) {{
                                     hist.push(pkt);
                                     added = true;
@@ -3427,7 +3679,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.message) {{
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {{
-                                if (!pkt.rider) pkt.rider = 'ATAS';
+                                pkt.rider = normalizeRider(pkt.rider);
                                 const hist = getStoredFeedHistory();
                                 if (!hist.some(x => x.id === pkt.id)) {{
                                     hist.unshift(pkt);
@@ -3441,7 +3693,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             }} catch (e) {{}}
         }}
 
-        // Initialize Family & Friends Live Tracker on Load (Dual-Rider: ATAS & V2S)
+        // Initialize Family & Friends Live Tracker on Load (Dual-Rider: Jamie & Rosie)
         renderLiveTrackerState(getStoredFeedHistory());
         updateOfflineQueueBadge();
         pollCloudTrackerFeed(false);

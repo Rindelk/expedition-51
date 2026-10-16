@@ -190,7 +190,8 @@
 
         /* Map Side */
         .map-wrapper {
-            flex: 1.38;
+            flex: 1 1 auto;
+            min-width: 320px;
             position: relative;
             height: 100%;
         }
@@ -199,6 +200,45 @@
             width: 100%;
             height: 100%;
             background: #cbd5e1;
+        }
+
+        /* Resizable Split Divider Gutter (Map <-> Itinerary) */
+        #resizer-gutter {
+            width: 10px;
+            background: var(--bg-subtle);
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            cursor: col-resize;
+            position: relative;
+            z-index: 950;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            user-select: none;
+            touch-action: none;
+        }
+        #resizer-gutter::after {
+            content: "⋮";
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+        }
+        #resizer-gutter:hover,
+        #resizer-gutter.dragging {
+            background: rgba(2, 132, 199, 0.16);
+            border-color: var(--accent-blue);
+        }
+        #resizer-gutter:hover::after,
+        #resizer-gutter.dragging::after {
+            color: var(--accent-blue);
+        }
+        body.is-resizing {
+            cursor: col-resize !important;
+            user-select: none !important;
         }
 
         /* Floating Map Filter Toolbar — Single-Row Horizontal Scroll (Zero Multi-Row Clutter) */
@@ -254,28 +294,29 @@
 
         /* Right Sidebar (Itinerary) */
         .sidebar {
-            flex: 1;
-            min-width: 450px;
-            max-width: 640px;
+            flex: 0 0 540px;
+            width: 540px;
+            min-width: 320px;
+            max-width: 920px;
             background: var(--bg-panel);
-            border-left: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             height: 100%;
         }
 
         .sidebar-header {
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--bg-subtle);
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .sidebar-header h2 {
-            font-size: 1.02rem;
+            font-size: 0.98rem;
             font-weight: 800;
             color: var(--text-main);
         }
@@ -284,12 +325,13 @@
             background: var(--bg-card);
             border: 1px solid var(--accent-blue);
             color: var(--accent-blue);
-            padding: 6px 11px;
+            padding: 5px 10px;
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.15s ease;
+            white-space: nowrap;
         }
 
         .reset-map-btn:hover {
@@ -358,6 +400,39 @@
         .day-card.active {
             border-color: var(--accent-blue);
             box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25);
+        }
+
+        .day-card.collapsed {
+            padding: 12px 16px;
+        }
+        .day-card.collapsed .day-collapsible-body {
+            display: none;
+        }
+        .day-card.collapsed .stats-row {
+            margin-bottom: 0;
+        }
+
+        .day-collapse-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 0.80rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            padding: 0;
+            line-height: 1;
+        }
+        .day-collapse-btn:hover {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
         }
 
         .day-header {
@@ -810,10 +885,10 @@
             transition: transform 0.25s ease;
         }
         .live-bike-marker-wrap.co-located-atas {
-            transform: translate(-17px, 0);
+            transform: translate(-23px, 0);
         }
         .live-bike-marker-wrap.co-located-v2s {
-            transform: translate(17px, 0);
+            transform: translate(23px, 0);
         }
         .live-bike-pulse {
             position: absolute;
@@ -933,21 +1008,22 @@
             display: flex;
         }
         .lt-header {
-            padding: 10px 14px;
+            padding: 10px 12px;
             background: var(--bg-subtle);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .lt-title {
-            font-size: 0.84rem;
+            font-size: 0.78rem;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 7px;
+            gap: 6px;
             color: var(--text-main);
+            white-space: nowrap;
         }
         .lt-body {
             padding: 12px 14px;
@@ -1103,9 +1179,14 @@
                 scrollbar-width: none;
             }
             .filter-toolbar::-webkit-scrollbar { display: none; }
+            #resizer-gutter {
+                display: none !important;
+            }
             .sidebar {
-                min-width: 100%;
-                max-width: 100%;
+                flex: none !important;
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
                 height: auto;
                 border-left: none;
                 border-top: 2px solid var(--border);
@@ -1179,35 +1260,35 @@
 
             <div id="map"></div>
 
-            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: ATAS White/Red & V2S Green) -->
+            <!-- Family & Friends Cloud Live Tracker Panel (Dual-Rider: Jamie White/Red & Rosie Green) -->
             <div class="live-tracker-panel" id="live-tracker-panel">
                 <div class="lt-header">
                     <div class="lt-title">
                         <span class="live-dot" id="lt-panel-dot"></span>
                         <span>👨‍👩‍👧‍👦 Family &amp; Friends Live Feed</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:4px;">
-                        <button type="button" onclick="centerOnLiveBike('ATAS')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900;" title="Center map on ATAS (White &amp; Red Africa Twin)">🎯 ATAS</button>
-                        <button type="button" onclick="centerOnLiveBike('V2S')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.66rem; background:#16a34a; border:1.5px solid #15803d; color:#ffffff; font-weight:900;" title="Center map on V2S (Green Ducati V2S)">🎯 V2S</button>
+                    <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                        <button type="button" onclick="centerOnLiveBike('Jamie')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.65rem; background:#ffffff; border:1.5px solid #dc2626; color:#dc2626; font-weight:900; white-space:nowrap;" title="Center map on Jamie (White &amp; Red 2025 Africa Twin)">🎯 Jamie</button>
+                        <button type="button" onclick="centerOnLiveBike('Rosie')" class="lt-chip-btn" style="padding:2px 6px; font-size:0.65rem; background:#16a34a; border:1.5px solid #15803d; color:#ffffff; font-weight:900; white-space:nowrap;" title="Center map on Rosie (Green Ducati V2S)">🎯 Rosie</button>
                         <button type="button" onclick="toggleLiveTrackerPanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.95rem; cursor:pointer; padding:2px 4px;">✕</button>
                     </div>
                 </div>
 
                 <div class="lt-body">
-                    <!-- Dual-Rider Live Status Cards (ATAS White/Red & V2S Green) -->
+                    <!-- Dual-Rider Live Status Cards (Jamie White/Red & Rosie Green) -->
                     <div class="lt-riders-grid">
-                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('ATAS')" title="Click to center on ATAS (White &amp; Red Honda Africa Twin)">
+                        <div class="lt-rider-card" id="lt-card-atas" onclick="centerOnLiveBike('Jamie')" title="Click to center on Jamie (White &amp; Red 2025 Honda Africa Twin)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#dc2626"/><path d="M6 14l4-5h5l2 5"/></svg> ATAS</span>
+                                <span class="lt-rider-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#dc2626"/><path d="M6 14l4-5h5l2 5"/></svg> Jamie</span>
                                 <span id="lt-time-atas" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-atas" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
-                            <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">Africa Twin • Day 1</div>
+                            <div id="lt-note-atas" style="font-size:0.67rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;">2025 Africa Twin • Day 1</div>
                         </div>
 
-                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('V2S')" title="Click to center on V2S (Green Ducati Multistrada V2S)">
+                        <div class="lt-rider-card v2s" id="lt-card-v2s" onclick="centerOnLiveBike('Rosie')" title="Click to center on Rosie (Green Ducati Multistrada V2S)">
                             <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:3px;">
-                                <span class="lt-rider-pill v2s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#ffffff"/><path d="M6 14l4-5h5l2 5"/></svg> V2S</span>
+                                <span class="lt-rider-pill v2s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h3l2 5h-5l-3-5z" fill="#ffffff"/><path d="M6 14l4-5h5l2 5"/></svg> Rosie</span>
                                 <span id="lt-time-v2s" style="font-size:0.62rem; color:var(--text-muted); font-family:monospace;">Ready</span>
                             </div>
                             <div id="lt-status-v2s" style="font-size:0.72rem; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏕️ Hanmer Start</div>
@@ -1241,7 +1322,7 @@
                             <div class="lt-metric-val" id="lt-metric-fuel">Sturgeon Falls (91 AKI)</div>
                         </div>
                         <div class="lt-metric-card">
-                            <div class="lt-metric-label">🤝 ATAS / V2S Fleet</div>
+                            <div class="lt-metric-label">🤝 Jamie &amp; Rosie</div>
                             <div class="lt-metric-val" id="lt-metric-speed">Together (0.0 km apart)</div>
                         </div>
                     </div>
@@ -1249,7 +1330,7 @@
                     <!-- Recent Check-Ins & Breadcrumb Feed -->
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (ATAS &amp; V2S)</span>
+                            <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.4px;">📍 Recent Rider Check-Ins (Jamie &amp; Rosie)</span>
                             <button type="button" onclick="pollCloudTrackerFeed(true)" style="background:transparent; border:none; color:var(--accent-blue); font-size:0.68rem; font-weight:700; cursor:pointer;">🔄 Refresh Feed</button>
                         </div>
                         <div class="lt-feed-list" id="lt-feed-list">
@@ -1273,12 +1354,12 @@
 
                             <!-- Unlocked Rider Broadcast Controls -->
                             <div id="lt-rider-controls" style="display:none; flex-direction:column; gap:8px;">
-                                <!-- Rider Bike Callsign Selector (ATAS White/Red vs V2S Green) -->
+                                <!-- Rider Bike Callsign Selector (Jamie White/Red vs Rosie Green) -->
                                 <div>
-                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Your Bike Callsign:</div>
+                                    <div style="font-size:0.66rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">1. Select Rider &amp; Bike:</div>
                                     <div style="display:flex; gap:6px;">
-                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('ATAS')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 ATAS (Africa Twin)</button>
-                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('V2S')" style="flex:1; border:1.5px solid #16a34a;">🟢 V2S (Ducati V2S)</button>
+                                        <button type="button" id="btn-rider-atas" class="lt-chip-btn active" onclick="selectRiderCallsign('Jamie')" style="flex:1; border:1.5px solid #dc2626;">⚪🔴 Jamie (2025 Africa Twin)</button>
+                                        <button type="button" id="btn-rider-v2s" class="lt-chip-btn" onclick="selectRiderCallsign('Rosie')" style="flex:1; border:1.5px solid #16a34a;">🟢 Rosie (Ducati V2S)</button>
                                     </div>
                                 </div>
 
@@ -1317,11 +1398,17 @@
             </div>
         </div>
 
+        <!-- Draggable Resizer Gutter -->
+        <div id="resizer-gutter" title="Drag left/right to resize Map &amp; Itinerary panels (Double-click to reset)"></div>
+
         <!-- Right Sidebar: 18-Day Itinerary -->
         <div class="sidebar" id="sec-itinerary">
             <div class="sidebar-header">
                 <h2>📅 18-Day Stage-by-Stage Itinerary</h2>
-                <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Show Full Loop</button>
+                <div style="display:flex; gap:6px; align-items:center;">
+                    <button type="button" class="reset-map-btn" id="btn-collapse-all" onclick="toggleAllDayCards()">↕️ Collapse All</button>
+                    <button type="button" class="reset-map-btn" onclick="resetMapView()">🔄 Show Full Loop</button>
+                </div>
             </div>
             <div class="day-jump-bar">
                 <button type="button" class="day-jump-pill" id="jump-pill-1" onclick="jumpToDayCard(1)">D1</button>
@@ -1346,12 +1433,15 @@
             <div class="itinerary-list" id="itinerary-list">
                 
             <div class="day-card" id="day-card-1" onclick="focusDay(1)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 1)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 1</span>
                         <h3 class="day-title">Hanmer, ON to Mirabel, QC</h3>
                     </div>
-                    <span class="day-date">Wednesday, June 16, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Wednesday, June 16, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-1" onclick="event.stopPropagation(); toggleDayCard(1);" title="Collapse / Expand Day 1">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1360,26 +1450,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Hwy 17, QC-148 & QC-158)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-1">
-                    <span>🌤️ Hist. Avg: 14°C - 24°C • Sunny, 22°C</span>
-                    <span class="live-weather-badge" id="live-weather-1">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Depart Hanmer eastward down the Upper Ottawa Valley along Highway 17 through North Bay and Petawawa to Pembroke. Cross the Ottawa River at Portage-du-Fort into Quebec, following scenic Route 148 along the river through Gatineau, Montebello, and Grenville to Lachute, then connecting via Route 158 to Mirabel for the evening.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Commercial Motel: Motel au P'tit Sapin</div>
-                        <span class="hotel-rate-pill">$115 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-1">
+                    <div class="weather-bar" id="weather-day-1">
+                        <span>🌤️ Hist. Avg: 14°C - 24°C • Sunny, 22°C</span>
+                        <span class="live-weather-badge" id="live-weather-1">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">16033 Bd Curé-Labelle, Mirabel, QC (Route 117)</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.motelauptitsapin.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Depart Hanmer eastward down the Upper Ottawa Valley along Highway 17 through North Bay and Petawawa to Pembroke. Cross the Ottawa River at Portage-du-Fort into Quebec, following scenic Route 148 along the river through Gatineau, Montebello, and Grenville to Lachute, then connecting via Route 158 to Mirabel for the evening.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Commercial Motel: Motel au P'tit Sapin</div>
+                            <span class="hotel-rate-pill">$115 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">16033 Bd Curé-Labelle, Mirabel, QC (Route 117)</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.motelauptitsapin.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1450-432-4691" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1450-432-4691</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 3–6 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Motel Le Mirabeau (Mirabel)</div>
@@ -1398,36 +1489,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> All major hubs (Sturgeon Falls, Pembroke, Shawville, Aylmer, Gatineau, Montebello, Mirabel) carry 91+ AKI.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> All major hubs (Sturgeon Falls, Pembroke, Shawville, Aylmer, Gatineau, Montebello, Mirabel) carry 91+ AKI.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Scenic ride along the Upper Ottawa Valley on Highway 17</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Scenic ride along the Upper Ottawa Valley on Highway 17</li>
                         <li>Historic Chenaux Dam bridge crossing at Portage-du-Fort into Quebec</li>
                         <li>Tranquil river riding on Route 148 through Montebello, Grenville, and Lachute</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(1);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 1 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/4671+Dupuis+Drive,+Hanmer,+ON+P3P+0B3,+Canada/Pembroke,+Ontario/Portage-du-Fort,+Quebec/45.484148,-75.6479648/Masson-Angers,+Gatineau,+QC/45.6434004,-74.8182866/45.6258796,-74.434645/Motel+au+P%27tit+Sapin,+16033+Du,+Bd+Cur%C3%A9-Labelle,+Mirabel,+QC+J7J+2G6/" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(1);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 1 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/4671+Dupuis+Drive,+Hanmer,+ON+P3P+0B3,+Canada/Pembroke,+Ontario/Portage-du-Fort,+Quebec/45.484148,-75.6479648/Masson-Angers,+Gatineau,+QC/45.6434004,-74.8182866/45.6258796,-74.434645/Motel+au+P%27tit+Sapin,+16033+Du,+Bd+Cur%C3%A9-Labelle,+Mirabel,+QC+J7J+2G6/" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-2" onclick="focusDay(2)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 2)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 2</span>
                         <h3 class="day-title">Mirabel to Baie-Comeau, QC</h3>
                     </div>
-                    <span class="day-date">Thursday, June 17, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Thursday, June 17, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-2" onclick="event.stopPropagation(); toggleDayCard(2);" title="Collapse / Expand Day 2">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1436,26 +1531,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 158, Route 138 & Route 362)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-2">
-                    <span>🌤️ Hist. Avg: 11°C - 20°C • Partly Cloudy, 19°C</span>
-                    <span class="live-weather-badge" id="live-weather-2">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Depart Mirabel northeast via Route 158 through Saint-Jérôme and Joliette to Berthierville, joining the historic Chemin du Roy (Route 138) along the St. Lawrence River. Pass through Trois-Rivières and Quebec City to the Charlevoix coastal mountains on Route 362, cross the Saguenay Fjord via the Tadoussac ferry, and continue along the Côte-Nord to Baie-Comeau.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Full-Service Hotel: Travelodge by Wyndham Baie-Comeau</div>
-                        <span class="hotel-rate-pill">$140 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-2">
+                    <div class="weather-bar" id="weather-day-2">
+                        <span>🌤️ Hist. Avg: 11°C - 20°C • Partly Cloudy, 19°C</span>
+                        <span class="live-weather-badge" id="live-weather-2">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Baie-Comeau, QC (Route 138)</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.wyndhamhotels.com/travelodge/baie-comeau-quebec/travelodge-baie-comeau/overview" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Depart Mirabel northeast via Route 158 through Saint-Jérôme and Joliette to Berthierville, joining the historic Chemin du Roy (Route 138) along the St. Lawrence River. Pass through Trois-Rivières and Quebec City to the Charlevoix coastal mountains on Route 362, cross the Saguenay Fjord via the Tadoussac ferry, and continue along the Côte-Nord to Baie-Comeau.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Full-Service Hotel: Travelodge by Wyndham Baie-Comeau</div>
+                            <span class="hotel-rate-pill">$140 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Baie-Comeau, QC (Route 138)</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.wyndhamhotels.com/travelodge/baie-comeau-quebec/travelodge-baie-comeau/overview" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1418-296-4921" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1418-296-4921</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 6–8 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Hôtel Le Manoir Baie-Comeau</div>
@@ -1468,36 +1564,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> MANDATORY 100% TOP-OFF AT BAIE-COMEAU (Shell V-Power 91). Fill auxiliary fuel bladders before starting QC-389 tomorrow.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> MANDATORY 100% TOP-OFF AT BAIE-COMEAU (Shell V-Power 91). Fill auxiliary fuel bladders before starting QC-389 tomorrow.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Historic Chemin du Roy (Route 138) along the St. Lawrence River</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Historic Chemin du Roy (Route 138) along the St. Lawrence River</li>
                         <li>Charlevoix coastal mountain sweepers on Route 362 overlooking the estuary</li>
                         <li>15-minute marine ferry crossing across the mouth of the Saguenay Fjord into Tadoussac</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(2);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 2 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Motel+au+P%27tit+Sapin%2C+16033+Bd+Cur%C3%A9-Labelle%2C+Mirabel%2C+QC&destination=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&waypoints=Joliette%2C+QC%7CBerthierville%2C+QC%7CTrois-Rivi%C3%A8res%2C+QC%7CRoute+138%2C+Sainte-Anne-de-Beaupr%C3%A9%2C+QC%7CBaie-Saint-Paul%2C+QC%7CTadoussac%2C+QC&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(2);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 2 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Motel+au+P%27tit+Sapin%2C+16033+Bd+Cur%C3%A9-Labelle%2C+Mirabel%2C+QC&destination=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&waypoints=Joliette%2C+QC%7CBerthierville%2C+QC%7CTrois-Rivi%C3%A8res%2C+QC%7CRoute+138%2C+Sainte-Anne-de-Beaupr%C3%A9%2C+QC%7CBaie-Saint-Paul%2C+QC%7CTadoussac%2C+QC&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-3" onclick="focusDay(3)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 3)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #d97706;">Day 3</span>
                         <h3 class="day-title">Baie-Comeau, QC to Labrador City, NL</h3>
                     </div>
-                    <span class="day-date">Friday, June 18, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Friday, June 18, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-3" onclick="event.stopPropagation(); toggleDayCard(3);" title="Collapse / Expand Day 3">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1506,26 +1606,27 @@
                     <span class="stat-chip">🛣️ Paved & Compacted Gravel (QC-389 & TLH 500)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-3">
-                    <span>🌤️ Hist. Avg: 8°C - 18°C • Partly Cloudy, 16°C</span>
-                    <span class="live-weather-badge" id="live-weather-3">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Travel north on Quebec Route 389 through the boreal wilderness, passing the Manic-2 and Manic-5 hydroelectric dams and skirting the Manicouagan crater reservoir. Continue through the unpaved northern sector past the mining town of Fermont, crossing the provincial border into Labrador City for the night.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Remote Wilderness Hotel: Hotel Wabush / Two Seasons Inn</div>
-                        <span class="hotel-rate-pill">$185 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-3">
+                    <div class="weather-bar" id="weather-day-3">
+                        <span>🌤️ Hist. Avg: 8°C - 18°C • Partly Cloudy, 16°C</span>
+                        <span class="live-weather-badge" id="live-weather-3">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Labrador City / Wabush, NL</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.hotelwabush.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Travel north on Quebec Route 389 through the boreal wilderness, passing the Manic-2 and Manic-5 hydroelectric dams and skirting the Manicouagan crater reservoir. Continue through the unpaved northern sector past the mining town of Fermont, crossing the provincial border into Labrador City for the night.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Remote Wilderness Hotel: Hotel Wabush / Two Seasons Inn</div>
+                            <span class="hotel-rate-pill">$185 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Labrador City / Wabush, NL</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.hotelwabush.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-282-3562" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-282-3562</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 6–8 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Two Seasons Inn (Labrador City)</div>
@@ -1544,36 +1645,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Manic-5 and Relais Gabriel carry 87 AKI only. Dose with chemical octane booster or transfer 91 from auxiliary bladder.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Manic-5 and Relais Gabriel carry 87 AKI only. Dose with chemical octane booster or transfer 91 from auxiliary bladder.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Daniel-Johnson Dam at Manic-5: world's largest multiple-arch buttress dam</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Daniel-Johnson Dam at Manic-5: world's largest multiple-arch buttress dam</li>
                         <li>Route 389 skirting the ancient Manicouagan meteorite impact crater</li>
                         <li>Fermont mining town and giant ore haulers at the Labrador border</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(3);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 3 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&destination=Hotel+Wabush%2C+Wabush%2C+NL&travelmode=driving&waypoints=Manic-5%2C+QC%7CRelais+Gabriel%2C+QC" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(3);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 3 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Travelodge+by+Wyndham+Baie-Comeau%2C+Baie-Comeau%2C+QC&destination=Hotel+Wabush%2C+Wabush%2C+NL&travelmode=driving&waypoints=Manic-5%2C+QC%7CRelais+Gabriel%2C+QC" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-4" onclick="focusDay(4)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 4)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #d97706;">Day 4</span>
                         <h3 class="day-title">Labrador City to Happy Valley-Goose Bay, NL</h3>
                     </div>
-                    <span class="day-date">Saturday, June 19, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Saturday, June 19, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-4" onclick="event.stopPropagation(); toggleDayCard(4);" title="Collapse / Expand Day 4">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1582,26 +1687,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Trans-Labrador Hwy 500)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-4">
-                    <span>🌤️ Hist. Avg: 9°C - 19°C • Partly Cloudy, 18°C</span>
-                    <span class="live-weather-badge" id="live-weather-4">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Follow the Trans-Labrador Highway (Route 500) eastward across the central Labrador plateau, crossing the Churchill River at Churchill Falls. Proceed across paved taiga corridors with long sweeping turns through black spruce wilderness to Happy Valley-Goose Bay.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Commercial Hotel: Royal Inn & Suites / Hotel North</div>
-                        <span class="hotel-rate-pill">$175 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-4">
+                    <div class="weather-bar" id="weather-day-4">
+                        <span>🌤️ Hist. Avg: 9°C - 19°C • Partly Cloudy, 18°C</span>
+                        <span class="live-weather-badge" id="live-weather-4">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Happy Valley-Goose Bay, NL</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.royalinnandsuites.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Follow the Trans-Labrador Highway (Route 500) eastward across the central Labrador plateau, crossing the Churchill River at Churchill Falls. Proceed across paved taiga corridors with long sweeping turns through black spruce wilderness to Happy Valley-Goose Bay.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Commercial Hotel: Royal Inn & Suites / Hotel North</div>
+                            <span class="hotel-rate-pill">$175 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Happy Valley-Goose Bay, NL</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.royalinnandsuites.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-896-3396" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-896-3396</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 6–8 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Hotel North Two (Goose Bay)</div>
@@ -1614,36 +1720,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Churchill Falls is the only fuel stop in 532 km. 91 Premium can be limited; carry octane booster.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Churchill Falls is the only fuel stop in 532 km. 91 Premium can be limited; carry octane booster.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Pristine paved highway cruising through central Labrador black spruce taiga</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Pristine paved highway cruising through central Labrador black spruce taiga</li>
                         <li>Churchill Falls hydroelectric complex and river canyon crossing</li>
                         <li>Arrival in Happy Valley-Goose Bay, the historic subarctic aviation hub</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(4);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 4 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Wabush%2C+Wabush%2C+NL&destination=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&travelmode=driving&waypoints=Churchill+Falls%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(4);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 4 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Wabush%2C+Wabush%2C+NL&destination=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&travelmode=driving&waypoints=Churchill+Falls%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-5" onclick="focusDay(5)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 5)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 5</span>
                         <h3 class="day-title">Happy Valley-Goose Bay to L'Anse-au-Clair, NL</h3>
                     </div>
-                    <span class="day-date">Sunday, June 20, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Sunday, June 20, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-5" onclick="event.stopPropagation(); toggleDayCard(5);" title="Collapse / Expand Day 5">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1652,26 +1762,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Trans-Labrador Hwy 510)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-5">
-                    <span>🌤️ Hist. Avg: 6°C - 16°C • Cool, Coastal Fog, 14°C</span>
-                    <span class="live-weather-badge" id="live-weather-5">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Head south on the Trans-Labrador Highway (Route 510) through subarctic terrain past the Mealy Mountains. Refuel at Port Hope Simpson, visit the Red Bay UNESCO Basque Whaling Station on the coast, and reach L'Anse-au-Clair on the Strait of Belle Isle.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Coastal Roadside Hotel: Northern Light Inn</div>
-                        <span class="hotel-rate-pill">$160 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-5">
+                    <div class="weather-bar" id="weather-day-5">
+                        <span>🌤️ Hist. Avg: 6°C - 16°C • Cool, Coastal Fog, 14°C</span>
+                        <span class="live-weather-badge" id="live-weather-5">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">L'Anse-au-Clair, NL (Route 510)</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.northernlightinn.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Head south on the Trans-Labrador Highway (Route 510) through subarctic terrain past the Mealy Mountains. Refuel at Port Hope Simpson, visit the Red Bay UNESCO Basque Whaling Station on the coast, and reach L'Anse-au-Clair on the Strait of Belle Isle.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Coastal Roadside Hotel: Northern Light Inn</div>
+                            <span class="hotel-rate-pill">$160 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">L'Anse-au-Clair, NL (Route 510)</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.northernlightinn.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-931-2332" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-931-2332</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 6–8 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Motel Blanc-Sablon</div>
@@ -1684,36 +1795,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> CRITICAL 405 KM FUEL DESERT to Port Hope Simpson. Siphon 91 Premium from lead tanker bladder at midpoint.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> CRITICAL 405 KM FUEL DESERT to Port Hope Simpson. Siphon 91 Premium from lead tanker bladder at midpoint.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Trans-Labrador Route 510 through the remote Mealy Mountains subarctic corridor</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Trans-Labrador Route 510 through the remote Mealy Mountains subarctic corridor</li>
                         <li>Red Bay UNESCO World Heritage Site: 16th-century Basque whaling station</li>
                         <li>Point Amour Lighthouse: tallest lighthouse in Atlantic Canada (33 m)</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(5);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 5 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&destination=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&travelmode=driving&waypoints=Port+Hope+Simpson%2C+NL%7CRed+Bay%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(5);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 5 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Royal+Inn+%26+Suites%2C+Happy+Valley-Goose+Bay%2C+NL&destination=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&travelmode=driving&waypoints=Port+Hope+Simpson%2C+NL%7CRed+Bay%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-6" onclick="focusDay(6)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 6)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #0284c7;">Day 6</span>
                         <h3 class="day-title">L'Anse-au-Clair to St. Anthony & Hay Cove, NL</h3>
                     </div>
-                    <span class="day-date">Monday, June 21, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Monday, June 21, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-6" onclick="event.stopPropagation(); toggleDayCard(6);" title="Collapse / Expand Day 6">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1722,26 +1837,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 430 Viking Trail)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-6">
-                    <span>🌤️ Hist. Avg: 7°C - 16°C • Coastal Breeze, 15°C</span>
-                    <span class="live-weather-badge" id="live-weather-6">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Board the morning MV Qajaq W ferry from Blanc-Sablon to St. Barbe, Newfoundland. Ride north along the coastal Viking Trail (Route 430) to St. Anthony to visit the Grenfell Historic Properties and Fishing Point Lighthouse, then continue to Hay Cove near L'Anse aux Meadows.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Oceanfront Turf-Roofed Cabins: Snorri Cabins / Valhalla Lodge</div>
-                        <span class="hotel-rate-pill">$195 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-6">
+                    <div class="weather-bar" id="weather-day-6">
+                        <span>🌤️ Hist. Avg: 7°C - 16°C • Coastal Breeze, 15°C</span>
+                        <span class="live-weather-badge" id="live-weather-6">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Hay Cove, NL (L'Anse aux Meadows)</div>
-                    <div class="hotel-actions">
-                        <a href="https://valhalla-lodge.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Board the morning MV Qajaq W ferry from Blanc-Sablon to St. Barbe, Newfoundland. Ride north along the coastal Viking Trail (Route 430) to St. Anthony to visit the Grenfell Historic Properties and Fishing Point Lighthouse, then continue to Hay Cove near L'Anse aux Meadows.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Oceanfront Turf-Roofed Cabins: Snorri Cabins / Valhalla Lodge</div>
+                            <span class="hotel-rate-pill">$195 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Hay Cove, NL (L'Anse aux Meadows)</div>
+                        <div class="hotel-actions">
+                            <a href="https://valhalla-lodge.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-623-2018" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-623-2018</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Summer/Fall 2026 (Book 8–10 Mos Ahead)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Haven Inn (St. Anthony)</div>
@@ -1754,36 +1870,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> St. Anthony has full 91 Premium pumps. Top off main tanks before heading into Hay Cove.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> St. Anthony has full 91 Premium pumps. Top off main tanks before heading into Hay Cove.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Strait of Belle Isle ferry crossing across Iceberg Alley on the MV Qajaq W</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Strait of Belle Isle ferry crossing across Iceberg Alley on the MV Qajaq W</li>
                         <li>Fishing Point Lighthouse and ocean headland trails in St. Anthony</li>
                         <li>Authentic turf-roofed Norse cabin stay in Hay Cove overlooking the Atlantic ocean</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(6);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 6 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=Blanc-Sablon+Ferry+Terminal%2C+QC%7CSt.+Barbe+Ferry+Terminal%2C+NL%7CGrenfell+Historic+Properties%2C+St.+Anthony%2C+NL%7CFishing+Point+Lighthouse%2C+St.+Anthony%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(6);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 6 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Northern+Light+Inn%2C+L%27Anse-au-Clair%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=Blanc-Sablon+Ferry+Terminal%2C+QC%7CSt.+Barbe+Ferry+Terminal%2C+NL%7CGrenfell+Historic+Properties%2C+St.+Anthony%2C+NL%7CFishing+Point+Lighthouse%2C+St.+Anthony%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-7" onclick="focusDay(7)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 7)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #7c3aed;">Day 7</span>
                         <h3 class="day-title">Viking Cultural Loop: Norstead & Cape Onion, NL</h3>
                     </div>
-                    <span class="day-date">Tuesday, June 22, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Tuesday, June 22, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-7" onclick="event.stopPropagation(); toggleDayCard(7);" title="Collapse / Expand Day 7">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1792,26 +1912,27 @@
                     <span class="stat-chip">🛣️ Paved & Coastal Headland (Route 436 & 437)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-7">
-                    <span>🌤️ Hist. Avg: 8°C - 17°C • Sunny, 16°C</span>
-                    <span class="live-weather-badge" id="live-weather-7">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Spend the day exploring northern tip historical and coastal sites: tour the Norstead replica Viking village and the knarr ship Snorri, and ride to the coastal bluffs of Cape Onion before returning to Hay Cove for a second night.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Oceanfront Turf-Roofed Cabins: Snorri Cabins / Valhalla Lodge (Night 2)</div>
-                        <span class="hotel-rate-pill">$195 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-7">
+                    <div class="weather-bar" id="weather-day-7">
+                        <span>🌤️ Hist. Avg: 8°C - 17°C • Sunny, 16°C</span>
+                        <span class="live-weather-badge" id="live-weather-7">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Hay Cove, NL (L'Anse aux Meadows)</div>
-                    <div class="hotel-actions">
-                        <a href="https://valhalla-lodge.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Spend the day exploring northern tip historical and coastal sites: tour the Norstead replica Viking village and the knarr ship Snorri, and ride to the coastal bluffs of Cape Onion before returning to Hay Cove for a second night.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Oceanfront Turf-Roofed Cabins: Snorri Cabins / Valhalla Lodge (Night 2)</div>
+                            <span class="hotel-rate-pill">$195 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Hay Cove, NL (L'Anse aux Meadows)</div>
+                        <div class="hotel-actions">
+                            <a href="https://valhalla-lodge.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-623-2018" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-623-2018</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Summer/Fall 2026 (Book 8–10 Mos Ahead)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Haven Inn (St. Anthony) - Night 2</div>
@@ -1824,36 +1945,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Local gas available in Raleigh or St. Lunaire-Griquet. No fuel deficit on this short exploration day.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Local gas available in Raleigh or St. Lunaire-Griquet. No fuel deficit on this short exploration day.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Norstead Viking Village and board the 54-ft replica merchant knarr ship Snorri</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Norstead Viking Village and board the 54-ft replica merchant knarr ship Snorri</li>
                         <li>L'Anse aux Meadows UNESCO World Heritage Site: 11th-century Norse settlement</li>
                         <li>Rugged coastal bluffs and iceberg look-off at Cape Onion</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(7);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 7 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=L%27Anse+aux+Meadows+National+Historic+Site%2C+NL%7CNorstead%2C+Hay+Cove%2C+NL%7CCape+Onion%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(7);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 7 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Snorri+Cabins%2C+Hay+Cove%2C+NL&travelmode=driving&waypoints=L%27Anse+aux+Meadows+National+Historic+Site%2C+NL%7CNorstead%2C+Hay+Cove%2C+NL%7CCape+Onion%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-8" onclick="focusDay(8)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 8)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #7c3aed;">Day 8</span>
                         <h3 class="day-title">Hay Cove to Gros Morne National Park, NL</h3>
                     </div>
-                    <span class="day-date">Wednesday, June 23, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Wednesday, June 23, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-8" onclick="event.stopPropagation(); toggleDayCard(8);" title="Collapse / Expand Day 8">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1862,26 +1987,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 430 Viking Trail South)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-8">
-                    <span>🌤️ Hist. Avg: 9°C - 19°C • Partly Cloudy, 17°C</span>
-                    <span class="live-weather-badge" id="live-weather-8">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Travel south down the Great Northern Peninsula along Route 430, stopping at Point Riche Lighthouse in Port au Choix. Continue south into Gros Morne National Park to stay at the Gros Morne KOA in Norris Point for maintenance, laundry, and rest.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Commercial KOA Campground: Gros Morne / Norris Point KOA Holiday</div>
-                        <span class="hotel-rate-pill">$48 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-8">
+                    <div class="weather-bar" id="weather-day-8">
+                        <span>🌤️ Hist. Avg: 9°C - 19°C • Partly Cloudy, 17°C</span>
+                        <span class="live-weather-badge" id="live-weather-8">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Norris Point, NL (Gros Morne NP)</div>
-                    <div class="hotel-actions">
-                        <a href="https://koa.com/campgrounds/gros-morne/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Travel south down the Great Northern Peninsula along Route 430, stopping at Point Riche Lighthouse in Port au Choix. Continue south into Gros Morne National Park to stay at the Gros Morne KOA in Norris Point for maintenance, laundry, and rest.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Commercial KOA Campground: Gros Morne / Norris Point KOA Holiday</div>
+                            <span class="hotel-rate-pill">$48 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Norris Point, NL (Gros Morne NP)</div>
+                        <div class="hotel-actions">
+                            <a href="https://koa.com/campgrounds/gros-morne/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-458-2265" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-458-2265</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 June 2026 (Rolling 12 Mos Ahead)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Ocean View Hotel (Rocky Harbour)</div>
@@ -1894,36 +2020,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Port au Choix, Daniel's Harbour, and Rocky Harbour offer reliable fuel stops every 80–120 km.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Port au Choix, Daniel's Harbour, and Rocky Harbour offer reliable fuel stops every 80–120 km.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Coastal riding along the Gulf of St. Lawrence on Route 430</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Coastal riding along the Gulf of St. Lawrence on Route 430</li>
                         <li>Point Riche Lighthouse and ancient limestone sea barrens in Port au Choix</li>
                         <li>Gros Morne KOA amenities: commercial laundry, hot showers, and gear refresh</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(8);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 8 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&travelmode=driving&waypoints=Point+Riche+Lighthouse%2C+Port+au+Choix%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(8);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 8 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Snorri+Cabins%2C+Hay+Cove%2C+NL&destination=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&travelmode=driving&waypoints=Point+Riche+Lighthouse%2C+Port+au+Choix%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-9" onclick="focusDay(9)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 9)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 9</span>
                         <h3 class="day-title">The Tablelands & Bonne Bay, NL</h3>
                     </div>
-                    <span class="day-date">Thursday, June 24, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Thursday, June 24, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-9" onclick="event.stopPropagation(); toggleDayCard(9);" title="Collapse / Expand Day 9">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -1932,26 +2062,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 431 & Route 430)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-9">
-                    <span>🌤️ Hist. Avg: 11°C - 21°C • Sunny, 19°C</span>
-                    <span class="live-weather-badge" id="live-weather-9">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Explore the southern sector of Gros Morne National Park around Bonne Bay. Ride and hike the Tablelands to observe exposed earth mantle rock, visit Woody Point and Trout River, and camp oceanfront at Green Point Campground.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 National Park Oceanfront Campground: Green Point Campground (Gros Morne NP)</div>
-                        <span class="hotel-rate-pill">$34 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-9">
+                    <div class="weather-bar" id="weather-day-9">
+                        <span>🌤️ Hist. Avg: 11°C - 21°C • Sunny, 19°C</span>
+                        <span class="live-weather-badge" id="live-weather-9">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Rocky Harbour / Green Point, NL</div>
-                    <div class="hotel-actions">
-                        <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Explore the southern sector of Gros Morne National Park around Bonne Bay. Ride and hike the Tablelands to observe exposed earth mantle rock, visit Woody Point and Trout River, and camp oceanfront at Green Point Campground.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 National Park Oceanfront Campground: Green Point Campground (Gros Morne NP)</div>
+                            <span class="hotel-rate-pill">$34 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Rocky Harbour / Green Point, NL</div>
+                        <div class="hotel-actions">
+                            <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1709-458-2417" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1709-458-2417</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Jan 15, 2027 @ 8:00 AM NST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Berry Hill Campground (Gros Morne NP)</div>
@@ -1964,36 +2095,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Fuel up in Rocky Harbour before heading out to the Tablelands and Woody Point.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Fuel up in Rocky Harbour before heading out to the Tablelands and Woody Point.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>The Tablelands: rare barren landscape of exposed Earth's mantle pushed up by plate tectonics</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>The Tablelands: rare barren landscape of exposed Earth's mantle pushed up by plate tectonics</li>
                         <li>Historic waterfront village of Woody Point and Woody Point Lighthouse</li>
                         <li>Seaside camping on coastal bluffs at Green Point Campground</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(9);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 9 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&destination=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&travelmode=driving&waypoints=Tablelands+Trailhead%2C+Woody+Point%2C+NL%7CTrout+River%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(9);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 9 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Gros+Morne+%2F+Norris+Point+KOA+Holiday%2C+Norris+Point%2C+NL&destination=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&travelmode=driving&waypoints=Tablelands+Trailhead%2C+Woody+Point%2C+NL%7CTrout+River%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-10" onclick="focusDay(10)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 10)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #0284c7;">Day 10</span>
                         <h3 class="day-title">Gros Morne to Port aux Basques Overnight Ferry</h3>
                     </div>
-                    <span class="day-date">Friday, June 25, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Friday, June 25, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-10" onclick="event.stopPropagation(); toggleDayCard(10);" title="Collapse / Expand Day 10">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2002,26 +2137,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 430, TCH-1 & Route 406/408)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-10">
-                    <span>🌤️ Hist. Avg: 10°C - 20°C • Partly Cloudy, 18°C</span>
-                    <span class="live-weather-badge" id="live-weather-10">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Ride south through western Newfoundland and the Codroy Valley, visiting Cape Anguille and the transatlantic cable landfall at Cape Ray Lighthouse. Arrive in Port aux Basques in the evening to board the Marine Atlantic overnight ferry to North Sydney, sleeping in a private cabin stateroom.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Overnight Ferry Private Stateroom: Marine Atlantic MV Highlanders / Blue Puttees</div>
-                        <span class="hotel-rate-pill">$210 CAD (2 Bikes + 2-Berth Cabin)</span>
+                <div class="day-collapsible-body" id="day-body-10">
+                    <div class="weather-bar" id="weather-day-10">
+                        <span>🌤️ Hist. Avg: 10°C - 20°C • Partly Cloudy, 18°C</span>
+                        <span class="live-weather-badge" id="live-weather-10">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Port aux Basques, NL to North Sydney, NS</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.marineatlantic.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Ride south through western Newfoundland and the Codroy Valley, visiting Cape Anguille and the transatlantic cable landfall at Cape Ray Lighthouse. Arrive in Port aux Basques in the evening to board the Marine Atlantic overnight ferry to North Sydney, sleeping in a private cabin stateroom.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Overnight Ferry Private Stateroom: Marine Atlantic MV Highlanders / Blue Puttees</div>
+                            <span class="hotel-rate-pill">$210 CAD (2 Bikes + 2-Berth Cabin)</span>
+                        </div>
+                        <div class="hotel-sub">Port aux Basques, NL to North Sydney, NS</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.marineatlantic.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1800-341-7981" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1800-341-7981</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Late Fall 2026 (Oct/Nov Release)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Hotel Port aux Basques (Ferry Staging Backup)</div>
@@ -2034,36 +2170,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Top off at Port aux Basques Irving before entering ferry check-in lanes.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Top off at Port aux Basques Irving before entering ferry check-in lanes.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Scenic ride through the emerald pastures of the Codroy Valley</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Scenic ride through the emerald pastures of the Codroy Valley</li>
                         <li>Cape Anguille and Cape Ray historic coastal lighthouses</li>
                         <li>Overnight ferry crossing with private 2-berth en-suite stateroom cabin</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(10);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 10 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&destination=Marine+Atlantic+Ferry+Terminal%2C+Port+aux+Basques%2C+NL&travelmode=driving&waypoints=Cape+Anguille+Lighthouse%2C+NL%7CCape+Ray+Lighthouse%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(10);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 10 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Green+Point+Campground%2C+Rocky+Harbour%2C+NL&destination=Marine+Atlantic+Ferry+Terminal%2C+Port+aux+Basques%2C+NL&travelmode=driving&waypoints=Cape+Anguille+Lighthouse%2C+NL%7CCape+Ray+Lighthouse%2C+NL" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-11" onclick="focusDay(11)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 11)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 11</span>
                         <h3 class="day-title">North Sydney to Broad Cove (Cabot Trail East), NS</h3>
                     </div>
-                    <span class="day-date">Saturday, June 26, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Saturday, June 26, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-11" onclick="event.stopPropagation(); toggleDayCard(11);" title="Collapse / Expand Day 11">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2072,26 +2212,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Hwy 105 & Cabot Trail East)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-11">
-                    <span>🌤️ Hist. Avg: 12°C - 22°C • Sunny, 21°C</span>
-                    <span class="live-weather-badge" id="live-weather-11">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Disembark the ferry at 07:00 AM in North Sydney and ride west to St. Ann's to begin the Cabot Trail. Climb over Cape Smokey to Neil's Harbour Lighthouse, then camp at Broad Cove Campground in Ingonish Beach.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 National Park Beach Campground: Broad Cove Campground (Cape Breton Highlands NP)</div>
-                        <span class="hotel-rate-pill">$36 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-11">
+                    <div class="weather-bar" id="weather-day-11">
+                        <span>🌤️ Hist. Avg: 12°C - 22°C • Sunny, 21°C</span>
+                        <span class="live-weather-badge" id="live-weather-11">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Ingonish Beach, NS (Cabot Trail)</div>
-                    <div class="hotel-actions">
-                        <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Disembark the ferry at 07:00 AM in North Sydney and ride west to St. Ann's to begin the Cabot Trail. Climb over Cape Smokey to Neil's Harbour Lighthouse, then camp at Broad Cove Campground in Ingonish Beach.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 National Park Beach Campground: Broad Cove Campground (Cape Breton Highlands NP)</div>
+                            <span class="hotel-rate-pill">$36 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Ingonish Beach, NS (Cabot Trail)</div>
+                        <div class="hotel-actions">
+                            <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1902-285-2582" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1902-285-2582</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Jan 18, 2027 @ 8:00 AM AST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Keltic Lodge at the Highlands (Ingonish)</div>
@@ -2104,36 +2245,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Ingonish has full-service fuel stations. Top off before setting up camp.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Ingonish has full-service fuel stations. Top off before setting up camp.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Morning start onto the Cabot Trail along St. Ann's Bay</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Morning start onto the Cabot Trail along St. Ann's Bay</li>
                         <li>Cape Smokey coastal mountain hairpins and panoramic Atlantic look-offs</li>
                         <li>Neil's Harbour Lighthouse and oceanfront camping at Broad Cove</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(11);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 11 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Marine+Atlantic+Ferry+Terminal%2C+North+Sydney%2C+NS&destination=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&travelmode=driving&waypoints=St.+Ann%27s%2C+NS%7CCape+Smokey+Provincial+Park%2C+NS%7CNeils+Harbour+Lighthouse%2C+NS" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(11);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 11 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Marine+Atlantic+Ferry+Terminal%2C+North+Sydney%2C+NS&destination=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&travelmode=driving&waypoints=St.+Ann%27s%2C+NS%7CCape+Smokey+Provincial+Park%2C+NS%7CNeils+Harbour+Lighthouse%2C+NS" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-12" onclick="focusDay(12)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 12)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 12</span>
                         <h3 class="day-title">Broad Cove to Chéticamp (Meat Cove & Cabot Trail West), NS</h3>
                     </div>
-                    <span class="day-date">Sunday, June 27, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Sunday, June 27, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-12" onclick="event.stopPropagation(); toggleDayCard(12);" title="Collapse / Expand Day 12">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2142,26 +2287,27 @@
                     <span class="stat-chip">🛣️ Paved with Clifftop Spur (Cabot Trail West)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-12">
-                    <span>🌤️ Hist. Avg: 13°C - 23°C • Sunny, 22°C</span>
-                    <span class="live-weather-badge" id="live-weather-12">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Ride northern Cape Breton out to the Meat Cove clifftop spur, then rejoin the Cabot Trail over North Mountain and down French Mountain to the western coast. Hike the Skyline Trail boardwalk, visit Chéticamp, and camp in the Chéticamp valley.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 National Park Valley Campground: Chéticamp Campground (Cape Breton Highlands NP)</div>
-                        <span class="hotel-rate-pill">$36 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-12">
+                    <div class="weather-bar" id="weather-day-12">
+                        <span>🌤️ Hist. Avg: 13°C - 23°C • Sunny, 22°C</span>
+                        <span class="live-weather-badge" id="live-weather-12">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Chéticamp, NS (Cabot Trail)</div>
-                    <div class="hotel-actions">
-                        <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Ride northern Cape Breton out to the Meat Cove clifftop spur, then rejoin the Cabot Trail over North Mountain and down French Mountain to the western coast. Hike the Skyline Trail boardwalk, visit Chéticamp, and camp in the Chéticamp valley.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 National Park Valley Campground: Chéticamp Campground (Cape Breton Highlands NP)</div>
+                            <span class="hotel-rate-pill">$36 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Chéticamp, NS (Cabot Trail)</div>
+                        <div class="hotel-actions">
+                            <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1902-224-2306" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1902-224-2306</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Jan 18, 2027 @ 8:00 AM AST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Laurie's Motor Inn (Chéticamp)</div>
@@ -2174,36 +2320,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Fuel available in Neil's Harbour, Pleasant Bay, and Chéticamp.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Fuel available in Neil's Harbour, Pleasant Bay, and Chéticamp.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Meat Cove clifftop spur at the northernmost point of Cape Breton</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Meat Cove clifftop spur at the northernmost point of Cape Breton</li>
                         <li>French Mountain coastal switchbacks descending to the Gulf of St. Lawrence</li>
                         <li>Skyline Trail boardwalk hike overlooking the Cabot Trail</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(12);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 12 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&destination=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&travelmode=driving&waypoints=Meat+Cove+Welcome+Center%2C+Meat+Cove%2C+NS%7CSkyline+Trail%2C+Cabot+Trail%2C+NS" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(12);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 12 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Broad+Cove+Campground%2C+Ingonish+Beach%2C+NS&destination=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&travelmode=driving&waypoints=Meat+Cove+Welcome+Center%2C+Meat+Cove%2C+NS%7CSkyline+Trail%2C+Cabot+Trail%2C+NS" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-13" onclick="focusDay(13)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 13)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 13</span>
                         <h3 class="day-title">Chéticamp, NS to Cavendish Beach, PEI</h3>
                     </div>
-                    <span class="day-date">Monday, June 28, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Monday, June 28, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-13" onclick="event.stopPropagation(); toggleDayCard(13);" title="Collapse / Expand Day 13">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2212,26 +2362,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Hwy 19, TCH-104 & TCH-16)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-13">
-                    <span>🌤️ Hist. Avg: 13°C - 23°C • Partly Cloudy, 21°C</span>
-                    <span class="live-weather-badge" id="live-weather-13">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Cross from Cape Breton over the Canso Causeway and ride northwest through Nova Scotia and New Brunswick to the Confederation Bridge. Cross onto Prince Edward Island to ride the coastal loop through Victoria-by-the-Sea, Cape Tryon Lighthouse, and Cavendish, camping at Cavendish Beach in Prince Edward Island National Park.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 National Park Oceanfront Campground: Cavendish Campground (PEI National Park)</div>
-                        <span class="hotel-rate-pill">$38 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-13">
+                    <div class="weather-bar" id="weather-day-13">
+                        <span>🌤️ Hist. Avg: 13°C - 23°C • Partly Cloudy, 21°C</span>
+                        <span class="live-weather-badge" id="live-weather-13">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Cavendish, PE (PEI National Park)</div>
-                    <div class="hotel-actions">
-                        <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Cross from Cape Breton over the Canso Causeway and ride northwest through Nova Scotia and New Brunswick to the Confederation Bridge. Cross onto Prince Edward Island to ride the coastal loop through Victoria-by-the-Sea, Cape Tryon Lighthouse, and Cavendish, camping at Cavendish Beach in Prince Edward Island National Park.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 National Park Oceanfront Campground: Cavendish Campground (PEI National Park)</div>
+                            <span class="hotel-rate-pill">$38 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Cavendish, PE (PEI National Park)</div>
+                        <div class="hotel-actions">
+                            <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1902-963-7830" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1902-963-7830</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Jan 19, 2027 @ 8:00 AM AST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Kindred Spirits Country Inn & Cottages (Cavendish)</div>
@@ -2244,36 +2395,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> New Glasgow, Cape Jourimain, and Cavendish offer full 91 Premium infrastructure.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> New Glasgow, Cape Jourimain, and Cavendish offer full 91 Premium infrastructure.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Crossing the 12.9 km Confederation Bridge across Northumberland Strait onto PEI</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Crossing the 12.9 km Confederation Bridge across Northumberland Strait onto PEI</li>
                         <li>Cape Tryon Lighthouse standing on 110-foot red sandstone ocean cliffs</li>
                         <li>Oceanfront camping at Cavendish Beach along red sand dunes</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(13);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 13 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&destination=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&travelmode=driving&waypoints=Canso+Causeway%2C+Port+Hastings%2C+NS%7CCape+Jourimain%2C+Bayfield%2C+NB%7CVictoria-by-the-Sea%2C+PE%7CFrench+River%2C+PE%7CCape+Tryon+Lighthouse%2C+PE%7CAnne+of+Green+Gables+Heritage+Place%2C+Cavendish%2C+PE%7CNorth+Rustico+Harbour%2C+PE" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(13);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 13 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Ch%C3%A9ticamp+Campground%2C+Ch%C3%A9ticamp%2C+NS&destination=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&travelmode=driving&waypoints=Canso+Causeway%2C+Port+Hastings%2C+NS%7CCape+Jourimain%2C+Bayfield%2C+NB%7CVictoria-by-the-Sea%2C+PE%7CFrench+River%2C+PE%7CCape+Tryon+Lighthouse%2C+PE%7CAnne+of+Green+Gables+Heritage+Place%2C+Cavendish%2C+PE%7CNorth+Rustico+Harbour%2C+PE" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-14" onclick="focusDay(14)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 14)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 14</span>
                         <h3 class="day-title">Cavendish Beach, PEI to Fundy National Park, NB</h3>
                     </div>
-                    <span class="day-date">Tuesday, June 29, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Tuesday, June 29, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-14" onclick="event.stopPropagation(); toggleDayCard(14);" title="Collapse / Expand Day 14">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2282,26 +2437,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Route 11, TCH-2 & Route 915)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-14">
-                    <span>🌤️ Hist. Avg: 13°C - 23°C • Sunny, 22°C</span>
-                    <span class="live-weather-badge" id="live-weather-14">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Visit Seacow Head Lighthouse before crossing the Confederation Bridge back to New Brunswick. Follow coastal Route 915 to Cape Enrage Lighthouse, visit the sea stacks at Hopewell Rocks, and camp at Fundy National Park Headquarters in Alma.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 National Park Clifftop Campground: Fundy National Park Headquarters Campground</div>
-                        <span class="hotel-rate-pill">$36 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-14">
+                    <div class="weather-bar" id="weather-day-14">
+                        <span>🌤️ Hist. Avg: 13°C - 23°C • Sunny, 22°C</span>
+                        <span class="live-weather-badge" id="live-weather-14">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Alma, NB (Fundy National Park)</div>
-                    <div class="hotel-actions">
-                        <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Visit Seacow Head Lighthouse before crossing the Confederation Bridge back to New Brunswick. Follow coastal Route 915 to Cape Enrage Lighthouse, visit the sea stacks at Hopewell Rocks, and camp at Fundy National Park Headquarters in Alma.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 National Park Clifftop Campground: Fundy National Park Headquarters Campground</div>
+                            <span class="hotel-rate-pill">$36 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Alma, NB (Fundy National Park)</div>
+                        <div class="hotel-actions">
+                            <a href="https://reservation.pc.gc.ca/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1506-887-6000" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1506-887-6000</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Jan 19, 2027 @ 8:00 AM AST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Parkland Village Inn (Alma / Fundy)</div>
@@ -2314,36 +2470,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Moncton and Alma offer full-service fuel stations. Top off in Alma.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Moncton and Alma offer full-service fuel stations. Top off in Alma.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Seacow Head Lighthouse perched over red sandstone sea arches</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Seacow Head Lighthouse perched over red sandstone sea arches</li>
                         <li>Cape Enrage Lighthouse on 150-foot cliffs facing Bay of Fundy tides</li>
                         <li>Hopewell Rocks flowerpot sea stacks and oceanfront camping in Fundy National Park</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(14);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 14 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&destination=Fundy+National+Park+Headquarters+Campground%2C+Alma%2C+NB&travelmode=driving&waypoints=Seacow+Head+Lighthouse%2C+Borden-Carleton%2C+PE%7CCape+Jourimain%2C+Bayfield%2C+NB%7CCape+Enrage+Lighthouse%2C+NB%7CThe+Hopewell+Rocks%2C+Hopewell+Cape%2C+NB" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(14);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 14 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Cavendish+Campground%2C+Prince+Edward+Island+National+Park%2C+PE&destination=Fundy+National+Park+Headquarters+Campground%2C+Alma%2C+NB&travelmode=driving&waypoints=Seacow+Head+Lighthouse%2C+Borden-Carleton%2C+PE%7CCape+Jourimain%2C+Bayfield%2C+NB%7CCape+Enrage+Lighthouse%2C+NB%7CThe+Hopewell+Rocks%2C+Hopewell+Cape%2C+NB" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-15" onclick="focusDay(15)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 15)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 15</span>
                         <h3 class="day-title">Fundy National Park to Edmundston, NB</h3>
                     </div>
-                    <span class="day-date">Wednesday, June 30, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Wednesday, June 30, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-15" onclick="event.stopPropagation(); toggleDayCard(15);" title="Collapse / Expand Day 15">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2352,26 +2512,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (Fundy Trail Parkway, Route 7 & TCH-2)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-15">
-                    <span>🌤️ Hist. Avg: 14°C - 25°C • Partly Cloudy, 23°C</span>
-                    <span class="live-weather-badge" id="live-weather-15">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Ride the 30 km Fundy Trail Parkway along the Bay of Fundy coast to St. Martins and Saint John, stopping at Reversing Falls Rapids. Continue north along Route 7 and Highway 2 through the Saint John River Valley, crossing the historic Hartland Covered Bridge to Edmundston.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Provincial Park Riverside Campground: Parc provincial de la République</div>
-                        <span class="hotel-rate-pill">$34 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-15">
+                    <div class="weather-bar" id="weather-day-15">
+                        <span>🌤️ Hist. Avg: 14°C - 25°C • Partly Cloudy, 23°C</span>
+                        <span class="live-weather-badge" id="live-weather-15">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Edmundston, NB (Route 2)</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.parcsnbparks.info/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Ride the 30 km Fundy Trail Parkway along the Bay of Fundy coast to St. Martins and Saint John, stopping at Reversing Falls Rapids. Continue north along Route 7 and Highway 2 through the Saint John River Valley, crossing the historic Hartland Covered Bridge to Edmundston.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Provincial Park Riverside Campground: Parc provincial de la République</div>
+                            <span class="hotel-rate-pill">$34 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Edmundston, NB (Route 2)</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.parcsnbparks.info/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1506-735-2525" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1506-735-2525</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Feb 1, 2027 @ 9:00 AM AST</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Four Points by Sheraton Edmundston</div>
@@ -2384,36 +2545,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Saint John, Fredericton, Woodstock, and Edmundston have full fuel infrastructure.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Saint John, Fredericton, Woodstock, and Edmundston have full fuel infrastructure.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Continuous coastal ride along the 30 km Fundy Trail Parkway</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Continuous coastal ride along the 30 km Fundy Trail Parkway</li>
                         <li>Saint John historic waterfront and Reversing Falls Rapids</li>
                         <li>Riding across the historic Hartland Covered Bridge (1901), the world's longest at 391 m</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(15);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 15 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/45.5968321,-64.9521371/45.5154872,-65.2968873/45.4310118,-65.3693319/45.4262806,-65.392869/45.4257948,-65.4093835/45.4120034,-65.4225108/45.4015382,-65.4601292/45.2733153,-66.063308/46.2970,-67.5280/47.4353,-68.3904" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(15);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 15 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/45.5968321,-64.9521371/45.5154872,-65.2968873/45.4310118,-65.3693319/45.4262806,-65.392869/45.4257948,-65.4093835/45.4120034,-65.4225108/45.4015382,-65.4601292/45.2733153,-66.063308/46.2970,-67.5280/47.4353,-68.3904" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-16" onclick="focusDay(16)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 16)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 16</span>
                         <h3 class="day-title">Edmundston, NB to Drummondville, QC</h3>
                     </div>
-                    <span class="day-date">Thursday, July 1, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Thursday, July 1, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-16" onclick="event.stopPropagation(); toggleDayCard(16);" title="Collapse / Expand Day 16">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2422,26 +2587,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (A-85 & Highway 20 South Shore)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-16">
-                    <span>🌤️ Hist. Avg: 15°C - 26°C • Sunny, 24°C</span>
-                    <span class="live-weather-badge" id="live-weather-16">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Follow Highway 20 along the St. Lawrence South Shore through eastern Quebec past Rivière-du-Loup and Lévis. Arrive in Drummondville for the evening, camping along the Saint-François River at Camping des Voltigeurs.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Provincial Park Riverside Campground: Camping des Voltigeurs (Sépaq)</div>
-                        <span class="hotel-rate-pill">$36 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-16">
+                    <div class="weather-bar" id="weather-day-16">
+                        <span>🌤️ Hist. Avg: 15°C - 26°C • Sunny, 24°C</span>
+                        <span class="live-weather-badge" id="live-weather-16">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Drummondville, QC (Saint-François River)</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.sepaq.com/pq/vol/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Follow Highway 20 along the St. Lawrence South Shore through eastern Quebec past Rivière-du-Loup and Lévis. Arrive in Drummondville for the evening, camping along the Saint-François River at Camping des Voltigeurs.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Provincial Park Riverside Campground: Camping des Voltigeurs (Sépaq)</div>
+                            <span class="hotel-rate-pill">$36 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">Drummondville, QC (Saint-François River)</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.sepaq.com/pq/vol/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1819-478-4831" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1819-478-4831</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Nov 2026 (Sépaq Launch)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Hôtel Le Dauphin Drummondville</div>
@@ -2454,36 +2620,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Autoroute 20 South Shore corridor offers frequent full-service service plazas every 50–70 km.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Autoroute 20 South Shore corridor offers frequent full-service service plazas every 50–70 km.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Scenic transition from New Brunswick into Quebec via the Témiscouata corridor</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Scenic transition from New Brunswick into Quebec via the Témiscouata corridor</li>
                         <li>Broad vistas of the St. Lawrence River along Highway 20</li>
                         <li>Riverside camping at Camping des Voltigeurs on the Saint-François River</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(16);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 16 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Parc+provincial+de+la+R%C3%A9publique%2C+Edmundston%2C+NB&destination=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&waypoints=Rivi%C3%A8re-du-Loup%2C+QC&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(16);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 16 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Parc+provincial+de+la+R%C3%A9publique%2C+Edmundston%2C+NB&destination=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&waypoints=Rivi%C3%A8re-du-Loup%2C+QC&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-17" onclick="focusDay(17)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 17)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #2563eb;">Day 17</span>
                         <h3 class="day-title">Drummondville, QC to Pembroke, ON</h3>
                     </div>
-                    <span class="day-date">Friday, July 2, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Friday, July 2, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-17" onclick="event.stopPropagation(); toggleDayCard(17);" title="Collapse / Expand Day 17">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2492,26 +2662,27 @@
                     <span class="stat-chip">🛣️ 100% Paved (A-30, Hwy 417 & Hwy 17)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-17">
-                    <span>🌤️ Hist. Avg: 16°C - 27°C • Sunny, 25°C</span>
-                    <span class="live-weather-badge" id="live-weather-17">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Take Autoroute 30 around Montreal and cross into Ontario on Highway 417. Follow Mitch Owens Road through rural southern Ottawa to Carleton Place, then take Highway 17 West past Renfrew to Pembroke for the night.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Full-Service Hotel: Best Western Pembroke Inn & Conference Centre</div>
-                        <span class="hotel-rate-pill">$165 CAD/night</span>
+                <div class="day-collapsible-body" id="day-body-17">
+                    <div class="weather-bar" id="weather-day-17">
+                        <span>🌤️ Hist. Avg: 16°C - 27°C • Sunny, 25°C</span>
+                        <span class="live-weather-badge" id="live-weather-17">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">1 International Dr, Pembroke, ON</div>
-                    <div class="hotel-actions">
-                        <a href="https://www.bestwestern.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
+
+                    <p class="day-desc">Take Autoroute 30 around Montreal and cross into Ontario on Highway 417. Follow Mitch Owens Road through rural southern Ottawa to Carleton Place, then take Highway 17 West past Renfrew to Pembroke for the night.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Full-Service Hotel: Best Western Pembroke Inn & Conference Centre</div>
+                            <span class="hotel-rate-pill">$165 CAD/night</span>
+                        </div>
+                        <div class="hotel-sub">1 International Dr, Pembroke, ON</div>
+                        <div class="hotel-actions">
+                            <a href="https://www.bestwestern.com/" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(5, 150, 105, 0.12); color: var(--accent-green); border: 1px solid rgba(5, 150, 105, 0.35);">🌐 Website / Book</a>
                         <a href="tel:+1613-735-0131" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 +1613-735-0131</a>
                         <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 Fall 2026 / 6–8 Months Ahead</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: Driftwood Provincial Park (Stonecliffe / Pembroke)</div>
@@ -2524,36 +2695,40 @@
                     </div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> A-30 service centres, Carleton Place, and Pembroke offer full 91+ AKI fuel.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> A-30 service centres, Carleton Place, and Pembroke offer full 91+ AKI fuel.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Crossing the St. Lawrence River on the Pont Serge-Marcil toll bridge</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Crossing the St. Lawrence River on the Pont Serge-Marcil toll bridge</li>
                         <li>Rural highway riding through southern Ottawa agricultural landscapes</li>
                         <li>Hotel stay in Pembroke with indoor pool and restaurant</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(17);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 17 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&destination=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&waypoints=Autoroute+30%2C+Boucherville%2C+QC%7CAutoroute+30%2C+Beauharnois%2C+QC%7CCasselman%2C+ON%7CManotick%2C+Ottawa%2C+ON%7CCarleton+Place%2C+ON&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(17);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 17 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Camping+des+Voltigeurs%2C+Drummondville%2C+QC&destination=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&waypoints=Autoroute+30%2C+Boucherville%2C+QC%7CAutoroute+30%2C+Beauharnois%2C+QC%7CCasselman%2C+ON%7CManotick%2C+Ottawa%2C+ON%7CCarleton+Place%2C+ON&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="day-card" id="day-card-18" onclick="focusDay(18)">
-                <div class="day-header">
+                <div class="day-header" onclick="handleDayHeaderClick(event, 18)">
                     <div class="day-title-row">
                         <span class="day-badge" style="background: #059669;">Day 18</span>
                         <h3 class="day-title">Pembroke, ON to Hanmer, ON</h3>
                     </div>
-                    <span class="day-date">Saturday, July 3, 2027</span>
+                    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                        <span class="day-date">Saturday, July 3, 2027</span>
+                        <button type="button" class="day-collapse-btn" id="day-chevron-18" onclick="event.stopPropagation(); toggleDayCard(18);" title="Collapse / Expand Day 18">▾</button>
+                    </div>
                 </div>
 
                 <div class="stats-row">
@@ -2562,24 +2737,25 @@
                     <span class="stat-chip">🛣️ 100% Paved (Trans-Canada Hwy 17 West)</span>
                 </div>
 
-                <div class="weather-bar" id="weather-day-18">
-                    <span>🌤️ Hist. Avg: 16°C - 26°C • Sunny, 24°C</span>
-                    <span class="live-weather-badge" id="live-weather-18">⏳ Fetching live forecast...</span>
-                </div>
-
-                <p class="day-desc">Ride west along Highway 17 up the Ottawa River Valley through Petawawa, Deep River, and Mattawa. Pass through North Bay and continue west to complete the expedition loop at home in Hanmer.</p>
-
-                <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
-                    <div class="hotel-header-row">
-                        <div class="hotel-title">🏨 Home Base: Home Base (4671 Dupuis Dr, Hanmer)</div>
-                        <span class="hotel-rate-pill">$0 CAD</span>
+                <div class="day-collapsible-body" id="day-body-18">
+                    <div class="weather-bar" id="weather-day-18">
+                        <span>🌤️ Hist. Avg: 16°C - 26°C • Sunny, 24°C</span>
+                        <span class="live-weather-badge" id="live-weather-18">⏳ Fetching live forecast...</span>
                     </div>
-                    <div class="hotel-sub">Hanmer, Greater Sudbury, ON</div>
-                    <div class="hotel-actions">
-                        <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 No Booking Required (Home Base)</span>
+
+                    <p class="day-desc">Ride west along Highway 17 up the Ottawa River Valley through Petawawa, Deep River, and Mattawa. Pass through North Bay and continue west to complete the expedition loop at home in Hanmer.</p>
+
+                    <div class="hotel-box" style="border-left: 3px solid var(--accent-green);">
+                        <div class="hotel-header-row">
+                            <div class="hotel-title">🏨 Home Base: Home Base (4671 Dupuis Dr, Hanmer)</div>
+                            <span class="hotel-rate-pill">$0 CAD</span>
+                        </div>
+                        <div class="hotel-sub">Hanmer, Greater Sudbury, ON</div>
+                        <div class="hotel-actions">
+                            <span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 No Booking Required (Home Base)</span>
+                        </div>
                     </div>
-                </div>
-                
+                    
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-green); margin-top: 8px;">
                     <div class="hotel-header-row">
                         <div class="hotel-title" style="color: var(--accent-green);">🏠 Expedition Completion — Return to Hanmer Home Base</div>
@@ -2588,26 +2764,27 @@
                     <div class="hotel-sub">4671 Dupuis Drive, Hanmer, ON — End of 8,243.4 km East Coast &amp; Labrador Expedition Loop!</div>
                 </div>
 
-                <div class="fuel-box">
-                    <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Mattawa, North Bay, and Hanmer carry 91+ AKI.
-                </div>
+                    <div class="fuel-box">
+                        <strong>⛽ Fuel &amp; 91 Octane Strategy:</strong> Mattawa, North Bay, and Hanmer carry 91+ AKI.
+                    </div>
 
-                <div class="highlights-box">
-                    <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
-                    <ul class="highlights-list">
-                        <li>Morning ride along the Ottawa River and Laurentian border bluffs on Hwy 17</li>
+                    <div class="highlights-box">
+                        <div class="highlights-title">✨ Stage Highlights &amp; Stops</div>
+                        <ul class="highlights-list">
+                            <li>Morning ride along the Ottawa River and Laurentian border bluffs on Hwy 17</li>
                         <li>Historic Mattawa river junction and panoramic Lake Nipissing shorelines</li>
                         <li>Arrival home at 4671 Dupuis Drive in Hanmer on Saturday afternoon</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-                    <button type="button" onclick="event.stopPropagation(); focusDay(18);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
-                        🗺️ Focus Stage 18 on Map
-                    </button>
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&destination=4671+Dupuis+Dr%2C+Hanmer%2C+ON&waypoints=North+Bay%2C+ON&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
-                        🧭 Google Maps Turn-by-Turn ↗
-                    </a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" onclick="event.stopPropagation(); focusDay(18);" class="gmaps-btn" style="flex:1; background: rgba(2, 132, 199, 0.12); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.35); cursor:pointer;">
+                            🗺️ Focus Stage 18 on Map
+                        </button>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=Best+Western+Pembroke+Inn+%26+Conference+Centre%2C+Pembroke%2C+ON&destination=4671+Dupuis+Dr%2C+Hanmer%2C+ON&waypoints=North+Bay%2C+ON&travelmode=driving" target="_blank" onclick="event.stopPropagation();" class="gmaps-btn" style="flex:1;">
+                            🧭 Google Maps Turn-by-Turn ↗
+                        </a>
+                    </div>
                 </div>
             </div>
             </div>
@@ -4583,7 +4760,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>2022 Honda CRF1100L Africa Twin Adventure Sports ES</strong></td>
+                        <td><strong>2025 Honda CRF1100L Africa Twin Adventure Sports ES (Jamie — White &amp; Red)</strong></td>
                         <td>24.8 L</td>
                         <td>4.9 L/100km</td>
                         <td>~450 km (+50 km reserve)</td>
@@ -4591,7 +4768,7 @@
                         <td><strong>86–87 AKI Regular Unleaded</strong> — Native low-octane map handles all remote Labrador &amp; Northern Peninsula pumps effortlessly.</td>
                     </tr>
                     <tr>
-                        <td><strong>2026 Ducati Multistrada V2S</strong></td>
+                        <td><strong>2026 Ducati Multistrada V2S (Rosie — Green)</strong></td>
                         <td>19.0 L</td>
                         <td>5.2 L/100km</td>
                         <td>~315 km (+45 km reserve)</td>
@@ -4908,13 +5085,162 @@
         // Populate initial visible POIs
         updateVisiblePOIs();
 
+        // Collapsible Day Cards & Focus Stage Logic
+        function updateCollapseAllButtonState() {
+            const btn = document.getElementById('btn-collapse-all');
+            if (!btn) return;
+            const allCards = Array.from(document.querySelectorAll('.day-card'));
+            const allCollapsed = allCards.length > 0 && allCards.every(c => c.classList.contains('collapsed'));
+            btn.textContent = allCollapsed ? '↕️ Expand All' : '↕️ Collapse All';
+        }
+
+        function toggleDayCard(dayNum, forceCollapse) {
+            const card = document.getElementById(`day-card-${dayNum}`);
+            const chev = document.getElementById(`day-chevron-${dayNum}`);
+            if (!card) return;
+            const shouldCollapse = (typeof forceCollapse === 'boolean')
+                ? forceCollapse
+                : !card.classList.contains('collapsed');
+            card.classList.toggle('collapsed', shouldCollapse);
+            if (chev) chev.textContent = shouldCollapse ? '▸' : '▾';
+            updateCollapseAllButtonState();
+        }
+
+        function toggleAllDayCards() {
+            const allCards = Array.from(document.querySelectorAll('.day-card'));
+            const allCollapsed = allCards.length > 0 && allCards.every(c => c.classList.contains('collapsed'));
+            const targetCollapse = !allCollapsed;
+            for (let d = 1; d <= 18; d++) {
+                toggleDayCard(d, targetCollapse);
+            }
+        }
+
+        function handleDayHeaderClick(evt, dayNum) {
+            const card = document.getElementById(`day-card-${dayNum}`);
+            if (!card) return;
+            // If clicking the header of an already active & expanded card, collapse it cleanly
+            if (activeFocusedDay === dayNum && !card.classList.contains('collapsed')) {
+                evt.stopPropagation();
+                toggleDayCard(dayNum, true);
+            }
+        }
+
+        // Resizable Split Divider Gutter (Map <-> Itinerary)
+        (function initResizerGutter() {
+            const gutter = document.getElementById('resizer-gutter');
+            const container = document.getElementById('sec-top');
+            const sidebar = document.getElementById('sec-itinerary');
+            if (!gutter || !container || !sidebar) return;
+
+            const STORAGE_KEY = 'exp51_sidebar_width_px';
+            const DEFAULT_WIDTH = 540;
+
+            function applySidebarWidth(w) {
+                if (window.innerWidth <= 1024) {
+                    sidebar.style.flex = '';
+                    sidebar.style.width = '';
+                    return;
+                }
+                const rect = container.getBoundingClientRect();
+                const maxW = Math.min(920, Math.max(420, rect.width - 360));
+                const clamped = Math.max(320, Math.min(maxW, w));
+                sidebar.style.flex = `0 0 ${clamped}px`;
+                sidebar.style.width = `${clamped}px`;
+            }
+
+            const savedW = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+            if (!isNaN(savedW) && savedW >= 320 && window.innerWidth > 1024) {
+                applySidebarWidth(savedW);
+                setTimeout(() => map.invalidateSize({ pan: false }), 60);
+            }
+
+            let isDragging = false;
+            let rafPending = false;
+
+            function onMove(clientX) {
+                if (!isDragging) return;
+                const rect = container.getBoundingClientRect();
+                const newSidebarWidth = rect.right - clientX;
+                applySidebarWidth(newSidebarWidth);
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(() => {
+                        map.invalidateSize({ pan: false });
+                        rafPending = false;
+                    });
+                }
+            }
+
+            function stopDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                gutter.classList.remove('dragging');
+                document.body.classList.remove('is-resizing');
+                const currentW = Math.round(sidebar.getBoundingClientRect().width);
+                if (currentW >= 320 && window.innerWidth > 1024) {
+                    localStorage.setItem(STORAGE_KEY, String(currentW));
+                }
+                map.invalidateSize({ pan: false });
+            }
+
+            gutter.addEventListener('mousedown', (e) => {
+                if (window.innerWidth <= 1024) return;
+                e.preventDefault();
+                isDragging = true;
+                gutter.classList.add('dragging');
+                document.body.classList.add('is-resizing');
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) onMove(e.clientX);
+            });
+
+            window.addEventListener('mouseup', stopDrag);
+
+            gutter.addEventListener('touchstart', (e) => {
+                if (window.innerWidth <= 1024 || !e.touches.length) return;
+                isDragging = true;
+                gutter.classList.add('dragging');
+                document.body.classList.add('is-resizing');
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length) onMove(e.touches[0].clientX);
+            }, { passive: true });
+
+            window.addEventListener('touchend', stopDrag);
+
+            gutter.addEventListener('dblclick', () => {
+                if (window.innerWidth <= 1024) return;
+                localStorage.removeItem(STORAGE_KEY);
+                applySidebarWidth(DEFAULT_WIDTH);
+                map.invalidateSize({ pan: false });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.style.flex = '';
+                    sidebar.style.width = '';
+                } else {
+                    const sw = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+                    if (!isNaN(sw) && sw >= 320) applySidebarWidth(sw);
+                }
+                map.invalidateSize({ pan: false });
+            });
+        })();
+
         // Focus Specific Day Stage
         function focusDay(dayNum) {
             activeFocusedDay = dayNum;
 
             document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
             const activeCard = document.getElementById(`day-card-${dayNum}`);
-            if (activeCard) activeCard.classList.add('active');
+            if (activeCard) {
+                activeCard.classList.add('active');
+                if (activeCard.classList.contains('collapsed')) {
+                    toggleDayCard(dayNum, false);
+                }
+            }
 
             document.querySelectorAll('.day-jump-pill').forEach(p => p.classList.remove('active'));
             const activePill = document.getElementById(`jump-pill-${dayNum}`);
@@ -5115,7 +5441,7 @@
         const NOTES_STORAGE_KEY = 'exp51_master_trip_notes_v1';
         const DEFAULT_NOTES_TEXT = `=== 2027 EAST COAST & LABRADOR MOTO EXPEDITION (EXPEDITION 51) ===
 Dates: June 16 – July 3, 2027 (18 Days • 8,243.4 km Pure Metric)
-Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
+Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2S (Rosie)
 
 [CRITICAL RESERVATION CHECKLIST]
 [ ] Jan 2027: Book Marine Atlantic Overnight Ferry (Day 10: Port aux Basques -> North Sydney + 2-Berth Cabin)
@@ -5313,7 +5639,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             });
         })();
 
-        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (ATAS White/Red & V2S Green)
+        // Completed Trail Polyline & Dual Pulsing Live Bike Markers (Jamie White/Red & Rosie Green)
         const liveCompletedTrail = L.polyline([], {
             color: '#0284c7',
             weight: 6.5,
@@ -5325,39 +5651,45 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         const ATAS_MOTO_SVG = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#ffffff"/><circle cx="18.5" cy="17.5" r="3.5" fill="#ffffff"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#dc2626"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
         const V2S_MOTO_SVG  = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5" fill="#15803d"/><circle cx="18.5" cy="17.5" r="3.5" fill="#15803d"/><path d="M14 6h3.5l2 5.5h-5.5l-2.5-5.5z" fill="#ffffff"/><path d="M5.5 14l4.5-5h4.5l2.5 5"/></svg>`;
 
+        function normalizeRider(r) {
+            if (r === 'Rosie' || r === 'V2S') return 'Rosie';
+            return 'Jamie';
+        }
+
         function createLiveBikeIcon(callsign, isCoLocated) {
-            const isV2S = callsign === 'V2S';
-            const coClass = isCoLocated ? (isV2S ? 'co-located-v2s' : 'co-located-atas') : '';
-            const v2sClass = isV2S ? 'v2s' : '';
-            const svgIcon = isV2S ? V2S_MOTO_SVG : ATAS_MOTO_SVG;
+            const norm = normalizeRider(callsign);
+            const isRosie = norm === 'Rosie';
+            const coClass = isCoLocated ? (isRosie ? 'co-located-v2s' : 'co-located-atas') : '';
+            const v2sClass = isRosie ? 'v2s' : '';
+            const svgIcon = isRosie ? V2S_MOTO_SVG : ATAS_MOTO_SVG;
             return L.divIcon({
                 className: '',
-                html: `<div class="live-bike-marker-wrap ${coClass}"><div class="live-bike-pulse ${v2sClass}"></div><div class="live-bike-core ${v2sClass}">${svgIcon}</div><div class="live-bike-callsign ${v2sClass}">${callsign}</div></div>`,
+                html: `<div class="live-bike-marker-wrap ${coClass}"><div class="live-bike-pulse ${v2sClass}"></div><div class="live-bike-core ${v2sClass}">${svgIcon}</div><div class="live-bike-callsign ${v2sClass}">${norm}</div></div>`,
                 iconSize: [38, 44],
                 iconAnchor: [19, 19],
-                popupAnchor: isCoLocated ? (isV2S ? [17, -18] : [-17, -18]) : [0, -18]
+                popupAnchor: isCoLocated ? (isRosie ? [23, -18] : [-23, -18]) : [0, -18]
             });
         }
 
         const liveMarkerATAS = L.marker([46.656232, -80.882479], {
-            icon: createLiveBikeIcon('ATAS', true),
+            icon: createLiveBikeIcon('Jamie', true),
             zIndexOffset: 2510
         }).addTo(map);
 
         const liveMarkerV2S = L.marker([46.656232, -80.882479], {
-            icon: createLiveBikeIcon('V2S', true),
+            icon: createLiveBikeIcon('Rosie', true),
             zIndexOffset: 2500
         }).addTo(map);
 
         const RIDER_META = {
-            ATAS: {
-                callsign: 'ATAS',
-                model: '2022 Honda Africa Twin Adv Sports ES (White & Red)',
-                shortModel: 'Africa Twin',
+            Jamie: {
+                callsign: 'Jamie',
+                model: '2025 Honda CRF1100L Africa Twin Adv Sports ES (White & Red)',
+                shortModel: '2025 Africa Twin',
                 color: '#dc2626'
             },
-            V2S: {
-                callsign: 'V2S',
+            Rosie: {
+                callsign: 'Rosie',
                 model: '2026 Ducati Multistrada V2S (Green)',
                 shortModel: 'Ducati V2S',
                 color: '#16a34a'
@@ -5367,47 +5699,49 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         let latestATASPacket = null;
         let latestV2SPacket = null;
         let latestLeadPacket = null;
-        let selectedRiderCallsign = localStorage.getItem('exp51_rider_callsign') === 'V2S' ? 'V2S' : 'ATAS';
+        let selectedRiderCallsign = normalizeRider(localStorage.getItem('exp51_rider_callsign') || 'Jamie');
         let selectedStatusLabel = '🏍️ In Saddle';
         let selectedDefaultNote = 'Riding on stage — all good!';
         let liveGpsWatchId = null;
         let lastAutoBroadcastMs = 0;
 
         function selectRiderCallsign(callsign) {
-            selectedRiderCallsign = callsign === 'V2S' ? 'V2S' : 'ATAS';
+            selectedRiderCallsign = normalizeRider(callsign);
             localStorage.setItem('exp51_rider_callsign', selectedRiderCallsign);
             const btnAtas = document.getElementById('btn-rider-atas');
             const btnV2s  = document.getElementById('btn-rider-v2s');
             if (btnAtas) {
-                const isAtas = selectedRiderCallsign === 'ATAS';
-                btnAtas.classList.toggle('active', isAtas);
-                btnAtas.style.background = isAtas ? '#ffffff' : 'var(--bg-card)';
-                btnAtas.style.color = isAtas ? '#dc2626' : 'var(--text-main)';
+                const isJamie = selectedRiderCallsign === 'Jamie';
+                btnAtas.classList.toggle('active', isJamie);
+                btnAtas.style.background = isJamie ? '#ffffff' : 'var(--bg-card)';
+                btnAtas.style.color = isJamie ? '#dc2626' : 'var(--text-main)';
                 btnAtas.style.borderColor = '#dc2626';
-                btnAtas.style.boxShadow = isAtas ? 'inset 0 0 0 1.5px #dc2626' : 'none';
+                btnAtas.style.boxShadow = isJamie ? 'inset 0 0 0 1.5px #dc2626' : 'none';
             }
             if (btnV2s) {
-                const isV2s = selectedRiderCallsign === 'V2S';
-                btnV2s.classList.toggle('active', isV2s);
-                btnV2s.style.background = isV2s ? '#16a34a' : 'var(--bg-card)';
-                btnV2s.style.color = isV2s ? '#ffffff' : 'var(--text-main)';
+                const isRosie = selectedRiderCallsign === 'Rosie';
+                btnV2s.classList.toggle('active', isRosie);
+                btnV2s.style.background = isRosie ? '#16a34a' : 'var(--bg-card)';
+                btnV2s.style.color = isRosie ? '#ffffff' : 'var(--text-main)';
                 btnV2s.style.borderColor = '#16a34a';
             }
         }
 
         function getStoredFeedHistory() {
             try {
-                const raw = localStorage.getItem(LIVE_HISTORY_KEY + '_v2');
+                const raw = localStorage.getItem(LIVE_HISTORY_KEY + '_v3');
                 if (raw) {
                     const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        return parsed.map(p => ({ ...p, rider: normalizeRider(p.rider) }));
+                    }
                 }
             } catch (e) {}
             const now = Date.now();
             return [
                 {
-                    id: 'init-hanmer-atas',
-                    rider: 'ATAS',
+                    id: 'init-hanmer-jamie',
+                    rider: 'Jamie',
                     ts: now - 3500000,
                     lat: 46.656232,
                     lon: -80.882479,
@@ -5415,11 +5749,11 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     speedKmh: 0,
                     altM: 295,
                     status: '🏕️ Checked In • Hanmer Start',
-                    note: 'ATAS (2022 Honda Africa Twin ES) prepped at Hanmer Home Base (4671 Dupuis Dr) — 24.8L tank & panniers loaded!'
+                    note: 'Jamie (2025 Honda Africa Twin ES) prepped at Hanmer Home Base (4671 Dupuis Dr) — 24.8L tank & panniers loaded!'
                 },
                 {
-                    id: 'init-hanmer-v2s',
-                    rider: 'V2S',
+                    id: 'init-hanmer-rosie',
+                    rider: 'Rosie',
                     ts: now - 3550000,
                     lat: 46.656232,
                     lon: -80.882479,
@@ -5427,14 +5761,14 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                     speedKmh: 0,
                     altM: 295,
                     status: '🏕️ Checked In • Hanmer Start',
-                    note: 'V2S (2026 Ducati Multistrada V2S) prepped at Hanmer Home Base — 5L auxiliary bladder & Lucas MMT packed!'
+                    note: 'Rosie (2026 Ducati Multistrada V2S) prepped at Hanmer Home Base — 5L auxiliary bladder & Lucas MMT packed!'
                 }
             ];
         }
 
         function saveStoredFeedHistory(list) {
             try {
-                localStorage.setItem(LIVE_HISTORY_KEY + '_v2', JSON.stringify(list.slice(0, 80)));
+                localStorage.setItem(LIVE_HISTORY_KEY + '_v3', JSON.stringify(list.slice(0, 80)));
             } catch (e) {}
         }
 
@@ -5476,14 +5810,16 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }
 
         function buildBikePopupHtml(callsign, pkt, snap, separationKm) {
-            const meta = RIDER_META[callsign] || RIDER_META.ATAS;
+            const norm = normalizeRider(callsign);
+            const meta = RIDER_META[norm] || RIDER_META.Jamie;
+            const otherRider = norm === 'Jamie' ? 'Rosie' : 'Jamie';
             const sepText = separationKm < 0.5
-                ? '🤝 Riding Together with ' + (callsign === 'ATAS' ? 'V2S' : 'ATAS')
-                : `📏 ${separationKm.toFixed(1)} km from ${callsign === 'ATAS' ? 'V2S' : 'ATAS'}`;
+                ? '🤝 Riding Together with ' + otherRider
+                : `📏 ${separationKm.toFixed(1)} km from ${otherRider}`;
             return `
                 <div class="poi-popup-card">
-                    <div class="poi-popup-type" style="color:${meta.color};">📡 ${meta.callsign} LIVE TRACKER • DAY ${snap.day}</div>
-                    <div class="poi-popup-title"><span class="lt-rider-pill ${callsign === 'V2S' ? 'v2s' : ''}" style="margin-right:5px; vertical-align:middle;">${callsign}</span>${pkt.status}</div>
+                    <div class="poi-popup-type" style="color:${meta.color};">📡 ${meta.callsign.toUpperCase()} LIVE TRACKER • DAY ${snap.day}</div>
+                    <div class="poi-popup-title"><span class="lt-rider-pill ${norm === 'Rosie' ? 'v2s' : ''}" style="margin-right:5px; vertical-align:middle;">${norm}</span>${pkt.status}</div>
                     <div style="font-size:0.71rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">🏍️ ${meta.model}</div>
                     <div class="poi-popup-desc" style="margin-top:2px;">${pkt.note || ''}</div>
                     <div style="font-size:0.74rem; color:var(--text-muted); background:var(--bg-subtle); padding:6px 8px; border-radius:6px; border:1px solid var(--border); margin-bottom:6px;">
@@ -5493,28 +5829,28 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         <div><strong>🏍️ Fleet Status:</strong> ${sepText} • ${Number(pkt.speedKmh) || 0} km/h</div>
                         <div><strong>🕒 Updated:</strong> ${formatRelativeTime(pkt.ts)} (${pkt.lat.toFixed(4)}, ${pkt.lon.toFixed(4)})</div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=${pkt.lat},${pkt.lon}" target="_blank" class="poi-popup-link">📍 Open ${callsign} Coordinates in Google Maps ↗</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${pkt.lat},${pkt.lon}" target="_blank" class="poi-popup-link">📍 Open ${norm} Coordinates in Google Maps ↗</a>
                 </div>
             `;
         }
 
         function renderLiveTrackerState(historyList) {
             if (!historyList || !historyList.length) return;
-            const sorted = [...historyList].sort((a, b) => b.ts - a.ts);
+            const sorted = [...historyList].map(x => ({ ...x, rider: normalizeRider(x.rider) })).sort((a, b) => b.ts - a.ts);
 
-            const defaultAtas = {
-                id: 'fallback-atas', rider: 'ATAS', ts: Date.now() - 3600000,
+            const defaultJamie = {
+                id: 'fallback-jamie', rider: 'Jamie', ts: Date.now() - 3600000,
                 lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
-                status: '🏕️ Hanmer Start', note: 'Africa Twin staged at Hanmer Home Base.'
+                status: '🏕️ Hanmer Start', note: '2025 Africa Twin staged at Hanmer Home Base.'
             };
-            const defaultV2s = {
-                id: 'fallback-v2s', rider: 'V2S', ts: Date.now() - 3600000,
+            const defaultRosie = {
+                id: 'fallback-rosie', rider: 'Rosie', ts: Date.now() - 3600000,
                 lat: 46.656232, lon: -80.882479, day: 1, speedKmh: 0, altM: 295,
                 status: '🏕️ Hanmer Start', note: 'Ducati V2S staged at Hanmer Home Base.'
             };
 
-            latestATASPacket = sorted.find(x => (x.rider || 'ATAS') === 'ATAS') || defaultAtas;
-            latestV2SPacket  = sorted.find(x => x.rider === 'V2S') || defaultV2s;
+            latestATASPacket = sorted.find(x => x.rider === 'Jamie') || defaultJamie;
+            latestV2SPacket  = sorted.find(x => x.rider === 'Rosie') || defaultRosie;
             latestLeadPacket = sorted[0];
 
             const snapATAS = snapToRoute(latestATASPacket.lat, latestATASPacket.lon, latestATASPacket.day) || {
@@ -5533,7 +5869,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             // Lead progress uses whichever rider is further along the loop
             const leadSnap = snapATAS.cumKm >= snapV2S.cumKm ? snapATAS : snapV2S;
 
-            // Calculate live separation between ATAS and V2S
+            // Calculate live separation between Jamie and Rosie
             const separationKm = haversineKm(
                 latestATASPacket.lat, latestATASPacket.lon,
                 latestV2SPacket.lat, latestV2SPacket.lon
@@ -5541,33 +5877,33 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const isCoLocated = separationKm < 0.5;
 
             // Update both Live Bike Markers & Completed Polyline
-            liveMarkerATAS.setIcon(createLiveBikeIcon('ATAS', isCoLocated));
-            liveMarkerV2S.setIcon(createLiveBikeIcon('V2S', isCoLocated));
+            liveMarkerATAS.setIcon(createLiveBikeIcon('Jamie', isCoLocated));
+            liveMarkerV2S.setIcon(createLiveBikeIcon('Rosie', isCoLocated));
             liveMarkerATAS.setLatLng([latestATASPacket.lat, latestATASPacket.lon]);
             liveMarkerV2S.setLatLng([latestV2SPacket.lat, latestV2SPacket.lon]);
 
             liveCompletedTrail.setLatLngs(leadSnap.completedCoords);
             liveCompletedTrail.bringToFront();
 
-            liveMarkerATAS.bindPopup(buildBikePopupHtml('ATAS', latestATASPacket, snapATAS, separationKm), {
+            liveMarkerATAS.bindPopup(buildBikePopupHtml('Jamie', latestATASPacket, snapATAS, separationKm), {
                 maxWidth: 305,
                 autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
                 autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             });
-            liveMarkerV2S.bindPopup(buildBikePopupHtml('V2S', latestV2SPacket, snapV2S, separationKm), {
+            liveMarkerV2S.bindPopup(buildBikePopupHtml('Rosie', latestV2SPacket, snapV2S, separationKm), {
                 maxWidth: 305,
                 autoPanPaddingTopLeft: window.innerWidth > 768 ? [60, 110] : [16, 110],
                 autoPanPaddingBottomRight: window.innerWidth > 768 ? [405, 30] : [20, 30]
             });
 
-            // Update Historical Check-In Pins (White & Red for ATAS, Green for V2S)
+            // Update Historical Check-In Pins (White & Red for Jamie, Green for Rosie)
             liveCheckInLayer.clearLayers();
             sorted.slice(0, 18).forEach(item => {
-                const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
-                const isV2S = rCall === 'V2S';
-                const pinFill = isV2S ? '#16a34a' : '#ffffff';
-                const pinStroke = isV2S ? '#ffffff' : '#dc2626';
-                const pinAccent = isV2S ? '#16a34a' : '#dc2626';
+                const rCall = normalizeRider(item.rider);
+                const isRosie = rCall === 'Rosie';
+                const pinFill = isRosie ? '#16a34a' : '#ffffff';
+                const pinStroke = isRosie ? '#ffffff' : '#dc2626';
+                const pinAccent = isRosie ? '#16a34a' : '#dc2626';
                 const cm = L.circleMarker([item.lat, item.lon], {
                     radius: 5.5,
                     fillColor: pinFill,
@@ -5578,21 +5914,21 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 }).addTo(liveCheckInLayer);
                 cm.bindPopup(`
                     <div class="poi-popup-card">
-                        <div class="poi-popup-type" style="color:${pinAccent};">✓ ${rCall} CHECK-IN • DAY ${item.day || 1}</div>
-                        <div class="poi-popup-title"><span class="lt-rider-pill ${isV2S ? 'v2s' : ''}" style="margin-right:5px;">${rCall}</span>${item.status}</div>
+                        <div class="poi-popup-type" style="color:${pinAccent};">✓ ${rCall.toUpperCase()} CHECK-IN • DAY ${item.day || 1}</div>
+                        <div class="poi-popup-title"><span class="lt-rider-pill ${isRosie ? 'v2s' : ''}" style="margin-right:5px;">${rCall}</span>${item.status}</div>
                         <div class="poi-popup-desc">${item.note || ''}</div>
                         <div style="font-size:0.72rem; color:var(--text-muted);">🕒 ${new Date(item.ts).toLocaleString('en-CA')}</div>
                     </div>
                 `);
             });
 
-            // Update ATAS & V2S Status Cards in HUD
+            // Update Jamie & Rosie Status Cards in HUD
             const elTimeAtas   = document.getElementById('lt-time-atas');
             const elStatusAtas = document.getElementById('lt-status-atas');
             const elNoteAtas   = document.getElementById('lt-note-atas');
             if (elTimeAtas)   elTimeAtas.textContent   = formatRelativeTime(latestATASPacket.ts);
             if (elStatusAtas) elStatusAtas.textContent = `${latestATASPacket.status}`;
-            if (elNoteAtas)   elNoteAtas.textContent   = `Day ${snapATAS.day} • ${latestATASPacket.note || 'Africa Twin'}`;
+            if (elNoteAtas)   elNoteAtas.textContent   = `Day ${snapATAS.day} • ${latestATASPacket.note || '2025 Africa Twin'}`;
 
             const elTimeV2s   = document.getElementById('lt-time-v2s');
             const elStatusV2s = document.getElementById('lt-status-v2s');
@@ -5626,12 +5962,12 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 }
             }
 
-            // Populate Check-In Feed List with ATAS / V2S Callsign Pills
+            // Populate Check-In Feed List with Jamie / Rosie Callsign Pills
             const feedEl = document.getElementById('lt-feed-list');
             if (feedEl) {
                 feedEl.innerHTML = sorted.slice(0, 14).map((item) => {
-                    const rCall = item.rider === 'V2S' ? 'V2S' : 'ATAS';
-                    const pillClass = rCall === 'V2S' ? 'v2s' : '';
+                    const rCall = normalizeRider(item.rider);
+                    const pillClass = rCall === 'Rosie' ? 'v2s' : '';
                     return `
                     <div class="lt-feed-item" onclick="focusCheckInItem(${item.lat}, ${item.lon}, '${rCall}')">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
@@ -5652,7 +5988,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         function focusCheckInItem(lat, lon, callsign) {
             const lonOffset = window.innerWidth > 768 ? 0.25 : 0;
             map.setView([lat + 0.08, lon + lonOffset], 10, { animate: true });
-            if (callsign === 'V2S') {
+            if (normalizeRider(callsign) === 'Rosie') {
                 liveMarkerV2S.openPopup();
             } else {
                 liveMarkerATAS.openPopup();
@@ -5660,9 +5996,9 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }
 
         function centerOnLiveBike(callsign) {
-            const targetCall = callsign === 'V2S' ? 'V2S' : (callsign === 'ATAS' ? 'ATAS' : (latestLeadPacket && latestLeadPacket.rider === 'V2S' ? 'V2S' : 'ATAS'));
-            const pkt = targetCall === 'V2S' ? latestV2SPacket : latestATASPacket;
-            const marker = targetCall === 'V2S' ? liveMarkerV2S : liveMarkerATAS;
+            const targetCall = callsign ? normalizeRider(callsign) : (latestLeadPacket ? normalizeRider(latestLeadPacket.rider) : 'Jamie');
+            const pkt = targetCall === 'Rosie' ? latestV2SPacket : latestATASPacket;
+            const marker = targetCall === 'Rosie' ? liveMarkerV2S : liveMarkerATAS;
             if (!pkt) return;
             const lonOffset = window.innerWidth > 768 ? 0.55 : 0;
             map.setView([pkt.lat + 0.14, pkt.lon + lonOffset], 9, { animate: true });
@@ -5718,6 +6054,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
         }
 
         async function publishPacketToCloud(pkt) {
+            pkt.rider = normalizeRider(pkt.rider);
             // Save immediately to local history and update UI
             const hist = getStoredFeedHistory();
             if (!hist.some(x => x.id === pkt.id)) {
@@ -5769,7 +6106,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             const noteIn = document.getElementById('lt-note-input');
             const fb = document.getElementById('lt-broadcast-feedback');
             const customNote = noteIn && noteIn.value.trim() ? noteIn.value.trim() : selectedDefaultNote;
-            const callsign = selectedRiderCallsign;
+            const callsign = normalizeRider(selectedRiderCallsign);
 
             const sendWithCoords = async (lat, lon, dayHint, speedKmh, altM) => {
                 const snap = snapToRoute(lat, lon, dayHint);
@@ -5799,7 +6136,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                 centerOnLiveBike(callsign);
             };
 
-            const fallbackPkt = (callsign === 'V2S' ? latestV2SPacket : latestATASPacket) || { lat: 46.656232, lon: -80.882479, day: 1 };
+            const fallbackPkt = (callsign === 'Rosie' ? latestV2SPacket : latestATASPacket) || { lat: 46.656232, lon: -80.882479, day: 1 };
 
             if (locSel && locSel.value !== 'gps') {
                 const parts = locSel.value.split(',');
@@ -5851,7 +6188,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             liveGpsWatchId = navigator.geolocation.watchPosition(
                 pos => {
                     const now = Date.now();
-                    const callsign = selectedRiderCallsign;
+                    const callsign = normalizeRider(selectedRiderCallsign);
                     const spd = pos.coords.speed ? Math.round(pos.coords.speed * 3.6) : 0;
                     const alt = pos.coords.altitude ? Math.round(pos.coords.altitude) : 150;
                     const snap = snapToRoute(pos.coords.latitude, pos.coords.longitude, null);
@@ -5897,7 +6234,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.event === 'message' && env.message) {
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {
-                                if (!pkt.rider) pkt.rider = 'ATAS';
+                                pkt.rider = normalizeRider(pkt.rider);
                                 if (!hist.some(x => x.id === pkt.id)) {
                                     hist.push(pkt);
                                     added = true;
@@ -5925,7 +6262,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
                         if (env && env.message) {
                             const pkt = JSON.parse(env.message);
                             if (pkt && pkt.app === 'exp51-live' && pkt.sig === RIDER_PIN_CODE && pkt.id) {
-                                if (!pkt.rider) pkt.rider = 'ATAS';
+                                pkt.rider = normalizeRider(pkt.rider);
                                 const hist = getStoredFeedHistory();
                                 if (!hist.some(x => x.id === pkt.id)) {
                                     hist.unshift(pkt);
@@ -5939,7 +6276,7 @@ Fleet: 2022 Honda Africa Twin Adv Sports ES + 2026 Ducati Multistrada V2S
             } catch (e) {}
         }
 
-        // Initialize Family & Friends Live Tracker on Load (Dual-Rider: ATAS & V2S)
+        // Initialize Family & Friends Live Tracker on Load (Dual-Rider: Jamie & Rosie)
         renderLiveTrackerState(getStoredFeedHistory());
         updateOfflineQueueBadge();
         pollCloudTrackerFeed(false);
