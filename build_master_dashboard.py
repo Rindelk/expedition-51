@@ -13,6 +13,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(BASE_DIR, "exp51_data.json"), "r", encoding="utf-8") as f:
     exp_data = json.load(f)
 
+with open(os.path.join(BASE_DIR, "luggage_checklist.json"), "r", encoding="utf-8") as f_chk:
+    checklist_data = json.load(f_chk)
+
 tracks_data = exp_data["tracksData"]
 gravel_data = exp_data["gravelData"]
 pois_data = exp_data["poisData"]
@@ -1798,6 +1801,129 @@ html_template = f"""<!DOCTYPE html>
                 left: 10px;
                 width: auto;
             }}
+            .chk-bikes-grid {{
+                grid-template-columns: 1fr !important;
+            }}
+        }}
+
+        /* Permanent Unpaved QC-389 Map Label Pill */
+        .gravel-map-label {{
+            background: rgba(120, 53, 15, 0.92);
+            color: #fef3c7;
+            border: 1.5px dashed #f59e0b;
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-size: 0.66rem;
+            font-weight: 800;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+            pointer-events: auto;
+        }}
+
+        /* Per-Bike Luggage Volume & Packing Checklist (Git-Backed) */
+        .chk-sync-bar {{
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: var(--shadow-card);
+        }}
+        .chk-bikes-grid {{
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }}
+        .chk-bike-panel {{
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }}
+        .chk-bike-panel.jamie {{
+            border-top: 4px solid #dc2626;
+        }}
+        .chk-bike-panel.rosie {{
+            border-top: 4px solid #16a34a;
+        }}
+        .chk-vol-bar-track {{
+            width: 100%;
+            height: 10px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            overflow: hidden;
+            position: relative;
+        }}
+        .chk-vol-bar-fill {{
+            height: 100%;
+            border-radius: 99px;
+            transition: width 0.25s ease, background-color 0.25s ease;
+        }}
+        .chk-comp-card {{
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }}
+        .chk-item-row {{
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            font-size: 0.78rem;
+            transition: border-color 0.15s ease, opacity 0.15s ease;
+        }}
+        .chk-item-row.unpacked {{
+            opacity: 0.65;
+            border-style: dashed;
+        }}
+        .chk-item-row:hover {{
+            border-color: var(--accent-blue);
+        }}
+        .chk-inline-input {{
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-size: 0.78rem;
+            font-family: inherit;
+        }}
+        .chk-inline-input:hover,
+        .chk-inline-input:focus {{
+            background: var(--bg-subtle);
+            border-color: var(--accent-blue);
+            outline: none;
+        }}
+        .chk-num-input {{
+            width: 54px;
+            text-align: right;
+            font-family: monospace;
+            font-weight: 700;
+            background: var(--bg-subtle);
+            color: var(--accent-blue);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-size: 0.75rem;
         }}
     </style>
 </head>
@@ -1815,11 +1941,14 @@ html_template = f"""<!DOCTYPE html>
             <div class="stats-strip hide-mobile">
                 <div class="stat-item"><span class="val">8,243.4 km</span><span class="lbl">Pure Metric</span></div>
                 <div class="stat-item"><span class="val">18 Days</span><span class="lbl">Stages</span></div>
-                <div class="stat-item"><span class="val">423 POIs</span><span class="lbl">Verified</span></div>
+                <div class="stat-item"><span class="val">{len(pois_data)} POIs</span><span class="lbl">Verified</span></div>
             </div>
             <button type="button" class="theme-toggle-btn" id="live-tracker-btn" onclick="toggleLiveTrackerPanel()" style="border-color: var(--accent-green); color: var(--accent-green);">
                 <span class="live-dot" id="live-tracker-dot"></span>
                 <span>📡 Live Tracker</span>
+            </button>
+            <button type="button" class="theme-toggle-btn" id="checklist-nav-btn" onclick="document.getElementById('sec-checklist').scrollIntoView({{behavior:'smooth'}})" style="border-color: var(--accent-orange); color: var(--accent-orange);">
+                <span>🧳</span> <span>Bike Checklist</span>
             </button>
             <button type="button" class="theme-toggle-btn" id="notes-btn" onclick="openNotesModal()">
                 <span>📝</span> <span>Trip Notes</span>
@@ -1833,23 +1962,22 @@ html_template = f"""<!DOCTYPE html>
     <div class="main-container" id="sec-top">
         <!-- Interactive Map -->
         <div class="map-wrapper" id="sec-map">
-            <div class="filter-toolbar">
-                <button type="button" class="filter-btn active" onclick="filterPOIs('all', this)">🌐 All POIs</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-primary', this)">🏕️ Primary Lodging</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-secondary', this)">⛺ Backup Lodging</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('fuel', this)">⛽ Fuel</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('food', this)">🍽️ Food &amp; Brewpubs</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('coffee', this)">☕ Coffee</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('curated-gems', this)">⭐ Curated Gems</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('attraction', this)">🏛️ Attractions</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('sight', this)">📸 Sights</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hike', this)">🥾 Hikes</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('park', this)">🌲 Parks</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hazard', this)">⚠️ QC-389 Hazards</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('pullout', this)">🅿️ QC-389 Pullouts</button>
-                <button type="button" class="filter-btn" id="btn-gravel-toggle" onclick="toggleGravelHighlight()" style="border-color: var(--accent-orange); color: var(--accent-orange);">╌╌ Unpaved QC-389</button>
+            <div class="filter-toolbar" id="poi-filter-toolbar">
+                <button type="button" class="filter-btn active" data-cat="all" onclick="filterPOIs('all', this)">🌐 All POIs</button>
+                <button type="button" class="filter-btn" data-cat="hotel-primary" onclick="filterPOIs('hotel-primary', this)">🏕️ Primary Lodging</button>
+                <button type="button" class="filter-btn" data-cat="hotel-secondary" onclick="filterPOIs('hotel-secondary', this)">⛺ Backup Lodging</button>
+                <button type="button" class="filter-btn" data-cat="fuel" onclick="filterPOIs('fuel', this)">⛽ Fuel</button>
+                <button type="button" class="filter-btn" data-cat="food" onclick="filterPOIs('food', this)">🍽️ Food</button>
+                <button type="button" class="filter-btn" data-cat="coffee" onclick="filterPOIs('coffee', this)">☕ Coffee</button>
+                <button type="button" class="filter-btn" data-cat="curated-gems" onclick="filterPOIs('curated-gems', this)">⭐ Curated Gems</button>
+                <button type="button" class="filter-btn" data-cat="attraction" onclick="filterPOIs('attraction', this)">🏛️ Attractions</button>
+                <button type="button" class="filter-btn" data-cat="sight" onclick="filterPOIs('sight', this)">📸 Sights</button>
+                <button type="button" class="filter-btn" data-cat="hike" onclick="filterPOIs('hike', this)">🥾 Hikes</button>
+                <button type="button" class="filter-btn" data-cat="lighthouse" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
+                <button type="button" class="filter-btn" data-cat="park" onclick="filterPOIs('park', this)">🌲 Parks</button>
+                <button type="button" class="filter-btn" data-cat="ferry" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
+                <button type="button" class="filter-btn" data-cat="hazard" onclick="filterPOIs('hazard', this)">⚠️ QC-389 Hazards</button>
+                <button type="button" class="filter-btn" data-cat="pullout" onclick="filterPOIs('pullout', this)">🅿️ QC-389 Pullouts</button>
             </div>
 
             <div id="map"></div>
@@ -2134,7 +2262,7 @@ html_template = f"""<!DOCTYPE html>
             <div class="download-card">
                 <div>
                     <h4>📍 Complete GPX Navigation File</h4>
-                    <p>Contains all 18 OSRM road-snapped daily stage tracks plus all 423 waypoints (lodging, camping backups, 72 fuel stops, 62 restaurants, 28 coffee shops, lighthouses, sights, QC-389 pullouts &amp; rail crossings). Compatible with Garmin Zumo XT/XT2, OsmAnd, Scenic, and Rever.</p>
+                    <p>Contains all 18 OSRM road-snapped daily stage tracks plus all {len(pois_data)} waypoints (lodging, camping backups, 72 fuel stops, 62 restaurants, 57 coffee shops including 29 local roasters &amp; cafés, lighthouses, sights, QC-389 pullouts &amp; rail crossings). Compatible with Garmin Zumo XT/XT2, OsmAnd, Scenic, and Rever.</p>
                 </div>
                 <a href="east_coast_adv_loop.gpx" download class="dl-btn">⬇️ Download GPX (east_coast_adv_loop.gpx)</a>
             </div>
@@ -2148,14 +2276,14 @@ html_template = f"""<!DOCTYPE html>
             <div class="download-card">
                 <div>
                     <h4>🎨 Categorized &amp; Color-Coded POIs (KML)</h4>
-                    <p>All 423 expedition pins organized into custom color-coded folders (Primary Lodging, Backup Lodging &amp; Camp, Fuel, Food &amp; Brewpubs, Coffee, Lighthouses, Attractions, Parks, Sights, Hikes, Ferries, QC-389 Hazards &amp; Pullouts).</p>
+                    <p>All {len(pois_data)} expedition pins organized into custom color-coded folders (Primary Lodging, Backup Lodging &amp; Camp, Fuel, Food, Coffee, Lighthouses, Attractions, Parks, Sights, Hikes, Ferries, QC-389 Hazards &amp; Pullouts).</p>
                 </div>
                 <a href="east_coast_colored_pois.kml" download class="dl-btn">⬇️ Download Colored POIs KML</a>
             </div>
             <div class="download-card">
                 <div>
                     <h4>📊 Master Expedition Spreadsheet (CSV)</h4>
-                    <p>Complete tabular audit of all 423 POIs with exact GPS coordinates, day number, category, 87/91 octane availability, hotel rates, food/coffee stops, and QC-389 safety waypoints.</p>
+                    <p>Complete tabular audit of all {len(pois_data)} POIs with exact GPS coordinates, day number, category, 87/91 octane availability, hotel rates, admission info, operating hours, food/coffee stops, and QC-389 safety waypoints.</p>
                 </div>
                 <a href="east_coast_adv_pois.csv" download class="dl-btn">⬇️ Download Master CSV (east_coast_adv_pois.csv)</a>
             </div>
@@ -2196,6 +2324,49 @@ html_template = f"""<!DOCTYPE html>
             </table>
         </div>
 
+        <!-- 6. Editable Per-Bike Luggage Volume & Packing Checklist (Git-Backed) -->
+        <h2 class="section-title" id="sec-checklist" style="margin-top: 36px;">🧳 Per-Bike Luggage Volume &amp; Packing Checklist (Git-Backed • Jamie &amp; Rosie)</h2>
+        <div class="chk-sync-bar">
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="font-size:0.86rem; font-weight:800; color:var(--text-main);">📦 Git Repository Storage: <code style="background:var(--bg-subtle); padding:2px 6px; border-radius:4px; border:1px solid var(--border);">Rindelk/expedition-51/luggage_checklist.json</code></span>
+                    <span id="chk-git-status-badge" style="font-size:0.73rem; font-weight:700; padding:3px 9px; border-radius:99px; background:rgba(5,150,105,0.14); color:var(--accent-green); border:1px solid rgba(5,150,105,0.3);">✓ Synced with Git (main)</span>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+                    Edits calculate compartment &amp; total bike volume in Litres (L) in real time and store directly in Git (<code style="font-size:0.71rem;">luggage_checklist.json</code>) + cloud relay — no local device storage lock-in.
+                </div>
+            </div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap; align-items:center;">
+                <div style="display:flex; gap:4px; background:var(--bg-subtle); padding:3px; border-radius:8px; border:1px solid var(--border);">
+                    <button type="button" class="lt-chip-btn active" id="chk-view-both" onclick="setChecklistBikeFilter('both')">🏍️ Both Bikes</button>
+                    <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (139L)</button>
+                    <button type="button" class="lt-chip-btn" id="chk-view-rosie" onclick="setChecklistBikeFilter('rosie')">🟢 Rosie (104L)</button>
+                </div>
+                <button type="button" class="theme-toggle-btn" onclick="pullChecklistFromGit(true)" title="Fetch latest luggage_checklist.json from GitHub repository">🔄 Pull from Git</button>
+                <button type="button" class="dl-btn" id="btn-commit-git" onclick="commitChecklistToGit()" style="padding:6px 12px; font-size:0.76rem; background:var(--accent-green);">☁️ Commit &amp; Save to Git</button>
+                <button type="button" class="theme-toggle-btn" onclick="toggleGitTokenDrawer()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Configure GitHub Personal Access Token for direct Git commits">🔑 Git Auth</button>
+                <button type="button" class="theme-toggle-btn" onclick="downloadChecklistJson()" style="border-color:var(--text-muted); color:var(--text-muted);" title="Download luggage_checklist.json file">⬇️ .json</button>
+            </div>
+        </div>
+
+        <!-- Optional GitHub Token Configuration Bar for Direct Browser-to-GitHub REST API Commits -->
+        <div id="chk-git-token-drawer" style="display:none; background:var(--bg-card); border:1px solid var(--border); border-left:4px solid var(--accent-purple); border-radius:10px; padding:12px 16px; margin-bottom:18px; box-shadow:var(--shadow-card);">
+            <div style="font-size:0.80rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">🔑 GitHub Repository Direct Commit Configuration (<code style="font-weight:700;">PUT /repos/Rindelk/expedition-51/contents/luggage_checklist.json</code>)</div>
+            <div style="font-size:0.74rem; color:var(--text-muted); margin-bottom:8px;">
+                Enter a GitHub Personal Access Token (Fine-Grained PAT with <strong>Contents: Read &amp; Write</strong> on <code>Rindelk/expedition-51</code>) to push commits directly to the <code>main</code> branch on GitHub from any device, in addition to instant cloud state sync.
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                <input type="password" id="chk-github-pat-input" placeholder="github_pat_... or ghp_..." style="flex:1; min-width:240px; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.78rem; font-family:monospace;" />
+                <input type="text" id="chk-commit-author-input" placeholder="Committer (e.g. Jamie or Rosie)" value="Jamie & Rosie" style="width:175px; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.78rem;" />
+                <button type="button" class="dl-btn" onclick="applyGitAuthConfig()" style="padding:6px 14px; font-size:0.76rem;">✓ Apply &amp; Test Git Connection</button>
+            </div>
+        </div>
+
+        <!-- Dual-Bike Interactive Luggage Volume & Checklist Grid -->
+        <div class="chk-bikes-grid" id="chk-bikes-container">
+            <!-- Rendered dynamically by renderLuggageChecklist() -->
+        </div>
+
     </div>
 
     <!-- Native Mobile Bottom Bar -->
@@ -2212,13 +2383,13 @@ html_template = f"""<!DOCTYPE html>
             <span class="icon">⏱️</span>
             <span>Timeline</span>
         </button>
+        <button type="button" class="mob-nav-btn" onclick="mobileNav('checklist', this)">
+            <span class="icon">🧳</span>
+            <span>Checklist</span>
+        </button>
         <button type="button" class="mob-nav-btn" onclick="mobileNav('downloads', this)">
             <span class="icon">📡</span>
-            <span>Files &amp; Budget</span>
-        </button>
-        <button type="button" class="mob-nav-btn" onclick="openNotesModal()">
-            <span class="icon">📝</span>
-            <span>Notes</span>
+            <span>Budget/GPX</span>
         </button>
     </nav>
 
@@ -2227,8 +2398,8 @@ html_template = f"""<!DOCTYPE html>
         <div style="background:var(--bg-panel); border:1px solid var(--border); border-radius:12px; width:100%; max-width:780px; max-height:88vh; display:flex; flex-direction:column; box-shadow:0 20px 50px rgba(0,0,0,0.5); overflow:hidden;">
             <div style="padding:16px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--bg-subtle);">
                 <div>
-                    <h3 style="margin:0; font-size:1.1rem; color:var(--text-main); display:flex; align-items:center; gap:8px;">📝 Expedition 51 Rider Notes &amp; Gear Checklist</h3>
-                    <div id="notes-sync-status" style="font-size:0.74rem; color:var(--accent-green); margin-top:2px;">✓ Saved automatically to browser storage</div>
+                    <h3 style="margin:0; font-size:1.1rem; color:var(--text-main); display:flex; align-items:center; gap:8px;">📝 Expedition 51 Rider Notes &amp; Reservation Log</h3>
+                    <div id="notes-sync-status" style="font-size:0.74rem; color:var(--accent-green); margin-top:2px;">✓ Synced with Git Checklist &amp; Cloud Relay</div>
                 </div>
                 <button type="button" onclick="closeNotesModal()" style="background:transparent; border:1px solid var(--border); color:var(--text-muted); width:32px; height:32px; border-radius:6px; font-size:1rem; cursor:pointer;">✕</button>
             </div>
@@ -2237,7 +2408,7 @@ html_template = f"""<!DOCTYPE html>
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                     <div style="display:flex; gap:8px;">
                         <button type="button" onclick="exportNotesFile()" class="theme-toggle-btn">⬇️ Export .txt</button>
-                        <button type="button" onclick="resetDefaultNotes()" class="theme-toggle-btn" style="border-color:var(--text-muted); color:var(--text-muted);">🔄 Load Default Checklist</button>
+                        <button type="button" onclick="resetDefaultNotes()" class="theme-toggle-btn" style="border-color:var(--text-muted); color:var(--text-muted);">🔄 Load Default Notes</button>
                     </div>
                     <button type="button" onclick="closeNotesModal()" class="dl-btn" style="padding:7px 18px;">Done</button>
                 </div>
@@ -2251,6 +2422,7 @@ html_template = f"""<!DOCTYPE html>
         const gravelData = {json.dumps(gravel_data, ensure_ascii=False)};
         const poisData = {json.dumps(pois_data, ensure_ascii=False)};
         const ganttDaysData = {json.dumps(gantt_days_data, ensure_ascii=False)};
+        const defaultChecklistData = {json.dumps(checklist_data, ensure_ascii=False)};
 
         // Theme Management (Daylight Default + Campfire Dark)
         var currentGanttDay = 1;
@@ -2340,35 +2512,47 @@ html_template = f"""<!DOCTYPE html>
             trackLayers[trk.day] = poly;
         }});
 
-        // Render Unpaved QC-389 Gravel Segments (Dashed Amber Overlay)
+        // Permanently Mark Unpaved QC-389 Gravel Segments on Map (Cased Dashed Amber Overlay + Map Badges)
         const gravelGroup = L.featureGroup().addTo(map);
-        gravelData.forEach(g => {{
+        gravelData.forEach((g, idx) => {{
+            // High-contrast dark amber casing so unpaved segments stand out at any zoom
+            L.polyline(g.coords, {{
+                color: '#78350F',
+                weight: 9,
+                opacity: 0.55
+            }}).addTo(gravelGroup);
+
             const gPoly = L.polyline(g.coords, {{
                 color: '#F59E0B',
-                weight: 6,
-                opacity: 0.95,
+                weight: 5.5,
+                opacity: 1.0,
                 dashArray: '8, 8'
             }}).addTo(gravelGroup);
-            gPoly.bindTooltip(`<strong>⚠️ ${{g.name}}</strong><br>Maintain 70–80 km/h • Daylight Riding Only`, {{
+
+            gPoly.bindTooltip(`<strong>⚠️ ${{g.name}}</strong><br>Unpaved Graded Gravel • Maintain 70–80 km/h • Daylight Riding Only`, {{
                 sticky: true
             }});
+
+            if (g.coords && g.coords.length > 0) {{
+                const midPt = g.coords[Math.floor(g.coords.length / 2)];
+                const shortLbl = idx === 0 ? '╌╌ Unpaved QC-389: Manic-5 (22 km)' : '╌╌ Unpaved QC-389: Fire Lake → Mont-Wright (175 km)';
+                const lblMarker = L.marker(midPt, {{
+                    icon: L.divIcon({{
+                        className: '',
+                        html: `<div class="gravel-map-label">${{shortLbl}}</div>`,
+                        iconSize: [210, 22],
+                        iconAnchor: [-8, 11]
+                    }}),
+                    interactive: true
+                }}).addTo(gravelGroup);
+                lblMarker.bindTooltip(`<strong>⚠️ ${{g.name}}</strong><br>Click to zoom to unpaved QC-389 section`);
+                lblMarker.on('click', () => {{
+                    map.fitBounds(gPoly.getBounds().pad(0.2));
+                }});
+            }}
         }});
 
-        let gravelHighlighted = false;
-        function toggleGravelHighlight() {{
-            const btn = document.getElementById('btn-gravel-toggle');
-            if (!gravelHighlighted) {{
-                map.fitBounds(gravelGroup.getBounds().pad(0.25));
-                btn.classList.add('active');
-                gravelHighlighted = true;
-            }} else {{
-                resetMapView();
-                btn.classList.remove('active');
-                gravelHighlighted = false;
-            }}
-        }}
-
-        // Render 423 Curated POIs with Contextual Photo Cards
+        // Render 452 Curated POIs with Contextual Photo Cards, Hours & Admission
         const poiMarkers = [];
         const poiLayerGroup = L.layerGroup().addTo(map);
 
@@ -2377,7 +2561,7 @@ html_template = f"""<!DOCTYPE html>
                 'hotel-primary':   {{ color: '#10B981', radius: 8, label: '🏕️ Primary Lodging / Camp' }},
                 'hotel-secondary': {{ color: '#F59E0B', radius: 7, label: '⛺ Backup Lodging / Camp' }},
                 'fuel':            {{ color: '#EF4444', radius: 5.5, label: '⛽ Verified Fuel Station' }},
-                'food':            {{ color: '#F97316', radius: 6, label: '🍽️ Food & Brewpub' }},
+                'food':            {{ color: '#F97316', radius: 6, label: '🍽️ Food' }},
                 'coffee':          {{ color: '#B45309', radius: 5.5, label: '☕ Coffee Stop' }},
                 'lighthouse':      {{ color: '#EC4899', radius: 6.5, label: '🚨 Historic Lighthouse' }},
                 'attraction':      {{ color: '#8B5CF6', radius: 7, label: '🏛️ Must-See Attraction' }},
@@ -2425,6 +2609,22 @@ html_template = f"""<!DOCTYPE html>
                 ? `<span style="font-size:0.70rem; font-weight:700; color:var(--accent-green); background:rgba(5,150,105,0.12); padding:2px 6px; border-radius:4px;">${{p.cost}}</span>`
                 : '';
 
+            const hoursHtml = p.hours
+                ? `<div style="font-size:0.73rem; color:var(--text-main); line-height:1.35;"><strong>🕒 Hours:</strong> ${{p.hours}}</div>`
+                : '';
+
+            const hasPaidAdmission = p.admission && !/^free/i.test(p.admission.trim());
+            const admissionHtml = p.admission
+                ? `<div style="font-size:0.73rem; color:${{hasPaidAdmission ? 'var(--accent-orange)' : 'var(--text-muted)'}}; font-weight:${{hasPaidAdmission ? '700' : '600'}}; line-height:1.35; margin-top:2px;"><strong>🎟️ Admission:</strong> ${{p.admission}}</div>`
+                : '';
+
+            const hoursAdmissionBox = (hoursHtml || admissionHtml)
+                ? `<div style="background:var(--bg-subtle); border:1px solid var(--border); border-left:3px solid ${{hasPaidAdmission ? 'var(--accent-orange)' : st.color}}; border-radius:6px; padding:5px 8px; margin-bottom:7px;">
+                       ${{hoursHtml}}
+                       ${{admissionHtml}}
+                   </div>`
+                : '';
+
             const gmapsSearch = `https://www.google.com/maps/search/?api=1&query=${{encodeURIComponent(p.name + ' ' + p.lat + ',' + p.lon)}}`;
             const webLink = p.url ? `<a href="${{p.url}}" target="_blank" class="poi-popup-link" style="margin-right:10px;">🌐 Official Website ↗</a>` : '';
 
@@ -2437,6 +2637,7 @@ html_template = f"""<!DOCTYPE html>
                     </div>
                     <div class="poi-popup-title">${{p.name}}</div>
                     ${{octaneHtml}}
+                    ${{hoursAdmissionBox}}
                     <div class="poi-popup-desc">${{p.desc || ''}}</div>
                     <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
                         ${{webLink}}
@@ -2456,29 +2657,60 @@ html_template = f"""<!DOCTYPE html>
 
         map.fitBounds(allTrackGroup.getBounds().pad(0.06));
 
-        // Filter POIs by Category with Smart QC-389 Pin Decluttering
-        let currentFilter = 'all';
+        // Toggleable Filter POIs by Category (True On/Off Toggle for "All POIs" & Individual Categories)
+        let allPoisActive = true;
+        const activeCategories = new Set();
         let activeFocusedDay = null;
 
-        function filterPOIs(category, btnEl) {{
-            currentFilter = category;
-            document.querySelectorAll('.filter-btn').forEach(b => {{
-                if (b.id !== 'btn-gravel-toggle') b.classList.remove('active');
+        function syncFilterToolbarButtons() {{
+            document.querySelectorAll('#poi-filter-toolbar .filter-btn').forEach(b => {{
+                const cat = b.getAttribute('data-cat');
+                if (cat === 'all') {{
+                    b.classList.toggle('active', allPoisActive);
+                }} else {{
+                    b.classList.toggle('active', !allPoisActive && activeCategories.has(cat));
+                }}
             }});
-            if (btnEl) btnEl.classList.add('active');
-            if ((category === 'hazard' || category === 'pullout') && trackLayers[3]) {{
-                map.fitBounds(trackLayers[3].getBounds().pad(0.12));
+        }}
+
+        function filterPOIs(category, btnEl) {{
+            if (category === 'all') {{
+                // Toggle "All POIs" ON or OFF
+                allPoisActive = !allPoisActive;
+                activeCategories.clear();
+            }} else {{
+                if (allPoisActive) {{
+                    // Switching from "All POIs" to individual category toggle mode
+                    allPoisActive = false;
+                    activeCategories.clear();
+                    activeCategories.add(category);
+                }} else {{
+                    // Toggle this specific category ON or OFF
+                    if (activeCategories.has(category)) {{
+                        activeCategories.delete(category);
+                    }} else {{
+                        activeCategories.add(category);
+                    }}
+                }}
+                if (activeCategories.has(category) && (category === 'hazard' || category === 'pullout') && trackLayers[3]) {{
+                    map.fitBounds(trackLayers[3].getBounds().pad(0.12));
+                }}
             }}
+            syncFilterToolbarButtons();
             updateVisiblePOIs();
         }}
 
         function updateVisiblePOIs() {{
             poiLayerGroup.clearLayers();
+            if (!allPoisActive && activeCategories.size === 0) {{
+                // All POIs toggled OFF
+                return;
+            }}
             const gemTypes = new Set(['lighthouse', 'attraction', 'sight', 'hike', 'park']);
             poiMarkers.forEach(m => {{
                 const p = m.poiData;
                 let catMatch = false;
-                if (currentFilter === 'all') {{
+                if (allPoisActive) {{
                     // Smart decluttering: hide dense QC-389 emergency pullouts & rail hazards in full-loop zoom 5 view,
                     // and reveal them automatically when Day 3 is focused!
                     if ((p.type === 'pullout' || p.type === 'hazard') && activeFocusedDay !== 3) {{
@@ -2486,10 +2718,12 @@ html_template = f"""<!DOCTYPE html>
                     }} else {{
                         catMatch = true;
                     }}
-                }} else if (currentFilter === 'curated-gems') {{
-                    catMatch = gemTypes.has(p.type);
                 }} else {{
-                    catMatch = (p.type === currentFilter);
+                    if (activeCategories.has(p.type)) {{
+                        catMatch = true;
+                    }} else if (activeCategories.has('curated-gems') && gemTypes.has(p.type)) {{
+                        catMatch = true;
+                    }}
                 }}
 
                 const dayMatch = (activeFocusedDay === null) || (p.day === `Day ${{activeFocusedDay}}`);
@@ -2815,6 +3049,7 @@ html_template = f"""<!DOCTYPE html>
             const elMap = document.getElementById('sec-map');
             const elItin = document.getElementById('sec-itinerary');
             const elGantt = document.getElementById('sec-gantt');
+            const elChk = document.getElementById('sec-checklist');
             const elDl = document.getElementById('sec-budget');
 
             if (target === 'map' && elMap) {{
@@ -2824,6 +3059,8 @@ html_template = f"""<!DOCTYPE html>
                 elItin.scrollIntoView({{ behavior: 'smooth' }});
             }} else if (target === 'gantt' && elGantt) {{
                 elGantt.scrollIntoView({{ behavior: 'smooth' }});
+            }} else if (target === 'checklist' && elChk) {{
+                elChk.scrollIntoView({{ behavior: 'smooth' }});
             }} else if (target === 'downloads' && elDl) {{
                 elDl.scrollIntoView({{ behavior: 'smooth' }});
             }}
@@ -3698,6 +3935,488 @@ Fleet: 2025 Honda Africa Twin Adv Sports ES (Jamie) + 2026 Ducati Multistrada V2
         updateOfflineQueueBadge();
         pollCloudTrackerFeed(false);
         connectCloudTrackerSSE();
+
+        // =========================================================================
+        // PER-BIKE LUGGAGE VOLUME & PACKING CHECKLIST (GIT-BACKED, ZERO LOCAL LOCK-IN)
+        // =========================================================================
+        const GIT_REPO_OWNER = 'Rindelk';
+        const GIT_REPO_NAME  = 'expedition-51';
+        const GIT_BRANCH     = 'main';
+        const GIT_FILE_PATH  = 'luggage_checklist.json';
+        const GIT_CHECKLIST_RELAY_TOPIC = 'exp51_git_checklist_sync_2027';
+
+        // In-memory state loaded from Git (luggage_checklist.json) — not stored on local device storage
+        let checklistState = JSON.parse(JSON.stringify(defaultChecklistData));
+        let checklistGitSha = null;
+        let checklistViewFilter = 'both';
+        let checklistSessionToken = '';
+        let checklistDirty = false;
+
+        function setGitStatusBadge(text, tone) {{
+            const badge = document.getElementById('chk-git-status-badge');
+            if (!badge) return;
+            badge.textContent = text;
+            if (tone === 'green') {{
+                badge.style.background = 'rgba(5, 150, 105, 0.14)';
+                badge.style.color = 'var(--accent-green)';
+                badge.style.borderColor = 'rgba(5, 150, 105, 0.35)';
+            }} else if (tone === 'orange') {{
+                badge.style.background = 'rgba(217, 119, 6, 0.14)';
+                badge.style.color = 'var(--accent-orange)';
+                badge.style.borderColor = 'rgba(217, 119, 6, 0.35)';
+            }} else if (tone === 'blue') {{
+                badge.style.background = 'rgba(2, 132, 199, 0.14)';
+                badge.style.color = 'var(--accent-blue)';
+                badge.style.borderColor = 'rgba(2, 132, 199, 0.35)';
+            }} else {{
+                badge.style.background = 'rgba(220, 38, 38, 0.14)';
+                badge.style.color = 'var(--accent-red)';
+                badge.style.borderColor = 'rgba(220, 38, 38, 0.35)';
+            }}
+        }}
+
+        function markChecklistDirty() {{
+            checklistDirty = true;
+            checklistState.lastUpdated = new Date().toISOString();
+            setGitStatusBadge('✏️ Uncommitted Edits — Click "Commit & Save to Git"', 'orange');
+        }}
+
+        function setChecklistBikeFilter(mode) {{
+            checklistViewFilter = mode;
+            ['both', 'jamie', 'rosie'].forEach(m => {{
+                const btn = document.getElementById('chk-view-' + m);
+                if (btn) btn.classList.toggle('active', m === mode);
+            }});
+            const grid = document.getElementById('chk-bikes-container');
+            if (grid) {{
+                grid.style.gridTemplateColumns = (mode === 'both') ? 'minmax(0, 1fr) minmax(0, 1fr)' : '1fr';
+            }}
+            renderLuggageChecklist();
+        }}
+
+        function toggleGitTokenDrawer() {{
+            const drawer = document.getElementById('chk-git-token-drawer');
+            if (!drawer) return;
+            drawer.style.display = (drawer.style.display === 'none') ? 'block' : 'none';
+        }}
+
+        async function applyGitAuthConfig() {{
+            const patIn = document.getElementById('chk-github-pat-input');
+            const authIn = document.getElementById('chk-commit-author-input');
+            if (patIn) checklistSessionToken = patIn.value.trim();
+            if (authIn && authIn.value.trim()) checklistState.updatedBy = authIn.value.trim();
+            if (!checklistSessionToken) {{
+                setGitStatusBadge('⚠️ Enter a valid GitHub PAT token to push directly to GitHub', 'orange');
+                return;
+            }}
+            setGitStatusBadge('🔄 Verifying GitHub repo access...', 'blue');
+            await pullChecklistFromGit(true);
+            const drawer = document.getElementById('chk-git-token-drawer');
+            if (drawer) drawer.style.display = 'none';
+        }}
+
+        function escapeHtmlAttr(str) {{
+            return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }}
+
+        function renderLuggageChecklist() {{
+            const container = document.getElementById('chk-bikes-container');
+            if (!container || !checklistState || !checklistState.bikes) return;
+
+            const bikeKeys = checklistViewFilter === 'both'
+                ? ['jamie', 'rosie']
+                : [checklistViewFilter];
+
+            container.innerHTML = bikeKeys.map(bikeKey => {{
+                const bike = checklistState.bikes[bikeKey];
+                if (!bike) return '';
+                const isJamie = (bikeKey === 'jamie');
+                const badgeStyle = isJamie
+                    ? 'background:#ffffff; color:#dc2626; border:1.5px solid #dc2626;'
+                    : 'background:#16a34a; color:#ffffff; border:1.5px solid #15803d;';
+
+                // Calculate total capacity across all compartments
+                const comps = bike.compartments || [];
+                const items = bike.items || [];
+                const totalCapL = comps.reduce((acc, c) => acc + (Number(c.capacityL) || 0), 0);
+                bike.totalCapacityL = Number(totalCapL.toFixed(1));
+
+                const packedVolL = items.filter(i => i.packed).reduce((acc, i) => acc + (Number(i.volumeL) || 0), 0);
+                const allAllocatedVolL = items.reduce((acc, i) => acc + (Number(i.volumeL) || 0), 0);
+                const packedWeightKg = items.filter(i => i.packed).reduce((acc, i) => acc + (Number(i.weightKg) || 0), 0);
+                const freeVolL = totalCapL - packedVolL;
+                const pctFull = totalCapL > 0 ? (packedVolL / totalCapL) * 100 : 0;
+                const packedCount = items.filter(i => i.packed).length;
+
+                let barColor = isJamie ? '#dc2626' : '#16a34a';
+                if (pctFull > 100) barColor = '#ef4444';
+                else if (pctFull > 88) barColor = '#f59e0b';
+
+                const overWarnHtml = freeVolL < 0
+                    ? `<span style="color:var(--accent-red); font-weight:800;">⚠️ OVER CAPACITY BY ${{Math.abs(freeVolL).toFixed(1)}} L!</span>`
+                    : `<span style="color:var(--accent-green); font-weight:800;">✓ ${{freeVolL.toFixed(1)}} L Free Space</span>`;
+
+                const compartmentsHtml = comps.map(comp => {{
+                    const cItems = items.filter(i => i.compartmentId === comp.id);
+                    const cCapL = Number(comp.capacityL) || 1;
+                    const cPackedL = cItems.filter(i => i.packed).reduce((acc, i) => acc + (Number(i.volumeL) || 0), 0);
+                    const cAllocL = cItems.reduce((acc, i) => acc + (Number(i.volumeL) || 0), 0);
+                    const cWeightKg = cItems.filter(i => i.packed).reduce((acc, i) => acc + (Number(i.weightKg) || 0), 0);
+                    const cFreeL = cCapL - cPackedL;
+                    const cPct = cCapL > 0 ? (cPackedL / cCapL) * 100 : 0;
+
+                    let cBarColor = 'var(--accent-blue)';
+                    if (cPct > 100) cBarColor = 'var(--accent-red)';
+                    else if (cPct > 88) cBarColor = 'var(--accent-orange)';
+                    else cBarColor = 'var(--accent-green)';
+
+                    const cStatusText = cFreeL < 0
+                        ? `<span style="color:var(--accent-red); font-weight:800;">⚠️ +${{Math.abs(cFreeL).toFixed(1)}} L Over!</span>`
+                        : `<span style="color:var(--text-muted);">${{cFreeL.toFixed(1)}} L free</span>`;
+
+                    const rowsHtml = cItems.map(item => `
+                        <div class="chk-item-row ${{item.packed ? '' : 'unpacked'}}">
+                            <input type="checkbox" ${{item.packed ? 'checked' : ''}} onchange="toggleChecklistItemPacked('${{bikeKey}}', '${{item.id}}', this.checked)" style="width:16px; height:16px; cursor:pointer; accent-color:${{isJamie ? '#dc2626' : '#16a34a'}};" title="Toggle Packed Status (Included in Packed Volume)" />
+                            <div style="flex:1; min-width:0; display:flex; flex-direction:column;">
+                                <input type="text" class="chk-inline-input" value="${{escapeHtmlAttr(item.name)}}" onchange="updateChecklistItemField('${{bikeKey}}', '${{item.id}}', 'name', this.value)" style="font-weight:700; width:100%;" title="Click to edit item name" />
+                                <input type="text" class="chk-inline-input" value="${{escapeHtmlAttr(item.notes || '')}}" placeholder="Add packing note..." onchange="updateChecklistItemField('${{bikeKey}}', '${{item.id}}', 'notes', this.value)" style="font-size:0.69rem; color:var(--text-muted); width:100%;" title="Click to edit item note" />
+                            </div>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;" title="Item Volume in Litres (L)">
+                                <input type="number" step="0.5" min="0" max="100" class="chk-num-input" value="${{Number(item.volumeL).toFixed(1)}}" onchange="updateChecklistItemField('${{bikeKey}}', '${{item.id}}', 'volumeL', parseFloat(this.value)||0)" />
+                                <span style="font-size:0.70rem; font-weight:800; color:var(--text-muted);">L</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:3px; flex-shrink:0;" title="Item Weight in Kilograms (kg)">
+                                <input type="number" step="0.1" min="0" max="50" class="chk-num-input" style="width:46px; color:var(--text-main);" value="${{Number(item.weightKg || 0).toFixed(1)}}" onchange="updateChecklistItemField('${{bikeKey}}', '${{item.id}}', 'weightKg', parseFloat(this.value)||0)" />
+                                <span style="font-size:0.68rem; color:var(--text-muted);">kg</span>
+                            </div>
+                            <button type="button" onclick="deleteChecklistItem('${{bikeKey}}', '${{item.id}}')" style="background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:0.82rem; padding:2px 4px;" title="Remove item">🗑️</button>
+                        </div>
+                    `).join('');
+
+                    return `
+                        <div class="chk-comp-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; flex-wrap:wrap;">
+                                <div>
+                                    <div style="font-size:0.84rem; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:6px;">
+                                        <span>${{comp.icon || '🧳'}}</span>
+                                        <span>${{comp.name}}</span>
+                                    </div>
+                                    <div style="font-size:0.71rem; color:var(--text-muted);">${{comp.role || ''}}</div>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:6px; font-size:0.74rem; font-weight:800;">
+                                    <span style="color:var(--accent-blue);">${{cPackedL.toFixed(1)}} L</span>
+                                    <span style="color:var(--text-muted);">/</span>
+                                    <input type="number" step="1" min="1" max="120" class="chk-num-input" style="width:58px;" value="${{cCapL.toFixed(1)}}" onchange="updateCompartmentCapacity('${{bikeKey}}', '${{comp.id}}', parseFloat(this.value)||1)" title="Edit Compartment Max Capacity (L)" />
+                                    <span style="color:var(--text-muted);">L Cap</span>
+                                </div>
+                            </div>
+
+                            <!-- Compartment Volume Bar -->
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:0.69rem; font-weight:700; margin-bottom:3px;">
+                                    <span>Packed: ${{cPackedL.toFixed(1)}} L (${{cPct.toFixed(0)}}%) • Weight: ${{cWeightKg.toFixed(1)}} kg</span>
+                                    ${{cStatusText}}
+                                </div>
+                                <div class="chk-vol-bar-track" style="height:7px;">
+                                    <div class="chk-vol-bar-fill" style="width:${{Math.min(100, Math.max(2, cPct))}}%; background:${{cBarColor}};"></div>
+                                </div>
+                            </div>
+
+                            <!-- Items List -->
+                            <div style="display:flex; flex-direction:column; gap:5px;">
+                                ${{rowsHtml}}
+                            </div>
+
+                            <!-- Add Item Row -->
+                            <div style="display:flex; gap:5px; align-items:center; margin-top:2px; padding-top:6px; border-top:1px dashed var(--border); flex-wrap:wrap;">
+                                <input type="text" id="add-name-${{comp.id}}" placeholder="+ Add gear to ${{comp.name.split('(')[0].trim()}}..." style="flex:1; min-width:130px; background:var(--bg-card); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:5px 8px; font-size:0.74rem;" />
+                                <input type="number" id="add-vol-${{comp.id}}" step="0.5" min="0.1" placeholder="L" value="2.0" style="width:52px; background:var(--bg-card); color:var(--accent-blue); border:1px solid var(--border); border-radius:6px; padding:5px 6px; font-size:0.74rem; font-weight:700; text-align:right;" title="Volume in Litres (L)" />
+                                <span style="font-size:0.70rem; font-weight:700; color:var(--text-muted);">L</span>
+                                <input type="number" id="add-wt-${{comp.id}}" step="0.1" min="0" placeholder="kg" value="0.5" style="width:48px; background:var(--bg-card); color:var(--text-main); border:1px solid var(--border); border-radius:6px; padding:5px 6px; font-size:0.74rem; text-align:right;" title="Weight in kg" />
+                                <span style="font-size:0.70rem; color:var(--text-muted);">kg</span>
+                                <button type="button" onclick="addChecklistItem('${{bikeKey}}', '${{comp.id}}')" class="lt-chip-btn" style="padding:5px 10px; font-weight:800;">+ Add</button>
+                            </div>
+                        </div>
+                    `;
+                }}).join('');
+
+                return `
+                    <div class="chk-bike-panel ${{bikeKey}}">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:12px;">
+                            <div>
+                                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                    <span style="padding:3px 9px; border-radius:6px; font-size:0.76rem; font-weight:900; ${{badgeStyle}}">${{bike.rider}}</span>
+                                    <h3 style="font-size:1.02rem; font-weight:800; color:var(--text-main); margin:0;">${{bike.model}}</h3>
+                                </div>
+                                <div style="font-size:0.74rem; color:var(--text-muted); margin-top:4px;">
+                                    🎨 Color: <strong>${{bike.color}}</strong> • 🧳 ${{comps.length}} Compartments • ✓ ${{packedCount}}/${{items.length}} Items Packed
+                                </div>
+                            </div>
+                            <div style="text-align:right;">
+                                <div style="font-size:1.05rem; font-weight:900; color:var(--text-main);">${{packedVolL.toFixed(1)}} L <span style="font-size:0.80rem; font-weight:700; color:var(--text-muted);">/ ${{totalCapL.toFixed(1)}} L</span></div>
+                                <div style="font-size:0.71rem; color:var(--text-muted);">⚖️ ${{packedWeightKg.toFixed(1)}} kg Packed Load</div>
+                            </div>
+                        </div>
+
+                        <!-- Total Bike Luggage Volume Utilization Bar -->
+                        <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; padding:10px 12px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; font-weight:800; margin-bottom:5px; flex-wrap:wrap; gap:4px;">
+                                <span>📊 TOTAL LUGGAGE VOLUME UTILIZATION (${{pctFull.toFixed(1)}}%)</span>
+                                ${{overWarnHtml}}
+                            </div>
+                            <div class="chk-vol-bar-track">
+                                <div class="chk-vol-bar-fill" style="width:${{Math.min(100, Math.max(2, pctFull))}}%; background:${{barColor}};"></div>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.69rem; color:var(--text-muted); margin-top:5px; flex-wrap:wrap; gap:6px;">
+                                <span>📦 Packed Volume: <strong>${{packedVolL.toFixed(1)}} L</strong></span>
+                                <span>📋 Total Listed Gear: <strong>${{allAllocatedVolL.toFixed(1)}} L</strong></span>
+                                <span>🧳 Max Bike Capacity: <strong>${{totalCapL.toFixed(1)}} L</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Compartments Breakdown -->
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            ${{compartmentsHtml}}
+                        </div>
+                    </div>
+                `;
+            }}).join('');
+        }}
+
+        function toggleChecklistItemPacked(bikeKey, itemId, isPacked) {{
+            const bike = checklistState.bikes[bikeKey];
+            if (!bike) return;
+            const item = (bike.items || []).find(i => i.id === itemId);
+            if (item) {{
+                item.packed = Boolean(isPacked);
+                markChecklistDirty();
+                renderLuggageChecklist();
+            }}
+        }}
+
+        function updateChecklistItemField(bikeKey, itemId, field, value) {{
+            const bike = checklistState.bikes[bikeKey];
+            if (!bike) return;
+            const item = (bike.items || []).find(i => i.id === itemId);
+            if (item) {{
+                item[field] = value;
+                markChecklistDirty();
+                renderLuggageChecklist();
+            }}
+        }}
+
+        function updateCompartmentCapacity(bikeKey, compId, newCapL) {{
+            const bike = checklistState.bikes[bikeKey];
+            if (!bike) return;
+            const comp = (bike.compartments || []).find(c => c.id === compId);
+            if (comp && newCapL > 0) {{
+                comp.capacityL = Number(newCapL.toFixed(1));
+                markChecklistDirty();
+                renderLuggageChecklist();
+            }}
+        }}
+
+        function addChecklistItem(bikeKey, compId) {{
+            const bike = checklistState.bikes[bikeKey];
+            if (!bike) return;
+            const nameEl = document.getElementById('add-name-' + compId);
+            const volEl  = document.getElementById('add-vol-' + compId);
+            const wtEl   = document.getElementById('add-wt-' + compId);
+            const name = nameEl ? nameEl.value.trim() : '';
+            if (!name) return;
+            const vol = volEl ? (parseFloat(volEl.value) || 1.0) : 1.0;
+            const wt  = wtEl ? (parseFloat(wtEl.value) || 0.2) : 0.2;
+
+            bike.items.push({{
+                id: bikeKey[0] + '-' + Date.now().toString(36),
+                compartmentId: compId,
+                name: name,
+                volumeL: Number(vol.toFixed(1)),
+                weightKg: Number(wt.toFixed(1)),
+                packed: true,
+                notes: ''
+            }});
+            markChecklistDirty();
+            renderLuggageChecklist();
+        }}
+
+        function deleteChecklistItem(bikeKey, itemId) {{
+            const bike = checklistState.bikes[bikeKey];
+            if (!bike) return;
+            bike.items = (bike.items || []).filter(i => i.id !== itemId);
+            markChecklistDirty();
+            renderLuggageChecklist();
+        }}
+
+        function utf8ToBase64(str) {{
+            return btoa(unescape(encodeURIComponent(str)));
+        }}
+
+        function base64ToUtf8(b64) {{
+            return decodeURIComponent(escape(atob(b64.replace(/\\s/g, ''))));
+        }}
+
+        // Pull latest luggage_checklist.json from GitHub Contents API + Cloud Relay (zero local device lock-in)
+        async function pullChecklistFromGit(showFeedback = false) {{
+            if (showFeedback) setGitStatusBadge('🔄 Pulling luggage_checklist.json from Git...', 'blue');
+            let loadedFromGitApi = false;
+            try {{
+                const headers = {{ 'Accept': 'application/vnd.github.v3+json' }};
+                if (checklistSessionToken) {{
+                    headers['Authorization'] = `Bearer ${{checklistSessionToken}}`;
+                }}
+                const apiRes = await fetch(`https://api.github.com/repos/${{GIT_REPO_OWNER}}/${{GIT_REPO_NAME}}/contents/${{GIT_FILE_PATH}}?ref=${{GIT_BRANCH}}&t=${{Date.now()}}`, {{
+                    headers: headers,
+                    cache: 'no-store'
+                }});
+                if (apiRes.ok) {{
+                    const meta = await apiRes.json();
+                    if (meta && meta.content) {{
+                        checklistGitSha = meta.sha;
+                        const parsed = JSON.parse(base64ToUtf8(meta.content));
+                        if (parsed && parsed.bikes) {{
+                            checklistState = parsed;
+                            loadedFromGitApi = true;
+                        }}
+                    }}
+                }}
+            }} catch (e) {{}}
+
+            if (!loadedFromGitApi) {{
+                try {{
+                    const rawRes = await fetch(`./${{GIT_FILE_PATH}}?t=${{Date.now()}}`, {{ cache: 'no-store' }});
+                    if (rawRes.ok) {{
+                        const parsed = await rawRes.json();
+                        if (parsed && parsed.bikes) {{
+                            checklistState = parsed;
+                            loadedFromGitApi = true;
+                        }}
+                    }}
+                }} catch (e) {{}}
+            }}
+
+            // Also check cloud relay for any newer commits/broadcasts across devices
+            try {{
+                const relayRes = await fetch(`https://ntfy.sh/${{GIT_CHECKLIST_RELAY_TOPIC}}/json?poll=1&since=all`, {{ cache: 'no-store' }});
+                if (relayRes.ok) {{
+                    const txt = await relayRes.text();
+                    const lines = txt.trim().split('\\n').filter(Boolean);
+                    for (let i = lines.length - 1; i >= 0; i--) {{
+                        try {{
+                            const env = JSON.parse(lines[i]);
+                            if (env && env.event === 'message' && env.message) {{
+                                const payload = JSON.parse(env.message);
+                                if (payload && payload.bikes && payload.lastUpdated) {{
+                                    const curTs = Date.parse(checklistState.lastUpdated || '') || 0;
+                                    const newTs = Date.parse(payload.lastUpdated) || 0;
+                                    if (newTs >= curTs) {{
+                                        checklistState = payload;
+                                        break;
+                                    }}
+                                }}
+                            }}
+                        }} catch (innerE) {{}}
+                    }}
+                }}
+            }} catch (e) {{}}
+
+            checklistDirty = false;
+            renderLuggageChecklist();
+            const tsStr = checklistState.lastUpdated
+                ? new Date(checklistState.lastUpdated).toLocaleString('en-CA', {{ month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }})
+                : 'main';
+            setGitStatusBadge(`✓ Synced with Git (${{tsStr}})`, 'green');
+        }}
+
+        // Commit & Save updated luggage_checklist.json directly to GitHub REST API + Cloud Relay
+        async function commitChecklistToGit() {{
+            const patIn = document.getElementById('chk-github-pat-input');
+            const authIn = document.getElementById('chk-commit-author-input');
+            if (patIn && patIn.value.trim()) checklistSessionToken = patIn.value.trim();
+            if (authIn && authIn.value.trim()) checklistState.updatedBy = authIn.value.trim();
+
+            checklistState.lastUpdated = new Date().toISOString();
+            const jsonPretty = JSON.stringify(checklistState, null, 2);
+            setGitStatusBadge('☁️ Committing luggage_checklist.json to Git...', 'blue');
+
+            let gitCommitted = false;
+            if (checklistSessionToken) {{
+                try {{
+                    // Ensure we have the latest file SHA on main before committing
+                    if (!checklistGitSha) {{
+                        const shaRes = await fetch(`https://api.github.com/repos/${{GIT_REPO_OWNER}}/${{GIT_REPO_NAME}}/contents/${{GIT_FILE_PATH}}?ref=${{GIT_BRANCH}}`, {{
+                            headers: {{
+                                'Accept': 'application/vnd.github.v3+json',
+                                'Authorization': `Bearer ${{checklistSessionToken}}`
+                            }}
+                        }});
+                        if (shaRes.ok) {{
+                            const shaData = await shaRes.json();
+                            checklistGitSha = shaData.sha;
+                        }}
+                    }}
+
+                    const putBody = {{
+                        message: `Update per-bike luggage checklist (${{checklistState.updatedBy || 'Jamie & Rosie'}})`,
+                        content: utf8ToBase64(jsonPretty),
+                        branch: GIT_BRANCH
+                    }};
+                    if (checklistGitSha) putBody.sha = checklistGitSha;
+
+                    const putRes = await fetch(`https://api.github.com/repos/${{GIT_REPO_OWNER}}/${{GIT_REPO_NAME}}/contents/${{GIT_FILE_PATH}}`, {{
+                        method: 'PUT',
+                        headers: {{
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${{checklistSessionToken}}`
+                        }},
+                        body: JSON.stringify(putBody)
+                    }});
+
+                    if (putRes.ok) {{
+                        const putData = await putRes.json();
+                        if (putData && putData.content && putData.content.sha) {{
+                            checklistGitSha = putData.content.sha;
+                        }}
+                        gitCommitted = true;
+                    }}
+                }} catch (e) {{}}
+            }}
+
+            // Broadcast to cloud relay so all connected devices receive the updated Git checklist state immediately
+            let relaySynced = false;
+            try {{
+                const relayRes = await fetch(`https://ntfy.sh/${{GIT_CHECKLIST_RELAY_TOPIC}}`, {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'text/plain;charset=utf-8' }},
+                    body: JSON.stringify(checklistState)
+                }});
+                relaySynced = relayRes.ok;
+            }} catch (e) {{}}
+
+            checklistDirty = false;
+            if (gitCommitted) {{
+                setGitStatusBadge(`✓ Committed to GitHub (Rindelk/expedition-51@main) at ${{new Date().toLocaleTimeString()}}`, 'green');
+            }} else if (relaySynced) {{
+                setGitStatusBadge(`✓ Synced to Cloud Relay at ${{new Date().toLocaleTimeString()}} (Add 🔑 Git Auth token for direct repo commits)`, 'green');
+            }} else {{
+                setGitStatusBadge('⚠️ Offline — Click 🔑 Git Auth or ⬇️ .json to commit', 'orange');
+            }}
+        }}
+
+        function downloadChecklistJson() {{
+            const blob = new Blob([JSON.stringify(checklistState, null, 2)], {{ type: 'application/json;charset=utf-8' }});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'luggage_checklist.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }}
+
+        // Render initial Git-backed luggage checklist and pull latest from Git
+        renderLuggageChecklist();
+        pullChecklistFromGit(false);
     </script>
 </body>
 </html>

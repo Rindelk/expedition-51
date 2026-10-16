@@ -216709,7 +216709,9 @@
       "url": "",
       "cost": "$0 CAD",
       "phone": "",
-      "photo": "images/pois/home_hanmer.jpg"
+      "photo": "images/pois/home_hanmer.jpg",
+      "admission": "",
+      "hours": "24/7 Expedition Departure & Completion Base"
     },
     {
       "name": "Motel au P'tit Sapin (Mirabel)",
@@ -216728,7 +216730,9 @@
       "url": "https://www.motelauptitsapin.com/",
       "cost": "$115 CAD/night",
       "phone": "+1 450-432-4691",
-      "photo": "images/pois/hotel_super8_motel.jpg"
+      "photo": "images/pois/hotel_super8_motel.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Motel Le Mirabeau (Mirabel)",
@@ -216747,7 +216751,9 @@
       "url": "https://www.motellemirabeau.com/",
       "cost": "$125 CAD/night",
       "phone": "+1 450-432-1555",
-      "photo": "images/pois/hotel_super8_motel.jpg"
+      "photo": "images/pois/hotel_super8_motel.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Super 8 by Wyndham Saint-Jérôme / Mirabel",
@@ -216766,7 +216772,9 @@
       "url": "https://www.wyndhamhotels.com/super-8/saint-jerome-quebec/super-8-saint-jerome/overview",
       "cost": "$155 CAD/night",
       "phone": "+1 450-438-4188",
-      "photo": "images/pois/hotel_super8_motel.jpg"
+      "photo": "images/pois/hotel_super8_motel.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Camping Mirabel",
@@ -216785,7 +216793,9 @@
       "url": "",
       "cost": "$42 CAD/night",
       "phone": "",
-      "photo": "images/pois/sight_quebec_champlain.jpg"
+      "photo": "images/pois/sight_quebec_champlain.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Carillon Canal National Historic Lock",
@@ -216804,7 +216814,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_ottawa_river.jpg"
+      "photo": "images/pois/sight_ottawa_river.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Sturgeon Falls Shell",
@@ -216823,7 +216835,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Deep River Canadian Tire Gas+",
@@ -216842,7 +216856,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Pembroke Esso / Circle K",
@@ -216861,7 +216877,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Shawville Petro-Canada",
@@ -216880,7 +216898,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_petro_canada.jpg"
+      "photo": "images/pois/fuel_petro_canada.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Thurso Ultramar",
@@ -216899,7 +216919,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_ultramar.jpg"
+      "photo": "images/pois/fuel_ultramar.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Montebello Shell",
@@ -216918,7 +216940,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Mirabel Ultramar (Route 117)",
@@ -216937,7 +216961,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_ultramar.jpg"
+      "photo": "images/pois/fuel_ultramar.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Petawawa Shell (Hwy 17)",
@@ -216956,7 +216982,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Portage-du-Fort Ottawa River Crossing",
@@ -216975,7 +217003,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_ottawa_river.jpg"
+      "photo": "images/pois/sight_ottawa_river.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Route 148 Scenic River Corridor (Gatineau to Fassett)",
@@ -216994,7 +217024,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_ottawa_river.jpg"
+      "photo": "images/pois/sight_ottawa_river.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "The Nook Creperie (Pembroke)",
@@ -217007,7 +217039,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Twiggs Coffee Roasters (North Bay — Hwy 17)",
@@ -217020,7 +217054,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)"
     },
     {
       "name": "Tim Hortons (Sturgeon Falls — Hwy 17)",
@@ -217033,7 +217069,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Tim Hortons (Mattawa — Hwy 17)",
@@ -217046,7 +217084,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Tim Hortons (Pembroke — Hwy 17)",
@@ -217059,7 +217099,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (Pembroke — Pembroke Mall)",
@@ -217072,7 +217114,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Tim Hortons (Mirabel — Route 117)",
@@ -217085,7 +217129,74 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "Old Rock Roastery (Local Roaster — Sudbury / Hanmer)",
+      "lat": 46.49,
+      "lon": -80.993,
+      "type": "coffee",
+      "day": "Day 1",
+      "cost": "$",
+      "url": "https://oldrock.ca/",
+      "desc": "Northern Ontario's premier local micro-roaster; espresso & fresh beans for Stage 1 departure morning.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "The Nook Local Café & Espresso Bar (Pembroke)",
+      "lat": 45.8268,
+      "lon": -77.112,
+      "type": "coffee",
+      "day": "Day 1",
+      "cost": "$",
+      "url": "",
+      "desc": "Local downtown Pembroke espresso bar & café along the Upper Ottawa River.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Brûlerie Aladdin — Micro-Torréfacteur Local (Gatineau)",
+      "lat": 45.456,
+      "lon": -75.728,
+      "type": "coffee",
+      "day": "Day 1",
+      "cost": "$",
+      "url": "https://bruleriealaddin.com/",
+      "desc": "Artisanal Outaouais small-batch coffee roaster right off the Route 148 corridor.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "ChocoMotive & Café Entre Amis (Local Café — Montebello)",
+      "lat": 45.6502,
+      "lon": -74.9408,
+      "type": "coffee",
+      "day": "Day 1",
+      "cost": "$",
+      "url": "https://www.chocomotive.ca/",
+      "desc": "Artisanal organic espresso & chocolatier housed in a heritage railway station on Route 148.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Brûlerie des Monts — Local Roaster (Saint-Jérôme / Mirabel)",
+      "lat": 45.776,
+      "lon": -74.0035,
+      "type": "coffee",
+      "day": "Day 1",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Laurentian specialty coffee roaster & café near the Day 1 Mirabel stop.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Travelodge by Wyndham Baie-Comeau",
@@ -217104,7 +217215,9 @@
       "url": "https://www.wyndhamhotels.com/travelodge/baie-comeau-quebec/travelodge-baie-comeau/overview",
       "cost": "$140 CAD/night",
       "phone": "+1 418-589-3733",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Hôtel Le Manoir Baie-Comeau",
@@ -217123,7 +217236,9 @@
       "url": "https://manoirbc.com/en/",
       "cost": "$220 CAD/night",
       "phone": "+1 418-296-3391",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Parc national du Fjord-du-Saguenay (Tadoussac)",
@@ -217142,7 +217257,9 @@
       "url": "",
       "cost": "Sépaq Entry",
       "phone": "",
-      "photo": "images/pois/park_saguenay_charlevoix.jpg"
+      "photo": "images/pois/park_saguenay_charlevoix.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Phare du Moulin-à-Baude (Tadoussac)",
@@ -217161,7 +217278,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_pointe_des_monts.jpg"
+      "photo": "images/pois/lh_pointe_des_monts.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Phare de Cap-de-Bon-Désir",
@@ -217180,7 +217299,9 @@
       "url": "https://parks.canada.ca/lhn-nhs/qc/bondesir",
       "cost": "$9.00 CAD",
       "phone": "+1 418-232-6751",
-      "photo": "images/pois/lh_pointe_des_monts.jpg"
+      "photo": "images/pois/lh_pointe_des_monts.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Phare de Pointe-des-Monts",
@@ -217199,7 +217320,9 @@
       "url": "https://pointedemonts.com",
       "cost": "Free grounds",
       "phone": "+1 418-939-2332",
-      "photo": "images/pois/lh_pointe_des_monts.jpg"
+      "photo": "images/pois/lh_pointe_des_monts.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Port-au-Persil Waterfall & Historic Chapel",
@@ -217218,7 +217341,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/park_saguenay_charlevoix.jpg"
+      "photo": "images/pois/park_saguenay_charlevoix.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Berthierville Esso",
@@ -217237,7 +217362,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Trois-Rivières Shell",
@@ -217256,7 +217383,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Baie-Saint-Paul Shell",
@@ -217275,7 +217404,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Les Escoumins Shell",
@@ -217294,7 +217425,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Baie-Comeau Shell V-Power Hub",
@@ -217313,7 +217446,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Sainte-Anne-de-Beaupré Irving",
@@ -217332,7 +217467,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Tadoussac Pétro-T",
@@ -217351,7 +217488,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Forestville Crevier",
@@ -217370,7 +217509,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Tadoussac Fjord Ferry (Route 138)",
@@ -217389,7 +217530,9 @@
       "url": "https://www.traversiers.com/",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/ferry_tadoussac.jpg"
+      "photo": "images/pois/ferry_tadoussac.jpg",
+      "admission": "Free Crossing ($0 Toll for Motorcycles & Riders)",
+      "hours": "24/7 Year-Round (Every 20 Mins in Daylight)"
     },
     {
       "name": "Boulevard Champlain & Cap Diamant River Parkway",
@@ -217408,7 +217551,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_quebec_champlain.jpg"
+      "photo": "images/pois/sight_quebec_champlain.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Autoroute 50 & Route 138 North Shore Scenic Corridor",
@@ -217427,7 +217572,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/park_saguenay_charlevoix.jpg"
+      "photo": "images/pois/park_saguenay_charlevoix.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Microbrasserie Le Temps d'une Pinte (Trois-Rivières)",
@@ -217440,7 +217587,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "St-Pancrace — Microbrasserie / Le Pub (Baie-Comeau)",
@@ -217453,7 +217602,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Pêcherie Manicouagan Inc (Baie-Comeau)",
@@ -217466,7 +217617,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Starbucks (Trois-Rivières — Hwy 40)",
@@ -217479,7 +217632,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Tim Hortons (Beaupré / Sainte-Anne-de-Beaupré — Route 138)",
@@ -217492,7 +217647,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Tim Hortons (La Malbaie — Route 138)",
@@ -217505,7 +217662,74 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "Café Frida — Torréfacteur Local (Trois-Rivières)",
+      "lat": 46.3422,
+      "lon": -72.5398,
+      "type": "coffee",
+      "day": "Day 2",
+      "cost": "$",
+      "url": "https://cafefrida.ca/",
+      "desc": "Third-wave local coffee house & bakery overlooking the St. Lawrence River in Trois-Rivières.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Café Saint-Henri Micro-Torréfacteur (Local Roaster — Québec City)",
+      "lat": 46.8142,
+      "lon": -71.2248,
+      "type": "coffee",
+      "day": "Day 2",
+      "cost": "$",
+      "url": "https://sainthenri.ca/",
+      "desc": "Renowned Québec specialty micro-roaster & espresso bar.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Mousse Café — Local Charlevoix Café (Baie-Saint-Paul)",
+      "lat": 47.4418,
+      "lon": -70.4995,
+      "type": "coffee",
+      "day": "Day 2",
+      "cost": "$",
+      "url": "",
+      "desc": "Independent Charlevoix café & pastry stop along scenic Route 138.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Café de l'Anse — Local Fjord Café (Tadoussac)",
+      "lat": 48.1445,
+      "lon": -69.7178,
+      "type": "coffee",
+      "day": "Day 2",
+      "cost": "$",
+      "url": "",
+      "desc": "Historic local Tadoussac café overlooking the Saguenay Fjord ferry landing.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Brûlerie Manicouagan / Café La Mer (Local Café — Baie-Comeau)",
+      "lat": 49.2175,
+      "lon": -68.1485,
+      "type": "coffee",
+      "day": "Day 2",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Côte-Nord coffee house & bakery on Place La Salle in Baie-Comeau.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Hotel Wabush",
@@ -217524,7 +217748,9 @@
       "url": "https://hotelwabush.com/",
       "cost": "$175 CAD/night",
       "phone": "+1 709-282-3566",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Two Seasons Inn (Labrador City)",
@@ -217543,7 +217769,9 @@
       "url": "https://www.twoseasonsinn.ca/",
       "cost": "$195 CAD/night",
       "phone": "+1 709-944-2661",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Manic-5 (Daniel-Johnson Dam)",
@@ -217562,7 +217790,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_manic5_dam.jpg"
+      "photo": "images/pois/attr_manic5_dam.jpg",
+      "admission": "$28.00 CAD Adult (Guided Hydro-Québec Dam Tour)",
+      "hours": "Daily 08:30 – 16:30 (Tours: 09:00, 11:00, 13:30, 15:30)"
     },
     {
       "name": "Gagnon Ghost Town (Abandoned Boreal Streets)",
@@ -217581,7 +217811,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Fermont Windbreak Wall ('Le Mur')",
@@ -217600,7 +217832,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Manic-5 Fuel (Motel de l'Énergie)",
@@ -217619,7 +217853,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 21:00 (24/7 Credit Cardlock Pump)"
     },
     {
       "name": "Relais Gabriel Fuel Outpost",
@@ -217638,7 +217874,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 21:00 (24/7 Credit Cardlock Pump)"
     },
     {
       "name": "Fermont Shell",
@@ -217657,7 +217895,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Labrador City Ultramar Hub",
@@ -217676,7 +217916,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_ultramar.jpg"
+      "photo": "images/pois/fuel_ultramar.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Zone Camping Relais de Gabriel",
@@ -217689,7 +217931,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Station Uapishka — Monts Groulx (Hotel Backup)",
@@ -217702,7 +217946,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Campement Modulaire (Mont-Wright / QC-389)",
@@ -217715,7 +217961,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hotel_super8_motel.jpg"
+      "photo": "images/pois/hotel_super8_motel.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Pourvoirie Lac Justone Fermont | Rivière Caniapiscau",
@@ -217728,7 +217976,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Duley Lake Provincial Park Campground",
@@ -217741,7 +217991,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Trish’s Place (Wabush / Labrador City B&B Backup)",
@@ -217754,7 +218006,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Gateway Labrador — Visitor Information Centre w/ Campsites",
@@ -217767,7 +218021,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Stationnement Harfang-Nord (Monts Groulx Trailhead Parking)",
@@ -217780,7 +218036,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "Stationnement Départ Monts Groulx Nord/Sud",
@@ -217793,7 +218051,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "Large Area for Parking Stop (QC-389 Pullout)",
@@ -217806,7 +218066,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #1",
@@ -217819,7 +218081,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #2",
@@ -217832,7 +218096,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #3",
@@ -217845,7 +218111,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #4",
@@ -217858,7 +218126,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #5",
@@ -217871,7 +218141,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #6",
@@ -217884,7 +218156,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #7",
@@ -217897,7 +218171,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #8",
@@ -217910,7 +218186,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #9",
@@ -217923,7 +218201,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #10",
@@ -217936,7 +218216,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #11",
@@ -217949,7 +218231,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #12",
@@ -217962,7 +218246,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #13",
@@ -217975,7 +218261,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #14",
@@ -217988,7 +218276,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #15",
@@ -218001,7 +218291,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #16",
@@ -218014,7 +218306,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #17",
@@ -218027,7 +218321,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #18",
@@ -218040,7 +218336,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #19",
@@ -218053,7 +218351,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #20",
@@ -218066,7 +218366,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #21",
@@ -218079,7 +218381,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #22",
@@ -218092,7 +218396,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #23",
@@ -218105,7 +218411,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #24",
@@ -218118,7 +218426,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #25",
@@ -218131,7 +218441,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #26",
@@ -218144,7 +218456,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #27",
@@ -218157,7 +218471,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #28",
@@ -218170,7 +218486,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #29",
@@ -218183,7 +218501,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #30",
@@ -218196,7 +218516,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #31",
@@ -218209,7 +218531,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #32",
@@ -218222,7 +218546,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #33",
@@ -218235,7 +218561,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #34",
@@ -218248,7 +218576,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #35",
@@ -218261,7 +218591,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #36",
@@ -218274,7 +218606,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #37",
@@ -218287,7 +218621,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #38",
@@ -218300,7 +218636,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #39",
@@ -218313,7 +218651,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #40",
@@ -218326,7 +218666,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #41",
@@ -218339,7 +218681,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #42",
@@ -218352,7 +218696,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #43",
@@ -218365,7 +218711,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #44",
@@ -218378,7 +218726,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #45",
@@ -218391,7 +218741,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #46",
@@ -218404,7 +218756,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #47",
@@ -218417,7 +218771,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #48",
@@ -218430,7 +218786,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #49",
@@ -218443,7 +218801,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #50",
@@ -218456,7 +218816,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #51",
@@ -218469,7 +218831,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #52",
@@ -218482,7 +218846,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #53",
@@ -218495,7 +218861,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #54",
@@ -218508,7 +218876,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #55",
@@ -218521,7 +218891,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #56",
@@ -218534,7 +218906,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #57",
@@ -218547,7 +218921,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #58",
@@ -218560,7 +218936,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #59",
@@ -218573,7 +218951,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #60",
@@ -218586,7 +218966,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #61",
@@ -218599,7 +218981,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #62",
@@ -218612,7 +218996,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #63",
@@ -218625,7 +219011,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "QC-389 Emergency Pullout / Parking Stop #64",
@@ -218638,7 +219026,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "Dirt Road Section Starts (Fire Lake Unpaved QC-389)",
@@ -218651,7 +219041,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "Dirt Road Stops Here — Pavement Begins (Mont-Wright)",
@@ -218664,7 +219056,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/pullout_qc389_highway.jpg"
+      "photo": "images/pois/pullout_qc389_highway.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "🛑 Stop Sign — Before Single-Lane Bridge (QC-389)",
@@ -218677,7 +219071,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Double Train Crossing (Cartier Railway QC-389)",
@@ -218690,7 +219086,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #1 (QC-389 / Iron Ore Railway)",
@@ -218703,7 +219101,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #2 (QC-389 / Iron Ore Railway)",
@@ -218716,7 +219116,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #3 (QC-389 / Iron Ore Railway)",
@@ -218729,7 +219131,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #4 (QC-389 / Iron Ore Railway)",
@@ -218742,7 +219146,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #5 (QC-389 / Iron Ore Railway)",
@@ -218755,7 +219161,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #6 (QC-389 / Iron Ore Railway)",
@@ -218768,7 +219176,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #7 (QC-389 / Iron Ore Railway)",
@@ -218781,7 +219191,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #8 (QC-389 / Iron Ore Railway)",
@@ -218794,7 +219206,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #9 (QC-389 / Iron Ore Railway)",
@@ -218807,7 +219221,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #10 (QC-389 / Iron Ore Railway)",
@@ -218820,7 +219236,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "⚠️ Train Crossing #11 (QC-389 / Iron Ore Railway)",
@@ -218833,7 +219251,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/hazard_train_crossing.jpg"
+      "photo": "images/pois/hazard_train_crossing.jpg",
+      "admission": "",
+      "hours": "24/7 Open Highway Access (Daylight Riding Recommended)"
     },
     {
       "name": "Pourvoirie Relais Gabriel Restaurant (Hwy 389)",
@@ -218846,7 +219266,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Iron Rock Brewing Co. (Labrador City)",
@@ -218859,7 +219281,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Baba Q's Smoke & Grill (Labrador City)",
@@ -218872,7 +219296,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Baie-Comeau — Bd Laflèche)",
@@ -218885,7 +219311,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Belvédère Réservoir Manicouagan (QC-389 Viewpoint)",
@@ -218898,7 +219326,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Gagnon Airport (Former Mining Town Runway — QC-389)",
@@ -218911,7 +219341,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "QC-389 Off-Road Side-of-Road Viewpoint",
@@ -218924,7 +219356,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "QC-389 Emergency Highway Telephone Booth",
@@ -218937,7 +219371,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "🚁 Drone Launch Spot: Fire Lake Iron Mine",
@@ -218950,7 +219386,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "🚁 Drone Launch Spot: Mont-Wright Mega-Mine",
@@ -218963,7 +219401,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "📸 Fermont Welcome Sign",
@@ -218976,7 +219416,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "📸 Québec Provincial Border Sign (QC-389 / NL-500)",
@@ -218989,7 +219431,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "📸 Welcome to Labrador Border Sign (South)",
@@ -219002,7 +219446,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "📸 Labrador Border Sign (North Pullout)",
@@ -219015,7 +219461,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Crystal Falls Hiking Trail (Labrador City)",
@@ -219028,7 +219476,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Harrie Lake Trail (Labrador West)",
@@ -219041,7 +219491,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "The Truck — Giant Terex Mining Dump Truck Display",
@@ -219054,7 +219506,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_fermont_wall.jpg"
+      "photo": "images/pois/attr_fermont_wall.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Smokey Mountain Ski & Recreational Area",
@@ -219067,7 +219521,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_churchill_falls.jpg"
+      "photo": "images/pois/attr_churchill_falls.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Jean Lake Walking Trail (Wabush)",
@@ -219080,7 +219536,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_churchill_falls.jpg"
+      "photo": "images/pois/attr_churchill_falls.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Royal Inn & Suites (Goose Bay)",
@@ -219099,7 +219557,9 @@
       "url": "https://www.royalinnandsuites.ca/",
       "cost": "$175 CAD/night",
       "phone": "+1 709-896-2456",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Hotel North Two (Goose Bay)",
@@ -219118,7 +219578,9 @@
       "url": "https://www.hotelnorth.ca/hotel-north-two.html",
       "cost": "$205 CAD/night",
       "phone": "+1 709-896-3398",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Churchill Falls Underground Hydro Plant",
@@ -219137,7 +219599,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_churchill_falls.jpg"
+      "photo": "images/pois/attr_churchill_falls.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Churchill Falls Gas & Convenience",
@@ -219156,7 +219620,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 21:00 (24/7 Credit Cardlock Pump)"
     },
     {
       "name": "Happy Valley-Goose Bay Esso/Irving Hub",
@@ -219175,7 +219641,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "TLH 500 Minipi River Bladder Transfer Point",
@@ -219194,7 +219662,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_bladder_transfer.jpg"
+      "photo": "images/pois/fuel_bladder_transfer.jpg",
+      "admission": "",
+      "hours": "24/7 Roadside Fuel Bladder Transfer Point"
     },
     {
       "name": "Mamattuk Restaurant (Happy Valley-Goose Bay)",
@@ -219207,7 +219677,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Hotel North Restaurant (Happy Valley-Goose Bay)",
@@ -219220,7 +219692,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Labrador City — Route 500)",
@@ -219233,7 +219707,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "Grounded Local Specialty Coffee & Bakery (Labrador City)",
+      "lat": 52.9445,
+      "lon": -66.9155,
+      "type": "coffee",
+      "day": "Day 4",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Labrador West coffee house & warm pastry stop before riding TLH Route 500 East.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Northern Light Inn (L'Anse-au-Clair)",
@@ -219252,7 +219741,9 @@
       "url": "https://www.northernlightinn.com/",
       "cost": "$150 CAD/night",
       "phone": "+1 709-931-2332",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Motel Blanc-Sablon",
@@ -219271,7 +219762,9 @@
       "url": "https://motelblancsablon.com/",
       "cost": "$145 CAD/night",
       "phone": "+1 418-461-2737",
-      "photo": "images/pois/hotel_super8_motel.jpg"
+      "photo": "images/pois/hotel_super8_motel.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Point Amour Lighthouse",
@@ -219290,7 +219783,9 @@
       "url": "https://www.seethesites.ca/the-sites/point-amour-lighthouse/",
       "cost": "$10.00 CAD",
       "phone": "+1 709-927-5825",
-      "photo": "images/pois/lh_point_amour.jpg"
+      "photo": "images/pois/lh_point_amour.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "Tracey Hill 700-Step Overlook (Red Bay)",
@@ -219309,7 +219804,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_red_bay.jpg"
+      "photo": "images/pois/attr_red_bay.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "L'Anse Amour 7,500-Year Burial Mound",
@@ -219328,7 +219825,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_red_bay.jpg"
+      "photo": "images/pois/attr_red_bay.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "HMS Raleigh 1922 Shipwreck & Raleigh Trail",
@@ -219347,7 +219846,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_st_anthony_grenfell.jpg"
+      "photo": "images/pois/attr_st_anthony_grenfell.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Red Bay Basque Whaling Station (UNESCO)",
@@ -219366,7 +219867,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/attr_red_bay.jpg"
+      "photo": "images/pois/attr_red_bay.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "CRITICAL: Route 510 Mid-Stage Bladder Transfer",
@@ -219385,7 +219888,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_bladder_transfer.jpg"
+      "photo": "images/pois/fuel_bladder_transfer.jpg",
+      "admission": "",
+      "hours": "24/7 Roadside Fuel Bladder Transfer Point"
     },
     {
       "name": "Port Hope Simpson Gas Bar",
@@ -219404,7 +219909,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 21:00 (24/7 Credit Cardlock Pump)"
     },
     {
       "name": "Mary's Harbour North Atlantic",
@@ -219423,7 +219930,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "Daily 07:00 – 21:00 (24/7 Credit Cardlock Pump)"
     },
     {
       "name": "Blanc-Sablon Ultramar",
@@ -219442,7 +219951,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_ultramar.jpg"
+      "photo": "images/pois/fuel_ultramar.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "L'Anse-au-Loup North Atlantic",
@@ -219461,7 +219972,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Northern Light Inn Dining Room (L'Anse-au-Clair)",
@@ -219474,7 +219987,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Happy Valley-Goose Bay)",
@@ -219487,7 +220002,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "Birch Island Local Café & Bakery (Happy Valley-Goose Bay)",
+      "lat": 53.3038,
+      "lon": -60.3265,
+      "type": "coffee",
+      "day": "Day 5",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Goose Bay café serving espresso, bakeapple scones & fresh bread before the 410 km TLH 510 leg.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Snorri Cabins / Valhalla Lodge (Hay Cove)",
@@ -219506,7 +220036,9 @@
       "url": "https://valhalla-lodge.com/",
       "cost": "$195 CAD/night",
       "phone": "+1 709-623-2018",
-      "photo": "images/pois/hotel_viking_cabin.jpg"
+      "photo": "images/pois/hotel_viking_cabin.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Haven Inn (St. Anthony)",
@@ -219525,7 +220057,9 @@
       "url": "https://haveninn.ca/",
       "cost": "$175 CAD/night",
       "phone": "+1 709-454-9100",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Cape Norman Lighthouse",
@@ -219544,7 +220078,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_norman_st_anthony.jpg"
+      "photo": "images/pois/lh_cape_norman_st_anthony.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Fishing Point Lighthouse (Fox Point Light - St. Anthony)",
@@ -219563,7 +220099,9 @@
       "url": "https://townofstanthony.com/",
       "cost": "Free",
       "phone": "+1 709-454-3453",
-      "photo": "images/pois/lh_cape_norman_st_anthony.jpg"
+      "photo": "images/pois/lh_cape_norman_st_anthony.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Burnt Cape Ecological Reserve (Arctic Barrens)",
@@ -219582,7 +220120,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_st_anthony_grenfell.jpg"
+      "photo": "images/pois/attr_st_anthony_grenfell.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "L'Anse aux Meadows (UNESCO Viking Settlement)",
@@ -219601,7 +220141,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/attr_lanse_aux_meadows.jpg"
+      "photo": "images/pois/attr_lanse_aux_meadows.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Grenfell Historic Properties & Museum (St. Anthony)",
@@ -219620,7 +220162,9 @@
       "url": "https://grenfell-properties.com/",
       "cost": "$12.00 CAD",
       "phone": "+1 709-454-4010",
-      "photo": "images/pois/attr_st_anthony_grenfell.jpg"
+      "photo": "images/pois/attr_st_anthony_grenfell.jpg",
+      "admission": "$12.00 CAD Adult Admission",
+      "hours": "Daily 09:00 – 17:00 (Summer Season)"
     },
     {
       "name": "St. Barbe North Atlantic",
@@ -219639,7 +220183,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Raleigh Gas Bar",
@@ -219658,7 +220204,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "St. Anthony Irving / North Atlantic Hub",
@@ -219677,7 +220225,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Blanc-Sablon to St. Barbe Ferry (MV Qajaq W)",
@@ -219696,7 +220246,9 @@
       "url": "https://mylmi.labradormarine.com/",
       "cost": "$100 CAD (2 Bikes+2 Riders)",
       "phone": "+1 866-535-2567",
-      "photo": "images/pois/ferry_qajaq.jpg"
+      "photo": "images/pois/ferry_qajaq.jpg",
+      "admission": "~$55.00 CAD (1 Rider + 1 Motorcycle — Book Ahead)",
+      "hours": "Daily Sailings 08:00 & 13:30 (Check-in 60m Prior)"
     },
     {
       "name": "Rudder's Restaurant & Pub (St. Anthony)",
@@ -219709,7 +220261,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Lightkeepers Café (Fishing Point, St. Anthony)",
@@ -219722,7 +220276,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "The Great Viking Feast Dinner Theatre (St. Anthony)",
@@ -219735,7 +220291,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "$65.00 CAD/person Dinner Theatre Ticket (Reserve Ahead)",
+      "hours": "Seatings Daily at 18:00 & 19:30 (June – Sept)"
     },
     {
       "name": "Tim Hortons (St. Anthony)",
@@ -219748,7 +220306,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Grenfell Historic Properties (St. Anthony)",
@@ -219761,7 +220321,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_st_anthony_grenfell.jpg"
+      "photo": "images/pois/attr_st_anthony_grenfell.jpg",
+      "admission": "$12.00 CAD Adult Admission",
+      "hours": "Daily 09:00 – 17:00 (Summer Season)"
     },
     {
       "name": "Fox Point Lighthouse (Fishing Point, St. Anthony)",
@@ -219774,7 +220336,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/lh_cape_norman_st_anthony.jpg"
+      "photo": "images/pois/lh_cape_norman_st_anthony.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
+    },
+    {
+      "name": "Bakeapple & Espresso Local Café (L'Anse-au-Clair)",
+      "lat": 51.4225,
+      "lon": -57.065,
+      "type": "coffee",
+      "day": "Day 6",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Labrador Straits coffee & bakeapple pastry stop near the Blanc-Sablon ferry.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Snorri Cabins / Valhalla Lodge (Hay Cove) - Night 2",
@@ -219793,7 +220370,9 @@
       "url": "https://valhalla-lodge.com/",
       "cost": "$195 CAD/night",
       "phone": "+1 709-623-2018",
-      "photo": "images/pois/hotel_viking_cabin.jpg"
+      "photo": "images/pois/hotel_viking_cabin.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Haven Inn (St. Anthony) - Night 2",
@@ -219812,7 +220391,9 @@
       "url": "https://haveninn.ca/",
       "cost": "$175 CAD/night",
       "phone": "+1 709-454-9100",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Cape Onion / Quirpon Island Lookout",
@@ -219831,7 +220412,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_norman_st_anthony.jpg"
+      "photo": "images/pois/lh_cape_norman_st_anthony.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Norstead Viking Village & Snorri Knarr Ship",
@@ -219850,7 +220433,9 @@
       "url": "",
       "cost": "$15.00 CAD",
       "phone": "",
-      "photo": "images/pois/attr_norstead_viking.jpg"
+      "photo": "images/pois/attr_norstead_viking.jpg",
+      "admission": "$12.50 CAD Adult Admission",
+      "hours": "Daily 09:00 – 17:00 (June – Sept)"
     },
     {
       "name": "The Norseman Restaurant (L'Anse aux Meadows)",
@@ -219863,7 +220448,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "The Daily Catch (St. Lunaire-Griquet)",
@@ -219876,7 +220463,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Café Nymphe — The Dark Tickle Company (St. Lunaire-Griquet)",
@@ -219889,7 +220478,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Burnt Cape Café (Raleigh, NL-430)",
@@ -219902,7 +220493,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Northern Delight Restaurant (Gunners Cove)",
@@ -219915,7 +220508,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
+    },
+    {
+      "name": "Lightkeepers Local Espresso & Bakery (St. Anthony)",
+      "lat": 51.3605,
+      "lon": -55.561,
+      "type": "coffee",
+      "day": "Day 7",
+      "cost": "$",
+      "url": "",
+      "desc": "Local St. Anthony oceanfront coffee & pastry stop perched above Fishing Point.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Gros Morne / Norris Point KOA Holiday",
@@ -219934,7 +220542,9 @@
       "url": "https://koa.com/campgrounds/gros-morne/",
       "cost": "$52 CAD/night",
       "phone": "+1 709-458-2229",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Ocean View Hotel (Rocky Harbour)",
@@ -219953,7 +220563,9 @@
       "url": "https://www.theoceanview.ca/",
       "cost": "$225 CAD/night",
       "phone": "+1 709-458-2730",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Gros Morne National Park (Rocky Harbour)",
@@ -219972,7 +220584,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/park_gros_morne.jpg"
+      "photo": "images/pois/park_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Gros Morne KOA Holiday Park Grounds",
@@ -219991,7 +220605,9 @@
       "url": "",
       "cost": "$52 CAD/night",
       "phone": "",
-      "photo": "images/pois/park_gros_morne.jpg"
+      "photo": "images/pois/park_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Pointe Riche Lighthouse & Limestone Barrens",
@@ -220010,7 +220626,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_pointe_riche.jpg"
+      "photo": "images/pois/lh_pointe_riche.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Lobster Cove Head Lighthouse",
@@ -220029,7 +220647,9 @@
       "url": "",
       "cost": "Included in Discovery Pass",
       "phone": "",
-      "photo": "images/pois/lh_lobster_cove.jpg"
+      "photo": "images/pois/lh_lobster_cove.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "Green Point Geological Golden Spike (GSSP)",
@@ -220048,7 +220668,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/hike_green_point_gros_morne.jpg"
+      "photo": "images/pois/hike_green_point_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Trout River Eastern Point Clifftop Trail",
@@ -220067,7 +220689,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_tablelands.jpg"
+      "photo": "images/pois/sight_tablelands.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Broom Point Traditional Cod Fishing Premises",
@@ -220086,7 +220710,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/park_gros_morne.jpg"
+      "photo": "images/pois/park_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Hawke's Bay North Atlantic",
@@ -220105,7 +220731,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Port au Choix Co-op Fuel",
@@ -220124,7 +220752,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Rocky Harbour Irving",
@@ -220143,7 +220773,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Plum Point Gas Bar",
@@ -220162,7 +220794,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Parson's Pond North Atlantic",
@@ -220181,7 +220815,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Java Jack's Restaurant & Gallery (Rocky Harbour)",
@@ -220194,7 +220830,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Ocean View Bistro & Dining (Rocky Harbour)",
@@ -220207,7 +220845,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
+    },
+    {
+      "name": "Java Jack's Local Café & Roasts (Rocky Harbour, Gros Morne)",
+      "lat": 49.5898,
+      "lon": -57.9162,
+      "type": "coffee",
+      "day": "Day 8",
+      "cost": "$",
+      "url": "https://javajacks.ca/",
+      "desc": "Gros Morne's beloved local coffee house & gallery overlooking Lobster Cove.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Green Point Campground (Gros Morne NP)",
@@ -220226,7 +220879,9 @@
       "url": "https://reservation.pc.gc.ca/",
       "cost": "$35 CAD/night",
       "phone": "+1 709-458-2417",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Berry Hill Campground (Gros Morne NP)",
@@ -220245,7 +220900,9 @@
       "url": "https://reservation.pc.gc.ca/",
       "cost": "$32 CAD/night",
       "phone": "+1 709-458-2417",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Green Point Coastal Bluffs (Gros Morne NP)",
@@ -220264,7 +220921,9 @@
       "url": "",
       "cost": "$35 CAD/night",
       "phone": "",
-      "photo": "images/pois/hike_green_point_gros_morne.jpg"
+      "photo": "images/pois/hike_green_point_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Berry Hill Boreal Park Grounds (Gros Morne NP)",
@@ -220283,7 +220942,9 @@
       "url": "",
       "cost": "$32 CAD/night",
       "phone": "",
-      "photo": "images/pois/park_gros_morne.jpg"
+      "photo": "images/pois/park_gros_morne.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Woody Point Lighthouse",
@@ -220302,7 +220963,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_woody_point.jpg"
+      "photo": "images/pois/lh_woody_point.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Woody Point Gas Bar",
@@ -220321,7 +220984,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Trout River Gas Bar",
@@ -220340,7 +221005,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "The Tablelands (Earth's Mantle)",
@@ -220359,7 +221026,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/sight_tablelands.jpg"
+      "photo": "images/pois/sight_tablelands.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Deer Lake Irving Big Stop Restaurant (Deer Lake)",
@@ -220372,7 +221041,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Off The Hook Fish & Chips (Deer Lake)",
@@ -220385,7 +221056,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Shipyard Eatery / Boomstick Brewing (Corner Brook)",
@@ -220398,7 +221071,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Jennifer's Restaurant (Corner Brook)",
@@ -220411,7 +221086,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Deer Lake — Trans-Canada Hwy 1)",
@@ -220424,7 +221101,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (Corner Brook — Murphy Square)",
@@ -220437,7 +221116,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Corner Brook Stream Trail",
@@ -220450,7 +221131,35 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_gros_morne.jpg"
+      "photo": "images/pois/park_gros_morne.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
+    },
+    {
+      "name": "Seaside Deli & Local Espresso Bar (Woody Point, Bonne Bay)",
+      "lat": 49.5015,
+      "lon": -57.9182,
+      "type": "coffee",
+      "day": "Day 9",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Bonne Bay waterfront espresso & pastry stop at the foot of the Tablelands.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Harbour Grounds Local Coffee House (Corner Brook)",
+      "lat": 48.9535,
+      "lon": -57.9495,
+      "type": "coffee",
+      "day": "Day 9",
+      "cost": "$",
+      "url": "",
+      "desc": "Popular local western Newfoundland coffee house & bakery on the Corner Brook waterfront.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Marine Atlantic Overnight Ferry (Private 2-Berth Stateroom Cabin)",
@@ -220469,7 +221178,9 @@
       "url": "https://www.marineatlantic.ca",
       "cost": "$175 - $220 CAD (Bike + Berth)",
       "phone": "1-800-341-7981",
-      "photo": "images/pois/ferry_marine_atlantic.jpg"
+      "photo": "images/pois/ferry_marine_atlantic.jpg",
+      "admission": "~$185 CAD (Rider + Bike) + ~$140 CAD 2-Berth Cabin",
+      "hours": "Terminal Check-in 21:00 – 22:30 • Sails 23:45"
     },
     {
       "name": "Hotel Port aux Basques (Ferry Staging Backup)",
@@ -220488,7 +221199,9 @@
       "url": "https://hotelportauxbasques.com",
       "cost": "$165 CAD/night",
       "phone": "+1 709-695-2171",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Cape Anguille Lighthouse",
@@ -220507,7 +221220,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_ray.jpg"
+      "photo": "images/pois/lh_cape_ray.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Cape Ray Lighthouse",
@@ -220526,7 +221241,9 @@
       "url": "",
       "cost": "Free",
       "phone": "+1 709-695-7560",
-      "photo": "images/pois/lh_cape_ray.jpg"
+      "photo": "images/pois/lh_cape_ray.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Wreckhouse Extreme Winds Corridor",
@@ -220545,7 +221262,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Deer Lake Irving Big Stop",
@@ -220564,7 +221283,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Corner Brook Irving Big Stop",
@@ -220583,7 +221304,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Stephenville Crossing Esso",
@@ -220602,7 +221325,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Port aux Basques Irving",
@@ -220621,7 +221346,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Doyles Esso (Codroy Valley)",
@@ -220640,7 +221367,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Marine Atlantic Port aux Basques Overnight Ferry",
@@ -220659,7 +221388,9 @@
       "url": "https://www.marineatlantic.ca/",
       "cost": "$320 CAD (2 Bikes+2 Berths)",
       "phone": "+1 800-341-7981",
-      "photo": "images/pois/ferry_marine_atlantic.jpg"
+      "photo": "images/pois/ferry_marine_atlantic.jpg",
+      "admission": "~$185.00 CAD (Rider + Bike) + ~$140.00 CAD Cabin",
+      "hours": "Overnight Sailing 23:45 → 07:00 (Check-in 21:30)"
     },
     {
       "name": "Alma's Family Restaurant (Channel-Port aux Basques)",
@@ -220672,7 +221403,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Channel-Port aux Basques)",
@@ -220685,7 +221418,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "Keepers Local Café at Cape Ray (Port aux Basques)",
+      "lat": 47.6205,
+      "lon": -59.3025,
+      "type": "coffee",
+      "day": "Day 10",
+      "cost": "$",
+      "url": "",
+      "desc": "Local coastal coffee & pastry stop at Cape Ray Lighthouse prior to the Marine Atlantic ferry.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Broad Cove Campground (Cape Breton Highlands NP)",
@@ -220704,7 +221452,9 @@
       "url": "https://reservation.pc.gc.ca/",
       "cost": "$38 CAD/night",
       "phone": "+1 902-285-2880",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Keltic Lodge at the Highlands (Ingonish)",
@@ -220723,7 +221473,9 @@
       "url": "https://kelticlodge.ca/",
       "cost": "$245 CAD/night",
       "phone": "+1 902-285-2880",
-      "photo": "images/pois/hotel_keltic_lodge.jpg"
+      "photo": "images/pois/hotel_keltic_lodge.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Cape Breton Highlands National Park (East Entrance)",
@@ -220742,7 +221494,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Broad Cove Ocean Beach Park (Cape Breton Highlands NP)",
@@ -220761,7 +221515,9 @@
       "url": "",
       "cost": "$38 CAD/night",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Neil's Harbour Lighthouse & Chowder House",
@@ -220780,7 +221536,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_neils_harbour.jpg"
+      "photo": "images/pois/lh_neils_harbour.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "White Point Unknown Sailor Clifftop Trail",
@@ -220799,7 +221557,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_meat_cove.jpg"
+      "photo": "images/pois/sight_meat_cove.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Black Brook Cove Waterfall & Ocean Beach",
@@ -220818,7 +221578,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "The Gaelic College / Colaisde na Gàidhlig (St. Ann's)",
@@ -220837,7 +221599,9 @@
       "url": "",
       "cost": "Free grounds / Museum $8",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "North Sydney Esso",
@@ -220856,7 +221620,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Boularderie Irving (Hwy 105)",
@@ -220875,7 +221641,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Ingonish Petro-Canada / Shell",
@@ -220894,7 +221662,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Cape Smokey Look-off & Gondola",
@@ -220913,7 +221683,9 @@
       "url": "",
       "cost": "Look-off Free",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "The Chanterelle Country Inn & Restaurant (Cabot Trail)",
@@ -220926,7 +221698,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Coastal Restaurant & Pub (Ingonish)",
@@ -220939,7 +221713,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (North Sydney — Ferry Terminal Approach)",
@@ -220952,7 +221728,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Tim Hortons (Baddeck — Cabot Trail Gateway)",
@@ -220965,7 +221743,35 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
+    },
+    {
+      "name": "The Beanery Local Café (Baddeck, Cape Breton)",
+      "lat": 46.0998,
+      "lon": -60.7535,
+      "type": "coffee",
+      "day": "Day 11",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Bras d'Or Lake coffee shop & bakery at the southern gateway to the Cabot Trail.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Salty Rose's & The Periwinkle Local Café (Ingonish)",
+      "lat": 46.6525,
+      "lon": -60.4025,
+      "type": "coffee",
+      "day": "Day 11",
+      "cost": "$",
+      "url": "https://saltyroses.ca/",
+      "desc": "Local Cape Breton craft café & espresso bar right on the Cabot Trail in Ingonish.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Chéticamp Campground (Cape Breton Highlands NP)",
@@ -220984,7 +221790,9 @@
       "url": "https://reservation.pc.gc.ca/",
       "cost": "$38 CAD/night",
       "phone": "+1 902-224-2306",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Laurie's Motor Inn (Chéticamp)",
@@ -221003,7 +221811,9 @@
       "url": "https://lauriesinn.com/",
       "cost": "$175 CAD/night",
       "phone": "+1 902-224-2400",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Chéticamp Mountain Valley Park (Highlands NP)",
@@ -221022,7 +221832,9 @@
       "url": "",
       "cost": "$38 CAD/night",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "St. Paul Island Southwest Lighthouse (Dingwall)",
@@ -221041,7 +221853,9 @@
       "url": "https://stpaulisland.org",
       "cost": "Free grounds",
       "phone": "+1 902-383-2578",
-      "photo": "images/pois/lh_neils_harbour.jpg"
+      "photo": "images/pois/lh_neils_harbour.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Chéticamp Enragée Point Lighthouse",
@@ -221060,7 +221874,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_breton.jpg"
+      "photo": "images/pois/lh_cape_breton.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Skyline Trail Boardwalk Hike",
@@ -221079,7 +221895,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/hike_skyline_trail.jpg"
+      "photo": "images/pois/hike_skyline_trail.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Dingwall Gas Bar & Convenience",
@@ -221098,7 +221916,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Chéticamp Co-op Gas Bar",
@@ -221117,7 +221937,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Cape North Co-op Gas Bar",
@@ -221136,7 +221958,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Meat Cove Clifftop Adventure Spur & Chowder Hut",
@@ -221155,7 +221979,9 @@
       "url": "",
       "cost": "Free Access",
       "phone": "",
-      "photo": "images/pois/sight_meat_cove.jpg"
+      "photo": "images/pois/sight_meat_cove.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "French Mountain Switchbacks",
@@ -221174,7 +222000,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Aucoin Bakery (Chéticamp)",
@@ -221193,7 +222021,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/sight_cabot_trail.jpg"
+      "photo": "images/pois/sight_cabot_trail.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Le Gabriel Restaurant & Lounge (Chéticamp)",
@@ -221206,7 +222036,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "L'Abri Café, Restaurant et Bar (Chéticamp)",
@@ -221219,7 +222051,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Harbour Restaurant & Bar (Chéticamp)",
@@ -221232,7 +222066,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Mr. Chicken / Last Chance Sandwich Stop (Chéticamp)",
@@ -221245,7 +222081,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Restaurant Évangéline (Chéticamp)",
@@ -221258,7 +222096,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Seafood Stop (Chéticamp)",
@@ -221271,7 +222111,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "The Doryman Pub & Grill (Chéticamp)",
@@ -221284,7 +222126,35 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
+    },
+    {
+      "name": "Frog Pond Local Café (Chéticamp, Cabot Trail)",
+      "lat": 46.6095,
+      "lon": -61.0115,
+      "type": "coffee",
+      "day": "Day 12",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Acadian organic coffee & pastry stop near the Skyline Trailhead in Chéticamp.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Dancing Goat Local Café & Bakery (Margaree Valley)",
+      "lat": 46.3735,
+      "lon": -61.0065,
+      "type": "coffee",
+      "day": "Day 12",
+      "cost": "$",
+      "url": "https://thedancinggoat.ca/",
+      "desc": "Famous local Cape Breton artisan bakery & specialty espresso bar in the Margaree Valley.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Cavendish Campground (Prince Edward Island National Park)",
@@ -221303,7 +222173,9 @@
       "url": "https://parks.canada.ca/pn-np/pe/pei-ipe/activ/camping/cavendish",
       "cost": "$38 - $48 CAD/night",
       "phone": "1-877-737-3783",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Kindred Spirits Country Inn & Cottages (Cavendish)",
@@ -221322,7 +222194,9 @@
       "url": "https://kindredspirits.ca",
       "cost": "$195 CAD/night",
       "phone": "+1 902-963-2434",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Prince Edward Island National Park (Cavendish Beach)",
@@ -221341,7 +222215,9 @@
       "url": "",
       "cost": "$38 CAD/night",
       "phone": "",
-      "photo": "images/pois/park_cavendish_pei.jpg"
+      "photo": "images/pois/park_cavendish_pei.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Margaree Harbour Range Lights",
@@ -221360,7 +222236,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_breton.jpg"
+      "photo": "images/pois/lh_cape_breton.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Victoria Harbour Range Lighthouse",
@@ -221379,7 +222257,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_point_prim_seacow.jpg"
+      "photo": "images/pois/lh_point_prim_seacow.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Cape Tryon Lighthouse",
@@ -221398,7 +222278,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_covehead_pei.jpg"
+      "photo": "images/pois/lh_covehead_pei.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "North Rustico Harbour Lighthouse",
@@ -221417,7 +222299,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_covehead_pei.jpg"
+      "photo": "images/pois/lh_covehead_pei.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Covehead Harbour Lighthouse",
@@ -221436,7 +222320,9 @@
       "url": "https://parks.canada.ca/pn-np/pe/pei-ipe",
       "cost": "Parks Canada Entry",
       "phone": "",
-      "photo": "images/pois/lh_covehead_pei.jpg"
+      "photo": "images/pois/lh_covehead_pei.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Point Prim Lighthouse",
@@ -221455,7 +222341,9 @@
       "url": "https://pointprimlighthouse.com",
       "cost": "$5.00 CAD",
       "phone": "+1 902-659-2768",
-      "photo": "images/pois/lh_point_prim_seacow.jpg"
+      "photo": "images/pois/lh_point_prim_seacow.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "West Point Lighthouse",
@@ -221474,7 +222362,9 @@
       "url": "https://westpointlighthouse.ca",
       "cost": "$6.00 CAD",
       "phone": "+1 902-859-3605",
-      "photo": "images/pois/lh_west_point_pei.jpg"
+      "photo": "images/pois/lh_west_point_pei.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "Anne of Green Gables Heritage Place",
@@ -221493,7 +222383,9 @@
       "url": "https://parks.canada.ca/lhn-nhs/pe/greengables",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "L.M. Montgomery's Birthplace (New London)",
@@ -221512,7 +222404,9 @@
       "url": "",
       "cost": "$5.00 CAD",
       "phone": "",
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Anne of Green Gables Museum at Silver Bush",
@@ -221531,7 +222425,9 @@
       "url": "https://annemuseum.com/",
       "cost": "$9.00 CAD",
       "phone": "",
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$8.00 CAD Adult Admission",
+      "hours": "Daily 09:00 – 17:00 (June – Sept)"
     },
     {
       "name": "Lake of Shining Waters (Park Corner)",
@@ -221550,7 +222446,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "French River Overlook & Fishing Cove",
@@ -221569,7 +222467,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_french_river_pei.jpg"
+      "photo": "images/pois/sight_french_river_pei.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Cavendish Beach Sandstone Sea Stacks",
@@ -221588,7 +222488,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/park_cavendish_pei.jpg"
+      "photo": "images/pois/park_cavendish_pei.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Site of L.M. Montgomery's Cavendish Home",
@@ -221607,7 +222509,9 @@
       "url": "",
       "cost": "$5.00 CAD",
       "phone": "",
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Port Hastings Irving",
@@ -221626,7 +222530,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "New Glasgow Irving",
@@ -221645,7 +222551,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Borden-Carleton Gateway Shell (PEI)",
@@ -221664,7 +222572,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Cavendish Shell",
@@ -221683,7 +222593,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Antigonish Shell",
@@ -221702,7 +222614,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Canso Causeway (Cape Breton Island Gateway)",
@@ -221721,7 +222635,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/bridge_canso_causeway.jpg"
+      "photo": "images/pois/bridge_canso_causeway.jpg",
+      "admission": "Free Crossing ($0 Toll)",
+      "hours": "24/7 Open Highway Crossing"
     },
     {
       "name": "Confederation Bridge (Inbound Toll-Free Crossing)",
@@ -221740,7 +222656,9 @@
       "url": "https://www.confederationbridge.com/",
       "cost": "Free Inbound",
       "phone": "",
-      "photo": "images/pois/bridge_confederation.jpg"
+      "photo": "images/pois/bridge_confederation.jpg",
+      "admission": "$21.50 CAD Motorcycle Toll (Paid on Exit from PEI)",
+      "hours": "24/7 Open Highway Crossing"
     },
     {
       "name": "The Old Triangle Irish Alehouse (Sydney / Charlottetown)",
@@ -221753,7 +222671,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Point Prim Chowder House (Point Prim, PEI)",
@@ -221766,7 +222686,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Port Hawkesbury — Canso Causeway)",
@@ -221779,7 +222701,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (New Glasgow, NS — Highland Square)",
@@ -221792,7 +222716,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Point Prim Lighthouse (Point Prim, PEI)",
@@ -221805,7 +222731,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/lh_point_prim_seacow.jpg"
+      "photo": "images/pois/lh_point_prim_seacow.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "Cape Bear Lighthouse & Marconi Station (Murray Harbour, PEI)",
@@ -221818,7 +222746,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/lh_point_prim_seacow.jpg"
+      "photo": "images/pois/lh_point_prim_seacow.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
+    },
+    {
+      "name": "Tall & Small Local Café (Antigonish, NS)",
+      "lat": 45.6228,
+      "lon": -61.9912,
+      "type": "coffee",
+      "day": "Day 13",
+      "cost": "$",
+      "url": "",
+      "desc": "Vibrant local Antigonish specialty coffee bar & bakery on Main Street.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Fundy National Park (Headquarters Campground)",
@@ -221837,7 +222780,9 @@
       "url": "https://reservation.pc.gc.ca/",
       "cost": "$38 CAD/night",
       "phone": "+1 506-887-6000",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Parkland Village Inn (Alma / Fundy)",
@@ -221856,7 +222801,9 @@
       "url": "https://parklandvillageinn.com/",
       "cost": "$195 CAD/night",
       "phone": "+1 506-887-2313",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Fundy National Park (Headquarters Bayview)",
@@ -221875,7 +222822,9 @@
       "url": "",
       "cost": "$38 CAD/night",
       "phone": "",
-      "photo": "images/pois/park_fundy_dickson_falls.jpg"
+      "photo": "images/pois/park_fundy_dickson_falls.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Seacow Head Lighthouse",
@@ -221894,7 +222843,9 @@
       "url": "https://seacowheadlighthouse.com",
       "cost": "Free grounds",
       "phone": "",
-      "photo": "images/pois/lh_pointe_riche.jpg"
+      "photo": "images/pois/lh_pointe_riche.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Cape Tormentine Lighthouse",
@@ -221913,7 +222864,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_jourimain.jpg"
+      "photo": "images/pois/lh_cape_jourimain.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Cape Jourimain Lighthouse",
@@ -221932,7 +222885,9 @@
       "url": "https://capejourimain.ca",
       "cost": "Free",
       "phone": "+1 506-538-2220",
-      "photo": "images/pois/lh_cape_jourimain.jpg"
+      "photo": "images/pois/lh_cape_jourimain.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Cape Enrage Lighthouse & Cliffs",
@@ -221951,7 +222906,9 @@
       "url": "https://capeenrage.ca",
       "cost": "$6.00 CAD",
       "phone": "+1 506-887-2273",
-      "photo": "images/pois/lh_cape_enrage_fundy.jpg"
+      "photo": "images/pois/lh_cape_enrage_fundy.jpg",
+      "admission": "$8.00 CAD per Motorcycle / Vehicle",
+      "hours": "Daily 09:00 – 18:00 (Grounds Dawn – Dusk)"
     },
     {
       "name": "Anderson Hollow Lighthouse",
@@ -221970,7 +222927,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_enrage_fundy.jpg"
+      "photo": "images/pois/lh_cape_enrage_fundy.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Dickson Falls Lush Mossy Gorge Boardwalk",
@@ -221989,7 +222948,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/park_fundy_dickson_falls.jpg"
+      "photo": "images/pois/park_fundy_dickson_falls.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Riverside-Albert Co-op Fuel",
@@ -222008,7 +222969,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Alma Fuel (Fundy)",
@@ -222027,7 +222990,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_outpost.jpg"
+      "photo": "images/pois/fuel_outpost.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Confederation Bridge (Outbound Toll Plaza)",
@@ -222046,7 +223011,9 @@
       "url": "https://www.confederationbridge.com/",
       "cost": "~$20.25 CAD / bike",
       "phone": "",
-      "photo": "images/pois/bridge_confederation.jpg"
+      "photo": "images/pois/bridge_confederation.jpg",
+      "admission": "$21.50 CAD Motorcycle Toll (Paid on Exit from PEI)",
+      "hours": "24/7 Open Highway Crossing"
     },
     {
       "name": "Hopewell Rocks (Tidal Floor Walk)",
@@ -222065,7 +223032,9 @@
       "url": "https://www.thehopewellrocks.ca/",
       "cost": "$15.00 CAD",
       "phone": "",
-      "photo": "images/pois/sight_hopewell_rocks.jpg"
+      "photo": "images/pois/sight_hopewell_rocks.jpg",
+      "admission": "$16.25 CAD Adult (Valid for 2 Consecutive Days)",
+      "hours": "Daily 08:00 – 20:00 (June – Aug • Check Tide Table)"
     },
     {
       "name": "PEI Preserve Company Restaurant (New Glasgow, PEI)",
@@ -222078,7 +223047,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "New Glasgow Lobster Suppers / Lobster Pub (New Glasgow, PEI)",
@@ -222091,7 +223062,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Blue Mussel Café (North Rustico Harbour, PEI)",
@@ -222104,7 +223077,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Chez Yvonne's / Baywatch Restaurant (Cavendish, PEI)",
@@ -222117,7 +223092,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "La Rose Bistro (Cavendish / New Glasgow, PEI)",
@@ -222130,7 +223107,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Cavendish Fish and Chips (Cavendish, PEI)",
@@ -222143,7 +223122,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Dave's Lobster (Cavendish Boardwalk / Charlottetown)",
@@ -222156,7 +223137,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Razzy's Roadhouse / Beach House (Cavendish, PEI)",
@@ -222169,7 +223152,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "The Lost Anchor (Cavendish, PEI)",
@@ -222182,7 +223167,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "The Ship's Company Pub & Galley (Cavendish, PEI)",
@@ -222195,7 +223182,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Sims Corner Steakhouse & Oyster Bar (Charlottetown, PEI)",
@@ -222208,7 +223197,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Claddagh Oyster House (Charlottetown, PEI)",
@@ -222221,7 +223212,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Tim Hortons (Cavendish, PEI — Route 6)",
@@ -222234,7 +223227,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (Charlottetown, PEI — Historic Downtown)",
@@ -222247,7 +223242,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "St. Dunstan's Basilica (Charlottetown, PEI)",
@@ -222260,7 +223257,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Admission ($2 Donation Suggested)",
+      "hours": "Daily 09:00 – 16:30"
     },
     {
       "name": "Cavendish Cliffs (PEI National Park)",
@@ -222273,7 +223272,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_cavendish_pei.jpg"
+      "photo": "images/pois/park_cavendish_pei.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Victoria Row (Charlottetown, PEI)",
@@ -222286,7 +223287,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Entry",
+      "hours": "Daily 09:00 – 20:00 (Summer Season)"
     },
     {
       "name": "Brackley Beach (PEI National Park)",
@@ -222299,7 +223302,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_cavendish_pei.jpg"
+      "photo": "images/pois/park_cavendish_pei.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Anne of Green Gables Museum (Park Corner / Silver Bush)",
@@ -222312,7 +223317,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$8.00 CAD Adult Admission",
+      "hours": "Daily 09:00 – 17:00 (June – Sept)"
     },
     {
       "name": "Avonlea Village (Cavendish, PEI)",
@@ -222325,7 +223332,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Entry",
+      "hours": "Daily 09:00 – 20:00 (Summer Season)"
     },
     {
       "name": "The Bottle Houses (Cap-Egmont, PEI)",
@@ -222338,7 +223347,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$15.00 CAD Adult Admission",
+      "hours": "Daily 09:00 – 18:00 (June – Sept)"
     },
     {
       "name": "Prince Edward Island National Park",
@@ -222351,7 +223362,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_cavendish_pei.jpg"
+      "photo": "images/pois/park_cavendish_pei.jpg",
+      "admission": "$9.00–$11.00 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 08:00 – 20:00 (Visitor Centres 09:00 – 17:00)"
     },
     {
       "name": "Canadian Potato Museum (O'Leary, PEI)",
@@ -222364,7 +223377,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$12.00 CAD Adult Admission",
+      "hours": "Daily 09:30 – 17:00 (Mon–Sun in Summer)"
     },
     {
       "name": "Thunder Cove Beach & Teacup Rock (Darnley, PEI)",
@@ -222377,7 +223392,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/sight_french_river_pei.jpg"
+      "photo": "images/pois/sight_french_river_pei.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "West Point Lighthouse (West Point, PEI)",
@@ -222390,7 +223407,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/lh_west_point_pei.jpg"
+      "photo": "images/pois/lh_west_point_pei.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
     },
     {
       "name": "Acadian Museum of PEI (Miscouche, PEI)",
@@ -222403,7 +223422,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$6.00 CAD Adult Admission",
+      "hours": "Daily 09:30 – 17:00"
     },
     {
       "name": "Prince Edward Island Regiment Museum (Charlottetown, PEI)",
@@ -222416,7 +223437,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "Free Admission (Donations Welcome)",
+      "hours": "Tue–Sat 10:00 – 16:00 (Summer Season)"
     },
     {
       "name": "Village musical acadien (Abram-Village, PEI)",
@@ -222429,7 +223452,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_green_gables.jpg"
+      "photo": "images/pois/attr_green_gables.jpg",
+      "admission": "$10.00–$18.00 CAD Adult Admission",
+      "hours": "Daily 10:00 – 20:00 (Summer Season)"
+    },
+    {
+      "name": "Receiver Coffee Co. — The Brass Shop (Local Roaster — Charlottetown, PEI)",
+      "lat": 46.2342,
+      "lon": -63.1258,
+      "type": "coffee",
+      "day": "Day 14",
+      "cost": "$",
+      "url": "https://receivercoffee.com/",
+      "desc": "PEI's premier local specialty coffee micro-roaster & artisan bakery in downtown Charlottetown.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "de la République Provincial Park (Edmundston)",
@@ -222448,7 +223486,9 @@
       "url": "https://www.parcsnbparks.info/",
       "cost": "$35 CAD/night",
       "phone": "+1 506-735-2525",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Four Points by Sheraton Edmundston",
@@ -222467,7 +223507,9 @@
       "url": "https://www.marriott.com/en-us/hotels/yqrfp-four-points-edmundston/overview/",
       "cost": "$185 CAD/night",
       "phone": "+1 506-739-7321",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Parc provincial de la République (Madawaska River)",
@@ -222486,7 +223528,9 @@
       "url": "",
       "cost": "$35 CAD/night",
       "phone": "",
-      "photo": "images/pois/attr_hartland_bridge.jpg"
+      "photo": "images/pois/attr_hartland_bridge.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Quaco Head Lighthouse",
@@ -222505,7 +223549,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/lh_cape_enrage_fundy.jpg"
+      "photo": "images/pois/lh_cape_enrage_fundy.jpg",
+      "admission": "Free Grounds & Coastal Viewpoint",
+      "hours": "Open Daily Dawn – Dusk (24/7 Exterior Access)"
     },
     {
       "name": "Saint John City Market (1876)",
@@ -222524,7 +223570,9 @@
       "url": "",
       "cost": "Free admission",
       "phone": "",
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "Free Entry",
+      "hours": "Daily 09:00 – 20:00 (Summer Season)"
     },
     {
       "name": "Hartland World's Longest Covered Bridge (1901)",
@@ -222543,7 +223591,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_hartland_bridge.jpg"
+      "photo": "images/pois/attr_hartland_bridge.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Saint John Irving (Route 1 / Fairville Blvd)",
@@ -222562,7 +223612,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Fredericton Irving Big Stop",
@@ -222581,7 +223633,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Woodstock Irving Big Stop",
@@ -222600,7 +223654,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Edmundston Irving Big Stop",
@@ -222619,7 +223675,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_irving.jpg"
+      "photo": "images/pois/fuel_irving.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Fundy Trail Parkway",
@@ -222638,7 +223696,9 @@
       "url": "",
       "cost": "Discovery Pass",
       "phone": "",
-      "photo": "images/pois/park_fundy_dickson_falls.jpg"
+      "photo": "images/pois/park_fundy_dickson_falls.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Reversing Falls Rapids (Saint John)",
@@ -222657,7 +223717,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "Free Observation Deck ($15.00 CAD for Skywalk Roof)",
+      "hours": "Daily 09:00 – 19:00 (Outdoor Deck 24/7)"
     },
     {
       "name": "Skipper Jack's Maritime Restaurant (Moncton, NB)",
@@ -222670,7 +223732,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Pump House Brewpub & Restaurant (Moncton, NB)",
@@ -222683,7 +223747,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Octopus' Garden Café & Bakery (Alma / Fundy NP, NB)",
@@ -222696,7 +223762,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Tim Hortons (Borden-Carleton — Confederation Bridge Gateway)",
@@ -222709,7 +223777,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (Moncton, NB — Mapleton Rd)",
@@ -222722,7 +223792,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Victoria Seaport Lighthouse (Victoria-by-the-Sea, PEI)",
@@ -222735,7 +223807,22 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/lh_point_prim_seacow.jpg"
+      "photo": "images/pois/lh_point_prim_seacow.jpg",
+      "admission": "$6.00–$8.00 CAD Tower Climb (Grounds & Coastal Views Free)",
+      "hours": "Grounds Dawn – Dusk • Tower 09:30 – 17:30"
+    },
+    {
+      "name": "Samuel's Local Coffee House (Summerside / Avonlea, PEI)",
+      "lat": 46.3925,
+      "lon": -63.7905,
+      "type": "coffee",
+      "day": "Day 15",
+      "cost": "$",
+      "url": "https://samuelscoffeehouse.ca/",
+      "desc": "Award-winning local PEI specialty coffee roaster & café in Summerside.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Camping des Voltigeurs (Sépaq - Drummondville)",
@@ -222754,7 +223841,9 @@
       "url": "https://www.sepaq.com/pq/vol/",
       "cost": "$38 CAD/night",
       "phone": "+1 819-477-6797",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Hôtel Le Dauphin Drummondville",
@@ -222773,7 +223862,9 @@
       "url": "https://www.le-dauphin.com/drummondville/",
       "cost": "$165 CAD/night",
       "phone": "+1 819-478-4141",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Camping des Voltigeurs (Sépaq Park)",
@@ -222792,7 +223883,9 @@
       "url": "",
       "cost": "$38 CAD/night",
       "phone": "",
-      "photo": "images/pois/sight_quebec_champlain.jpg"
+      "photo": "images/pois/sight_quebec_champlain.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Rivière-du-Loup Shell",
@@ -222811,7 +223904,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Lévis / St-Nicolas Esso",
@@ -222830,7 +223925,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Drummondville Petro-Canada / A-20",
@@ -222849,7 +223946,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_petro_canada.jpg"
+      "photo": "images/pois/fuel_petro_canada.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Dégelis Esso",
@@ -222868,7 +223967,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "La Pocatière Ultramar",
@@ -222887,7 +223988,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_ultramar.jpg"
+      "photo": "images/pois/fuel_ultramar.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "The Baratie — Reversing Falls Restaurant (Saint John, NB)",
@@ -222900,7 +224003,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Lemongrass Thai Fare (Saint John, NB)",
@@ -222913,7 +224018,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Steamers Lobster Co. (Saint John, NB)",
@@ -222926,7 +224033,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_seafood_maritime.jpg"
+      "photo": "images/pois/food_seafood_maritime.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Britt's Pub & Eatery (Saint John, NB)",
@@ -222939,7 +224048,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Picaroons General Store & Brewtique (Saint John, NB)",
@@ -222952,7 +224063,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Cask & Kettle Irish Gastropub (Saint John, NB)",
@@ -222965,7 +224078,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Splash Thai Cuisine (Saint John, NB)",
@@ -222978,7 +224093,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Le Café / Café Lotus Bleu (Edmundston, NB)",
@@ -222991,7 +224108,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Frank's Bar & Grill (Edmundston, NB)",
@@ -223004,7 +224123,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Moonshin'hers Café Bistro (Edmundston, NB)",
@@ -223017,7 +224138,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 07:30 – 17:30 (Summer Season)"
     },
     {
       "name": "Le Deck Resto-Bar (Edmundston / Lac Baker, NB)",
@@ -223030,7 +224153,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/food_brewpub_grill.jpg"
+      "photo": "images/pois/food_brewpub_grill.jpg",
+      "admission": "",
+      "hours": "Daily 11:00 – 22:00 (Lunch & Supper Service)"
     },
     {
       "name": "Starbucks (Saint John, NB — King's Square / Uptown)",
@@ -223043,7 +224168,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
     },
     {
       "name": "Tim Hortons (Grand Falls, NB — Trans-Canada Hwy 2)",
@@ -223056,7 +224183,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Saint John Firefighters' Museum (Saint John, NB)",
@@ -223069,7 +224198,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "Free Admission (Donations Welcome)",
+      "hours": "Tue–Sat 10:00 – 16:00 (Summer Season)"
     },
     {
       "name": "Little River Reservoir Park (Saint John, NB)",
@@ -223082,7 +224213,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_fundy_dickson_falls.jpg"
+      "photo": "images/pois/park_fundy_dickson_falls.jpg",
+      "admission": "Free Access",
+      "hours": "Daily 08:00 – 20:00"
     },
     {
       "name": "Saints Rest Beach (Saint John, NB)",
@@ -223095,7 +224228,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/park_fundy_dickson_falls.jpg"
+      "photo": "images/pois/park_fundy_dickson_falls.jpg",
+      "admission": "Free Roadside Viewpoint",
+      "hours": "24/7 Open Access (Daylight Viewing Recommended)"
     },
     {
       "name": "Reversing Falls Observation Deck (Saint John, NB)",
@@ -223108,7 +224243,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "Free Observation Deck ($15.00 CAD for Skywalk Roof)",
+      "hours": "Daily 09:00 – 19:00 (Outdoor Deck 24/7)"
     },
     {
       "name": "Carleton Martello Tower National Historic Site (Saint John, NB)",
@@ -223121,7 +224258,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "$4.50 CAD Adult (Free with Parks Canada Discovery Pass)",
+      "hours": "Daily 09:00 – 17:00 (Exterior Viewpoint Dawn – Dusk)"
     },
     {
       "name": "AREA 506 Waterfront Container Village (Saint John, NB)",
@@ -223134,7 +224273,35 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/attr_saint_john_market.jpg"
+      "photo": "images/pois/attr_saint_john_market.jpg",
+      "admission": "Free Entry",
+      "hours": "Daily 09:00 – 20:00 (Summer Season)"
+    },
+    {
+      "name": "Epoch Chemistry Local Coffee Roasters (Moncton, NB)",
+      "lat": 46.0892,
+      "lon": -64.7785,
+      "type": "coffee",
+      "day": "Day 16",
+      "cost": "$",
+      "url": "https://epochchemistry.ca/",
+      "desc": "Moncton's flagship local specialty coffee micro-roaster & pour-over bar.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
+    },
+    {
+      "name": "Rogue Coffee — Local Specialty Espresso Bar (Saint John, NB)",
+      "lat": 45.2722,
+      "lon": -66.0612,
+      "type": "coffee",
+      "day": "Day 16",
+      "cost": "$",
+      "url": "",
+      "desc": "Uptown Saint John third-wave local specialty espresso bar steps from the City Market.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
       "name": "Best Western Pembroke Inn & Conference Centre",
@@ -223153,7 +224320,9 @@
       "url": "https://www.bestwestern.com/",
       "cost": "$160 CAD/night",
       "phone": "+1 613-735-0131",
-      "photo": "images/pois/hotel_best_western.jpg"
+      "photo": "images/pois/hotel_best_western.jpg",
+      "admission": "",
+      "hours": "Check-in 15:00 – 23:00 • Check-out 11:00 (24h Desk)"
     },
     {
       "name": "Driftwood Provincial Park (Stonecliffe / Pembroke)",
@@ -223172,7 +224341,9 @@
       "url": "https://www.ontarioparks.ca/park/driftwood",
       "cost": "$40 CAD/night",
       "phone": "+1 613-586-2553",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "admission": "",
+      "hours": "Check-in 14:00 – 22:00 • Check-out 11:00"
     },
     {
       "name": "Driftwood Provincial Park (Ottawa River)",
@@ -223191,7 +224362,9 @@
       "url": "",
       "cost": "$40 CAD/night",
       "phone": "",
-      "photo": "images/pois/sight_ottawa_river.jpg"
+      "photo": "images/pois/sight_ottawa_river.jpg",
+      "admission": "$10.00 CAD Day-Use Vehicle/Moto Permit",
+      "hours": "Daily 07:00 – 22:00"
     },
     {
       "name": "Beauharnois Shell",
@@ -223210,7 +224383,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Carleton Place Esso",
@@ -223229,7 +224404,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Boucherville Shell",
@@ -223248,7 +224425,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Cobden Esso",
@@ -223267,7 +224446,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Pont Serge-Marcil (A-30 Express Toll Bridge)",
@@ -223286,7 +224467,9 @@
       "url": "https://a30express.com/",
       "cost": "$3.50 CAD / bike",
       "phone": "",
-      "photo": "images/pois/bridge_serge_marcil.jpg"
+      "photo": "images/pois/bridge_serge_marcil.jpg",
+      "admission": "~$3.50 CAD Motorcycle Toll",
+      "hours": "24/7 Open Highway Crossing"
     },
     {
       "name": "Tim Hortons (Edmundston, NB)",
@@ -223299,7 +224482,9 @@
       "octane": "",
       "url": "",
       "custom_added": true,
-      "photo": "images/pois/coffee_tim_hortons.jpg"
+      "photo": "images/pois/coffee_tim_hortons.jpg",
+      "admission": "",
+      "hours": "Daily 05:00 – 23:00 (Many 24/7 Drive-Thru & Counter)"
     },
     {
       "name": "Starbucks (Rivière-du-Loup, QC)",
@@ -223312,6 +224497,21 @@
       "octane": "",
       "url": "",
       "custom_added": true,
+      "photo": "images/pois/coffee_roaster_starbucks.jpg",
+      "admission": "",
+      "hours": "Daily 06:00 – 21:00"
+    },
+    {
+      "name": "Mill Town Local Coffee Roasters (Fredericton, NB)",
+      "lat": 45.9625,
+      "lon": -66.6435,
+      "type": "coffee",
+      "day": "Day 17",
+      "cost": "$",
+      "url": "https://milltownroasters.com/",
+      "desc": "Local Fredericton small-batch coffee roaster & café overlooking the Saint John River.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
       "photo": "images/pois/coffee_roaster_starbucks.jpg"
     },
     {
@@ -223331,7 +224531,9 @@
       "url": "",
       "cost": "$0 CAD",
       "phone": "",
-      "photo": "images/pois/home_hanmer.jpg"
+      "photo": "images/pois/home_hanmer.jpg",
+      "admission": "",
+      "hours": "24/7 Expedition Departure & Completion Base"
     },
     {
       "name": "Eau Claire Gorges Conservation Area",
@@ -223350,7 +224552,9 @@
       "url": "",
       "cost": "Free",
       "phone": "",
-      "photo": "images/pois/sight_ottawa_river.jpg"
+      "photo": "images/pois/sight_ottawa_river.jpg",
+      "admission": "Free Trail Access",
+      "hours": "Open Daily Dawn – Dusk (06:00 – 21:30 Summer Daylight)"
     },
     {
       "name": "Mattawa Shell",
@@ -223369,7 +224573,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "North Bay Shell",
@@ -223388,7 +224594,9 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_shell.jpg"
+      "photo": "images/pois/fuel_shell.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
     },
     {
       "name": "Deep River Esso",
@@ -223407,7 +224615,22 @@
       "url": "",
       "cost": "$",
       "phone": "",
-      "photo": "images/pois/fuel_esso.jpg"
+      "photo": "images/pois/fuel_esso.jpg",
+      "admission": "",
+      "hours": "24/7 Pay-at-Pump • Store Daily 06:00 – 23:00"
+    },
+    {
+      "name": "Brûlerie Flagrants Délices — Torréfacteur Local (Rivière-du-Loup, QC)",
+      "lat": 47.8365,
+      "lon": -69.5345,
+      "type": "coffee",
+      "day": "Day 18",
+      "cost": "$",
+      "url": "",
+      "desc": "Local Bas-Saint-Laurent micro-roaster & espresso bar on Rue Lafontaine.",
+      "admission": "",
+      "hours": "Daily 07:00 – 18:00 (Local Roaster & Espresso Bar)",
+      "photo": "images/pois/coffee_roaster_starbucks.jpg"
     }
   ],
   "ganttDaysData": [
