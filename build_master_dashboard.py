@@ -102,22 +102,44 @@ def assign_contextual_photo(p):
             return "images/pois/hotel_viking_cabin.jpg"
         if "keltic lodge" in nm:
             return "images/pois/hotel_keltic_lodge.jpg"
-        if any(k in nm for k in ["koa", "campground", "camping", "provincial park", "national park", "driftwood", "finlay", "berry hill", "shallow bay", "broad cove", "mactaquac", "cavendish", "chéticamp", "green point", "fundy", "voltigeurs", "république"]):
+        if any(k in nm for k in ["koa", "campground", "camping", "provincial park", "national park", "driftwood", "finlay", "berry hill", "shallow bay", "broad cove", "mactaquac", "cavendish", "chéticamp", "green point", "fundy", "voltigeurs", "république", "duley", "relais de gabriel", "gateway labrador", "justone", "pourvoirie"]):
             return "images/pois/camp_ocean_national_park.jpg"
         if "best western" in nm or "sheraton" in nm or "dauphin" in nm or "manoir" in nm or "travelodge" in nm or "wabush" in nm or "hotel north" in nm or "port aux basques" in nm:
             return "images/pois/hotel_best_western.jpg"
-        if any(k in nm for k in ["motel", "super 8", "motor inn", "laurie", "ptit sapin", "p'tit sapin", "mirabeau"]):
+        if any(k in nm for k in ["motel", "super 8", "motor inn", "laurie", "ptit sapin", "p'tit sapin", "mirabeau", "campement", "modulaire"]):
             return "images/pois/hotel_super8_motel.jpg"
-        if any(k in nm for k in ["inn", "cottage", "kindred", "ocean view", "parkland", "haven", "northern light"]):
+        if any(k in nm for k in ["inn", "cottage", "kindred", "ocean view", "parkland", "haven", "northern light", "uapishka", "trish"]):
             return "images/pois/hotel_coastal_inn.jpg"
         return "images/pois/hotel_best_western.jpg"
 
-    # 5. ATTRACTIONS, HIKES, SIGHTS & PARKS
+    # 5. FOOD & BREWPUB STOPS (62 curated Maritime seafood shacks, microbreweries & restaurants)
+    if ptype == "food":
+        if any(k in nl for k in ["lobster", "seafood", "fish", "chowder", "oyster", "mussel", "clam", "catch", "pêcherie", "harbour", "ocean", "coastal", "skipper", "steamers", "rudder", "daily catch", "shipyard", "lost anchor", "ship's company", "baywatch", "razzy", "chanterelle", "doryman"]):
+            return "images/pois/food_seafood_maritime.jpg"
+        return "images/pois/food_brewpub_grill.jpg"
+
+    # 6. COFFEE STOPS (28 curated Tim Hortons, Starbucks & Twiggs Coffee Roasters)
+    if ptype == "coffee":
+        if "tim hortons" in nm or "tims" in nm:
+            return "images/pois/coffee_tim_hortons.jpg"
+        return "images/pois/coffee_roaster_starbucks.jpg"
+
+    # 7. QC-389 ROAD & RAILWAY CROSSING HAZARD MARKERS
+    if ptype == "hazard":
+        if "dirt road" in nm or "pavement" in nm:
+            return "images/pois/pullout_qc389_highway.jpg"
+        return "images/pois/hazard_train_crossing.jpg"
+
+    # 8. QC-389 EMERGENCY HIGHWAY PULLOUTS & PARKING STOPS
+    if ptype == "pullout":
+        return "images/pois/pullout_qc389_highway.jpg"
+
+    # 9. ATTRACTIONS, HIKES, SIGHTS & PARKS
     if any(k in nm for k in ["manic-5", "manic 5", "daniel-johnson", "manic-2", "manic 2"]):
         return "images/pois/attr_manic5_dam.jpg"
-    if any(k in nm for k in ["fermont", "gagnon", "fire lake", "manicouagan", "389"]):
+    if any(k in nm for k in ["fermont", "gagnon", "fire lake", "manicouagan", "389", "mont-wright", "telephone", "quebec", "québec", "labrador", "the truck"]):
         return "images/pois/attr_fermont_wall.jpg"
-    if any(k in nm for k in ["churchill falls", "muskrat", "smallwood", "goose bay", "trans-labrador"]):
+    if any(k in nm for k in ["churchill falls", "muskrat", "smallwood", "goose bay", "trans-labrador", "crystal falls", "harrie lake", "jean lake", "smokey mountain"]):
         return "images/pois/attr_churchill_falls.jpg"
     if any(k in nm for k in ["red bay", "pinware", "battle harbour", "l'anse amour", "l'anse-au-clair", "tracey hill", "forteau"]):
         return "images/pois/attr_red_bay.jpg"
@@ -127,7 +149,7 @@ def assign_contextual_photo(p):
         return "images/pois/attr_lanse_aux_meadows.jpg"
     if any(k in nm for k in ["grenfell", "st. anthony", "hms raleigh", "raleigh", "burnt cape", "pistolet"]):
         return "images/pois/attr_st_anthony_grenfell.jpg"
-    if any(k in nm for k in ["green gables", "montgomery", "shining waters", "silver bush"]):
+    if any(k in nm for k in ["green gables", "montgomery", "shining waters", "silver bush", "st. dunstan", "victoria row", "avonlea", "bottle houses", "potato", "acadian", "regiment", "musical"]):
         return "images/pois/attr_green_gables.jpg"
     if any(k in nm for k in ["french river", "malpeque", "thunder cove", "darnley"]):
         return "images/pois/sight_french_river_pei.jpg"
@@ -137,7 +159,7 @@ def assign_contextual_photo(p):
         return "images/pois/sight_tablelands.jpg"
     if "green point" in nm:
         return "images/pois/hike_green_point_gros_morne.jpg"
-    if any(k in nm for k in ["gros morne", "western brook", "broom point", "shallow bay", "arches", "port au choix", "sir richard squires", "berry hill"]):
+    if any(k in nm for k in ["gros morne", "western brook", "broom point", "shallow bay", "arches", "port au choix", "sir richard squires", "berry hill", "corner brook"]):
         return "images/pois/park_gros_morne.jpg"
     if "skyline trail" in nm:
         return "images/pois/hike_skyline_trail.jpg"
@@ -147,11 +169,11 @@ def assign_contextual_photo(p):
         return "images/pois/sight_cabot_trail.jpg"
     if any(k in nm for k in ["hopewell", "enrage", "shediac", "magnetic"]):
         return "images/pois/sight_hopewell_rocks.jpg"
-    if any(k in nm for k in ["dickson", "fundy", "alma", "st. martins"]):
+    if any(k in nm for k in ["dickson", "fundy", "alma", "st. martins", "little river", "saints rest"]):
         return "images/pois/park_fundy_dickson_falls.jpg"
     if any(k in nm for k in ["hartland", "covered bridge", "grand falls", "edmundston", "mactaquac", "république"]):
         return "images/pois/attr_hartland_bridge.jpg"
-    if any(k in nm for k in ["saint john", "reversing falls", "city market"]):
+    if any(k in nm for k in ["saint john", "reversing falls", "city market", "martello", "area 506", "firefighters"]):
         return "images/pois/attr_saint_john_market.jpg"
     if any(k in nm for k in ["charlevoix", "saguenay", "port-au-persil", "route 138", "hautes-gorges", "tadoussac", "baie-comeau"]):
         return "images/pois/park_saguenay_charlevoix.jpg"
@@ -166,8 +188,13 @@ def assign_contextual_photo(p):
 for p in pois_data:
     p["photo"] = assign_contextual_photo(p)
 
+# Persist updated photo paths back to exp51_data.json
+with open(os.path.join(BASE_DIR, "exp51_data.json"), "w", encoding="utf-8") as f_out:
+    json.dump(exp_data, f_out, indent=2, ensure_ascii=False)
+
 # Build lookup of secondary hotels per day for the 10-element Rockies Day Card layout
 sec_hotels_by_day = {}
+extra_sec_hotels_by_day = {}
 for p in pois_data:
     if p.get("type") == "hotel-secondary":
         d_str = p.get("day", "")
@@ -175,6 +202,8 @@ for p in pois_data:
             dnum = int(d_str.replace("Day ", "").strip())
             if dnum not in sec_hotels_by_day:
                 sec_hotels_by_day[dnum] = p
+            else:
+                extra_sec_hotels_by_day.setdefault(dnum, []).append(p)
 
 # Build Gantt Chart HTML using the exact Rockies / generate_gantt_chart.py CSS-variable architecture
 DEFAULT_TYPE_STYLES = {
@@ -430,6 +459,33 @@ for idx, dm in enumerate(days_meta):
 
     # Secondary / Fallback Hotel Row (Rockies 10-element Day Card parity)
     sec_p = sec_hotels_by_day.get(day_num)
+    extra_secs = extra_sec_hotels_by_day.get(day_num, [])
+    extra_sec_html = ""
+    if extra_secs:
+        extra_items = []
+        for ep in extra_secs:
+            ep_name = ep.get("name", "")
+            ep_cost = ep.get("cost", "")
+            ep_lat = ep.get("lat", 0)
+            ep_lon = ep.get("lon", 0)
+            extra_items.append(
+                f'<span onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
+                f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
+                f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); cursor:pointer;" '
+                f'title="Click to center map on {ep_name}">⛺ {ep_name} <span style="color:var(--accent-orange);">({ep_cost})</span></span>'
+            )
+        extra_hdr = (
+            f"🏕️ Additional Route 389 &amp; Labrador West Camping / Lodging Backups ({len(extra_secs)}):"
+            if day_num == 3
+            else f"🏕️ Additional Stage Lodging / Camping Backups ({len(extra_secs)}):"
+        )
+        extra_sec_html = f"""
+                    <div style="margin-top:8px; padding-top:7px; border-top:1px dashed var(--border);">
+                        <div style="font-size:0.69rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); margin-bottom:5px;">{extra_hdr}</div>
+                        <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                            {"".join(extra_items)}
+                        </div>
+                    </div>"""
     if sec_p:
         sec_name = sec_p.get("name", "Fallback Hotel")
         sec_desc = sec_p.get("desc", "")
@@ -452,7 +508,7 @@ for idx, dm in enumerate(days_meta):
                     <div class="hotel-sub">{sec_desc}</div>
                     <div class="hotel-actions">
                         {sec_btns_html}
-                    </div>
+                    </div>{extra_sec_html}
                 </div>"""
     else:
         sec_hotel_box_html = """
@@ -610,11 +666,11 @@ html_template = f"""<!DOCTYPE html>
             transition: background-color 0.2s ease, color 0.2s ease;
         }}
 
-        /* Top Header */
+        /* Top Header (Streamlined Rockies Layout) */
         header {{
             background: var(--header-bg);
             border-bottom: 1px solid var(--border);
-            padding: 12px 24px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -625,17 +681,17 @@ html_template = f"""<!DOCTYPE html>
         }}
 
         .header-title h1 {{
-            font-size: 1.25rem;
+            font-size: 1.18rem;
             font-weight: 800;
             letter-spacing: -0.3px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--text-main);
         }}
 
         .header-title p {{
-            font-size: 0.80rem;
+            font-size: 0.76rem;
             color: var(--text-muted);
             margin-top: 2px;
         }}
@@ -647,12 +703,39 @@ html_template = f"""<!DOCTYPE html>
             flex-wrap: wrap;
         }}
 
+        .stats-strip {{
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-right: 12px;
+            border-right: 1px solid var(--border);
+            margin-right: 2px;
+        }}
+        .stat-item {{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            line-height: 1.15;
+        }}
+        .stat-item .val {{
+            font-size: 0.84rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }}
+        .stat-item .lbl {{
+            font-size: 0.63rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: var(--text-muted);
+        }}
+
         .badge {{
             background: var(--bg-subtle);
             border: 1px solid var(--border);
-            padding: 6px 11px;
+            padding: 5px 10px;
             border-radius: 6px;
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -669,14 +752,14 @@ html_template = f"""<!DOCTYPE html>
             background: var(--bg-card);
             border: 1px solid var(--accent-blue);
             color: var(--accent-blue);
-            padding: 6px 12px;
+            padding: 6px 11px;
             border-radius: 6px;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             transition: all 0.15s ease;
         }}
         .theme-toggle-btn:hover {{
@@ -687,7 +770,7 @@ html_template = f"""<!DOCTYPE html>
         /* Main Split Layout (Desktop Default) */
         .main-container {{
             display: flex;
-            height: 82vh;
+            height: 83vh;
             min-height: 640px;
             border-bottom: 2px solid var(--border);
             overflow: hidden;
@@ -696,7 +779,7 @@ html_template = f"""<!DOCTYPE html>
 
         /* Map Side */
         .map-wrapper {{
-            flex: 1.35;
+            flex: 1.38;
             position: relative;
             height: 100%;
         }}
@@ -707,34 +790,42 @@ html_template = f"""<!DOCTYPE html>
             background: #cbd5e1;
         }}
 
-        /* Floating Map Filter Toolbar */
+        /* Floating Map Filter Toolbar — Single-Row Horizontal Scroll (Zero Multi-Row Clutter) */
         .filter-toolbar {{
             position: absolute;
-            top: 12px;
-            left: 54px;
-            right: 12px;
+            top: 10px;
+            left: 50px;
+            right: 10px;
             z-index: 900;
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            pointer-events: none;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 4px;
+            padding-bottom: 2px;
+            pointer-events: auto;
+        }}
+        .filter-toolbar::-webkit-scrollbar {{
+            display: none;
         }}
 
         .filter-btn {{
+            flex-shrink: 0;
             pointer-events: auto;
             background: var(--bg-panel);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 6px 11px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 4px 9px;
+            border-radius: 16px;
+            font-size: 0.71rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.15s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             box-shadow: var(--shadow-card);
             white-space: nowrap;
         }}
@@ -748,54 +839,6 @@ html_template = f"""<!DOCTYPE html>
             background: var(--accent-blue);
             color: #ffffff;
             border-color: var(--accent-blue);
-        }}
-
-        /* Map Legend */
-        .map-legend {{
-            position: absolute;
-            bottom: 20px;
-            left: 14px;
-            z-index: 900;
-            background: var(--bg-panel);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 0.74rem;
-            box-shadow: var(--shadow-card);
-            max-width: 245px;
-            color: var(--text-main);
-        }}
-
-        .legend-header {{
-            font-weight: 800;
-            margin-bottom: 6px;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.68rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }}
-
-        .legend-item {{
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 4px;
-            color: var(--text-card);
-        }}
-
-        .legend-dot {{
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            display: inline-block;
-            border: 1.5px solid #fff;
-            flex-shrink: 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }}
 
         /* Right Sidebar (Itinerary) */
@@ -1676,14 +1719,18 @@ html_template = f"""<!DOCTYPE html>
 
     <header>
         <div class="header-title">
-            <h1>🏍️ 2027 East Coast &amp; Labrador Moto Expedition <span style="font-size:0.78rem; background:var(--accent-blue); color:#fff; padding:2px 8px; border-radius:12px; font-weight:800;">EXPEDITION 51</span></h1>
-            <p>18-Day Wilderness, Viking, Coastal &amp; Fjord Loop • June 16 – July 3, 2027 • Hanmer, ON → Labrador → Newfoundland → Cape Breton → PEI → Fundy → Hanmer, ON</p>
+            <h1>
+                <span style="font-size:0.70rem; background:rgba(16, 185, 129, 0.14); color:var(--accent-green); border:1px solid var(--accent-green); padding:2px 8px; border-radius:99px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">Mission Ready</span>
+                2027 East Coast &amp; Labrador Moto Expedition (Expedition 51)
+            </h1>
+            <p>18-Day Wilderness, Viking, Coastal &amp; Fjord Loop • June 16 – July 3, 2027 • Hanmer, ON → Labrador → Newfoundland → Maritimes → Hanmer, ON</p>
         </div>
         <div class="header-badges">
-            <div class="badge badge-blue">📏 8,243.4 km Total</div>
-            <div class="badge badge-green hide-mobile">🏕️ 7 Camp • 9 Hotel/Cabin • 1 Ferry</div>
-            <div class="badge badge-orange hide-mobile">⛽ 91 Octane + Lucas MMT Protocol</div>
-            <div class="badge badge-red hide-mobile">📍 203 Curated POIs</div>
+            <div class="stats-strip hide-mobile">
+                <div class="stat-item"><span class="val">8,243.4 km</span><span class="lbl">Pure Metric</span></div>
+                <div class="stat-item"><span class="val">18 Days</span><span class="lbl">Stages</span></div>
+                <div class="stat-item"><span class="val">423 POIs</span><span class="lbl">Verified</span></div>
+            </div>
             <button type="button" class="theme-toggle-btn" id="live-tracker-btn" onclick="toggleLiveTrackerPanel()" style="border-color: var(--accent-green); color: var(--accent-green);">
                 <span class="live-dot" id="live-tracker-dot"></span>
                 <span>📡 Live Tracker</span>
@@ -1701,18 +1748,22 @@ html_template = f"""<!DOCTYPE html>
         <!-- Interactive Map -->
         <div class="map-wrapper" id="sec-map">
             <div class="filter-toolbar">
-                <button type="button" class="filter-btn active" onclick="filterPOIs('all', this)">🌐 All POIs (203)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-primary', this)">🏕️ Primary Lodging (19)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-secondary', this)">🏨 Secondary Hotels (18)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('fuel', this)">⛽ Fuel Outposts (72)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('curated-gems', this)">⭐ All Curated Gems (87)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses (28)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('attraction', this)">🏛️ Attractions (23)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('sight', this)">📸 Scenic Sights (12)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('hike', this)">🥾 Short Hikes (10)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('park', this)">🌲 National Parks (14)</button>
-                <button type="button" class="filter-btn" onclick="filterPOIs('ferry', this)">⛴️ Ferries &amp; Bridges (7)</button>
-                <button type="button" class="filter-btn" id="btn-gravel-toggle" onclick="toggleGravelHighlight()" style="border-color: var(--accent-orange); color: var(--accent-orange);">╌╌ ⚠️ Unpaved QC-389 (197 km)</button>
+                <button type="button" class="filter-btn active" onclick="filterPOIs('all', this)">🌐 All POIs</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-primary', this)">🏕️ Primary Lodging</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('hotel-secondary', this)">⛺ Backup Lodging</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('fuel', this)">⛽ Fuel</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('food', this)">🍽️ Food &amp; Brewpubs</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('coffee', this)">☕ Coffee</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('curated-gems', this)">⭐ Curated Gems</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('attraction', this)">🏛️ Attractions</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('sight', this)">📸 Sights</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('hike', this)">🥾 Hikes</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('park', this)">🌲 Parks</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('hazard', this)">⚠️ QC-389 Hazards</button>
+                <button type="button" class="filter-btn" onclick="filterPOIs('pullout', this)">🅿️ QC-389 Pullouts</button>
+                <button type="button" class="filter-btn" id="btn-gravel-toggle" onclick="toggleGravelHighlight()" style="border-color: var(--accent-orange); color: var(--accent-orange);">╌╌ Unpaved QC-389</button>
             </div>
 
             <div id="map"></div>
@@ -1853,26 +1904,6 @@ html_template = f"""<!DOCTYPE html>
                     </div>
                 </div>
             </div>
-
-            <div class="map-legend">
-                <div class="legend-header" onclick="toggleLegend()">
-                    <span>🗺️ Map Key &amp; Layers</span>
-                    <span id="legend-toggle-icon">▾</span>
-                </div>
-                <div id="legend-body">
-                    <div class="legend-item"><span class="legend-dot" style="background: #10B981; border-radius:3px;"></span> Primary Lodging / Camp (19)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #F59E0B; border-radius:3px;"></span> Secondary Backup Hotels (18)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #EF4444;"></span> Verified Fuel Stations (72)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #EC4899;"></span> Atlantic Lighthouses (28)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #8B5CF6;"></span> Attractions &amp; UNESCO (23)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #22C55E;"></span> National &amp; Prov. Parks (14)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #EAB308;"></span> Scenic Sights (12) &amp; Hikes (10)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #06B6D4;"></span> Ferries &amp; Major Bridges (7)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #ffffff; border: 2.5px solid #dc2626; box-shadow: 0 0 0 2px rgba(220,38,38,0.28);"></span> Live Beacon: <strong>ATAS</strong> (White &amp; Red)</div>
-                    <div class="legend-item"><span class="legend-dot" style="background: #16a34a; border: 2px solid #ffffff; box-shadow: 0 0 0 2px rgba(22,163,74,0.35);"></span> Live Beacon: <strong>V2S</strong> (Green)</div>
-                    <div class="legend-item" style="margin-top:4px;"><span style="width:16px; border-top:3px dashed #F59E0B; display:inline-block;"></span> Unpaved QC-389 Gravel (197 km)</div>
-                </div>
-            </div>
         </div>
 
         <!-- Right Sidebar: 18-Day Itinerary -->
@@ -2011,7 +2042,7 @@ html_template = f"""<!DOCTYPE html>
             <div class="download-card">
                 <div>
                     <h4>📍 Complete GPX Navigation File</h4>
-                    <p>Contains all 18 OSRM road-snapped daily stage tracks plus all 203 waypoints (lodging, 72 verified fuel stops, lighthouses, UNESCO sites, hikes, ferries). Compatible with Garmin Zumo XT/XT2, OsmAnd, Scenic, and Rever.</p>
+                    <p>Contains all 18 OSRM road-snapped daily stage tracks plus all 423 waypoints (lodging, camping backups, 72 fuel stops, 62 restaurants, 28 coffee shops, lighthouses, sights, QC-389 pullouts &amp; rail crossings). Compatible with Garmin Zumo XT/XT2, OsmAnd, Scenic, and Rever.</p>
                 </div>
                 <a href="east_coast_adv_loop.gpx" download class="dl-btn">⬇️ Download GPX (east_coast_adv_loop.gpx)</a>
             </div>
@@ -2025,14 +2056,14 @@ html_template = f"""<!DOCTYPE html>
             <div class="download-card">
                 <div>
                     <h4>🎨 Categorized &amp; Color-Coded POIs (KML)</h4>
-                    <p>All 203 expedition pins organized into custom color-coded folders (Primary Lodging, Secondary Backup Hotels, 72 Fuel Stations, 28 Lighthouses, Attractions, Parks, Sights, Hikes, Ferries).</p>
+                    <p>All 423 expedition pins organized into custom color-coded folders (Primary Lodging, Backup Lodging &amp; Camp, Fuel, Food &amp; Brewpubs, Coffee, Lighthouses, Attractions, Parks, Sights, Hikes, Ferries, QC-389 Hazards &amp; Pullouts).</p>
                 </div>
                 <a href="east_coast_colored_pois.kml" download class="dl-btn">⬇️ Download Colored POIs KML</a>
             </div>
             <div class="download-card">
                 <div>
                     <h4>📊 Master Expedition Spreadsheet (CSV)</h4>
-                    <p>Complete tabular audit of all 203 POIs with exact GPS coordinates, day number, category, 87/91 octane availability, hotel rates, reservation phone numbers, and booking links.</p>
+                    <p>Complete tabular audit of all 423 POIs with exact GPS coordinates, day number, category, 87/91 octane availability, hotel rates, food/coffee stops, and QC-389 safety waypoints.</p>
                 </div>
                 <a href="east_coast_adv_pois.csv" download class="dl-btn">⬇️ Download Master CSV (east_coast_adv_pois.csv)</a>
             </div>
@@ -2245,21 +2276,25 @@ html_template = f"""<!DOCTYPE html>
             }}
         }}
 
-        // Render 203 Curated POIs with Contextual Photo Cards
+        // Render 423 Curated POIs with Contextual Photo Cards
         const poiMarkers = [];
         const poiLayerGroup = L.layerGroup().addTo(map);
 
         function getCategoryStyle(p) {{
             const typeMap = {{
                 'hotel-primary':   {{ color: '#10B981', radius: 8, label: '🏕️ Primary Lodging / Camp' }},
-                'hotel-secondary': {{ color: '#F59E0B', radius: 7, label: '🏨 Secondary Backup Hotel' }},
+                'hotel-secondary': {{ color: '#F59E0B', radius: 7, label: '⛺ Backup Lodging / Camp' }},
                 'fuel':            {{ color: '#EF4444', radius: 5.5, label: '⛽ Verified Fuel Station' }},
+                'food':            {{ color: '#F97316', radius: 6, label: '🍽️ Food & Brewpub' }},
+                'coffee':          {{ color: '#B45309', radius: 5.5, label: '☕ Coffee Stop' }},
                 'lighthouse':      {{ color: '#EC4899', radius: 6.5, label: '🚨 Historic Lighthouse' }},
                 'attraction':      {{ color: '#8B5CF6', radius: 7, label: '🏛️ Must-See Attraction' }},
                 'park':            {{ color: '#22C55E', radius: 7, label: '🌲 National / Prov. Park' }},
                 'sight':           {{ color: '#EAB308', radius: 6.5, label: '📸 Scenic Viewpoint' }},
-                'hike':            {{ color: '#F97316', radius: 6.5, label: '🥾 Short Trail / Hike' }},
-                'ferry':           {{ color: '#06B6D4', radius: 8, label: '⛴️ Ferry / Major Bridge' }}
+                'hike':            {{ color: '#14B8A6', radius: 6.5, label: '🥾 Short Trail / Hike' }},
+                'ferry':           {{ color: '#06B6D4', radius: 8, label: '⛴️ Ferry / Major Bridge' }},
+                'hazard':          {{ color: '#E11D48', radius: 6, label: '⚠️ Road / Rail Marker' }},
+                'pullout':         {{ color: '#64748B', radius: 4.5, label: '🅿️ QC-389 Emergency Pullout' }}
             }};
             return typeMap[p.type] || {{ color: p.color || '#38bdf8', radius: 6, label: p.category || 'Expedition POI' }};
         }}
@@ -2324,13 +2359,12 @@ html_template = f"""<!DOCTYPE html>
                 autoPanPaddingBottomRight: [20, 30]
             }});
             marker.poiData = p;
-            marker.addTo(poiLayerGroup);
             poiMarkers.push(marker);
         }});
 
         map.fitBounds(allTrackGroup.getBounds().pad(0.06));
 
-        // Filter POIs by Category
+        // Filter POIs by Category with Smart QC-389 Pin Decluttering
         let currentFilter = 'all';
         let activeFocusedDay = null;
 
@@ -2340,6 +2374,9 @@ html_template = f"""<!DOCTYPE html>
                 if (b.id !== 'btn-gravel-toggle') b.classList.remove('active');
             }});
             if (btnEl) btnEl.classList.add('active');
+            if ((category === 'hazard' || category === 'pullout') && trackLayers[3]) {{
+                map.fitBounds(trackLayers[3].getBounds().pad(0.12));
+            }}
             updateVisiblePOIs();
         }}
 
@@ -2350,7 +2387,13 @@ html_template = f"""<!DOCTYPE html>
                 const p = m.poiData;
                 let catMatch = false;
                 if (currentFilter === 'all') {{
-                    catMatch = true;
+                    // Smart decluttering: hide dense QC-389 emergency pullouts & rail hazards in full-loop zoom 5 view,
+                    // and reveal them automatically when Day 3 is focused!
+                    if ((p.type === 'pullout' || p.type === 'hazard') && activeFocusedDay !== 3) {{
+                        catMatch = false;
+                    }} else {{
+                        catMatch = true;
+                    }}
                 }} else if (currentFilter === 'curated-gems') {{
                     catMatch = gemTypes.has(p.type);
                 }} else {{
@@ -2363,6 +2406,9 @@ html_template = f"""<!DOCTYPE html>
                 }}
             }});
         }}
+
+        // Populate initial visible POIs
+        updateVisiblePOIs();
 
         // Focus Specific Day Stage
         function focusDay(dayNum) {{
@@ -2408,18 +2454,6 @@ html_template = f"""<!DOCTYPE html>
             }});
             map.fitBounds(allTrackGroup.getBounds().pad(0.06));
             updateVisiblePOIs();
-        }}
-
-        function toggleLegend() {{
-            const body = document.getElementById('legend-body');
-            const icon = document.getElementById('legend-toggle-icon');
-            if (body.style.display === 'none') {{
-                body.style.display = 'block';
-                icon.textContent = '▾';
-            }} else {{
-                body.style.display = 'none';
-                icon.textContent = '▸';
-            }}
         }}
 
         // Interactive Gantt Chart Functions (Rockies Dual-View Parity)
