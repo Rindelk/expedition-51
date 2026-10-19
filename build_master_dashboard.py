@@ -18,6 +18,7 @@ with open(os.path.join(BASE_DIR, "luggage_checklist.json"), "r", encoding="utf-8
 
 tracks_data = exp_data["tracksData"]
 gravel_data = exp_data["gravelData"]
+fundy_parkway_data = exp_data.get("fundyParkwayData", {})
 pois_data = exp_data["poisData"]
 gantt_days_data = exp_data["ganttDaysData"]
 days_meta = exp_data["daysMeta"]
@@ -67,31 +68,31 @@ def assign_contextual_photo(p):
     if ptype == "lighthouse":
         if "point amour" in nm or "l'anse-amour" in nm:
             return "images/pois/lh_point_amour.jpg"
-        if any(k in nm for k in ["pointe-des-monts", "franquelin", "baie-comeau", "cap-de-la-table", "pointe-au-père", "moulin", "bon-désir"]):
+        if any(k in nm for k in ["pointe-des-monts", "franquelin", "baie-comeau", "cap-de-la-table", "pointe-au-père", "moulin", "bon-désir", "bon désir", "île", "ile", "tadoussac", "pointe noire", "matane", "cap-chat"]):
             return "images/pois/lh_pointe_des_monts.jpg"
-        if any(k in nm for k in ["cape norman", "fox point", "fishing point", "st. anthony", "flower's cove", "quirpon", "cape bauld"]):
+        if any(k in nm for k in ["cape norman", "fox point", "fishing point", "st. anthony", "flower's cove", "flowers island", "quirpon", "cape bauld", "new férolle"]):
             return "images/pois/lh_cape_norman_st_anthony.jpg"
-        if any(k in nm for k in ["pointe riche", "port au choix", "cow head", "keppel"]):
+        if any(k in nm for k in ["pointe riche", "point riche", "port au choix", "cow head", "keppel"]):
             return "images/pois/lh_pointe_riche.jpg"
         if "lobster cove" in nm or "rocky harbour" in nm:
             return "images/pois/lh_lobster_cove.jpg"
         if "woody point" in nm or "bonne bay" in nm:
             return "images/pois/lh_woody_point.jpg"
-        if any(k in nm for k in ["cape ray", "cape anguille", "rose blanche", "channel head", "port aux basques"]):
+        if any(k in nm for k in ["cape ray", "cape anguille", "cape st. george", "rose blanche", "channel head", "port aux basques"]):
             return "images/pois/lh_cape_ray.jpg"
-        if any(k in nm for k in ["neil's harbour", "white point", "ingonish", "low point", "louisbourg", "st. paul", "dingwall"]):
+        if any(k in nm for k in ["neil's harbour", "white point", "ingonish", "low point", "louisbourg", "st. paul", "dingwall", "sydney", "gabarus", "fourchu", "scatarie"]):
             return "images/pois/lh_neils_harbour.jpg"
-        if any(k in nm for k in ["chéticamp", "cheticamp", "enragée", "margaree", "port hood", "henry island"]):
+        if any(k in nm for k in ["chéticamp", "cheticamp", "enragée", "enragee", "margaree", "port hood", "henry island", "mabou", "inverness", "baddeck", "kidston", "arisaig", "cape george", "peggy"]):
             return "images/pois/lh_cape_breton.jpg"
-        if any(k in nm for k in ["covehead", "north rustico", "cape tryon", "new london", "souris", "east point", "wood islands"]):
+        if any(k in nm for k in ["covehead", "north rustico", "cape tryon", "new london", "souris", "east point", "wood islands", "shipwreck", "st. peters", "annandale"]):
             return "images/pois/lh_covehead_pei.jpg"
-        if any(k in nm for k in ["point prim", "seacow", "blockhouse", "panmure", "cape bear", "victoria"]):
+        if any(k in nm for k in ["point prim", "seacow", "blockhouse", "panmure", "cape bear", "victoria", "leard", "borden", "wrights", "palmer", "brighton", "haszard", "warren", "beach point", "murray", "georgetown"]):
             return "images/pois/lh_point_prim_seacow.jpg"
-        if any(k in nm for k in ["west point", "north cape", "big tignish", "summerside"]):
+        if any(k in nm for k in ["west point", "north cape", "north point", "big tignish", "summerside", "indian head", "cape egmont", "miminegash", "howards cove", "cascumpeque", "northport", "malpeque", "fish island"]):
             return "images/pois/lh_west_point_pei.jpg"
-        if any(k in nm for k in ["jourimain", "shediac", "caissie", "buctouche", "tormentine"]):
+        if any(k in nm for k in ["jourimain", "shediac", "caissie", "buctouche", "bouctouche", "tormentine", "miscou", "shippagan", "caraquet", "bathurst", "dalhousie", "campbellton", "miramichi", "escuminac", "richibucto", "cocagne", "cap-pelé", "cape bald", "neguac"]):
             return "images/pois/lh_cape_jourimain.jpg"
-        if any(k in nm for k in ["cape enrage", "quaco", "st. martins", "anderson hollow", "swallowtail", "head harbour", "reversing falls", "fundy"]):
+        if any(k in nm for k in ["cape enrage", "quaco", "st. martins", "anderson hollow", "swallowtail", "head harbour", "reversing falls", "fundy", "cape d'or", "spencers island", "port greville", "parrsboro", "burntcoat", "walton", "margaretsville", "digby", "brier"]):
             return "images/pois/lh_cape_enrage_fundy.jpg"
         return "images/pois/lh_lobster_cove.jpg"
 
@@ -105,35 +106,47 @@ def assign_contextual_photo(p):
             return "images/pois/hotel_viking_cabin.jpg"
         if "keltic lodge" in nm:
             return "images/pois/hotel_keltic_lodge.jpg"
-        if any(k in nm for k in ["koa", "campground", "camping", "provincial park", "national park", "driftwood", "finlay", "berry hill", "shallow bay", "broad cove", "mactaquac", "cavendish", "chéticamp", "green point", "fundy", "voltigeurs", "république", "duley", "relais de gabriel", "gateway labrador", "justone", "pourvoirie"]):
+        if any(k in nm for k in ["koa", "campground", "camping", "provincial park", "national park", "driftwood", "finlay", "berry hill", "shallow bay", "broad cove", "big intervale", "mactaquac", "cavendish", "chéticamp", "green point", "fundy", "voltigeurs", "république", "duley", "relais de gabriel", "gateway labrador", "justone", "pourvoirie"]):
             return "images/pois/camp_ocean_national_park.jpg"
         if "best western" in nm or "sheraton" in nm or "dauphin" in nm or "manoir" in nm or "travelodge" in nm or "wabush" in nm or "hotel north" in nm or "port aux basques" in nm:
             return "images/pois/hotel_best_western.jpg"
         if any(k in nm for k in ["motel", "super 8", "motor inn", "laurie", "ptit sapin", "p'tit sapin", "mirabeau", "campement", "modulaire"]):
             return "images/pois/hotel_super8_motel.jpg"
-        if any(k in nm for k in ["inn", "cottage", "kindred", "ocean view", "parkland", "haven", "northern light", "uapishka", "trish"]):
+        if any(k in nm for k in ["inn", "cottage", "cabin", "maple ridge", "blue bayou", "dome", "kindred", "ocean view", "parkland", "haven", "northern light", "uapishka", "trish"]):
             return "images/pois/hotel_coastal_inn.jpg"
         return "images/pois/hotel_best_western.jpg"
 
-    # 5. FOOD & BREWPUB STOPS (62 curated Maritime seafood shacks, microbreweries & restaurants)
+    # 5. FOOD & BREWPUB STOPS
     if ptype == "food":
-        if any(k in nl for k in ["lobster", "seafood", "fish", "chowder", "oyster", "mussel", "clam", "catch", "pêcherie", "harbour", "ocean", "coastal", "skipper", "steamers", "rudder", "daily catch", "shipyard", "lost anchor", "ship's company", "baywatch", "razzy", "chanterelle", "doryman"]):
+        if any(k in nl for k in ["lobster", "seafood", "fish", "chowder", "oyster", "mussel", "clam", "catch", "pêcherie", "harbour", "ocean", "coastal", "skipper", "steamers", "rudder", "daily catch", "shipyard", "lost anchor", "ship's company", "baywatch", "razzy", "chanterelle", "doryman", "caves", "fundy"]):
             return "images/pois/food_seafood_maritime.jpg"
         return "images/pois/food_brewpub_grill.jpg"
 
-    # 6. COFFEE STOPS (28 curated Tim Hortons, Starbucks & Twiggs Coffee Roasters)
+    # 6. COFFEE STOPS & GLUTEN-FREE BAKERIES
     if ptype == "coffee":
-        if "tim hortons" in nm or "tims" in nm:
+        if "tim hortons" in nm or "tims" in nm or "robin" in nm:
             return "images/pois/coffee_tim_hortons.jpg"
         return "images/pois/coffee_roaster_starbucks.jpg"
 
-    # 7. QC-389 ROAD & RAILWAY CROSSING HAZARD MARKERS
+    # 7. LOCAL SHOPPING EXPERIENCE (Wool Mills, Yarn Studios, Tackle & Outfitters)
+    if ptype == "shopping":
+        if any(k in nl for k in ["wool", "yarn", "knit", "fleece", "ewe", "alpaca", "tartan", "fibre", "tricot", "laine", "green gables", "chocolate"]):
+            return "images/pois/attr_green_gables.jpg"
+        if any(k in nl for k in ["tackle", "bait", "fishing", "outfitter", "outpost", "sport"]):
+            return "images/pois/attr_st_anthony_grenfell.jpg"
+        return "images/pois/attr_saint_john_market.jpg"
+
+    # 8. DUCATI & HONDA DEALERSHIPS / MOTORCYCLE SERVICE & PARTS
+    if ptype == "dealer":
+        return "images/pois/fuel_petro_canada.jpg"
+
+    # 9. QC-389 ROAD & RAILWAY CROSSING HAZARD MARKERS
     if ptype == "hazard":
         if "dirt road" in nm or "pavement" in nm:
             return "images/pois/pullout_qc389_highway.jpg"
         return "images/pois/hazard_train_crossing.jpg"
 
-    # 8. QC-389 EMERGENCY HIGHWAY PULLOUTS & PARKING STOPS
+    # 10. QC-389 EMERGENCY HIGHWAY PULLOUTS & PARKING STOPS
     if ptype == "pullout":
         return "images/pois/pullout_qc389_highway.jpg"
 
@@ -1954,7 +1967,10 @@ html_template = f"""<!DOCTYPE html>
                 <button type="button" class="filter-btn" data-cat="fuel" onclick="filterPOIs('fuel', this)">⛽ Fuel</button>
                 <button type="button" class="filter-btn" data-cat="food" onclick="filterPOIs('food', this)">🍽️ Food</button>
                 <button type="button" class="filter-btn" data-cat="coffee" onclick="filterPOIs('coffee', this)">☕ Coffee</button>
+                <button type="button" class="filter-btn" data-cat="shopping" onclick="filterPOIs('shopping', this)">🛍️ Shopping</button>
                 <button type="button" class="filter-btn" data-cat="sights" onclick="filterPOIs('sights', this)">📸 Sights</button>
+                <button type="button" class="filter-btn" data-cat="lighthouse" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
+                <button type="button" class="filter-btn" data-cat="dealer" onclick="filterPOIs('dealer', this)">🏍️ Dealers</button>
                 <button type="button" class="filter-btn" data-cat="ferry" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
                 <button type="button" class="filter-btn" data-cat="qc389" onclick="filterPOIs('qc389', this)">⚠️ QC-389</button>
             </div>
@@ -2344,6 +2360,7 @@ html_template = f"""<!DOCTYPE html>
         // Embedded Expedition 51 Data
         const tracksData = {json.dumps(tracks_data, ensure_ascii=False)};
         const gravelData = {json.dumps(gravel_data, ensure_ascii=False)};
+        const fundyParkwayData = {json.dumps(fundy_parkway_data, ensure_ascii=False)};
         const poisData = {json.dumps(pois_data, ensure_ascii=False)};
         const ganttDaysData = {json.dumps(gantt_days_data, ensure_ascii=False)};
         const defaultChecklistData = {json.dumps(checklist_data, ensure_ascii=False)};
@@ -2458,7 +2475,30 @@ html_template = f"""<!DOCTYPE html>
             }});
         }});
 
-        // Render 452 Curated POIs with Contextual Photo Cards, Hours & Admission
+        // Highlight Fundy Trail Parkway Start (45.501415, -65.320027) to Finish (45.388311, -65.459372) in a Distinct Colour
+        var fundyParkwayGroup = L.featureGroup().addTo(map);
+        if (fundyParkwayData && Array.isArray(fundyParkwayData.coords) && fundyParkwayData.coords.length > 1) {{
+            L.polyline(fundyParkwayData.coords, {{
+                color: '#0F172A',
+                weight: 10.5,
+                opacity: 0.88
+            }}).addTo(fundyParkwayGroup);
+
+            const fpPoly = L.polyline(fundyParkwayData.coords, {{
+                color: '#00F0FF',
+                weight: 6.0,
+                opacity: 1.0
+            }}).addTo(fundyParkwayGroup);
+
+            fpPoly.bindTooltip(`<strong>🌊 Fundy Trail Parkway (Day 15 Highlight)</strong><br>Start (45.5014, -65.3200) → Finish (45.3883, -65.4594) • 30 km Coastal Cliff Drive`, {{
+                sticky: true
+            }});
+            fpPoly.on('click', () => {{
+                focusDay(15);
+            }});
+        }}
+
+        // Render Curated POIs with Contextual Photo Cards, Hours & Admission
         const poiMarkers = [];
         const poiLayerGroup = L.layerGroup().addTo(map);
 
@@ -2468,8 +2508,10 @@ html_template = f"""<!DOCTYPE html>
                 'hotel-secondary': {{ color: '#F59E0B', radius: 7, label: '⛺ Backup Lodging / Camp' }},
                 'fuel':            {{ color: '#EF4444', radius: 5.5, label: '⛽ Verified Fuel Station' }},
                 'food':            {{ color: '#F97316', radius: 6, label: '🍽️ Food' }},
-                'coffee':          {{ color: '#B45309', radius: 5.5, label: '☕ Coffee Stop' }},
-                'lighthouse':      {{ color: '#EC4899', radius: 6.5, label: '🚨 Historic Lighthouse' }},
+                'coffee':          {{ color: '#B45309', radius: 5.5, label: '☕ Coffee & Bakery' }},
+                'shopping':        {{ color: '#D946EF', radius: 6, label: '🛍️ Local Shopping / Wool & Tackle' }},
+                'lighthouse':      {{ color: '#EC4899', radius: 5.5, label: '🚨 Historic Lighthouse' }},
+                'dealer':          {{ color: '#0EA5E9', radius: 6.5, label: '🏍️ Ducati / Honda Parts & Service' }},
                 'attraction':      {{ color: '#8B5CF6', radius: 7, label: '🏛️ Must-See Attraction' }},
                 'park':            {{ color: '#22C55E', radius: 7, label: '🌲 National / Prov. Park' }},
                 'sight':           {{ color: '#EAB308', radius: 6.5, label: '📸 Scenic Viewpoint' }},
@@ -2617,9 +2659,12 @@ html_template = f"""<!DOCTYPE html>
                 const p = m.poiData;
                 let catMatch = false;
                 if (allPoisActive) {{
-                    // Smart decluttering: hide dense QC-389 emergency pullouts & rail hazards in full-loop zoom 5 view,
-                    // and reveal them automatically when Day 3 is focused!
+                    // Smart decluttering in full-loop zoom 5 view:
+                    // 1. Hide dense QC-389 emergency pullouts & rail hazards until Day 3 is focused
+                    // 2. In zoom-5 full-loop overview, only show major/iconic lighthouses (reveal all 214 route lighthouses when a Day or 🚨 Lighthouses is clicked)
                     if ((p.type === 'pullout' || p.type === 'hazard') && activeFocusedDay !== 3) {{
+                        catMatch = false;
+                    }} else if (p.type === 'lighthouse' && activeFocusedDay === null && !/point amour|cape norman|cape bauld|point riche|pointe riche|lobster cove|cape ray|cape anguille|neil's harbour|louisbourg|west point|east point|point prim|cape bear|cape tryon|covehead|north rustico|seacow|cape enrage|quaco|swallowtail|head harbour|pointe-des-monts|bon-désir|bon désir|cap-chat/i.test(p.name)) {{
                         catMatch = false;
                     }} else {{
                         catMatch = true;
@@ -2641,6 +2686,7 @@ html_template = f"""<!DOCTYPE html>
                     m.addTo(poiLayerGroup);
                 }}
             }});
+            if (typeof fundyParkwayGroup !== 'undefined') fundyParkwayGroup.bringToFront();
         }}
 
         // Populate initial visible POIs
@@ -2817,6 +2863,8 @@ html_template = f"""<!DOCTYPE html>
                     layer.setStyle({{ weight: 3, opacity: 0.25 }});
                 }}
             }});
+            if (typeof gravelGroup !== 'undefined') gravelGroup.bringToFront();
+            if (typeof fundyParkwayGroup !== 'undefined') fundyParkwayGroup.bringToFront();
 
             updateVisiblePOIs();
             selectGanttDay(dayNum, false);
@@ -2837,6 +2885,8 @@ html_template = f"""<!DOCTYPE html>
             Object.keys(trackLayers).forEach(d => {{
                 trackLayers[d].setStyle({{ weight: 4.5, opacity: 0.88 }});
             }});
+            if (typeof gravelGroup !== 'undefined') gravelGroup.bringToFront();
+            if (typeof fundyParkwayGroup !== 'undefined') fundyParkwayGroup.bringToFront();
             map.fitBounds(allTrackGroup.getBounds().pad(0.06));
             updateVisiblePOIs();
         }}
@@ -4363,3 +4413,58 @@ for fname in ["index.html", "expedition_51_itinerary.html"]:
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html_template)
     print(f"Wrote {out_path} ({len(html_template):,} bytes)")
+
+# Regenerate CSV, GPX, and KML Navigation Files with all POIs
+import csv
+from xml.sax.saxutils import escape
+
+for csv_name in ["expedition_51_waypoints.csv", "east_coast_adv_pois.csv"]:
+    csv_path = os.path.join(BASE_DIR, csv_name)
+    with open(csv_path, "w", newline="", encoding="utf-8") as cf:
+        writer = csv.writer(cf)
+        writer.writerow(["Day", "Type", "Name", "Latitude", "Longitude", "Hours", "Admission", "Cost_Or_Octane", "Description"])
+        for p in pois_data:
+            co = p.get("octane") if p.get("type") == "fuel" else p.get("cost", "")
+            writer.writerow([p.get("day", ""), p.get("type", ""), p.get("name", ""), p.get("lat", ""), p.get("lon", ""), p.get("hours", ""), p.get("admission", ""), co, p.get("desc", "")])
+    print(f"Wrote {csv_path}")
+
+for gpx_name in ["expedition_51_master.gpx", "east_coast_adv_loop.gpx"]:
+    gpx_path = os.path.join(BASE_DIR, gpx_name)
+    with open(gpx_path, "w", encoding="utf-8") as gf:
+        gf.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        gf.write('<gpx version="1.1" creator="Expedition 51 Master Planner" xmlns="http://www.topografix.com/GPX/1/1">\n')
+        gf.write('  <metadata><name>2027 East Coast &amp; Labrador Moto Expedition (Expedition 51)</name></metadata>\n')
+        for p in pois_data:
+            nm = escape(str(p.get("name", "")))
+            ds = escape(f"[{p.get('day','')}] ({p.get('type','')}) {p.get('desc','')}")
+            tp = escape(str(p.get("type", "")))
+            gf.write(f'  <wpt lat="{p["lat"]}" lon="{p["lon"]}"><name>{nm}</name><desc>{ds}</desc><type>{tp}</type></wpt>\n')
+        for trk in tracks_data:
+            tnm = escape(f"Day {trk['day']}: {trk['name']}")
+            gf.write(f'  <trk><name>{tnm}</name><trkseg>\n')
+            for pt in trk["coords"]:
+                gf.write(f'    <trkpt lat="{pt[0]}" lon="{pt[1]}"></trkpt>\n')
+            gf.write('  </trkseg></trk>\n')
+        gf.write('</gpx>\n')
+    print(f"Wrote {gpx_path}")
+
+kml_path = os.path.join(BASE_DIR, "east_coast_colored_pois.kml")
+with open(kml_path, "w", encoding="utf-8") as kf:
+    kf.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    kf.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+    kf.write('  <Document>\n')
+    kf.write(f'    <name>Expedition 51 — {len(pois_data)} Categorized &amp; Color-Coded POIs</name>\n')
+    by_type = {}
+    for p in pois_data:
+        by_type.setdefault(p.get("type", "sight"), []).append(p)
+    for ptype, plist in sorted(by_type.items()):
+        kf.write(f'    <Folder><name>{escape(ptype.upper())} ({len(plist)})</name>\n')
+        for p in plist:
+            nm = escape(str(p.get("name", "")))
+            ds = escape(f"[{p.get('day','')}] {p.get('desc','')}")
+            kf.write(f'      <Placemark><name>{nm}</name><description>{ds}</description><Point><coordinates>{p["lon"]},{p["lat"]},0</coordinates></Point></Placemark>\n')
+        kf.write('    </Folder>\n')
+    kf.write('  </Document>\n')
+    kf.write('</kml>\n')
+print(f"Wrote {kml_path}")
+
