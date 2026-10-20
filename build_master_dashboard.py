@@ -202,7 +202,12 @@ def assign_contextual_photo(p):
 
 
 for p in pois_data:
-    p["photo"] = assign_contextual_photo(p)
+    fallback_img = assign_contextual_photo(p)
+    p["fallback_photo"] = fallback_img
+    if p.get("real_photo"):
+        p["photo"] = p["real_photo"]
+    elif not p.get("photo"):
+        p["photo"] = fallback_img
 
 # Persist updated photo paths back to exp51_data.json
 with open(os.path.join(BASE_DIR, "exp51_data.json"), "w", encoding="utf-8") as f_out:
@@ -2436,9 +2441,10 @@ html_template = f"""<!DOCTYPE html>
                 zIndexOffset: st.isSquare ? 400 : 100
             }});
 
+            const fallbackAttr = p.fallback_photo ? `data-fallback="${{p.fallback_photo}}"` : '';
             const photoHtml = p.photo
                 ? `<div class="poi-popup-photo-wrap">
-                       <img src="${{p.photo}}" alt="${{p.name.replace(/"/g, '&quot;')}}" class="poi-popup-photo" loading="lazy" onerror="this.parentElement.style.display='none';" />
+                       <img src="${{p.photo}}" ${{fallbackAttr}} alt="${{p.name.replace(/"/g, '&quot;')}}" class="poi-popup-photo" loading="lazy" onerror="if(this.dataset.fallback && this.src !== this.dataset.fallback){{this.src=this.dataset.fallback;}}else{{this.parentElement.style.display='none';}}" />
                    </div>`
                 : '';
 
@@ -2476,7 +2482,10 @@ html_template = f"""<!DOCTYPE html>
                 : '';
 
             const gmapsSearch = `https://www.google.com/maps/search/?api=1&query=${{encodeURIComponent(p.name + ' ' + p.lat + ',' + p.lon)}}`;
-            const webLink = p.url ? `<a href="${{p.url}}" target="_blank" class="poi-popup-link" style="margin-right:10px;">🌐 Official Website ↗</a>` : '';
+            const linkLabel = p.url
+                ? (/airbnb\\./i.test(p.url) ? '🏠 View on Airbnb ↗' : (/vrbo\\./i.test(p.url) ? '🏠 View on Vrbo ↗' : '🌐 Official Website ↗'))
+                : '';
+            const webLink = p.url ? `<a href="${{p.url}}" target="_blank" class="poi-popup-link" style="margin-right:10px;">${{linkLabel}}</a>` : '';
 
             const popupHtml = `
                 <div class="poi-popup-card">
@@ -2498,7 +2507,7 @@ html_template = f"""<!DOCTYPE html>
 
             marker.bindPopup(popupHtml, {{
                 maxWidth: 300,
-                autoPanPaddingTopLeft: window.innerWidth > 768 ? [265, 130] : [16, 110],
+                autoPanPaddingTopLeft: window.innerWidth > 768 ? [56, 72] : [16, 72],
                 autoPanPaddingBottomRight: [20, 30]
             }});
             marker.poiData = p;
