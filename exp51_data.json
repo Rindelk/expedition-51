@@ -216748,7 +216748,7 @@
       "icon": "🏨",
       "desc": "Clean, comfortable roadside motel fallback on Route 117 in Mirabel.",
       "octane": "Available nearby",
-      "url": "https://www.google.com/maps/search/?api=1&query=Motel+Le+Mirabeau+Mirabel+QC",
+      "url": "",
       "cost": "$125 CAD/night",
       "phone": "+1 450-432-1555",
       "photo": "images/pois/hotel_super8_motel.jpg",
@@ -217929,7 +217929,7 @@
       "desc": "Wilderness camping backup zone at Relais Gabriel (km 318 of Route 389) right after the Manic-5 to Relais Gabriel gravel stretch.",
       "cost": "$35 CAD/night",
       "octane": "",
-      "url": "",
+      "url": "https://www.pourvoirierelaisgabriel.com/fr",
       "custom_added": true,
       "photo": "images/pois/camp_ocean_national_park.jpg",
       "admission": "",
@@ -218019,7 +218019,7 @@
       "desc": "Labrador West visitor centre, museum, and RV/tent camping backup right on Route 500 in Labrador City.",
       "cost": "$30 CAD/night",
       "octane": "",
-      "url": "",
+      "url": "https://www.destinationlabrador.com/guide/",
       "custom_added": true,
       "photo": "images/pois/camp_ocean_national_park.jpg",
       "admission": "",
@@ -224642,7 +224642,8 @@
       "hours": "Check-in 14:00 – 22:00",
       "admission": "$25–$38 CAD / night",
       "cost": "$32 CAD",
-      "photo": "images/pois/camp_ocean_national_park.jpg"
+      "photo": "images/pois/camp_ocean_national_park.jpg",
+      "url": "https://parks.canada.ca/pn-np/ns/cbreton/activ/camping"
     },
     {
       "name": "Maple Ridge Cabins (27340 Cabot Trail, Dingwall)",
@@ -224667,7 +224668,8 @@
       "hours": "Check-in 15:00 – 21:00",
       "admission": "Lodging Rate Applies",
       "cost": "$185 CAD",
-      "photo": "images/pois/hotel_coastal_inn.jpg"
+      "photo": "images/pois/hotel_coastal_inn.jpg",
+      "url": "https://www.bluebayouresort.com/"
     },
     {
       "name": "Co-op - Neil's Harbour (242 New Haven Rd)",

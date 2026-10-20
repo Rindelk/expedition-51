@@ -460,7 +460,7 @@ for idx, dm in enumerate(days_meta):
         pri_btns.append(f'<span class="hotel-action-btn" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); border: 1px solid rgba(2, 132, 199, 0.28); cursor: default;">📅 {res_window}</span>')
     pri_btns_html = "\n                        ".join(pri_btns)
 
-    # Secondary / Fallback Hotel Row (Rockies 10-element Day Card parity)
+    # Secondary / Fallback Hotel Row (Clickable Place Names when URL is available)
     sec_p = sec_hotels_by_day.get(day_num)
     extra_secs = extra_sec_hotels_by_day.get(day_num, [])
     extra_sec_html = ""
@@ -471,12 +471,21 @@ for idx, dm in enumerate(days_meta):
             ep_cost = ep.get("cost", "")
             ep_lat = ep.get("lat", 0)
             ep_lon = ep.get("lon", 0)
-            extra_items.append(
-                f'<span onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
-                f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
-                f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); cursor:pointer;" '
-                f'title="Click to center map on {ep_name}">⛺ {ep_name} <span style="color:var(--accent-orange);">({ep_cost})</span></span>'
-            )
+            ep_url = (ep.get("url") or "").strip()
+            if ep_url:
+                extra_items.append(
+                    f'<a href="{ep_url}" target="_blank" rel="noopener" onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
+                    f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
+                    f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); text-decoration:none; cursor:pointer;" '
+                    f'title="Open {ep_name} website &amp; center on map">⛺ <span style="text-decoration:underline; text-underline-offset:2px; color:var(--accent-blue);">{ep_name} ↗</span> <span style="color:var(--accent-orange);">({ep_cost})</span></a>'
+                )
+            else:
+                extra_items.append(
+                    f'<span onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
+                    f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
+                    f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); cursor:pointer;" '
+                    f'title="Click to center map on {ep_name}">⛺ {ep_name} <span style="color:var(--accent-orange);">({ep_cost})</span></span>'
+                )
         extra_hdr = (
             f"🏕️ Additional Route 389 &amp; Labrador West Camping / Lodging Backups ({len(extra_secs)}):"
             if day_num == 3
@@ -493,25 +502,30 @@ for idx, dm in enumerate(days_meta):
         sec_name = sec_p.get("name", "Fallback Hotel")
         sec_desc = sec_p.get("desc", "")
         sec_cost = sec_p.get("cost", "")
-        sec_url = sec_p.get("url", "")
+        sec_url = (sec_p.get("url") or "").strip()
         sec_phone = sec_p.get("phone", "")
-        sec_btns = []
         if sec_url:
-            sec_btns.append(f'<a href="{sec_url}" target="_blank" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: rgba(217, 119, 6, 0.12); color: var(--accent-orange); border: 1px solid rgba(217, 119, 6, 0.35);">🌐 Website</a>')
+            sec_title_html = f'<a href="{sec_url}" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="color: var(--accent-orange); text-decoration: underline; text-underline-offset: 2px;" title="Open {sec_name} website">{sec_name} ↗</a>'
+        else:
+            sec_title_html = sec_name
+        sec_btns = []
         if sec_phone:
             tel_href = "tel:" + sec_phone.replace(" ", "")
             sec_btns.append(f'<a href="{tel_href}" onclick="event.stopPropagation();" class="hotel-action-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);">📞 {sec_phone}</a>')
-        sec_btns_html = "\n                        ".join(sec_btns)
+        sec_actions_block = ""
+        if sec_btns:
+            sec_btns_html = "\n                        ".join(sec_btns)
+            sec_actions_block = f"""
+                    <div class="hotel-actions">
+                        {sec_btns_html}
+                    </div>"""
         sec_hotel_box_html = f"""
                 <div class="hotel-box" style="border-left: 3px solid var(--accent-orange); margin-top: 8px;">
                     <div class="hotel-header-row">
-                        <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: {sec_name}</div>
+                        <div class="hotel-title" style="color: var(--accent-orange);">🏨 Secondary / Fallback: {sec_title_html}</div>
                         <span class="hotel-rate-pill" style="background: rgba(217, 119, 6, 0.12); color: var(--accent-orange); border-color: rgba(217, 119, 6, 0.3);">{sec_cost}</span>
                     </div>
-                    <div class="hotel-sub">{sec_desc}</div>
-                    <div class="hotel-actions">
-                        {sec_btns_html}
-                    </div>{extra_sec_html}
+                    <div class="hotel-sub">{sec_desc}</div>{sec_actions_block}{extra_sec_html}
                 </div>"""
     else:
         sec_hotel_box_html = """
@@ -797,6 +811,46 @@ html_template = f"""<!DOCTYPE html>
             width: 100%;
             height: 100%;
             background: #cbd5e1;
+        }}
+
+        /* Custom Map Stop Icon Pins (Lodging Rounded-Squares & Category Circles) */
+        .hotel-poi-marker, .stop-poi-marker {{
+            background: transparent !important;
+            border: none !important;
+        }}
+        .hotel-pin {{
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }}
+        .poi-icon-pin {{
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.8px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.45);
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }}
+        .hotel-pin:hover, .poi-icon-pin:hover {{
+            transform: scale(1.35) !important;
+            z-index: 9999 !important;
         }}
 
         /* Resizable Split Divider Gutter (Map <-> Itinerary) */
@@ -2337,35 +2391,49 @@ html_template = f"""<!DOCTYPE html>
         const poiLayerGroup = L.layerGroup().addTo(map);
 
         function getCategoryStyle(p) {{
+            const nm = (p.name || '').toLowerCase();
+            const isHome = nm.includes('hanmer') || nm.includes('home base');
+            const isCamp = /camp|koa|provincial park|national park|sepaq|sépaq|voltigeurs|duley|relais de gabriel|gateway labrador/i.test(p.name || '');
+            const isFerry = nm.includes('overnight ferry') || nm.includes('marine atlantic');
+            const priIcon = isHome ? '🏠' : (isFerry ? '⛴️' : (isCamp ? '🏕️' : '🏨'));
+            const secIcon = isCamp ? '🏕️' : '🏨';
+
             const typeMap = {{
-                'hotel-primary':   {{ color: '#10B981', radius: 8, label: '🏕️ Primary Lodging / Camp' }},
-                'hotel-secondary': {{ color: '#F59E0B', radius: 7, label: '⛺ Backup Lodging / Camp' }},
-                'fuel':            {{ color: '#EF4444', radius: 5.5, label: '⛽ Verified Fuel Station' }},
-                'food':            {{ color: '#F97316', radius: 6, label: '🍽️ Food' }},
-                'coffee':          {{ color: '#B45309', radius: 5.5, label: '☕ Coffee & Bakery' }},
-                'shopping':        {{ color: '#D946EF', radius: 6, label: '🛍️ Local Shopping / Wool & Tackle' }},
-                'lighthouse':      {{ color: '#EC4899', radius: 5.5, label: '🚨 Historic Lighthouse' }},
-                'dealer':          {{ color: '#0EA5E9', radius: 6.5, label: '🏍️ Ducati / Honda Parts & Service' }},
-                'attraction':      {{ color: '#8B5CF6', radius: 7, label: '🏛️ Must-See Attraction' }},
-                'park':            {{ color: '#22C55E', radius: 7, label: '🌲 National / Prov. Park' }},
-                'sight':           {{ color: '#EAB308', radius: 6.5, label: '📸 Scenic Viewpoint' }},
-                'hike':            {{ color: '#14B8A6', radius: 6.5, label: '🥾 Short Trail / Hike' }},
-                'ferry':           {{ color: '#06B6D4', radius: 8, label: '⛴️ Ferry / Major Bridge' }},
-                'hazard':          {{ color: '#E11D48', radius: 6, label: '⚠️ Road / Rail Marker' }},
-                'pullout':         {{ color: '#64748B', radius: 4.5, label: '🅿️ QC-389 Emergency Pullout' }}
+                'hotel-primary':   {{ color: isHome ? '#10B981' : '#2563EB', icon: priIcon, isSquare: true, label: '🏕️ Primary Lodging / Camp' }},
+                'hotel-secondary': {{ color: '#F59E0B', icon: secIcon, isSquare: true, label: '⛺ Backup Lodging / Camp' }},
+                'fuel':            {{ color: '#EF4444', icon: '⛽', isSquare: false, label: '⛽ Verified Fuel Station' }},
+                'food':            {{ color: '#F97316', icon: '🍽️', isSquare: false, label: '🍽️ Food' }},
+                'coffee':          {{ color: '#B45309', icon: '☕', isSquare: false, label: '☕ Coffee & Bakery' }},
+                'shopping':        {{ color: '#D946EF', icon: '🛍️', isSquare: false, label: '🛍️ Local Shopping / Wool & Tackle' }},
+                'lighthouse':      {{ color: '#EC4899', icon: '🗼', isSquare: false, label: '🚨 Historic Lighthouse' }},
+                'dealer':          {{ color: '#0EA5E9', icon: '🏍️', isSquare: false, label: '🏍️ Ducati / Honda Parts & Service' }},
+                'attraction':      {{ color: '#8B5CF6', icon: '🏛️', isSquare: false, label: '🏛️ Must-See Attraction' }},
+                'park':            {{ color: '#22C55E', icon: '🌲', isSquare: false, label: '🌲 National / Prov. Park' }},
+                'sight':           {{ color: '#EAB308', icon: '🌄', isSquare: false, label: '📸 Scenic Viewpoint' }},
+                'hike':            {{ color: '#14B8A6', icon: '🥾', isSquare: false, label: '🥾 Short Trail / Hike' }},
+                'ferry':           {{ color: '#06B6D4', icon: '⛴️', isSquare: false, label: '⛴️ Ferry / Major Bridge' }},
+                'hazard':          {{ color: '#E11D48', icon: '⚠️', isSquare: false, label: '⚠️ Road / Rail Marker' }},
+                'pullout':         {{ color: '#64748B', icon: '🅿️', isSquare: false, label: '🅿️ QC-389 Emergency Pullout' }}
             }};
-            return typeMap[p.type] || {{ color: p.color || '#38bdf8', radius: 6, label: p.category || 'Expedition POI' }};
+            return typeMap[p.type] || {{ color: p.color || '#38bdf8', icon: '📍', isSquare: false, label: p.category || 'Expedition POI' }};
         }}
 
         poisData.forEach(p => {{
             const st = getCategoryStyle(p);
-            const marker = L.circleMarker([p.lat, p.lon], {{
-                radius: st.radius,
-                fillColor: st.color,
-                color: '#ffffff',
-                weight: 1.8,
-                opacity: 1,
-                fillOpacity: 0.92
+            const pinClass = st.isSquare ? 'hotel-pin' : 'poi-icon-pin';
+            const wrapClass = st.isSquare ? 'hotel-poi-marker' : 'stop-poi-marker';
+            const sz = st.isSquare ? 24 : 22;
+            const anchor = sz / 2;
+            const pinHtml = `<div class="${{pinClass}}" style="background:${{st.color}};">${{st.icon}}</div>`;
+            const marker = L.marker([p.lat, p.lon], {{
+                icon: L.divIcon({{
+                    className: wrapClass,
+                    html: pinHtml,
+                    iconSize: [sz, sz],
+                    iconAnchor: [anchor, anchor],
+                    popupAnchor: [0, -anchor]
+                }}),
+                zIndexOffset: st.isSquare ? 400 : 100
             }});
 
             const photoHtml = p.photo
