@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "lastUpdated": "2026-10-16T14:29:33.577Z",
+  "lastUpdated": "2026-10-20T15:06:55.916Z",
   "updatedBy": "Jamie & Rosie",
   "repo": "Rindelk/expedition-51",
   "branch": "main",
@@ -12,7 +12,7 @@
       "model": "2025 Honda CRF1100L Africa Twin Adv Sports ES",
       "color": "White & Red",
       "accentHex": "#ef4444",
-      "totalCapacityL": 156.2,
+      "totalCapacityL": 160.2,
       "compartments": [
         {
           "id": "jamie-left-pannier",
@@ -30,8 +30,8 @@
         },
         {
           "id": "jamie-aux-pox",
-          "name": "4x Mosko Moto Aux Pox (4x 4L MOLLE Pods — 16L)",
-          "capacityL": 16,
+          "name": "4x Mosko Moto Aux Pox (4x 5L MOLLE Pods — 20L)",
+          "capacityL": 20,
           "icon": "🧰",
           "role": "Mosko Moto Fatty Tool Roll, Chain Lube, Oil, Ferry Straps, Medkit & Toiletries"
         },
@@ -182,7 +182,7 @@
           "volumeL": 3.5,
           "weightKg": 2.2,
           "packed": true,
-          "notes": "Fits directly inside 4L Mosko Moto Aux Pox for instant roadside tool access"
+          "notes": "Fits directly inside 5L Mosko Moto Aux Pox for instant roadside tool access"
         },
         {
           "id": "j-17",

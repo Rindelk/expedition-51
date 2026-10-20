@@ -2139,7 +2139,7 @@ html_template = f"""<!DOCTYPE html>
             <div style="display:flex; gap:7px; flex-wrap:wrap; align-items:center;">
                 <div style="display:flex; gap:4px; background:var(--bg-subtle); padding:3px; border-radius:8px; border:1px solid var(--border);">
                     <button type="button" class="lt-chip-btn active" id="chk-view-both" onclick="setChecklistBikeFilter('both')">🏍️ Both Bikes</button>
-                    <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (156.2L)</button>
+                    <button type="button" class="lt-chip-btn" id="chk-view-jamie" onclick="setChecklistBikeFilter('jamie')">⚪🔴 Jamie (160.2L)</button>
                     <button type="button" class="lt-chip-btn" id="chk-view-rosie" onclick="setChecklistBikeFilter('rosie')">🟢 Rosie (80.0L)</button>
                 </div>
                 <button type="button" class="theme-toggle-btn" onclick="pullChecklistFromGit(true)" title="Fetch latest luggage_checklist.json from GitHub">🔄 Pull</button>
