@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "lastUpdated": "2026-10-20T15:06:55.916Z",
+  "lastUpdated": "2026-10-20T15:14:30.668Z",
   "updatedBy": "Jamie & Rosie",
   "repo": "Rindelk/expedition-51",
   "branch": "main",
@@ -30,10 +30,10 @@
         },
         {
           "id": "jamie-aux-pox",
-          "name": "4x Mosko Moto Aux Pox (4x 5L MOLLE Pods — 20L)",
+          "name": "4x Mosko Moto 5L Aux Pox (4x 5L MOLLE Pods — 20L)",
           "capacityL": 20,
           "icon": "🧰",
-          "role": "Mosko Moto Fatty Tool Roll, Chain Lube, Oil, Ferry Straps, Medkit & Toiletries"
+          "role": "Pod 1 (5L): Fatty Tool Roll • Pod 2 (5L): Med Kit • Pod 3 (5L): Chain Lube & Oil • Pod 4 (5L): Ferry Straps"
         },
         {
           "id": "jamie-backcountry-duffel",
@@ -178,47 +178,47 @@
         {
           "id": "j-16",
           "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 1: Mosko Moto Fatty Tool Roll (Honda & Ducati Tools, Sockets, Torx/Hex & Tire Plugs)",
-          "volumeL": 3.5,
+          "name": "Aux Pod 1 (Full 5L Pod): Mosko Moto Fatty Tool Roll (Honda & Ducati Tools, Sockets, Torx/Hex & Tire Plugs)",
+          "volumeL": 5.0,
           "weightKg": 2.2,
           "packed": true,
-          "notes": "Fits directly inside 5L Mosko Moto Aux Pox for instant roadside tool access"
-        },
-        {
-          "id": "j-17",
-          "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 2: Chain Maintenance Kit (Travel Lube, Brush, Master Link)",
-          "volumeL": 2.5,
-          "weightKg": 0.8,
-          "packed": true,
-          "notes": "Isolated in outer MOLLE pod away from sleeping/camping gear"
-        },
-        {
-          "id": "j-18",
-          "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 2: 1L Synthetic Top-Up Oil + Funnel + Nitrile Gloves",
-          "volumeL": 2,
-          "weightKg": 1.1,
-          "packed": true,
-          "notes": "Upright in rear MOLLE Aux Pox"
-        },
-        {
-          "id": "j-19",
-          "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 3: Ferry Tie-Down Straps 2x (4x Soft Loops) + Cam Buckles",
-          "volumeL": 4,
-          "weightKg": 1.5,
-          "packed": true,
-          "notes": "Instant access at Blanc-Sablon, Port aux Basques & Saint John ferries"
+          "notes": "Dedicated 5L Aux Pox pod (#1 of 4) — fills entire 5L pod for instant roadside tool access"
         },
         {
           "id": "j-20",
           "compartmentId": "jamie-aux-pox",
-          "name": "Aux Pod 4: Adventure Medical Ultralight Medkit  + Wilderness Wipes 36pk+ Rainleaf Towel 40x20\"",
-          "volumeL": 3,
+          "name": "Aux Pod 2 (Full 5L Pod): Adventure Medical Ultralight Medkit + Wilderness Wipes 36pk + Rainleaf Towel 40x20\"",
+          "volumeL": 5.0,
           "weightKg": 0.61,
           "packed": true,
-          "notes": "Watertight first aid, hygiene wipes & fast-dry towel"
+          "notes": "Dedicated 5L Aux Pox pod (#2 of 4) — fills entire 5L pod for instant emergency first-aid access"
+        },
+        {
+          "id": "j-17",
+          "compartmentId": "jamie-aux-pox",
+          "name": "Aux Pod 3 (5L Pod): Chain Maintenance Kit (Travel Lube, Brush, Master Link)",
+          "volumeL": 2.5,
+          "weightKg": 0.8,
+          "packed": true,
+          "notes": "Shares 5L Aux Pox pod #3 with 1L synthetic top-up oil away from sleeping/camping gear"
+        },
+        {
+          "id": "j-18",
+          "compartmentId": "jamie-aux-pox",
+          "name": "Aux Pod 3 (5L Pod): 1L Synthetic Top-Up Oil + Funnel + Nitrile Gloves",
+          "volumeL": 2.0,
+          "weightKg": 1.1,
+          "packed": true,
+          "notes": "Upright inside 5L Aux Pox pod #3 (4.5L / 5.0L used)"
+        },
+        {
+          "id": "j-19",
+          "compartmentId": "jamie-aux-pox",
+          "name": "Aux Pod 4 (5L Pod): Ferry Tie-Down Straps 2x (4x Soft Loops) + Cam Buckles",
+          "volumeL": 4.0,
+          "weightKg": 1.5,
+          "packed": true,
+          "notes": "Dedicated 5L Aux Pox pod (#4 of 4) for instant access at Blanc-Sablon & Port aux Basques ferries"
         },
         {
           "id": "j-21",
