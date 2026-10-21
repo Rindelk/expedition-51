@@ -2030,7 +2030,7 @@ html_template = f"""<!DOCTYPE html>
                 <button type="button" class="filter-btn" data-cat="lighthouse" onclick="filterPOIs('lighthouse', this)">🚨 Lighthouses</button>
                 <button type="button" class="filter-btn" data-cat="dealer" onclick="filterPOIs('dealer', this)">🏍️ Dealers</button>
                 <button type="button" class="filter-btn" data-cat="ferry" onclick="filterPOIs('ferry', this)">⛴️ Ferries</button>
-                <button type="button" class="filter-btn" data-cat="qc389" onclick="filterPOIs('qc389', this)">⚠️ QC-389</button>
+                <button type="button" class="filter-btn" data-cat="qc389" onclick="filterPOIs('qc389', this)">⚠️ QC-389 / TLH</button>
             </div>
 
             <div id="map"></div>
@@ -2411,6 +2411,12 @@ html_template = f"""<!DOCTYPE html>
             const priLabel = isHome ? '🏠 Home Base' : (isFerry ? '⛴️ Overnight Ferry Stateroom' : (isCamp ? '🏕️ Primary Campground / Lodging' : '🏨 Primary Hotel / Lodging'));
             const secLabel = isCamp ? '⛺ Backup Campground / Lodging' : '🏨 Backup Hotel / Lodging';
 
+            const isPhone = /telephone|satellite phone|starlink|emergency comms|emergency wi-fi/i.test(p.name || '');
+            const isSign = /welcome|bienvenue|border sign|gateway trail sign|timezone|pinware sign|québec sign|quebec sign/i.test(p.name || '');
+            const sightIcon = isPhone ? '📞' : (isSign ? '📸' : '🌄');
+            const sightColor = isPhone ? '#0284C7' : '#EAB308';
+            const sightLabel = isPhone ? '📞 Emergency Phone / Starlink Comms' : (isSign ? '📸 Welcome / Border Sign' : '📸 Scenic Viewpoint');
+
             const typeMap = {{
                 'hotel-primary':   {{ color: isHome ? '#10B981' : '#2563EB', icon: priIcon, isSquare: true, label: priLabel }},
                 'hotel-secondary': {{ color: '#F59E0B', icon: secIcon, isSquare: true, label: secLabel }},
@@ -2422,11 +2428,11 @@ html_template = f"""<!DOCTYPE html>
                 'dealer':          {{ color: '#0EA5E9', icon: '🏍️', isSquare: false, label: '🏍️ Ducati / Honda Parts & Service' }},
                 'attraction':      {{ color: '#8B5CF6', icon: '🏛️', isSquare: false, label: '🏛️ Must-See Attraction' }},
                 'park':            {{ color: '#22C55E', icon: '🌲', isSquare: false, label: '🌲 National / Prov. Park' }},
-                'sight':           {{ color: '#EAB308', icon: '🌄', isSquare: false, label: '📸 Scenic Viewpoint' }},
+                'sight':           {{ color: sightColor, icon: sightIcon, isSquare: false, label: sightLabel }},
                 'hike':            {{ color: '#14B8A6', icon: '🥾', isSquare: false, label: '🥾 Short Trail / Hike' }},
                 'ferry':           {{ color: '#06B6D4', icon: '⛴️', isSquare: false, label: '⛴️ Ferry / Major Bridge' }},
                 'hazard':          {{ color: '#E11D48', icon: '⚠️', isSquare: false, label: '⚠️ Road / Rail Marker' }},
-                'pullout':         {{ color: '#64748B', icon: '🅿️', isSquare: false, label: '🅿️ QC-389 Emergency Pullout' }}
+                'pullout':         {{ color: '#64748B', icon: '🅿️', isSquare: false, label: '🅿️ QC-389 / TLH Emergency Pullout' }}
             }};
             return typeMap[p.type] || {{ color: p.color || '#38bdf8', icon: '📍', isSquare: false, label: p.category || 'Expedition POI' }};
         }}
@@ -2560,7 +2566,8 @@ html_template = f"""<!DOCTYPE html>
                     }}
                 }}
                 if (activeCategories.has(category) && category === 'qc389' && trackLayers[3]) {{
-                    map.fitBounds(trackLayers[3].getBounds().pad(0.12));
+                    const qcTlhGroup = L.featureGroup([trackLayers[3], trackLayers[4], trackLayers[5]].filter(Boolean));
+                    map.fitBounds(qcTlhGroup.getBounds().pad(0.08));
                 }}
             }}
             syncFilterToolbarButtons();
@@ -2579,9 +2586,9 @@ html_template = f"""<!DOCTYPE html>
                 let catMatch = false;
                 if (allPoisActive) {{
                     // Smart decluttering in full-loop zoom 5 view:
-                    // 1. Hide dense QC-389 emergency pullouts & rail hazards until Day 3 is focused
-                    // 2. In zoom-5 full-loop overview, only show major/iconic lighthouses (reveal all 214 route lighthouses when a Day or 🚨 Lighthouses is clicked)
-                    if ((p.type === 'pullout' || p.type === 'hazard') && activeFocusedDay !== 3) {{
+                    // 1. Hide dense QC-389 & TLH emergency pullouts & rail hazards until Day 3, 4, or 5 is focused
+                    // 2. In zoom-5 full-loop overview, only show major/iconic lighthouses (reveal all route lighthouses when a Day or 🚨 Lighthouses is clicked)
+                    if ((p.type === 'pullout' || p.type === 'hazard') && ![3, 4, 5].includes(activeFocusedDay)) {{
                         catMatch = false;
                     }} else if (p.type === 'lighthouse' && activeFocusedDay === null && !/point amour|cape norman|cape bauld|point riche|pointe riche|lobster cove|cape ray|cape anguille|neil's harbour|louisbourg|west point|east point|point prim|cape bear|cape tryon|covehead|north rustico|seacow|cape enrage|quaco|swallowtail|head harbour|pointe-des-monts|bon-désir|bon désir|cap-chat/i.test(p.name)) {{
                         catMatch = false;
@@ -2595,7 +2602,7 @@ html_template = f"""<!DOCTYPE html>
                         catMatch = true;
                     }} else if (activeCategories.has('sights') && sightsTypes.has(p.type)) {{
                         catMatch = true;
-                    }} else if (activeCategories.has('qc389') && (p.type === 'hazard' || p.type === 'pullout')) {{
+                    }} else if (activeCategories.has('qc389') && (p.type === 'hazard' || p.type === 'pullout' || /telephone|satellite phone|starlink|emergency comms|emergency wi-fi/i.test(p.name || ''))) {{
                         catMatch = true;
                     }}
                 }}
