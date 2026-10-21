@@ -471,31 +471,37 @@ for idx, dm in enumerate(days_meta):
     extra_sec_html = ""
     if extra_secs:
         extra_items = []
+        any_ep_camp = False
         for ep in extra_secs:
             ep_name = ep.get("name", "")
             ep_cost = ep.get("cost", "")
             ep_lat = ep.get("lat", 0)
             ep_lon = ep.get("lon", 0)
             ep_url = (ep.get("url") or "").strip()
+            is_ep_camp = any(k in ep_name.lower() for k in ["campground", "camping", "koa", "provincial park", "national park", "sepaq", "sépaq"])
+            if is_ep_camp:
+                any_ep_camp = True
+            ep_icon = "⛺" if is_ep_camp else "🏨"
             if ep_url:
                 extra_items.append(
                     f'<a href="{ep_url}" target="_blank" rel="noopener" onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
                     f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
                     f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); text-decoration:none; cursor:pointer;" '
-                    f'title="Open {ep_name} website &amp; center on map">⛺ <span style="text-decoration:underline; text-underline-offset:2px; color:var(--accent-blue);">{ep_name} ↗</span> <span style="color:var(--accent-orange);">({ep_cost})</span></a>'
+                    f'title="Open {ep_name} website &amp; center on map">{ep_icon} <span style="text-decoration:underline; text-underline-offset:2px; color:var(--accent-blue);">{ep_name} ↗</span> <span style="color:var(--accent-orange);">({ep_cost})</span></a>'
                 )
             else:
                 extra_items.append(
                     f'<span onclick="event.stopPropagation(); map.setView([{ep_lat}, {ep_lon}], 13);" '
                     f'style="display:inline-flex; align-items:center; gap:4px; background:var(--bg-card); border:1px solid var(--border); '
                     f'border-radius:5px; padding:3px 7px; font-size:0.70rem; font-weight:700; color:var(--text-main); cursor:pointer;" '
-                    f'title="Click to center map on {ep_name}">⛺ {ep_name} <span style="color:var(--accent-orange);">({ep_cost})</span></span>'
+                    f'title="Click to center map on {ep_name}">{ep_icon} {ep_name} <span style="color:var(--accent-orange);">({ep_cost})</span></span>'
                 )
-        extra_hdr = (
-            f"🏕️ Additional Route 389 &amp; Labrador West Camping / Lodging Backups ({len(extra_secs)}):"
-            if day_num == 3
-            else f"🏕️ Additional Stage Lodging / Camping Backups ({len(extra_secs)}):"
-        )
+        if day_num == 3:
+            extra_hdr = f"🏨 Additional Route 389 &amp; Labrador West Hotel / Cabin / B&amp;B Backups ({len(extra_secs)}):"
+        elif any_ep_camp:
+            extra_hdr = f"🏕️ Additional Stage Lodging / Camping Backups ({len(extra_secs)}):"
+        else:
+            extra_hdr = f"🏨 Additional Stage Hotel / Lodging Backups ({len(extra_secs)}):"
         extra_sec_html = f"""
                     <div style="margin-top:8px; padding-top:7px; border-top:1px dashed var(--border);">
                         <div style="font-size:0.69rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); margin-bottom:5px;">{extra_hdr}</div>
@@ -2398,14 +2404,16 @@ html_template = f"""<!DOCTYPE html>
         function getCategoryStyle(p) {{
             const nm = (p.name || '').toLowerCase();
             const isHome = nm.includes('hanmer') || nm.includes('home base');
-            const isCamp = /camp|koa|provincial park|national park|sepaq|sépaq|voltigeurs|duley|relais de gabriel|gateway labrador/i.test(p.name || '');
+            const isCamp = /\\b(campground|camping|koa|provincial park|national park|sepaq|sépaq|voltigeurs)\\b/i.test(p.name || '');
             const isFerry = nm.includes('overnight ferry') || nm.includes('marine atlantic');
             const priIcon = isHome ? '🏠' : (isFerry ? '⛴️' : (isCamp ? '🏕️' : '🏨'));
             const secIcon = isCamp ? '🏕️' : '🏨';
+            const priLabel = isHome ? '🏠 Home Base' : (isFerry ? '⛴️ Overnight Ferry Stateroom' : (isCamp ? '🏕️ Primary Campground / Lodging' : '🏨 Primary Hotel / Lodging'));
+            const secLabel = isCamp ? '⛺ Backup Campground / Lodging' : '🏨 Backup Hotel / Lodging';
 
             const typeMap = {{
-                'hotel-primary':   {{ color: isHome ? '#10B981' : '#2563EB', icon: priIcon, isSquare: true, label: '🏕️ Primary Lodging / Camp' }},
-                'hotel-secondary': {{ color: '#F59E0B', icon: secIcon, isSquare: true, label: '⛺ Backup Lodging / Camp' }},
+                'hotel-primary':   {{ color: isHome ? '#10B981' : '#2563EB', icon: priIcon, isSquare: true, label: priLabel }},
+                'hotel-secondary': {{ color: '#F59E0B', icon: secIcon, isSquare: true, label: secLabel }},
                 'fuel':            {{ color: '#EF4444', icon: '⛽', isSquare: false, label: '⛽ Verified Fuel Station' }},
                 'food':            {{ color: '#F97316', icon: '🍽️', isSquare: false, label: '🍽️ Food' }},
                 'coffee':          {{ color: '#B45309', icon: '☕', isSquare: false, label: '☕ Coffee & Bakery' }},
@@ -2855,11 +2863,12 @@ html_template = f"""<!DOCTYPE html>
                 `;
             }});
 
+            const ganttHotelIcon = /hanmer|home base/i.test(d.hotel || '') ? '🏠' : (/ferry|marine atlantic/i.test(d.hotel || '') ? '⛴️' : (/campground|camping|koa|sepaq|sépaq|république|republique/i.test(d.hotel || '') ? '🏕️' : '🏨'));
             container.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid var(--gantt-border, #e2e8f0);">
                     <div>
                         <div style="font-size:1.02rem; font-weight:800; color:var(--text-main, #0f172a);">Day ${{d.day}}: ${{d.title}}</div>
-                        <div style="font-size:0.78rem; color:var(--text-muted, #64748b);">${{d.date}} • 🏕️ ${{d.hotel}}</div>
+                        <div style="font-size:0.78rem; color:var(--text-muted, #64748b);">${{d.date}} • ${{ganttHotelIcon}} ${{d.hotel}}</div>
                     </div>
                     <div style="display:flex; gap:8px; align-items:center;">
                         <span style="background:rgba(2,132,199,0.12); color:var(--accent-blue, #0284c7); border:1px solid rgba(2,132,199,0.3); padding:4px 10px; border-radius:6px; font-size:0.78rem; font-weight:800;">📏 ${{Number(d.dist).toFixed(1)}} km</span>

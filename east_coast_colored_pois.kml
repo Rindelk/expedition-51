@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Expedition 51 — 943 Categorized &amp; Color-Coded POIs</name>
+    <name>Expedition 51 — 941 Categorized &amp; Color-Coded POIs</name>
     <Folder><name>ATTRACTION (69)</name>
       <Placemark><name>Carillon Canal National Historic Lock</name><description>[Day 1] Historic 19th-century military canal on the Ottawa River built after the War of 1812 with a massive 20-metre single hydraulic guillotine lock.</description><Point><coordinates>-74.376,45.568,0</coordinates></Point></Placemark>
       <Placemark><name>Manic-5 (Daniel-Johnson Dam)</name><description>[Day 3] World's largest multiple-arch hollow buttress dam. 214 m high, 1.3 km wide. Marvel of modern engineering.</description><Point><coordinates>-68.7247,50.6406,0</coordinates></Point></Placemark>
@@ -459,18 +459,16 @@
       <Placemark><name>Best Western Pembroke Inn &amp; Conference Centre</name><description>[Day 17] Full-service motor hotel off Hwy 17 with large indoor heated pool, hot tub, fitness center, on-site restaurant, and ground-level rooms.</description><Point><coordinates>-77.098,45.7932,0</coordinates></Point></Placemark>
       <Placemark><name>Hanmer Home Base (Arrival)</name><description>[Day 18] Expedition finish line at 4671 Dupuis Drive, Hanmer, ON. Saturday afternoon completion.</description><Point><coordinates>-80.882479,46.656232,0</coordinates></Point></Placemark>
     </Folder>
-    <Folder><name>HOTEL-SECONDARY (28)</name>
+    <Folder><name>HOTEL-SECONDARY (26)</name>
       <Placemark><name>Motel Le Mirabeau (Mirabel)</name><description>[Day 1] Clean, comfortable roadside motel fallback on Route 117 in Mirabel.</description><Point><coordinates>-73.978,45.728,0</coordinates></Point></Placemark>
       <Placemark><name>Super 8 by Wyndham Saint-Jérôme / Mirabel</name><description>[Day 1] Convenient fallback motor hotel off Hwy 117 / A-15 gateway.</description><Point><coordinates>-74.0044,45.7508,0</coordinates></Point></Placemark>
       <Placemark><name>Hôtel Le Manoir Baie-Comeau</name><description>[Day 2] Historic stone manor overlooking the St. Lawrence River.</description><Point><coordinates>-68.1482,49.218,0</coordinates></Point></Placemark>
       <Placemark><name>Two Seasons Inn (Labrador City)</name><description>[Day 3] Full service hotel in Labrador City with dining and heated facilities.</description><Point><coordinates>-66.9114,52.9536,0</coordinates></Point></Placemark>
-      <Placemark><name>Zone Camping Relais de Gabriel</name><description>[Day 3] Wilderness camping backup zone at Relais Gabriel (km 318 of Route 389) right after the Manic-5 to Relais Gabriel gravel stretch.</description><Point><coordinates>-68.133731,51.329536,0</coordinates></Point></Placemark>
+      <Placemark><name>Pourvoirie Relais Gabriel — Inn &amp; Chalets (Hotel Backup)</name><description>[Day 3] Indoor hotel rooms, heated wooden chalets, and full dining room at Relais Gabriel (km 318 of Route 389) right after the Manic-5 to Relais Gabriel gravel stretch.</description><Point><coordinates>-68.133731,51.329536,0</coordinates></Point></Placemark>
       <Placemark><name>Station Uapishka — Monts Groulx (Hotel Backup)</name><description>[Day 3] UNESCO Manicouagan-Uapishka Biosphere Reserve eco-lodge, inn, and outfitter backup at the base of the Monts Groulx (km 336 of QC-389).</description><Point><coordinates>-68.236055,51.471759,0</coordinates></Point></Placemark>
-      <Placemark><name>Campement Modulaire (Mont-Wright / QC-389)</name><description>[Day 3] Modular camp facility near Mont-Wright and the southern approach to Fermont on Route 389.</description><Point><coordinates>-67.324279,52.774307,0</coordinates></Point></Placemark>
-      <Placemark><name>Pourvoirie Lac Justone Fermont | Rivière Caniapiscau</name><description>[Day 3] Outfitter cabin and wilderness camping backup on Lac Justone just west of Fermont on Route 389.</description><Point><coordinates>-67.219923,52.811832,0</coordinates></Point></Placemark>
-      <Placemark><name>Duley Lake Provincial Park Campground</name><description>[Day 3] Scenic lakeside provincial park campground between the Québec/Labrador border and Labrador City / Wabush.</description><Point><coordinates>-66.997964,52.896068,0</coordinates></Point></Placemark>
+      <Placemark><name>Campement Modulaire (Mont-Wright / QC-389)</name><description>[Day 3] Indoor modular hotel room facility near Mont-Wright and the southern approach to Fermont on Route 389.</description><Point><coordinates>-67.324279,52.774307,0</coordinates></Point></Placemark>
+      <Placemark><name>Pourvoirie Lac Justone Fermont | Rivière Caniapiscau</name><description>[Day 3] Heated outfitter cabins and indoor lodge backup on Lac Justone just west of Fermont on Route 389.</description><Point><coordinates>-67.219923,52.811832,0</coordinates></Point></Placemark>
       <Placemark><name>Trish’s Place (Wabush / Labrador City B&amp;B Backup)</name><description>[Day 3] Welcoming local guesthouse and B&amp;B lodging backup in Wabush / Labrador City.</description><Point><coordinates>-66.919275,52.937108,0</coordinates></Point></Placemark>
-      <Placemark><name>Gateway Labrador — Visitor Information Centre w/ Campsites</name><description>[Day 3] Labrador West visitor centre, museum, and RV/tent camping backup right on Route 500 in Labrador City.</description><Point><coordinates>-66.919026,52.95046,0</coordinates></Point></Placemark>
       <Placemark><name>Hotel North Two (Goose Bay)</name><description>[Day 4] Full service hotel with dining and heated indoor motorcycle parking options.</description><Point><coordinates>-60.326,53.3015,0</coordinates></Point></Placemark>
       <Placemark><name>Motel Blanc-Sablon</name><description>[Day 5] Waterfront motel right at the ferry terminal in Blanc-Sablon.</description><Point><coordinates>-57.13,51.425,0</coordinates></Point></Placemark>
       <Placemark><name>Haven Inn (St. Anthony)</name><description>[Day 6] Modern hotel in St. Anthony with full dining, comfortable beds, and full amenities.</description><Point><coordinates>-55.605,51.365,0</coordinates></Point></Placemark>
@@ -736,9 +734,8 @@
       <Placemark><name>Point Riche Lighthouse</name><description>[Day 8] 1892 octagonal white lighthouse surrounded by wild caribou herds on the limestone barrens at Port au Choix.</description><Point><coordinates>-57.4106,50.6979,0</coordinates></Point></Placemark>
       <Placemark><name>Cow Head Lighthouse</name><description>[Day 8] 1909 circular cast-iron tower reached via a scenic forested coastal trail in Cow Head, Gros Morne.</description><Point><coordinates>-57.8136,49.9197,0</coordinates></Point></Placemark>
     </Folder>
-    <Folder><name>PARK (22)</name>
-      <Placemark><name>Camping Mirabel</name><description>[Day 1] Lush wooded private campground with pool and hot showers in Mirabel.</description><Point><coordinates>-73.995,45.715,0</coordinates></Point></Placemark>
-      <Placemark><name>Parc national du Fjord-du-Saguenay (Tadoussac)</name><description>[Day 2] Spectacular fjord park with marine mammal lookouts and coastal camping.</description><Point><coordinates>-69.72,48.16,0</coordinates></Point></Placemark>
+    <Folder><name>PARK (21)</name>
+      <Placemark><name>Parc national du Fjord-du-Saguenay (Tadoussac)</name><description>[Day 2] Spectacular fjord park with marine mammal lookouts and scenic Saguenay Fjord viewpoints.</description><Point><coordinates>-69.72,48.16,0</coordinates></Point></Placemark>
       <Placemark><name>Smokey Mountain Ski &amp; Recreational Area</name><description>[Day 3] Labrador City's alpine ski hill and scenic high-point overlook just northwest of town.</description><Point><coordinates>-66.91792,52.95396,0</coordinates></Point></Placemark>
       <Placemark><name>Gros Morne National Park (Rocky Harbour)</name><description>[Day 8] UNESCO World Heritage Site with dramatic glacial fjords, Tablelands, and coastal trails.</description><Point><coordinates>-57.9,49.585,0</coordinates></Point></Placemark>
       <Placemark><name>Gros Morne KOA Holiday Park Grounds</name><description>[Day 8] Full-amenity outdoor park setting with bike wash, pool, and laundromat.</description><Point><coordinates>-57.88,49.56,0</coordinates></Point></Placemark>
@@ -877,11 +874,12 @@
       <Placemark><name>ANNE of Green Gables Chocolates — Queen St (Charlottetown)</name><description>[Day 14] Famous PEI hand-dipped chocolates, Cow Chips, and raspberry cordial on historic Queen Street.</description><Point><coordinates>-63.12662,46.233744,0</coordinates></Point></Placemark>
       <Placemark><name>ANNE of Green Gables Chocolates Flagship Store (Charlottetown)</name><description>[Day 14] Factory store &amp; chocolate shop at 15 Milky Way, Charlottetown.</description><Point><coordinates>-63.18055,46.25943,0</coordinates></Point></Placemark>
     </Folder>
-    <Folder><name>SIGHT (96)</name>
+    <Folder><name>SIGHT (97)</name>
       <Placemark><name>Portage-du-Fort Ottawa River Crossing</name><description>[Day 1] Historic Chenaux Generating Station dam bridge crossing the Ottawa River from Ontario into Quebec.</description><Point><coordinates>-76.660131,45.593286,0</coordinates></Point></Placemark>
       <Placemark><name>Route 148 Scenic River Corridor (Gatineau to Fassett)</name><description>[Day 1] Winding, scenic motorcycle corridor along the north shore of the Ottawa River through St-Philippe and Lachute into Mirabel.</description><Point><coordinates>-74.4346,45.6258,0</coordinates></Point></Placemark>
       <Placemark><name>Boulevard Champlain &amp; Cap Diamant River Parkway</name><description>[Day 2] Stunning river-level motorcycle boulevard curving beneath the towering cliffs of Quebec City and Château Frontenac.</description><Point><coordinates>-71.21,46.805,0</coordinates></Point></Placemark>
       <Placemark><name>Autoroute 50 &amp; Route 138 North Shore Scenic Corridor</name><description>[Day 2] Historic Chemin du Roy and Côte-de-Beaupré bypassing Montreal and Hwy 40 entirely.</description><Point><coordinates>-70.9,46.9,0</coordinates></Point></Placemark>
+      <Placemark><name>Gateway Labrador — Visitor Information Centre &amp; Museum</name><description>[Day 3] Official Labrador West visitor information centre and regional heritage museum right on Route 500 in Labrador City.</description><Point><coordinates>-66.919026,52.95046,0</coordinates></Point></Placemark>
       <Placemark><name>Belvédère Réservoir Manicouagan (QC-389 Viewpoint)</name><description>[Day 3] Panoramic highway overlook beside the Manicouagan Reservoir ('Eye of Québec' annular impact crater lake) north of Manic-5 Dam.</description><Point><coordinates>-68.7385,50.6525,0</coordinates></Point></Placemark>
       <Placemark><name>Gagnon Airport (Former Mining Town Runway — QC-389)</name><description>[Day 3] Abandoned airstrip and hauntingly flat highway corridor of the former iron-mining town of Gagnon (closed and dismantled in 1985) along Route 389.</description><Point><coordinates>-68.139965,51.950649,0</coordinates></Point></Placemark>
       <Placemark><name>QC-389 Off-Road Side-of-Road Viewpoint</name><description>[Day 3] Elevated side-of-road gravel pull-off viewpoint overlooking the subarctic Côte-Nord valleys and lakes.</description><Point><coordinates>-67.647522,52.26816,0</coordinates></Point></Placemark>

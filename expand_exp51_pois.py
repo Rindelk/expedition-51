@@ -53,23 +53,21 @@ def add_poi(name, lat, lon, ptype, day, desc, cost="Free", octane="", url=""):
     })
 
 # ==============================================================================
-# 1. CAMPING & LODGING BACKUPS (Day 3 — QC-389 & Labrador City / Wabush)
+# 1. HOTEL, CHALET & B&B LODGING BACKUPS (Day 3 — QC-389 & Labrador City / Wabush)
 # ==============================================================================
 camping_backups = [
-    ("Zone Camping Relais de Gabriel", 51.329536, -68.133731, "hotel-secondary", 3,
-     "Wilderness camping backup zone at Relais Gabriel (km 318 of Route 389) right after the Manic-5 to Relais Gabriel gravel stretch.", "$35 CAD/night"),
+    ("Pourvoirie Relais Gabriel — Inn & Chalets (Hotel Backup)", 51.329536, -68.133731, "hotel-secondary", 3,
+     "Indoor hotel rooms, heated wooden chalets, and full dining room at Relais Gabriel (km 318 of Route 389) right after the Manic-5 to Relais Gabriel gravel stretch.", "$145 CAD/night", "", "https://www.pourvoirierelaisgabriel.com/fr"),
     ("Station Uapishka — Monts Groulx (Hotel Backup)", 51.471759, -68.236055, "hotel-secondary", 3,
-     "UNESCO Manicouagan-Uapishka Biosphere Reserve eco-lodge, inn, and outfitter backup at the base of the Monts Groulx (km 336 of QC-389).", "$195 CAD/night"),
+     "UNESCO Manicouagan-Uapishka Biosphere Reserve eco-lodge, inn, and outfitter backup at the base of the Monts Groulx (km 336 of QC-389).", "$195 CAD/night", "", "https://www.stationuapishka.com/"),
     ("Campement Modulaire (Mont-Wright / QC-389)", 52.774307, -67.324279, "hotel-secondary", 3,
-     "Modular camp facility near Mont-Wright and the southern approach to Fermont on Route 389.", "$140 CAD/night"),
+     "Indoor modular hotel room facility near Mont-Wright and the southern approach to Fermont on Route 389.", "$140 CAD/night", "", "https://rcmgroupe.com/"),
     ("Pourvoirie Lac Justone Fermont | Rivière Caniapiscau", 52.811832, -67.219923, "hotel-secondary", 3,
-     "Outfitter cabin and wilderness camping backup on Lac Justone just west of Fermont on Route 389.", "$150 CAD/night"),
-    ("Duley Lake Provincial Park Campground", 52.896068, -66.997964, "hotel-secondary", 3,
-     "Scenic lakeside provincial park campground between the Québec/Labrador border and Labrador City / Wabush.", "$25 CAD/night"),
+     "Heated outfitter cabins and indoor lodge backup on Lac Justone just west of Fermont on Route 389.", "$150 CAD/night", "", "https://lacjustone.com/"),
     ("Trish’s Place (Wabush / Labrador City B&B Backup)", 52.937108, -66.919275, "hotel-secondary", 3,
-     "Welcoming local guesthouse and B&B lodging backup in Wabush / Labrador City.", "$145 CAD/night"),
-    ("Gateway Labrador — Visitor Information Centre w/ Campsites", 52.950460, -66.919026, "hotel-secondary", 3,
-     "Labrador West visitor centre, museum, and RV/tent camping backup right on Route 500 in Labrador City.", "$30 CAD/night"),
+     "Welcoming local guesthouse and B&B lodging backup in Wabush / Labrador City.", "$145 CAD/night", "", "https://www.airbnb.ca/rooms/22716280"),
+    ("Gateway Labrador — Visitor Information Centre & Museum", 52.950460, -66.919026, "sight", 3,
+     "Official Labrador West visitor information centre and regional heritage museum right on Route 500 in Labrador City.", "Free", "", "https://www.destinationlabrador.com/guide/"),
 ]
 for item in camping_backups:
     add_poi(*item)
